@@ -1,0 +1,48 @@
+---
+sources:
+  
+  kubectl:
+    list:
+      type: github
+      url: https://github.com/kubernetes/kubernetes/releases
+    release:
+      type: binary
+      url: https://storage.googleapis.com/kubernetes-release/release/{{ .Version }}/bin/linux/amd64/kubectl
+    install:
+      type: direct
+      binaries:
+        - kubectl
+  
+  helm:
+    list:
+      type: github
+      url: https://api.github.com/repos/helm/helm/releases
+    release:
+      type: tgz
+      url: https://get.helm.sh/helm-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helm
+
+  terraform:
+    list:
+      type: github
+      url: https://api.github.com/repos/helm/helm/releases
+    # list:
+    #   type: http
+    #   url: https://releases.hashicorp.com/terraform/
+    #   template: 'terraform_(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(-(?P<ext>.+))?'
+    release:
+      url: https://releases.hashicorp.com/terraform/{{ .Version }}/terraform_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    # os_map:
+    #   - "darwin"
+    #   - "freebsd"
+    #   - "linux"
+    #   - "openbsd"
+    #   - "solaris"
+    #   - "windows"
+    # arch_map:
+    #   - "amd64"
+    #   - "arm"
+    #   - "386"
