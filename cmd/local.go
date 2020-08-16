@@ -7,7 +7,10 @@ import (
 
 // localCmd represents the local command
 func localCmd() *cobra.Command {
-	app := app.New()
+	app, err := app.New()
+	if err != nil {
+		panic(err)
+	}
 	cmd := &cobra.Command{
 		Use:   "local",
 		Short: "A brief description of your command",
@@ -17,8 +20,9 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
+		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return app.Local()
+			return app.Local(args[0], args[1])
 		},
 	}
 

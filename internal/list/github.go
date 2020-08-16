@@ -37,7 +37,6 @@ func (g Github) Get(ctx context.Context, wg *sync.WaitGroup) ([]string, error) {
 		return nil, err
 	}
 
-	// fmt.Printf("%s\n", body)
 	gr := ghResponse{}
 	err = json.Unmarshal([]byte(body), &gr)
 	if err != nil {
@@ -50,6 +49,5 @@ func (g Github) Get(ctx context.Context, wg *sync.WaitGroup) ([]string, error) {
 		versions = append(versions, v.TagName)
 	}
 
-	fmt.Printf("\nversions: %+v\n", versions)
 	return versions, nil
 }

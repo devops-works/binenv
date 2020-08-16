@@ -18,6 +18,7 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/opencontainers/runc v0.1.1 // indirect
+	github.com/sirupsen/logrus v1.6.0
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.4.0
 	github.com/syndtr/gocapability v0.0.0-20180916011248-d98352740cb2 // indirect

@@ -23,12 +23,14 @@ type Fetcher interface {
 // Factory returns instances that comply to Installer interface
 func (r Release) Factory() Fetcher {
 	switch r.Type {
-	case "binary":
-		return Binary{
+	case "download":
+		return Download{
 			url: r.URL,
 		}
-		// case "tgz":
-		// 	return TGZ{}
+	default:
+		return Download{
+			url: r.URL,
+		}
 	}
 
 	return nil

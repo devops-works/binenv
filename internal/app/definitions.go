@@ -6,8 +6,8 @@ import (
 	"gitlab.com/devopsworks/tools/binenv/internal/release"
 )
 
-// Definitions holds the liste of available software sources
-type Definitions struct {
+// Distributions holds the liste of available software sources
+type Distributions struct {
 	Sources map[string]Sources `yaml:"sources"`
 }
 

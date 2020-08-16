@@ -7,7 +7,10 @@ import (
 
 // versionsCmd lists installable versions 'as seen from cache
 func versionsCmd() *cobra.Command {
-	app := app.New()
+	app, err := app.New()
+	if err != nil {
+		panic(err)
+	}
 	cmd := &cobra.Command{
 		Use:   "versions",
 		Short: "List installable versions",

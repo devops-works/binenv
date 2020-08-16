@@ -8,7 +8,7 @@ type Install struct {
 
 // Installer should implement installation
 type Installer interface {
-	Install(src string, dst string, patterns []string) error
+	Install(src string, dst string) error
 }
 
 // Factory returns instances that comply to Installer interface

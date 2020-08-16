@@ -6,6 +6,17 @@ import (
 	"github.com/mitchellh/go-homedir"
 )
 
+// GetDefaultBinDir returns the bin directory
+func GetDefaultBinDir() string {
+	d, err := homedir.Dir()
+	if err != nil {
+		d = "~"
+	}
+	d += "/.binenv/"
+
+	return d
+}
+
 func getConfigDir() (string, error) {
 	var err error
 
@@ -21,6 +32,12 @@ func getConfigDir() (string, error) {
 	return dir, nil
 }
 
-func getPackages() {
-	
+func stringInSlice(st string, sl []string) bool {
+	for _, v := range sl {
+		if v == st {
+			return true
+		}
+	}
+
+	return false
 }

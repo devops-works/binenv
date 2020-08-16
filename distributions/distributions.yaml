@@ -6,7 +6,6 @@ sources:
       type: github
       url: https://api.github.com/repos/kubernetes/kubernetes/releases
     release:
-      type: binary
       url: https://storage.googleapis.com/kubernetes-release/release/{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
     install:
       type: direct
@@ -18,23 +17,22 @@ sources:
       type: github
       url: https://api.github.com/repos/helm/helm/releases
     release:
-      type: tgz
-      url: https://get.helm.sh/helm-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://get.helm.sh/helm-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
-        - helm
+        - "{{ .OS }}-{{ .Arch }}/helm"
 
   terraform:
     list:
       type: github
       url: https://api.github.com/repos/hashicorp/terraform/releases
     release:
-      url: https://releases.hashicorp.com/terraform/{{ .Version }}/terraform_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+      url: https://releases.hashicorp.com/terraform/{{ .NakedVersion }}/terraform_{{ .NakedVersion }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
       binaries:
-        - helm
+        - terraform
     # os_map:
     #   - "darwin"
     #   - "freebsd"

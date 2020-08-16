@@ -6,7 +6,7 @@ import (
 )
 
 // localCmd represents the local command
-func installCmd() *cobra.Command {
+func uninstallCmd() *cobra.Command {
 	var bindir string
 
 	a, err := app.New()
@@ -14,12 +14,12 @@ func installCmd() *cobra.Command {
 		panic(err)
 	}
 	cmd := &cobra.Command{
-		Use:   "install",
-		Short: "Install a version for the package",
+		Use:   "uninstall",
+		Short: "Uninstall a distribution or a specific version for the distribution",
 		Long:  `Better description here`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			a.SetBinDir(bindir)
-			return a.Install(args[0], args[1])
+			return a.Uninstall(args)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) {

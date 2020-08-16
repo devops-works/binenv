@@ -7,7 +7,10 @@ import (
 
 // localCmd represents the local command
 func distributionsCmd() *cobra.Command {
-	app := app.New()
+	app, err := app.New()
+	if err != nil {
+		panic(err)
+	}
 	cmd := &cobra.Command{
 		Use:   "distributions",
 		Short: "Show or update distributions list",

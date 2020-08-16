@@ -7,10 +7,13 @@ import (
 
 // localCmd represents the local command
 func updateCmd() *cobra.Command {
-	app := app.New()
+	app, err := app.New()
+	if err != nil {
+		panic(err)
+	}
 	cmd := &cobra.Command{
 		Use:   "update",
-		Short: "Update software definitions",
+		Short: "Update software distributions",
 		Long:  `Updates installable software`,
 		// Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -26,7 +29,9 @@ func updateCmd() *cobra.Command {
 			return list, cobra.ShellCompDirectiveNoFileComp
 		},
 	}
+	// verb, _ := cmd.Root().PersistentFlags().GetBool("verbose")
 
+	// fmt.Printf("verbose is %v\n", verb)
 	// cmd.Flags().IntVarP(&a.Params.MinLength, "min-length", "m", 16, "Specify minimum password length, must not be less than 8")
 	return cmd
 }
