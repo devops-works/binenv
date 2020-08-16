@@ -4,10 +4,10 @@ sources:
   kubectl:
     list:
       type: github
-      url: https://github.com/kubernetes/kubernetes/releases
+      url: https://api.github.com/repos/kubernetes/kubernetes/releases
     release:
       type: binary
-      url: https://storage.googleapis.com/kubernetes-release/release/{{ .Version }}/bin/linux/amd64/kubectl
+      url: https://storage.googleapis.com/kubernetes-release/release/{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
     install:
       type: direct
       binaries:
@@ -28,13 +28,13 @@ sources:
   terraform:
     list:
       type: github
-      url: https://api.github.com/repos/helm/helm/releases
-    # list:
-    #   type: http
-    #   url: https://releases.hashicorp.com/terraform/
-    #   template: 'terraform_(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(-(?P<ext>.+))?'
+      url: https://api.github.com/repos/hashicorp/terraform/releases
     release:
       url: https://releases.hashicorp.com/terraform/{{ .Version }}/terraform_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - helm
     # os_map:
     #   - "darwin"
     #   - "freebsd"
