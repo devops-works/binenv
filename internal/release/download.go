@@ -34,21 +34,21 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 		NakedVersion: strings.TrimLeft(v, "vV"),
 	}
 
-	tmpl, err := template.New("test").Parse(d.url)
+	tmpl, err := template.New("download").Parse(d.url)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	buf := bytes.Buffer{}
 	err = tmpl.Execute(&buf, fv)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	url := buf.String()
 
 	fmt.Printf("fetching version %q for arch %q and OS %q at %s\n", v, runtime.GOARCH, runtime.GOOS, url)
-
+	
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", err

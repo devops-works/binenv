@@ -28,11 +28,11 @@ selected.`,
 
 	// Run as a shim for installed distributions
 	if !strings.HasSuffix(os.Args[0], "binenv") {
-		// fmt.Printf("called as %s\n", os.Args[0])
-		// fmt.Printf("bindir is %s\n", bindir)
+		fmt.Printf("called as %s\n", os.Args[0])
+		fmt.Printf("bindir is %s\n", bindir)
 
 		a, err := app.New(
-			app.WithDiscard(),
+			// app.WithDiscard(),
 			app.WithBinDir(bindir),
 		)
 		if err != nil {
@@ -40,7 +40,7 @@ selected.`,
 			panic(err)
 		}
 
-		fmt.Printf("calling execute for %s\n", os.Args[0])
+		// fmt.Printf("calling execute for %s\n", os.Args[0])
 		a.Execute(os.Args)
 	}
 

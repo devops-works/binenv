@@ -1,6 +1,7 @@
 package app
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -9,10 +10,12 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"syscall"
 	"time"
 
+	"github.com/hashicorp/go-version"
 	"github.com/mitchellh/go-homedir"
 	log "github.com/sirupsen/logrus"
 	"gitlab.com/devopsworks/tools/binenv/internal/install"
@@ -41,7 +44,7 @@ func New(o ...func(*App) error) (*App, error) {
 	if err != nil {
 		d = "~"
 	}
-	d += "/.binenv/"
+	d = filepath.Join(d, "/.binenv/")
 
 	a := &App{
 		installers: make(map[string]install.Installer),
@@ -56,6 +59,14 @@ func New(o ...func(*App) error) (*App, error) {
 	for _, f := range o {
 		if err := f(a); err != nil {
 			return nil, err
+		}
+	}
+
+	if strings.HasSuffix(os.Args[0], "binenv") {
+		err = a.selfInstall()
+		if err != nil {
+			a.logger.Errorf("unable to set-up myself: %v", err)
+			os.Exit(1)
 		}
 	}
 
@@ -86,7 +97,7 @@ func (a *App) GetPackagesListWithPrefix(pfix string) []string {
 	return res
 }
 
-// GetInstalledVersionsFor returns a list of packages that starts with prefix
+// GetInstalledVersionsFor returns a sorted list of versionsfor distribution
 func (a *App) GetInstalledVersionsFor(dist string) []string {
 	if _, err := os.Stat(a.getBinDirFor(dist)); os.IsNotExist(err) {
 		return []string{}
@@ -95,12 +106,28 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 	versions := []string{}
 
 	err := filepath.Walk(a.getBinDirFor(dist), func(path string, info os.FileInfo, err error) error {
-		versions = append(versions, path)
+		if a.getBinDirFor(dist) != path {
+			versions = append(versions, filepath.Base(path))
+		}
 		return nil
 	})
 	if err != nil {
 		a.logger.Errorf("unable to fetch versions for %q: %v", dist, err)
 		return []string{}
+	}
+
+	fmt.Printf("%+v\n", versions)
+	versionsV := make([]*version.Version, len(versions))
+	for i, raw := range versions {
+		v, _ := version.NewVersion(raw)
+		versionsV[i] = v
+	}
+
+	fmt.Printf("%+v\n", versionsV)
+	sort.Sort(sort.Reverse(version.Collection(versionsV)))
+	versions = []string{}
+	for _, v := range versionsV {
+		versions = append(versions, v.String())
 	}
 
 	return versions
@@ -152,7 +179,11 @@ func (a *App) Install(dist, version string) error {
 		}
 	}
 
-	err = a.installers[dist].Install(file, a.getBinDirFor(dist)+"/"+version)
+	err = a.installers[dist].Install(
+		file,
+		filepath.Join(a.getBinDirFor(dist), strings.TrimLeft(version, "vV")),
+		version,
+	)
 	if err != nil {
 		return err
 	}
@@ -229,13 +260,15 @@ func (a *App) Versions(which string) error {
 
 // CreateShimFor creates a shim for the distribution
 func (a *App) CreateShimFor(dist string) error {
-	self, err := os.Executable()
-	if err != nil {
-		return err
+	// Should not happen
+	shim := filepath.Join(a.bindir, "/shim")
+	if _, err := os.Stat(shim); os.IsNotExist(err) {
+		return fmt.Errorf("unable to find shim file: %w", err)
 	}
 
-	if _, err := os.Stat(a.bindir + "/" + dist); os.IsNotExist(err) {
-		err := os.Symlink(self, a.bindir+"/"+dist)
+	lnk := filepath.Join(a.bindir, dist)
+	if _, err := os.Stat(lnk); os.IsNotExist(err) {
+		err := os.Symlink(shim, lnk)
 		if err != nil {
 			return err
 		}
@@ -245,8 +278,10 @@ func (a *App) CreateShimFor(dist string) error {
 
 // Execute runs the shim function that executes real distributions
 func (a *App) Execute(args []string) {
-	// Check if args[0] is managed by us
-	// If not write an error and exit
+	fmt.Println("execute")
+	// Check if args[0] is managed by us. If not write an error and exit. This
+	// should not happen since, if we are here, we must have used a symlink to
+	// the shim.
 	versions := a.GetInstalledVersionsFor(args[0])
 	if len(versions) == 0 {
 		log.Errorf("no versions found for distribution %q. Something is really odd.", os.Args[0])
@@ -255,29 +290,57 @@ func (a *App) Execute(args []string) {
 	// Check version to use, going up to home directory if needeed and
 	// try /etc/binenv
 	// Take the first match while going up
-	// version := a.GuessVersionFor(dist)
+	curdir, _ := os.Getwd()
+	version := a.GuessBestVersionFor(args[0], curdir, versions)
 
-	// If match, check is required version is present
-	// If not, write a message with proper command to install it
-	// this can be quite elaborate too (e.g. check if required version is present, exist, ...)
-
-	// If none match, find the latest version we have
+	// If we did not find any this might be:
+	// - because we do not have a version that matches contraints
+	// - because we did not find any contraint to apply
+	// For now, we use the latest version available
+	// TODO: ofc this is not good, fix this and distinguish both cases
+	if version == "" {
+		version = versions[len(versions)-1]
+	}
 
 	bd := a.getBinDirFor(args[0])
-	binary := bd + "/" + "v1.18.8"
+	binary := filepath.Join(bd, version)
 
 	fmt.Printf("executing %q\n", binary)
 
-	// binargs := []string{}
-	// if len(args) > 1 {
-	// 	binargs = args[1:]
-	// }
-
-	// fmt.Printf("binargs: %v", binargs)
-	// Exec binary
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
 		fmt.Println(err)
 	}
+}
+
+func (a *App) selfInstall() error {
+	err := os.MkdirAll(a.bindir, 0750)
+	if err != nil {
+		return err
+	}
+
+	self, err := os.Executable()
+	if err != nil {
+		return err
+	}
+
+	from, err := os.Open(self)
+	if err != nil {
+		return err
+	}
+	defer from.Close()
+
+	to, err := os.OpenFile(filepath.Join(a.bindir, "/shim"), os.O_RDWR|os.O_CREATE, 0750)
+	if err != nil {
+		return err
+	}
+	defer to.Close()
+
+	_, err = io.Copy(to, from)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (a *App) readDistributions() error {
@@ -286,7 +349,7 @@ func (a *App) readDistributions() error {
 		return err
 	}
 
-	conf += "/distributions.yaml"
+	conf = filepath.Join(conf, "/distributions.yaml")
 
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		err := a.fetchDistributions(conf)
@@ -353,8 +416,7 @@ func (a *App) loadCache() {
 		return
 	}
 
-	conf += "/cache.json"
-
+	conf = filepath.Join(conf, "/cache.json")
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		return
 	}
@@ -373,7 +435,63 @@ func (a *App) loadCache() {
 }
 
 func (a *App) getBinDirFor(dist string) string {
-	return a.bindir + "binaries/" + dist
+	return filepath.Join(a.bindir, "binaries/", dist)
+}
+
+// GuessBestVersionFor returns closest version requirement given a location,
+// a distribution and a version list.
+// If no match we return the latest version we have
+func (a *App) GuessBestVersionFor(dist, dir string, versions []string) string {
+	home, _ := homedir.Dir()
+	home = filepath.Clean(home)
+	dir = filepath.Clean(dir)
+
+	for {
+		// fmt.Printf("in directory %s\n", dir)
+		if _, err := os.Stat(filepath.Join(dir, ".binenv.lock")); os.IsNotExist(err) {
+			// If in homedir, we found nothing
+			if dir == home {
+				return ""
+			}
+			// Move up
+			dir = filepath.Clean(filepath.Join(dir, ".."))
+			// fmt.Printf("new directory %s\n", dir)
+			continue
+		}
+
+		// lock file is found
+		f, err := os.Open(filepath.Join(dir, ".binenv.lock"))
+		if err != nil {
+			return ""
+		}
+		defer f.Close()
+
+		scanner := bufio.NewScanner(f)
+		for scanner.Scan() {
+			line := scanner.Text()
+			// fmt.Printf("got line %s\n", line)
+
+			if strings.HasPrefix(line, dist) {
+				constraint := strings.TrimPrefix(line, dist)
+				for _, v := range versions {
+					// fmt.Printf("testing version %s for %s\n", v, dist)
+					v1, _ := version.NewVersion(v)
+					// Constraints example.
+					constraints, _ := version.NewConstraint(constraint)
+					if constraints.Check(v1) {
+						// fmt.Printf("%s satisfies constraints %s\n", v1, constraints)
+						return v1.String()
+					}
+
+				}
+			}
+		}
+
+		if err := scanner.Err(); err != nil {
+			return ""
+		}
+		return ""
+	}
 }
 
 func (a *App) saveCache() {
@@ -382,7 +500,7 @@ func (a *App) saveCache() {
 		return
 	}
 
-	conf += "/cache.json"
+	conf = filepath.Join(conf, "/cache.json")
 
 	js, err := json.Marshal(&a.cache)
 	if err != nil {
@@ -396,12 +514,13 @@ func (a *App) saveCache() {
 		return
 	}
 	defer fd.Close()
+
 	fd.Write(js)
 }
 
 func (a *App) createInstallers() {
 	for k, v := range a.def.Sources {
-		i := v.Install.Factory()
+		i := v.Install.Factory(v.Install.Binaries)
 		if i == nil {
 			a.logger.Warnf("warning: '%s' install method for %s is not implemented\n", v.Install.Type, k)
 			continue

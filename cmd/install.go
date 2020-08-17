@@ -19,7 +19,10 @@ func installCmd() *cobra.Command {
 		Long:  `Better description here`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			a.SetBinDir(bindir)
-			return a.Install(args[0], args[1])
+			if len(args) > 1 {
+				return a.Install(args[0], args[1])
+			}
+			return a.Install(args[0], "")
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) {
