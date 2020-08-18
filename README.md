@@ -31,6 +31,10 @@ Prepend `~/.binenv` to your path in your `~/.bashrc` or `~/.zshrc` or ...:
 While you're at it, install the completion: `source <(binenv completion bash)`
 (replace `bash` with your shell).
 
+"Restart" your shell (`exec $SHELL`).
+
+[![asciicast](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d.svg)](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d)
+
 ## Supported "distributions"
 
 Distributions are installable binaries. We just had to find a name ¯\\_(ツ)_/¯.
