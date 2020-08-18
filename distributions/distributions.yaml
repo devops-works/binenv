@@ -1,6 +1,17 @@
 ---
 sources:
   
+  binenv:
+    map:
+      windows: win
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/binenv/releases
+    fetch:
+      url: https://github.com/devops-works/binenv/releases/download/v{{ .Version }}/binenv-{{ .OS }}-{{ .Arch }}-v{{ .Version }}
+    install:
+      type: direct
+
   cli53:
     list:
       type: github-releases
