@@ -19,6 +19,7 @@ func RootCmd() *cobra.Command {
 		
 If your directory has a '.binenv.lock', proper versions will always be
 selected.`,
+		SilenceUsage: true,
 	}
 
 	var bindir string

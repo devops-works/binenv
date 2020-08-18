@@ -2,10 +2,12 @@ package install
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"runtime"
-	"strings"
 	"sync"
+
+	gov "github.com/hashicorp/go-version"
 )
 
 // Install defines the install config struct
@@ -33,8 +35,9 @@ func (i Install) Factory(filters []string) Installer {
 		return Direct{}
 	case "zip":
 		return Zip{filters: filters}
+	case "tgz":
+		return Tgz{filters: filters}
 	}
-
 	return nil
 }
 
@@ -43,7 +46,7 @@ func matchFilters(file string, filters []string, version string) (bool, error) {
 		Arch:         runtime.GOARCH,
 		OS:           runtime.GOOS,
 		Version:      version,
-		NakedVersion: strings.TrimLeft(version, "vV"),
+		NakedVersion: gov.Must(gov.NewVersion(version)).String(),
 	}
 
 	var once sync.Once
@@ -75,6 +78,7 @@ func matchFilters(file string, filters []string, version string) (bool, error) {
 			return false, err
 		}
 		if buf.String() == file {
+			fmt.Printf("file %s matches filters\n", file)
 			return true, nil
 		}
 	}

@@ -7,5 +7,4 @@
 `binenv global <app> <version> [--interactive]`
 `binenv local <app> <version> [--interactive]`
 `binenv update` => updates definitions
-`binenv version [app]`
-`binenv versions [app]
+`binenv versions [app]`

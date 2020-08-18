@@ -10,7 +10,8 @@ import (
 	"log"
 	"net/http"
 	"runtime"
-	"strings"
+
+	gov "github.com/hashicorp/go-version"
 )
 
 // Download handles direct binary releases
@@ -31,7 +32,7 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 		Arch:         runtime.GOARCH,
 		OS:           runtime.GOOS,
 		Version:      v,
-		NakedVersion: strings.TrimLeft(v, "vV"),
+		NakedVersion: gov.Must(gov.NewVersion(v)).String(),
 	}
 
 	tmpl, err := template.New("download").Parse(d.url)
@@ -48,7 +49,7 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 	url := buf.String()
 
 	fmt.Printf("fetching version %q for arch %q and OS %q at %s\n", v, runtime.GOARCH, runtime.GOOS, url)
-	
+
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", err

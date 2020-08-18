@@ -15,7 +15,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hashicorp/go-version"
+	gov "github.com/hashicorp/go-version"
 	"github.com/mitchellh/go-homedir"
 	log "github.com/sirupsen/logrus"
 	"gitlab.com/devopsworks/tools/binenv/internal/install"
@@ -117,14 +117,14 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 	}
 
 	fmt.Printf("%+v\n", versions)
-	versionsV := make([]*version.Version, len(versions))
+	versionsV := make([]*gov.Version, len(versions))
 	for i, raw := range versions {
-		v, _ := version.NewVersion(raw)
+		v, _ := gov.NewVersion(raw)
 		versionsV[i] = v
 	}
 
 	fmt.Printf("%+v\n", versionsV)
-	sort.Sort(sort.Reverse(version.Collection(versionsV)))
+	sort.Sort(sort.Reverse(gov.Collection(versionsV)))
 	versions = []string{}
 	for _, v := range versionsV {
 		versions = append(versions, v.String())
@@ -133,7 +133,7 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 	return versions
 }
 
-// GetVersionsFromCacheFor returns a list of packages that starts with prefix
+// GetVersionsFromCacheFor returns a list of versions available for distribution
 func (a *App) GetVersionsFromCacheFor(dist string) []string {
 	if val, ok := a.cache[dist]; ok {
 		return val
@@ -151,6 +151,9 @@ func (a *App) Distributions() error {
 // Install installs or update a distribution
 func (a *App) Install(dist, version string) error {
 	// Check if distribution is managed by us
+	if a.fetchers[dist] == nil {
+		return fmt.Errorf("no fetcher found for %s", dist)
+	}
 	if _, ok := a.fetchers[dist]; !ok {
 		a.logger.Errorf("no such distribution %q", dist)
 		return nil
@@ -160,8 +163,9 @@ func (a *App) Install(dist, version string) error {
 
 	// If version is specified, check if it exists, return if yes
 	if version != "" {
-		if stringInSlice(version, versions) {
-			a.logger.Errorf("version %q already installed for %q", version, dist)
+		if stringInSlice(gov.Must(gov.NewVersion(version)).String(), versions) {
+			a.logger.Warnf("version %q already installed for %q", version, dist)
+			return nil
 		}
 	}
 
@@ -179,12 +183,19 @@ func (a *App) Install(dist, version string) error {
 		}
 	}
 
+	if a.installers[dist] == nil {
+		return fmt.Errorf("no installer found for %s", dist)
+	}
 	err = a.installers[dist].Install(
 		file,
-		filepath.Join(a.getBinDirFor(dist), strings.TrimLeft(version, "vV")),
+		filepath.Join(
+			a.getBinDirFor(dist),
+			gov.Must(gov.NewVersion(version)).String(),
+		),
 		version,
 	)
 	if err != nil {
+		log.Errorf("unable to install %s version %s: %v", dist, version, err)
 		return err
 	}
 
@@ -475,14 +486,13 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) string {
 				constraint := strings.TrimPrefix(line, dist)
 				for _, v := range versions {
 					// fmt.Printf("testing version %s for %s\n", v, dist)
-					v1, _ := version.NewVersion(v)
+					v1, _ := gov.NewVersion(v)
 					// Constraints example.
-					constraints, _ := version.NewConstraint(constraint)
+					constraints, _ := gov.NewConstraint(constraint)
 					if constraints.Check(v1) {
 						// fmt.Printf("%s satisfies constraints %s\n", v1, constraints)
 						return v1.String()
 					}
-
 				}
 			}
 		}

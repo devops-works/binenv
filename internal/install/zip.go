@@ -32,6 +32,14 @@ func (z Zip) Install(src, dst, version string) error {
 		// 	return fmt.Errorf("%s: illegal file path", dst)
 		// }
 
+		ok, err := matchFilters(f.Name, z.filters, version)
+		if err != nil {
+			return err
+		}
+		if !ok {
+			continue
+		}
+
 		fmt.Printf("installing in %s\n", dst)
 
 		out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
