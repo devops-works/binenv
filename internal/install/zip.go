@@ -2,7 +2,6 @@ package install
 
 import (
 	"archive/zip"
-	"fmt"
 	"io"
 	"os"
 
@@ -26,15 +25,6 @@ func (z Zip) Install(src, dst, version string) error {
 
 	args := tpl.New(version)
 	for _, f := range r.File {
-		fmt.Printf("found file %s in zip\n", f.Name)
-
-		// fpath := filepath.Join(dst, f.Name)
-
-		// Check for ZipSlip. More Info: http://bit.ly/2MsjAWE
-		// if !strings.HasPrefix(dst, filepath.Clean(dst)+string(os.PathSeparator)) {
-		// 	return fmt.Errorf("%s: illegal file path", dst)
-		// }
-
 		ok, err := args.MatchFilters(f.Name, z.filters)
 		if err != nil {
 			return err
@@ -42,8 +32,6 @@ func (z Zip) Install(src, dst, version string) error {
 		if !ok {
 			continue
 		}
-
-		fmt.Printf("installing in %s\n", dst)
 
 		out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
 		if err != nil {

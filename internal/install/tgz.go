@@ -3,7 +3,6 @@ package install
 import (
 	"archive/tar"
 	"compress/gzip"
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -44,8 +43,6 @@ func (t Tgz) Install(src, dst, version string) error {
 			return err
 		}
 
-		fmt.Printf("found file %s in tar\n", header.Name)
-
 		switch header.Typeflag {
 		case tar.TypeReg: // regular file
 			ok, err := args.MatchFilters(header.Name, t.filters)
@@ -55,20 +52,17 @@ func (t Tgz) Install(src, dst, version string) error {
 			if !ok {
 				continue
 			}
-			fmt.Printf("found matching file %s size %d\n", header.Name, header.Size)
 
 			out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
 			if err != nil {
 				return err
 			}
 			defer out.Close()
-			fmt.Printf("writing file to %s\n", dst)
 			if _, err := io.Copy(out, tarReader); err != nil {
 				log.Fatal(err)
 			}
 		}
 	}
-	fmt.Printf("finished parsing tar")
 
 	return nil
 }

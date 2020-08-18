@@ -49,7 +49,5 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 	// Write the body to file
 	_, err = io.Copy(tmpfile, resp.Body)
 
-	log.Debugf("file saved at %q\n", tmpfile.Name())
-
 	return tmpfile.Name(), err
 }
