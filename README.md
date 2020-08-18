@@ -31,7 +31,7 @@ You can now remove the downloaded file: `rm binenv`.
 
 ## Supported "distributions"
 
-Distributions are installable binaries. We just had to find a name ¯\_(ツ)_/¯.
+Distributions are installable binaries. We just had to find a name ¯\\_(ツ)_/¯.
 
 Currently supported distributions are:
 
