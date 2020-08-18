@@ -496,7 +496,15 @@ func (a *App) selfInstall() error {
 	}
 	defer from.Close()
 
-	to, err := os.OpenFile(filepath.Join(a.bindir, "/shim"), os.O_RDWR|os.O_CREATE, 0750)
+	shim := filepath.Join(a.bindir, "/shim")
+	shimnew := shim + ".new"
+
+	if _, err := os.Stat(shim); os.IsExist(err) {
+		shimold := shim + ".old"
+		os.Rename(shim, shimold)
+	}
+
+	to, err := os.OpenFile(shimnew, os.O_RDWR|os.O_CREATE, 0750)
 	if err != nil {
 		return err
 	}
@@ -506,6 +514,7 @@ func (a *App) selfInstall() error {
 	if err != nil {
 		return err
 	}
+	os.Rename(shimnew, shim)
 
 	return nil
 }

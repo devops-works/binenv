@@ -8,7 +8,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/devops-works/binenv/releases
     fetch:
-      url: https://github.com/devops-works/binenv/releases/download/v{{ .Version }}/binenv-{{ .OS }}-{{ .Arch }}-v{{ .Version }}
+      url: https://github.com/devops-works/binenv/releases/download/v{{ .Version }}/binenv-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 

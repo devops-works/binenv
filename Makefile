@@ -28,27 +28,27 @@ linux: fmt lint $(BIN) ; $(info $(M) building static executable for Linux……)
 	$Q env GOOS=linux GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
 		-tags release -a \
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
-		-o $(BIN)/$(PACKAGE)-linux-amd64-$(VERSION)
+		-o $(BIN)/$(PACKAGE)-linux-amd64
 
 darwin: fmt lint $(BIN) ; $(info $(M) building static executable for MacOS…) @ ## Build program binary
 	$Q env GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
 		-tags release -a \
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
-		-o $(BIN)/$(PACKAGE)-darwin-amd64-$(VERSION)
+		-o $(BIN)/$(PACKAGE)-darwin-amd64
 
 windows: fmt lint clean $(BIN) ; $(info $(M) building static executable for Windoze…) @ ## Build program binary
 	$Q env GOOS=windows GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
 		-tags release -a \
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
-		-o $(BIN)/$(PACKAGE)-win-amd64-$(VERSION)
+		-o $(BIN)/$(PACKAGE)-win-amd64
 
 release: windows darwin linux ; $(info $(M) stripping release executable for Linux…) @ ## Build program binary
-	$Q strip $(BIN)/$(PACKAGE)-linux-amd64-$(VERSION)
+	$Q strip $(BIN)/$(PACKAGE)-linux-amd64
 	$Q (cd bin && sha256sum * > SHA256SUMS)
-	$Q cp $(BIN)/$(PACKAGE)-linux-amd64-$(VERSION) $(BIN)/$(PACKAGE)
-	# $Q gzip $(BIN)/$(PACKAGE)-linux-amd64-$(VERSION)
-	# $Q gzip $(BIN)/$(PACKAGE)-darwin-amd64-$(VERSION)
-	# $Q gzip $(BIN)/$(PACKAGE)-win-amd64-$(VERSION)
+	$Q cp $(BIN)/$(PACKAGE)-linux-amd64 $(BIN)/$(PACKAGE)
+	# $Q gzip $(BIN)/$(PACKAGE)-linux-amd64
+	# $Q gzip $(BIN)/$(PACKAGE)-darwin-amd64
+	# $Q gzip $(BIN)/$(PACKAGE)-win-amd64
 	$Q $(BIN)/$(PACKAGE) version
 
 
