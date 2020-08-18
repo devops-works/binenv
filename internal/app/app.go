@@ -629,7 +629,6 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 			if strings.HasPrefix(line, dist) {
 				constraint := strings.TrimPrefix(line, dist)
 				for _, v := range versions {
-					fmt.Printf("testing version %s against constraint %s\n", v, constraint)
 					v1, _ := gov.NewVersion(v)
 					// Constraints
 					constraints, _ := gov.NewConstraint(constraint)
