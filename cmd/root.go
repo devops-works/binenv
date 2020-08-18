@@ -47,11 +47,12 @@ selected.`,
 
 	rootCmd.AddCommand(
 		completionCmd(),
-		installCmd(),
 		distributionsCmd(),
-		uninstallCmd(),
+		installCmd(),
 		localCmd(),
+		uninstallCmd(),
 		updateCmd(),
+		versionCmd(),
 		versionsCmd(),
 	)
 
