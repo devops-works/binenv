@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gitlab.com/devopsworks/tools/binenv/cmd"
+	"github.com/devops-works/binenv/cmd"
 )
 
 func main() {

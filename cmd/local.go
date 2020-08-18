@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"github.com/devops-works/binenv/internal/app"
 	"github.com/spf13/cobra"
-	"gitlab.com/devopsworks/tools/binenv/internal/app"
 )
 
 // localCmd represents the local command

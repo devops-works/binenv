@@ -20,13 +20,13 @@ import (
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 
-	"gitlab.com/devopsworks/tools/binenv/internal/fetch"
-	"gitlab.com/devopsworks/tools/binenv/internal/install"
-	"gitlab.com/devopsworks/tools/binenv/internal/list"
-	"gitlab.com/devopsworks/tools/binenv/internal/mapping"
+	"github.com/devops-works/binenv/internal/fetch"
+	"github.com/devops-works/binenv/internal/install"
+	"github.com/devops-works/binenv/internal/list"
+	"github.com/devops-works/binenv/internal/mapping"
 )
 
-const distributionsURL string = "https://gitlab.com/devopsworks/tools/binenv/-/raw/master/definitions/distributions.yaml"
+const distributionsURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
 
 // App implements the core logic
 type App struct {
@@ -172,7 +172,18 @@ func (a *App) GetAvailableVersionsFor(dist string) []string {
 
 // Distributions list or update available distributions
 func (a *App) Distributions() error {
-	log.Errorf("not implemented yet")
+	conf, err := getConfigDir()
+	if err != nil {
+		return err
+	}
+	conf = filepath.Join(conf, "/distributions.yaml")
+
+	err = a.fetchDistributions(conf)
+	if err != nil {
+		log.Errorf("unable to fetch distributions: %v", err)
+	}
+
+	log.Info("distributions updated")
 	return nil
 }
 
@@ -263,7 +274,7 @@ func (a *App) install(dist, version string) error {
 func (a *App) Uninstall(specs ...string) error {
 	// We accept either
 	// - a single argument (remove all versions for distributions)
-	// - an even cound of arguments (distribution / version pairs)
+	// - an even count of arguments (distribution / version pairs)
 
 	if len(specs)%2 != 0 && len(specs) > 1 {
 		log.Fatalf("invalid number of arguments (must have distribution and version pairs")
@@ -376,32 +387,43 @@ func (a *App) Update(which string) error {
 }
 
 // Versions fetches available versions for the application
-func (a *App) Versions(which string) error {
+func (a *App) Versions(specs ...string) error {
+	if len(specs) == 0 {
+		for k := range a.cache {
+			specs = append(specs, k)
+		}
+	}
+
+	for _, s := range specs {
+		err := a.versions(s)
+		if err != nil {
+			log.Errorf("unable to list versions for %q: %v", s, err)
+		}
+	}
+	return nil
+}
+
+func (a *App) versions(dist string) error {
 	curdir, err := os.Getwd()
 	if err != nil {
-		log.Errorf("unable to determine current directory: %v", err)
-		os.Exit(1)
+		return fmt.Errorf("unable to determine current directory: %v", err)
 	}
-	for k := range a.cache {
-		if which == k || which == "" {
-			available := a.GetAvailableVersionsFor(k)
-			installed := a.GetInstalledVersionsFor(k)
-			guess, why := a.GuessBestVersionFor(k, curdir, installed)
+	available := a.GetAvailableVersionsFor(dist)
+	installed := a.GetInstalledVersionsFor(dist)
+	guess, why := a.GuessBestVersionFor(dist, curdir, installed)
 
-			fmt.Printf("\n%s:\n", k)
+	fmt.Printf("\n%s:\n", dist)
 
-			for _, v := range available {
-				modifier := ""
-				if stringInSlice(v, installed) {
-					modifier = "+"
-					// fmt.Printf("compare %s with %s\n", v, guess)
-					if v == guess {
-						modifier = "* (from " + why + ")"
-					}
-				}
-				fmt.Printf("\t%s%s\n", v, modifier)
+	for _, v := range available {
+		modifier := ""
+		if stringInSlice(v, installed) {
+			modifier = "+"
+			// fmt.Printf("compare %s with %s\n", v, guess)
+			if v == guess {
+				modifier = "* (from " + why + ")"
 			}
 		}
+		fmt.Printf("\t%s%s\n", v, modifier)
 	}
 	return nil
 }
@@ -602,10 +624,9 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 					constraints, _ := gov.NewConstraint(constraint)
 					if constraints.Check(v1) {
 						return v1.String(), dir
-					} else {
-						constversion := strings.Trim(constraint, "!=<>~")
-						return "", fmt.Sprintf("unable to satisfy contraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
 					}
+					constversion := strings.Trim(constraint, "!=<>~")
+					return "", fmt.Sprintf("unable to satisfy contraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
 				}
 			}
 		}

@@ -1,8 +1,8 @@
 package cmd
 
 import (
+	"github.com/devops-works/binenv/internal/app"
 	"github.com/spf13/cobra"
-	"gitlab.com/devopsworks/tools/binenv/internal/app"
 )
 
 // localCmd represents the local command
@@ -16,7 +16,7 @@ func uninstallCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "uninstall <distribution> [<version> [<distribution> <version>]]",
 		Short: "Uninstall a distribution or a specific version for the distribution",
-		Long:  `When a version is not specified, only a single distribution is accepted.
+		Long: `When a version is not specified, only a single distribution is accepted.
 In this case, all versions for the specified distribution will be removed (a confirmation is asked).
 
 Multiple distribution / version pairs can be specified.`,

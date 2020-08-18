@@ -10,7 +10,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"gitlab.com/devopsworks/tools/binenv/internal/tpl"
+	"github.com/devops-works/binenv/internal/tpl"
 )
 
 // Download handles direct binary releases

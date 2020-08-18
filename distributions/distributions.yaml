@@ -49,7 +49,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/helm/helm/releases
     fetch:
-      url: https://get.helm.sh/helm-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://get.helm.sh/helm-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -83,7 +83,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/gruntwork-io/terragrunt/releases
     fetch:
-      url: https://github.com/gruntwork-io/terragrunt/releases/download/{{ .Version }}/terragrunt_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+      url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{ .Version }}/terragrunt_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
 

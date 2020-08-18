@@ -1,10 +1,10 @@
 package app
 
 import (
-	"gitlab.com/devopsworks/tools/binenv/internal/fetch"
-	"gitlab.com/devopsworks/tools/binenv/internal/install"
-	"gitlab.com/devopsworks/tools/binenv/internal/list"
-	"gitlab.com/devopsworks/tools/binenv/internal/mapping"
+	"github.com/devops-works/binenv/internal/fetch"
+	"github.com/devops-works/binenv/internal/install"
+	"github.com/devops-works/binenv/internal/list"
+	"github.com/devops-works/binenv/internal/mapping"
 )
 
 // Distributions holds the liste of available software sources

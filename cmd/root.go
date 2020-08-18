@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/devops-works/binenv/internal/app"
 	"github.com/spf13/cobra"
-	"gitlab.com/devopsworks/tools/binenv/internal/app"
 )
 
 // RootCmd returns the root cobra command
@@ -48,6 +48,7 @@ selected.`,
 	rootCmd.AddCommand(
 		completionCmd(),
 		installCmd(),
+		distributionsCmd(),
 		uninstallCmd(),
 		localCmd(),
 		updateCmd(),

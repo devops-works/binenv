@@ -8,10 +8,10 @@ import (
 	"log"
 	"os"
 
-	"gitlab.com/devopsworks/tools/binenv/internal/tpl"
+	"github.com/devops-works/binenv/internal/tpl"
 )
 
-// Zip handles zip files
+// Tgz handles zip files
 type Tgz struct {
 	filters []string
 }
