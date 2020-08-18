@@ -14,21 +14,24 @@ func uninstallCmd() *cobra.Command {
 		panic(err)
 	}
 	cmd := &cobra.Command{
-		Use:   "uninstall",
+		Use:   "uninstall <distribution> [<version> [<distribution> <version>]]",
 		Short: "Uninstall a distribution or a specific version for the distribution",
-		Long:  `Better description here`,
+		Long:  `When a version is not specified, only a single distribution is accepted.
+In this case, all versions for the specified distribution will be removed (a confirmation is asked).
+
+Multiple distribution / version pairs can be specified.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			a.SetBinDir(bindir)
-			return a.Uninstall(args)
+			return a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
-			switch len(args) {
+			switch len(args) % 2 {
 			case 0:
 				// complete application name
 				return a.GetPackagesListWithPrefix(toComplete), cobra.ShellCompDirectiveNoFileComp
 			case 1:
 				// complete application version
-				return a.GetVersionsFromCacheFor(args[0]), cobra.ShellCompDirectiveNoFileComp
+				return a.GetInstalledVersionsFor(args[len(args)-1]), cobra.ShellCompDirectiveNoFileComp
 			default:
 				// huh ?
 				return nil, cobra.ShellCompDirectiveNoFileComp

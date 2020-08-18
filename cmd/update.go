@@ -13,8 +13,9 @@ func updateCmd() *cobra.Command {
 	}
 	cmd := &cobra.Command{
 		Use:   "update",
-		Short: "Update software distributions",
-		Long:  `Updates installable software`,
+		Short: "Update available software distributions",
+		Long: `Available versions for every distribution will be updated.
+`,
 		// Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 1 {

@@ -12,20 +12,15 @@ func localCmd() *cobra.Command {
 		panic(err)
 	}
 	cmd := &cobra.Command{
-		Use:   "local",
-		Short: "A brief description of your command",
-		Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+		Use:   "local <distribution> <version> [<distribution> <version>]",
+		Short: "Sets local required versions for distributions.",
+		Long: `This will write the specified version in ".binenv.lock" file in the current directory.
+Any previously constraint used in this file for the distribution will be removed, and an exact match ('=') will be used.`,
 		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return app.Local(args[0], args[1])
 		},
 	}
 
-	// cmd.Flags().IntVarP(&a.Params.MinLength, "min-length", "m", 16, "Specify minimum password length, must not be less than 8")
 	return cmd
 }

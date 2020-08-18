@@ -19,8 +19,12 @@ type List struct {
 // Factory returns instances that comply to Lister interface
 func (l List) Factory() Lister {
 	switch l.Type {
-	case "github":
-		return Github{
+	case "github-releases":
+		return GithubRelease{
+			url: l.URL,
+		}
+	case "github-tags":
+		return GithubTag{
 			url: l.URL,
 		}
 	}

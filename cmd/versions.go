@@ -12,10 +12,16 @@ func versionsCmd() *cobra.Command {
 		panic(err)
 	}
 	cmd := &cobra.Command{
-		Use:   "versions",
+		Use:   "versions [distribution]",
 		Short: "List installable versions",
-		Long:  `List all installable versions for this application.`,
-		Args:  cobra.MaximumNArgs(1),
+		Long: `List all installable versions for a distribution.
+If the distribution is not specified, lists all available version for all distributions.
+
+Version currenyly in used has a '*' next to it.
+Versions installed locally have a '+'.
+
+Use 'binenv update' to update the list of available versions.`,
+		Args: cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 1 {
 				return app.Versions(args[0])

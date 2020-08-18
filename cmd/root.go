@@ -25,12 +25,12 @@ selected.`,
 	var bindir string
 	// var verbose
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
-	rootCmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
+	// rootCmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
 
 	// Run as a shim for installed distributions
 	if !strings.HasSuffix(os.Args[0], "binenv") {
-		fmt.Printf("called as %s\n", os.Args[0])
-		fmt.Printf("bindir is %s\n", bindir)
+		// fmt.Printf("called as %s\n", os.Args[0])
+		// fmt.Printf("bindir is %s\n", bindir)
 
 		a, err := app.New(
 			// app.WithDiscard(),
@@ -48,6 +48,7 @@ selected.`,
 	rootCmd.AddCommand(
 		completionCmd(),
 		installCmd(),
+		uninstallCmd(),
 		localCmd(),
 		updateCmd(),
 		versionsCmd(),

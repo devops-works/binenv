@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"gitlab.com/devopsworks/tools/binenv/internal/tpl"
 )
 
 // Zip handles zip files
@@ -22,6 +24,7 @@ func (z Zip) Install(src, dst, version string) error {
 	}
 	defer r.Close()
 
+	args := tpl.New(version)
 	for _, f := range r.File {
 		fmt.Printf("found file %s in zip\n", f.Name)
 
@@ -32,7 +35,7 @@ func (z Zip) Install(src, dst, version string) error {
 		// 	return fmt.Errorf("%s: illegal file path", dst)
 		// }
 
-		ok, err := matchFilters(f.Name, z.filters, version)
+		ok, err := args.MatchFilters(f.Name, z.filters)
 		if err != nil {
 			return err
 		}

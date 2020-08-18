@@ -1,38 +1,102 @@
 ---
 sources:
   
-  kubectl:
+  cli53:
     list:
-      type: github
-      url: https://api.github.com/repos/kubernetes/kubernetes/releases
-    release:
-      url: https://storage.googleapis.com/kubernetes-release/release/{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
+      type: github-releases
+      url: https://api.github.com/repos/barnybug/cli53/releases
+    fetch:
+      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  consul:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hashicorp/consul/releases
+    fetch:
+      url: https://releases.hashicorp.com/consul/{{ .Version }}/consul_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
       binaries:
-        - kubectl
+        - consul
+
+  kubectl:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kubernetes/releases
+    fetch:
+      url: https://storage.googleapis.com/kubernetes-release/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
+    install:
+      type: direct
   
+  hadolint:
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hadolint/hadolint/releases
+    fetch:
+      url: https://github.com/hadolint/hadolint/releases/download/{{ .Version }}/hadolint-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   helm:
     list:
-      type: github
+      type: github-releases
       url: https://api.github.com/repos/helm/helm/releases
-    release:
+    fetch:
       url: https://get.helm.sh/helm-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
 
+  # Implement static versions
+  # rancher:
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/helm/helm/releases
+  #   fetch:
+  #     url: https://releases.rancher.com/cli/v{{ .Version }}/rancher-{{ .OS }}-{{ .OS }}-v{{ .Version }}.tar.gz
+  #   install:
+  #     type: tgz
+  #     binaries:
+  #       - "{{ .OS }}-{{ .Arch }}/helm"
+
   terraform:
     list:
-      type: github
+      type: github-releases
       url: https://api.github.com/repos/hashicorp/terraform/releases
-    release:
-      url: https://releases.hashicorp.com/terraform/{{ .NakedVersion }}/terraform_{{ .NakedVersion }}_{{ .OS }}_{{ .Arch }}.zip
+    fetch:
+      url: https://releases.hashicorp.com/terraform/{{ .Version }}/terraform_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
       binaries:
         - terraform
+
+  terragrunt:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gruntwork-io/terragrunt/releases
+    fetch:
+      url: https://github.com/gruntwork-io/terragrunt/releases/download/{{ .Version }}/terragrunt_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
+  vault:
+    list:
+      type: github-tags
+      url: https://api.github.com/repos/hashicorp/vault/tags
+    fetch:
+      url: https://releases.hashicorp.com/vault/{{ .Version }}/vault_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - vault
     # os_map:
     #   - "darwin"
     #   - "freebsd"

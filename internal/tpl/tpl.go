@@ -1,0 +1,101 @@
+package tpl
+
+import (
+	"bytes"
+	"fmt"
+	"runtime"
+	"sync"
+	"text/template"
+
+	gov "github.com/hashicorp/go-version"
+)
+
+// Args holds templating args
+type Args struct {
+	OS           string
+	Arch         string
+	Version      string
+	NakedVersion string
+	ExeExtension string
+}
+
+// New returns populated template Args
+func New(v string) Args {
+	a := Args{
+		Arch:         runtime.GOARCH,
+		OS:           runtime.GOOS,
+		Version:      v,
+		NakedVersion: gov.Must(gov.NewVersion(v)).String(),
+	}
+
+	if a.OS == "windows" {
+		a.ExeExtension = ".exe"
+	}
+
+	return a
+}
+
+// Interpolate changes some values by others
+func (a Args) Interpolate(m map[string]string) {
+	if v, ok := m[a.Arch]; ok {
+		a.Arch = v
+	}
+	if v, ok := m[a.OS]; ok {
+		a.OS = v
+	}
+}
+
+// MatchFilters matches a file against a list of template filters
+func (a Args) MatchFilters(file string, filters []string) (bool, error) {
+	var once sync.Once
+
+	tpls := []*template.Template{}
+
+	var onceErr error
+
+	onceBody := func() {
+		for _, v := range filters {
+			tpl, err := template.New("matcher").Parse(v)
+			if err != nil {
+				onceErr = err
+				return
+			}
+			tpls = append(tpls, tpl)
+		}
+	}
+
+	once.Do(onceBody)
+	if onceErr != nil {
+		return false, onceErr
+	}
+
+	for _, t := range tpls {
+		buf := bytes.Buffer{}
+		err := t.Execute(&buf, a)
+		if err != nil {
+			return false, err
+		}
+		if buf.String() == file {
+			fmt.Printf("file %s matches filters\n", file)
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+// Render a passed-in template agains args
+func (a Args) Render(t string) (string, error) {
+	tmpl, err := template.New("download").Parse(t)
+	if err != nil {
+		return "", err
+	}
+
+	buf := bytes.Buffer{}
+	err = tmpl.Execute(&buf, a)
+	if err != nil {
+		return "", err
+	}
+
+	return buf.String(), nil
+}

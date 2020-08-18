@@ -1,17 +1,16 @@
-package release
+package fetch
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"html/template"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"runtime"
 
-	gov "github.com/hashicorp/go-version"
+	log "github.com/sirupsen/logrus"
+
+	"gitlab.com/devopsworks/tools/binenv/internal/tpl"
 )
 
 // Download handles direct binary releases
@@ -21,32 +20,12 @@ type Download struct {
 
 // Fetch gets the package and returns location of downloaded file
 func (d Download) Fetch(ctx context.Context, v string) (string, error) {
-	type fullVersion struct {
-		OS           string
-		Arch         string
-		Version      string
-		NakedVersion string
-	}
+	args := tpl.New(v)
 
-	fv := fullVersion{
-		Arch:         runtime.GOARCH,
-		OS:           runtime.GOOS,
-		Version:      v,
-		NakedVersion: gov.Must(gov.NewVersion(v)).String(),
-	}
-
-	tmpl, err := template.New("download").Parse(d.url)
+	url, err := args.Render(d.url)
 	if err != nil {
 		return "", err
 	}
-
-	buf := bytes.Buffer{}
-	err = tmpl.Execute(&buf, fv)
-	if err != nil {
-		return "", err
-	}
-
-	url := buf.String()
 
 	fmt.Printf("fetching version %q for arch %q and OS %q at %s\n", v, runtime.GOARCH, runtime.GOOS, url)
 
@@ -55,6 +34,10 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 		return "", err
 	}
 	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("unable to download binary at %s: %s", url, resp.Status)
+	}
 
 	tmpfile, err := ioutil.TempFile("", v)
 	if err != nil {
@@ -66,7 +49,7 @@ func (d Download) Fetch(ctx context.Context, v string) (string, error) {
 	// Write the body to file
 	_, err = io.Copy(tmpfile, resp.Body)
 
-	fmt.Printf("file saved at %q\n", tmpfile.Name())
+	log.Debugf("file saved at %q\n", tmpfile.Name())
 
 	return tmpfile.Name(), err
 }

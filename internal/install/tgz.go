@@ -7,6 +7,8 @@ import (
 	"io"
 	"log"
 	"os"
+
+	"gitlab.com/devopsworks/tools/binenv/internal/tpl"
 )
 
 // Zip handles zip files
@@ -30,6 +32,7 @@ func (t Tgz) Install(src, dst, version string) error {
 	}
 
 	tarReader := tar.NewReader(gzf)
+	args := tpl.New(version)
 
 	for true {
 		header, err := tarReader.Next()
@@ -45,7 +48,7 @@ func (t Tgz) Install(src, dst, version string) error {
 
 		switch header.Typeflag {
 		case tar.TypeReg: // regular file
-			ok, err := matchFilters(header.Name, t.filters, version)
+			ok, err := args.MatchFilters(header.Name, t.filters)
 			if err != nil {
 				return err
 			}
