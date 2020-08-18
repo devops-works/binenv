@@ -241,8 +241,10 @@ rm -rf ~/.binenv ~/.config/binenv/
 
 ## Status
 
-This is really _super alpha_. There are **no tests**. I will probably go to
-hell for this.
+This is really _super alpha_ and has only be tested on Linux. YMMV on other
+platforms.
+
+There are **no tests**. I will probably go to hell for this.
 
 ## Contributions
 
