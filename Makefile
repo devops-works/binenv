@@ -29,6 +29,10 @@ linux: fmt lint $(BIN) ; $(info $(M) building static executable for Linux……)
 		-tags release -a \
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
 		-o $(BIN)/$(PACKAGE)-linux-amd64
+	$Q env GOOS=linux GOARCH=386 CGO_ENABLED=0 $(GO) build \
+		-tags release -a \
+		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
+		-o $(BIN)/$(PACKAGE)-linux-386
 
 darwin: fmt lint $(BIN) ; $(info $(M) building static executable for MacOS…) @ ## Build program binary
 	$Q env GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
@@ -47,6 +51,7 @@ release: windows darwin linux ; $(info $(M) stripping release executable for Lin
 	$Q (cd bin && sha256sum * > SHA256SUMS.txt)
 	$Q cp $(BIN)/$(PACKAGE)-linux-amd64 $(BIN)/$(PACKAGE)
 	# $Q gzip $(BIN)/$(PACKAGE)-linux-amd64
+	# $Q gzip $(BIN)/$(PACKAGE)-linux-386
 	# $Q gzip $(BIN)/$(PACKAGE)-darwin-amd64
 	# $Q gzip $(BIN)/$(PACKAGE)-win-amd64
 	$Q $(BIN)/$(PACKAGE) version
