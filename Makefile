@@ -44,7 +44,7 @@ windows: fmt lint clean $(BIN) ; $(info $(M) building static executable for Wind
 
 release: windows darwin linux ; $(info $(M) stripping release executable for Linux…) @ ## Build program binary
 	$Q strip $(BIN)/$(PACKAGE)-linux-amd64
-	$Q (cd bin && sha256sum * > SHA256SUMS)
+	$Q (cd bin && sha256sum * > SHA256SUMS.txt)
 	$Q cp $(BIN)/$(PACKAGE)-linux-amd64 $(BIN)/$(PACKAGE)
 	# $Q gzip $(BIN)/$(PACKAGE)-linux-amd64
 	# $Q gzip $(BIN)/$(PACKAGE)-darwin-amd64

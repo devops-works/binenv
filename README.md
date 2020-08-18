@@ -15,19 +15,21 @@ Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
 Download a suitable `binenv` (yes, but wait !) for your architecture/OS at
 http://github.com/devops-works/binenv/releases.
 
+Rename it: `mv binaryname binenv`
+
 Make it executable: `chmod +x binenv`.
 
 Execute it: `./binenv update`
+
+Now install `binenv` with `binenv` (so meta): `./binenv install binenv <version>`.
+
+You can now remove the downloaded file: `rm binenv`.
 
 Prepend `~/.binenv` to your path in your `~/.bashrc` or `~/.zshrc` or ...:
 `export PATH=~/.binenv:$PATH`
 
 While you're at it, install the completion: `source <(binenv completion bash)`
 (replace `bash` with your shell).
-
-Now install `binenv` with `binenv` (so meta): `binenv install binenv`.
-
-You can now remove the downloaded file: `rm binenv`.
 
 ## Supported "distributions"
 

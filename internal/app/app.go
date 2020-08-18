@@ -126,6 +126,7 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 		if a.getBinDirFor(dist) != path {
 			versions = append(versions, filepath.Base(path))
 		}
+
 		return nil
 	})
 	if err != nil {
@@ -472,7 +473,7 @@ func (a *App) Execute(args []string) {
 	bd := a.getBinDirFor(dist)
 	binary := filepath.Join(bd, version)
 
-	fmt.Printf("executing %q\n", binary)
+	// fmt.Printf("executing %q\n", binary)
 
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
 		fmt.Println(err)
@@ -628,15 +629,16 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 			if strings.HasPrefix(line, dist) {
 				constraint := strings.TrimPrefix(line, dist)
 				for _, v := range versions {
+					fmt.Printf("testing version %s against constraint %s\n", v, constraint)
 					v1, _ := gov.NewVersion(v)
 					// Constraints
 					constraints, _ := gov.NewConstraint(constraint)
 					if constraints.Check(v1) {
 						return v1.String(), dir
 					}
-					constversion := strings.Trim(constraint, "!=<>~")
-					return "", fmt.Sprintf("unable to satisfy contraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
 				}
+				constversion := strings.Trim(constraint, "!=<>~")
+				return "", fmt.Sprintf("unable to satisfy constraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
 			}
 		}
 

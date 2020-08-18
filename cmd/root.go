@@ -22,7 +22,7 @@ selected.`,
 		SilenceUsage: true,
 	}
 
-	var bindir string
+	// var bindir string
 	// var verbose
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
 	// rootCmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
@@ -33,8 +33,8 @@ selected.`,
 		// fmt.Printf("bindir is %s\n", bindir)
 
 		a, err := app.New(
-			// app.WithDiscard(),
-			app.WithBinDir(bindir),
+		// app.WithDiscard(),
+		// app.WithBinDir(bindir),
 		)
 		if err != nil {
 			fmt.Printf("got error %v\n", err)
