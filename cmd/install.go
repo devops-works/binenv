@@ -21,7 +21,7 @@ func installCmd() *cobra.Command {
 			// a.SetBinDir(bindir)
 			return a.Install(args...)
 		},
-		Args: cobra.MinimumNArgs(2),
+		Args: cobra.MinimumNArgs(1),
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) % 2 {
 			case 0:

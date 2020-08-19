@@ -30,7 +30,6 @@ func (i Install) Factory(filters []string) Installer {
 }
 
 func installFile(src, dst string) error {
-
 	fd, err := os.Create(dst)
 	if err != nil {
 		return err

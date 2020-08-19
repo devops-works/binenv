@@ -190,33 +190,36 @@ func (a *App) Distributions() error {
 
 // Install installs or update a distribution
 func (a *App) Install(specs ...string) error {
-	if len(specs)%2 != 0 {
+	if len(specs)%2 != 0 && len(specs) != 1 {
 		log.Errorf("invalid number of arguments (must have distribution and version pairs")
 		os.Exit(1)
 	}
 
-	for i := 0; i < len(specs)/2; i++ {
-		dist := specs[2*i]
-		version := specs[2*i+1]
-		err := a.install(dist, version)
+	for i := 0; i < len(specs); i += 2 {
+		dist := specs[i]
+		version := ""
+		if len(specs) > 1 {
+			version = specs[i+1]
+		}
+		v, err := a.install(dist, version)
 		if err != nil {
 			log.Errorf("unable to install %q version %q: %v", dist, version, err)
 			continue
 		}
-		fmt.Printf("%q version %q installed\n", dist, version)
+		fmt.Printf("%q version %q installed\n", dist, v)
 
 	}
 	return nil
 }
 
-func (a *App) install(dist, version string) error {
+func (a *App) install(dist, version string) (string, error) {
 	// Check if distribution is managed by us
 	if a.fetchers[dist] == nil {
-		return fmt.Errorf("no fetcher found for %s", dist)
+		return "", fmt.Errorf("no fetcher found for %q", dist)
 	}
 	if _, ok := a.fetchers[dist]; !ok {
 		a.logger.Errorf("no such distribution %q", dist)
-		return nil
+		return "", nil
 	}
 
 	versions := a.GetInstalledVersionsFor(dist)
@@ -228,36 +231,36 @@ func (a *App) install(dist, version string) error {
 	}
 
 	if version == "" {
-		return fmt.Errorf("unable to select latest stable version for %q: no stable version available", dist)
+		return "", fmt.Errorf("unable to select latest stable version for %q: no stable version available", dist)
 	}
 
 	// If version is specified, check if it exists, return if yes
 	cleanVersion, err := gov.NewSemver(version)
 	if err != nil {
-		return err
+		return "", err
 	}
 	version = cleanVersion.String()
 	if stringInSlice(version, versions) {
 		a.logger.Warnf("version %q already installed for %q", version, dist)
-		return nil
+		return "", nil
 	}
 
 	// Call fetcher for distribution
 	file, err := a.fetchers[dist].Fetch(context.Background(), version)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	// Create destination directory
 	if _, err := os.Stat(a.getBinDirFor(dist)); os.IsNotExist(err) {
 		err := os.MkdirAll(a.getBinDirFor(dist), 0750)
 		if err != nil {
-			return err
+			return "", err
 		}
 	}
 
 	if a.installers[dist] == nil {
-		return fmt.Errorf("no installer found for %s", dist)
+		return "", fmt.Errorf("no installer found for %s", dist)
 	}
 	err = a.installers[dist].Install(
 		file,
@@ -268,15 +271,15 @@ func (a *App) install(dist, version string) error {
 		version,
 	)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	err = a.CreateShimFor(dist)
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	return nil
+	return version, nil
 }
 
 // Uninstall installs or update a distribution
@@ -371,8 +374,11 @@ func (a *App) Update(which string) error {
 		os.Exit(1)
 	}
 
+	fmt.Printf("updating %d distributions", len(a.listers))
+
 	for k, v := range a.listers {
 		if which == k || which == "" {
+			fmt.Printf(".")
 			a.cache[k] = []string{}
 			ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 			defer cancel()
@@ -390,6 +396,7 @@ func (a *App) Update(which string) error {
 		}
 	}
 
+	fmt.Println()
 	a.saveCache()
 
 	return nil
