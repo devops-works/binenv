@@ -2,7 +2,6 @@ package tpl
 
 import (
 	"bytes"
-	"fmt"
 	"runtime"
 	"strings"
 	"sync"
@@ -29,8 +28,8 @@ func New(v string, mapper mapping.Mapper) Args {
 	if mapper != nil {
 		rarch = mapper.MustInterpolate(runtime.GOARCH)
 		ros = mapper.MustInterpolate(runtime.GOOS)
-		fmt.Printf("remapping arch %s to %s\n", runtime.GOARCH, rarch)
-		fmt.Printf("remapping os %s to %s\n", runtime.GOOS, ros)
+		// fmt.Printf("remapping arch %s to %s\n", runtime.GOARCH, rarch)
+		// fmt.Printf("remapping os %s to %s\n", runtime.GOOS, ros)
 	}
 	a := Args{
 		Arch:         rarch,
@@ -87,7 +86,7 @@ func (a Args) MatchFilters(file string, filters []string) (bool, error) {
 			return false, err
 		}
 		if strings.HasSuffix(file, buf.String()) {
-			fmt.Printf("file %s matches filters\n", file)
+			// fmt.Printf("file %s matches filters\n", file)
 			return true, nil
 		}
 	}
