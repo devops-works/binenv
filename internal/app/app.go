@@ -232,7 +232,12 @@ func (a *App) install(dist, version string) error {
 	}
 
 	// If version is specified, check if it exists, return if yes
-	if stringInSlice(gov.Must(gov.NewVersion(version)).String(), versions) {
+	cleanVersion, err := gov.NewSemver(version)
+	if err != nil {
+		return err
+	}
+	version = cleanVersion.String()
+	if stringInSlice(version, versions) {
 		a.logger.Warnf("version %q already installed for %q", version, dist)
 		return nil
 	}

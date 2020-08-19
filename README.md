@@ -12,27 +12,99 @@ Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
 
 ## Quick start
 
-Download a suitable `binenv` (yes, but wait !) for your architecture/OS at
+### Linux (bash/zsh)
+
+```
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-linux-amd64
+mv binenv-linux-amd64 binenv
+chmod +x binenv
+./binenv update
+./binenv install binenv 0.0.5
+rm binenv
+if [[ -n $BASH ]]; then ZESHELL=bash; fi
+if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
+echo $ZESHELL
+echo 'export PATH=~/.binenv:$PATH' >> ~/.${ZESHELL}rc
+echo "source <(binenv completion ${ZESHELL})" >> ~/.${ZESHELL}rc
+exec $SHELL
+```
+
+### MacOS (with bash)
+
+```
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-darwin-amd64
+mv binenv-linux-darwin binenv
+chmod +x binenv
+./binenv update
+./binenv install binenv 
+rm binenv
+echo 'export PATH=~/.binenv:$PATH' >> ~/.bashrc
+echo 'source <(binenv completion bash)' >> ~/.bashrc
+exec $SHELL
+```
+
+### Windows
+
+TBD
+
+## Install
+
+- download a suitable `binenv` (yes, but wait !) for your architecture/OS at
 http://github.com/devops-works/binenv/releases.
 
-Rename it: `mv binaryname binenv`
+```
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-<OS>-<ARCH>
+```
 
-Make it executable: `chmod +x binenv`.
+- rename it
 
-Execute it: `./binenv update`
+```
+mv binaryname binenv
+```
 
-Now install `binenv` with `binenv` (so meta): `./binenv install binenv <version>`.
+- make it executable
 
-You can now remove the downloaded file: `rm binenv`.
+```
+chmod +x binenv
+```
 
-Prepend `~/.binenv` to your path in your `~/.bashrc` or `~/.zshrc` or ...:
-`export PATH=~/.binenv:$PATH`
+- execute an update
 
-While you're at it, install the completion: `source <(binenv completion bash)`
-(replace `bash` with your shell).
+```
+./binenv update
+```
 
-"Restart" your shell (`exec $SHELL`).
+- now install `binenv` with `binenv` (so meta)
 
+```
+./binenv install binenv <version>
+```
+
+- you can now remove the downloaded file
+
+```
+rm binenv
+```
+
+- prepend `~/.binenv` to your path in your `~/.bashrc` or `~/.zshrc` or ...
+
+```
+export PATH=~/.binenv:$PATH
+```
+
+- while you're at it, install the completion (replace `bash` with your shell)
+
+```
+source <(binenv completion bash)
+```
+
+- "restart" your shell
+
+```
+exec $SHELL
+```
+
+See a walkthough on Asciicasts:
 [![asciicast](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d.svg)](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d)
 
 ## Supported "distributions"
