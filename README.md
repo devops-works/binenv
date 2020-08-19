@@ -104,8 +104,8 @@ source <(binenv completion bash)
 exec $SHELL
 ```
 
-See a walkthough on Asciicasts:
-[![asciicast](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d.svg)](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d)
+See a walkthough on asciinema.org:
+[![asciicast](https://asciinema.org/a/2SY7RRnQahtkfNSiX99gxzZLW.svg)](https://asciinema.org/a/2SY7RRnQahtkfNSiX99gxzZLW)
 
 ## Updating binenv
 
