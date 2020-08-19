@@ -46,7 +46,7 @@ Currently supported distributions are:
 - kubectl
 - helm
 - terraform
-- terragrun
+- terragrunt
 - vault
 
 The always up-to-date list is
