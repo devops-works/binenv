@@ -115,7 +115,7 @@ This is the whole point.
 
 ## Supported "distributions"
 
-Distributions are installable binaries. We just had to find a name ¯\\_(ツ)_/¯.
+"Distributions" are installable binaries. We just had to find a name ¯\\_(ツ)_/¯.
 
 Currently supported distributions are:
 
@@ -171,8 +171,8 @@ There is currently no support for tokens.
 
 #### Examples
 
-- `binenv update`: update versions available for all distributions
-- `binenv update kubectl helm`: update versions available for `kubectl` and
+- `binenv update`: update available versions for all distributions
+- `binenv update kubectl helm`: update available versions for `kubectl` and
   `helm`
 
 ### Installing new versions
@@ -324,30 +324,33 @@ The constraint operators are:
 
 When you execute a distribution (e.g. you run `kubectl`), `binenv` runs it
 under the hood. Before running it, it will check which version it should use.
-For this, it will check for a `.binenv.lock` file in the curernt directory.
+For this, it will check for a `.binenv.lock` file in the current directory.
 
 If none is found, it will check in the parent folder. No lock file ? Check in
 parent folder again. this process continues until `binenv` reaches your home
 directory.
 
-If no version requirements are found at this point, binenv will use the last
-non-prerelease version available installed.
+If no version requirements are found at this point, `binenv` will use the last
+non-prerelease version installed.
 
 ## Removing binenv stuff
 
-`binenv` stores downloadede binaries in `~/.binenv/binaries`, and cache in
+`binenv` stores downloaded binaries in `~/.binenv/binaries`, and a cache in
 `~/.config/binenv/` (or whatever your `XDG_CONFIG` variables points to).
 
-To clean everything up:
+To wipe everything clean:
 
 ```bash
 rm -rf ~/.binenv ~/.config/binenv/
 ```
 
+Don't forget to remove the `PATH` and the completion you might have changed in
+your shell rc file.
+
 ## Status
 
-This is really _super alpha_ and has only be tested on Linux. YMMV on other
-platforms.
+This is really _super alpha_ and has only be tested on Linux & MacOS. YMMV on
+other platforms.
 
 There are **no tests**. I will probably go to hell for this.
 
@@ -355,8 +358,8 @@ There are **no tests**. I will probably go to hell for this.
 
 Welcomed !
 
-We will probably need other instalaltion mechanisms (see
-https://github.com/devops-works/binenv/tree/master/internal/install) and
+We will need other instalaltion mechanisms (see
+https://github.com/devops-works/binenv/tree/master/internal/install).
 
 ## Licence
 
