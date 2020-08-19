@@ -3,6 +3,8 @@ package install
 import (
 	"io"
 	"os"
+
+	"github.com/devops-works/binenv/internal/mapping"
 )
 
 // Install defines the install config struct
@@ -13,7 +15,7 @@ type Install struct {
 
 // Installer should implement installation
 type Installer interface {
-	Install(src, dst, version string) error
+	Install(src, dst, version string, mapper mapping.Mapper) error
 }
 
 // Factory returns instances that comply to Installer interface

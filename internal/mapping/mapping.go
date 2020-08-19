@@ -1,9 +1,7 @@
 package mapping
 
 // Remapper contains list definition
-type Remapper struct {
-	Entries map[string]string `yaml:"map"`
-}
+type Remapper map[string]string
 
 // Mapper should return a list of available release versions
 type Mapper interface {
@@ -13,7 +11,7 @@ type Mapper interface {
 
 // MustInterpolate interpolates a key
 func (r Remapper) MustInterpolate(k string) string {
-	if v, ok := r.Entries[k]; ok {
+	if v, ok := r[k]; ok {
 		return v
 	}
 	return k
@@ -21,7 +19,10 @@ func (r Remapper) MustInterpolate(k string) string {
 
 // IsZero returns true if the map is empty
 func (r Remapper) IsZero() bool {
-	if r.Entries == nil {
+	if r == nil {
+		return true
+	}
+	if len(r) == 0 {
 		return true
 	}
 	return false

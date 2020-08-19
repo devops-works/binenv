@@ -59,8 +59,8 @@ sources:
 
   hugo:
     map:
-      amd64: 64bits
-      "386": 32bits
+      amd64: 64bit
+      "386": 32bit
       darwin: Darwin
       linux: Linux
       arm: ARM
@@ -71,7 +71,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/gohugoio/hugo/releases
     fetch:
-      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo-{{ .Version }}_{{ .OS }}-{{ .Arch }}
+      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: direct
   
@@ -85,7 +85,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/hadolint/hadolint/releases
     fetch:
-      url: https://github.com/hadolint/hadolint/releases/download/{{ .Version }}/hadolint-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/hadolint/hadolint/releases/download/v{{ .Version }}/hadolint-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 

@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/devops-works/binenv/internal/mapping"
 	"github.com/devops-works/binenv/internal/tpl"
 )
 
@@ -16,7 +17,7 @@ type Tgz struct {
 }
 
 // Install files from tgz file
-func (t Tgz) Install(src, dst, version string) error {
+func (t Tgz) Install(src, dst, version string, mapper mapping.Mapper) error {
 	// var filenames []string
 
 	f, err := os.Open(src)
@@ -31,7 +32,7 @@ func (t Tgz) Install(src, dst, version string) error {
 	}
 
 	tarReader := tar.NewReader(gzf)
-	args := tpl.New(version)
+	args := tpl.New(version, mapper)
 
 	for true {
 		header, err := tarReader.Next()

@@ -1,11 +1,15 @@
 package fetch
 
-import "context"
+import (
+	"context"
+
+	"github.com/devops-works/binenv/internal/mapping"
+)
 
 // Fetcher should implement fetching a release from a version
 // and return a path where the release has been downloaded
 type Fetcher interface {
-	Fetch(context.Context, string) (string, error)
+	Fetch(ctx context.Context, version string, mapper mapping.Mapper) (string, error)
 }
 
 // Fetch contains fetch configuration

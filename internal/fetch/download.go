@@ -10,6 +10,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/devops-works/binenv/internal/mapping"
 	"github.com/devops-works/binenv/internal/tpl"
 )
 
@@ -19,8 +20,8 @@ type Download struct {
 }
 
 // Fetch gets the package and returns location of downloaded file
-func (d Download) Fetch(ctx context.Context, v string) (string, error) {
-	args := tpl.New(v)
+func (d Download) Fetch(ctx context.Context, v string, mapper mapping.Mapper) (string, error) {
+	args := tpl.New(v, mapper)
 
 	url, err := args.Render(d.url)
 	if err != nil {

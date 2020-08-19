@@ -117,18 +117,18 @@ Currently supported distributions are:
 - binenv
 - cli53
 - consul
-- docker-compose (soon [#8](https://github.com/devops-works/binenv/issues/8))
-- hadolint (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- docker-compose
+- hadolint
 - helm
 - helmfile
-- hugo (soon [#8](https://github.com/devops-works/binenv/issues/8)) 
+- hugo 
 - k9s
 - krew
 - kops
-- kube-bench (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- kube-bench
 - kubectl
-- kubectx (soon [#8](https://github.com/devops-works/binenv/issues/8))
-- kubens (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- kubectx
+- kubens
 - rancher[^1] (soon [#11](https://github.com/devops-works/binenv/issues/11))
 - terraform
 - terragrunt

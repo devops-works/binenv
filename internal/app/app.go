@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -40,6 +41,11 @@ type App struct {
 	bindir string
 	logger *log.Logger
 }
+
+var (
+	// ErrAlreadyInstalled is returned when the requested version is already installed
+	ErrAlreadyInstalled = errors.New("version already installed")
+)
 
 // New create a new app instance
 func New(o ...func(*App) error) (*App, error) {
@@ -202,11 +208,14 @@ func (a *App) Install(specs ...string) error {
 			version = specs[i+1]
 		}
 		v, err := a.install(dist, version)
-		if err != nil {
-			log.Errorf("unable to install %q version %q: %v", dist, version, err)
+		switch {
+		case errors.Is(err, ErrAlreadyInstalled):
+		case err != nil:
+			log.Errorf("unable to install %q version %q: %v", dist, v, err)
 			continue
+		default:
+			fmt.Printf("%q version %q installed\n", dist, v)
 		}
-		fmt.Printf("%q version %q installed\n", dist, v)
 
 	}
 	return nil
@@ -242,25 +251,32 @@ func (a *App) install(dist, version string) (string, error) {
 	version = cleanVersion.String()
 	if stringInSlice(version, versions) {
 		a.logger.Warnf("version %q already installed for %q", version, dist)
-		return "", nil
+		return version, ErrAlreadyInstalled
+	}
+
+	var m mapping.Mapper
+	{
+		if v, ok := a.mappers[dist]; ok {
+			m = v
+		}
 	}
 
 	// Call fetcher for distribution
-	file, err := a.fetchers[dist].Fetch(context.Background(), version)
+	file, err := a.fetchers[dist].Fetch(context.Background(), version, m)
 	if err != nil {
-		return "", err
+		return version, err
 	}
 
 	// Create destination directory
 	if _, err := os.Stat(a.getBinDirFor(dist)); os.IsNotExist(err) {
 		err := os.MkdirAll(a.getBinDirFor(dist), 0750)
 		if err != nil {
-			return "", err
+			return version, err
 		}
 	}
 
 	if a.installers[dist] == nil {
-		return "", fmt.Errorf("no installer found for %s", dist)
+		return version, fmt.Errorf("no installer found for %s", dist)
 	}
 	err = a.installers[dist].Install(
 		file,
@@ -269,14 +285,15 @@ func (a *App) install(dist, version string) (string, error) {
 			gov.Must(gov.NewVersion(version)).String(),
 		),
 		version,
+		m,
 	)
 	if err != nil {
-		return "", err
+		return version, err
 	}
 
 	err = a.CreateShimFor(dist)
 	if err != nil {
-		return "", err
+		return version, err
 	}
 
 	return version, nil

@@ -8,6 +8,7 @@ import (
 	"sync"
 	"text/template"
 
+	"github.com/devops-works/binenv/internal/mapping"
 	gov "github.com/hashicorp/go-version"
 )
 
@@ -21,10 +22,19 @@ type Args struct {
 }
 
 // New returns populated template Args
-func New(v string) Args {
+func New(v string, mapper mapping.Mapper) Args {
+	rarch := runtime.GOARCH
+	ros := runtime.GOOS
+
+	if mapper != nil {
+		rarch = mapper.MustInterpolate(runtime.GOARCH)
+		ros = mapper.MustInterpolate(runtime.GOOS)
+		fmt.Printf("remapping arch %s to %s\n", runtime.GOARCH, rarch)
+		fmt.Printf("remapping os %s to %s\n", runtime.GOOS, ros)
+	}
 	a := Args{
-		Arch:         runtime.GOARCH,
-		OS:           runtime.GOOS,
+		Arch:         rarch,
+		OS:           ros,
 		Version:      v,
 		NakedVersion: gov.Must(gov.NewVersion(v)).String(),
 	}

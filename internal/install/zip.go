@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/devops-works/binenv/internal/mapping"
 	"github.com/devops-works/binenv/internal/tpl"
 )
 
@@ -14,7 +15,7 @@ type Zip struct {
 }
 
 // Install files from zip file
-func (z Zip) Install(src, dst, version string) error {
+func (z Zip) Install(src, dst, version string, mapper mapping.Mapper) error {
 	// var filenames []string
 
 	r, err := zip.OpenReader(src)
@@ -23,7 +24,7 @@ func (z Zip) Install(src, dst, version string) error {
 	}
 	defer r.Close()
 
-	args := tpl.New(version)
+	args := tpl.New(version, mapper)
 	for _, f := range r.File {
 		ok, err := args.MatchFilters(f.Name, z.filters)
 		if err != nil {
