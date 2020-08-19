@@ -107,6 +107,12 @@ exec $SHELL
 See a walkthough on Asciicasts:
 [![asciicast](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d.svg)](https://asciinema.org/a/1frwZkFMeo6usYQyDXtbrnQ2d)
 
+## Updating binenv
+
+Just run `binenv install binenv`
+
+This is the whole point.
+
 ## Supported "distributions"
 
 Distributions are installable binaries. We just had to find a name ¯\\_(ツ)_/¯.
@@ -143,7 +149,7 @@ Open an issue (or send a PR) if you need one that is not in the list.
 
 ## Usage
 
-### Updating available binaries
+### Updating available distributions
 
 In order to update the list of installable version for distributions, you need
 to update the version list (usually located in `$XDG_CONFIG/cache.json` or
@@ -156,6 +162,12 @@ Without arguments, il will check for available versions for _all_ distributions
 
 With a distribution passed as an argument (e.g. `binenv update kubectl`), it
 will only update installable versions for `kubectl`.
+
+Note that Github enforces rate limits (e.g. 60 unauthenticated API requests per
+hours). So you should update all distributions (e.g. `binenv update`) with
+caution.
+
+There is currently no support for tokens.
 
 #### Examples
 
