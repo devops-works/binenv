@@ -124,7 +124,7 @@ Currently supported distributions are:
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
 
-Open an issue if you need one that is not in the list.
+Open an issue (or send a PR) if you need one that is not in the list.
 
 ## Usage
 
@@ -327,6 +327,9 @@ There are **no tests**. I will probably go to hell for this.
 ## Contributions
 
 Welcomed !
+
+We will probably need other instalaltion mechanisms (see
+https://github.com/devops-works/binenv/tree/master/internal/install).
 
 ## Licence
 
