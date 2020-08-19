@@ -196,10 +196,15 @@ func (a *App) Install(specs ...string) error {
 	}
 
 	for i := 0; i < len(specs)/2; i++ {
-		err := a.install(specs[2*i], specs[2*i+1])
+		dist := specs[2*i]
+		version := specs[2*i+1]
+		err := a.install(dist, version)
 		if err != nil {
-			log.Errorf("unable to install %q version %q: %v", specs[2*i], specs[2*i+1], err)
+			log.Errorf("unable to install %q version %q: %v", dist, version, err)
+			continue
 		}
+		fmt.Printf("%q version %q installed\n", dist, version)
+
 	}
 	return nil
 }
@@ -258,7 +263,6 @@ func (a *App) install(dist, version string) error {
 		version,
 	)
 	if err != nil {
-		log.Errorf("unable to install %s version %s: %v", dist, version, err)
 		return err
 	}
 
@@ -267,7 +271,6 @@ func (a *App) install(dist, version string) error {
 		return err
 	}
 
-	fmt.Printf("%s version %s installed\n", dist, version)
 	return nil
 }
 

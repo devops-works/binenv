@@ -1,5 +1,10 @@
 package install
 
+import (
+	"io"
+	"os"
+)
+
 // Install defines the install config struct
 type Install struct {
 	Type     string   `yaml:"type"`
@@ -22,4 +27,28 @@ func (i Install) Factory(filters []string) Installer {
 		return Tgz{filters: filters}
 	}
 	return nil
+}
+
+func installFile(src, dst string) error {
+
+	fd, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer fd.Close()
+
+	fs, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer fd.Close()
+
+	_, err = io.Copy(fd, fs)
+	if err != nil {
+		return err
+	}
+
+	err = os.Chmod(dst, 0700)
+	return err
+
 }
