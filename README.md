@@ -329,7 +329,7 @@ There are **no tests**. I will probably go to hell for this.
 Welcomed !
 
 We will probably need other instalaltion mechanisms (see
-https://github.com/devops-works/binenv/tree/master/internal/install).
+https://github.com/devops-works/binenv/tree/master/internal/install) and
 
 ## Licence
 

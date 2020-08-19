@@ -66,6 +66,15 @@ sources:
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
 
+  kops:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kops/releases
+    fetch:
+      url: https://github.com/kubernetes/kops/releases/download/v{{ .Version }}/kops-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   # Implement static versions
   # rancher:
   #   list:
