@@ -113,10 +113,23 @@ Distributions are installable binaries. We just had to find a name ¯\\_(ツ)_/�
 
 Currently supported distributions are:
 
+- awless
+- binenv
 - cli53
 - consul
-- kubectl
+- docker-compose (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- hadolint (soon [#8](https://github.com/devops-works/binenv/issues/8))
 - helm
+- helmfile
+- hugo (soon [#8](https://github.com/devops-works/binenv/issues/8)) 
+- k9s
+- krew
+- kops
+- kube-bench (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- kubectl
+- kubectx (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- kubens (soon [#8](https://github.com/devops-works/binenv/issues/8))
+- rancher[^1] (soon [#11](https://github.com/devops-works/binenv/issues/11))
 - terraform
 - terragrunt
 - vault
@@ -125,6 +138,8 @@ The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
 
 Open an issue (or send a PR) if you need one that is not in the list.
+
+[^1]: cli for rancher 1.x
 
 ## Usage
 

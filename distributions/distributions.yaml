@@ -43,12 +43,35 @@ sources:
       binaries:
         - consul
 
-  kubectl:
+  docker-compose:
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
     list:
       type: github-releases
-      url: https://api.github.com/repos/kubernetes/kubernetes/releases
+      url: https://api.github.com/repos/docker/compose/releases
     fetch:
-      url: https://storage.googleapis.com/kubernetes-release/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
+      url: https://github.com/docker/compose/releases/download/{{ .Version }}/docker-compose-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
+  hugo:
+    map:
+      amd64: 64bits
+      "386": 32bits
+      darwin: Darwin
+      linux: Linux
+      arm: ARM
+      arm64: ARM64
+      windows: Windows
+      freebsd: FreeBSD
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gohugoio/hugo/releases
+    fetch:
+      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo-{{ .Version }}_{{ .OS }}-{{ .Arch }}
     install:
       type: direct
   
@@ -77,6 +100,15 @@ sources:
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
 
+  helmfile:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/roboll/helmfile/releases
+    fetch:
+      url: https://github.com/roboll/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   k9s:
     map:
       amd64: x86_64
@@ -86,11 +118,20 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/derailed/k9s/releases
     fetch:
-      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}//k9s_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
         - k9s
+
+  kops:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kops/releases
+    fetch:
+      url: https://github.com/kubernetes/kops/releases/download/v{{ .Version }}/kops-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   krew:
     list:
@@ -103,12 +144,23 @@ sources:
       binaries:
         - krew-{{ .OS }}_{{ .Arch }}
 
-  kops:
+  kube-bench:
     list:
       type: github-releases
-      url: https://api.github.com/repos/kubernetes/kops/releases
+      url: https://api.github.com/repos/aquasecurity/kube-bench/releases
     fetch:
-      url: https://github.com/kubernetes/kops/releases/download/v{{ .Version }}/kops-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/aquasecurity/kube-bench/releases/download/v{{ .Version }}/kube-bench_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kube-bench
+
+  kubectl:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kubernetes/releases
+    fetch:
+      url: https://storage.googleapis.com/kubernetes-release/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
     install:
       type: direct
 
