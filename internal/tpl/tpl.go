@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"runtime"
+	"strings"
 	"sync"
 	"text/template"
 
@@ -75,7 +76,7 @@ func (a Args) MatchFilters(file string, filters []string) (bool, error) {
 		if err != nil {
 			return false, err
 		}
-		if buf.String() == file {
+		if strings.HasSuffix(file, buf.String()) {
 			fmt.Printf("file %s matches filters\n", file)
 			return true, nil
 		}

@@ -1,6 +1,17 @@
 ---
 sources:
   
+  awless:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/wallix/awless/releases
+    fetch:
+      url: https://github.com/wallix/awless/releases/download/v{{ .Version }}/awless-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - awless
+
   binenv:
     map:
       windows: win
@@ -66,6 +77,32 @@ sources:
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
 
+  k9s:
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: Darwin
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/derailed/k9s/releases
+    fetch:
+      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}//k9s_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - k9s
+
+  krew:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes-sigs/krew/releases
+    fetch:
+      url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ .Version }}/krew.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - krew-{{ .OS }}_{{ .Arch }}
+
   kops:
     list:
       type: github-releases
@@ -74,6 +111,32 @@ sources:
       url: https://github.com/kubernetes/kops/releases/download/v{{ .Version }}/kops-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  kubectx:
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ahmetb/kubectx/releases
+    fetch:
+      url: https://github.com/ahmetb/kubectx/releases/download/v{{ .Version }}/kubectx_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubectx
+
+  kubens:
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ahmetb/kubectx/releases
+    fetch:
+      url: https://github.com/ahmetb/kubectx/releases/download/v{{ .Version }}/kubens_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubens
 
   # Implement static versions
   # rancher:

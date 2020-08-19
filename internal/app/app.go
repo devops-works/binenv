@@ -374,7 +374,11 @@ func (a *App) Update(which string) error {
 		os.Exit(1)
 	}
 
-	fmt.Printf("updating %d distributions", len(a.listers))
+	if which == "" {
+		fmt.Printf("updating %d distributions", len(a.listers))
+	} else {
+		fmt.Printf("updating %q distribution", which)
+	}
 
 	for k, v := range a.listers {
 		if which == k || which == "" {
