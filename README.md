@@ -15,11 +15,11 @@ Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
 ### Linux (bash/zsh)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-linux-amd64
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_0.2.0_linux_amd64.tar.gz
 mv binenv-linux-amd64 binenv
 chmod +x binenv
 ./binenv update
-./binenv install binenv 0.0.5
+./binenv install binenv
 rm binenv
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi

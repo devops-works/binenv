@@ -13,15 +13,10 @@ builds:
       - linux
       - windows
       - darwin
-# archives:
-#   - replacements:
-#       darwin: Darwin
-#       linux: Linux
-#       windows: Windows
-#       386: i386
-#       amd64: x86_64
     ldflags:
      - -s -w -X github.com/devops-works/binenv/cmd.Version={{.Version}} -X github.com/devops-works/binenv/cmd.BuildDate={{.CommitDate}}
+archives:
+  - format: binary
 checksum:
   name_template: 'checksums.txt'
 snapshot:

@@ -111,7 +111,6 @@ func (a *App) GetPackagesListWithPrefix(pfix string) []string {
 // GetMostRecent returns the most recent stable available version
 func (a *App) GetMostRecent(dist string) string {
 	availVersions := a.GetAvailableVersionsFor(dist)
-
 	for _, v := range availVersions {
 		if gov.Must(gov.NewVersion(v)).Prerelease() == "" {
 			return v
@@ -500,7 +499,7 @@ func (a *App) Execute(args []string) {
 
 	// If we did not find any proper version to run
 	if version == "" {
-		log.Fatalf("binenv: %s", why)
+		log.Fatalf("binenv: unable to find version %s", why)
 	}
 
 	bd := a.getBinDirFor(dist)
