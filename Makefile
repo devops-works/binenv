@@ -59,7 +59,7 @@ release: windows darwin linux ; $(info $(M) stripping release executable for Lin
 goreleaser-test: fmt lint clean ; $(info $(M) goreleaser dry-run…) @ ## Build program binary
 	goreleaser --snapshot --skip-publish --rm-dist
 
-goreleaser: fmt lint clean test; $(info $(M) goreleaser dry-run…) @ ## Build program binary
+goreleaser: fmt lint clean test; $(info $(M) create a release with goreleaser…) @ ## Build program binary
 	goreleaser --rm-dist
 
 # don't even think about making a joke with this target name

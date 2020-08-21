@@ -55,6 +55,17 @@ sources:
     install:
       type: direct
 
+  dw-query-digest:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/dw-query-digest/releases
+    fetch:
+      url: https://github.com/devops-works/dw-query-digest/releases/download/v{{ .Version }}/dw-query-digest_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dw-query-digest
+
   goreleaser:
     map:
       amd64: x86_64
@@ -257,14 +268,17 @@ sources:
     install:
       type: direct
 
-  # toji:
-  #   list:
-  #     type: github-releases
-  #     url: https://gitlab.com/api/v4/projects/18399790/releases
-  #   fetch:
-  #     url: https://gitlab.com/leucos/toji/-/archive/v{{ .Version }}/toji-{{ .OS }}-{{ .Arch }}-v{{ .Version }}.gz
-  #   install:
-  #     type: gzip
+
+  toji:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/leucos/toji/releases
+    fetch:
+      url: https://github.com/leucos/toji/releases/download/v{{ .Version }}/toji_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - toji
 
   vault:
     list:

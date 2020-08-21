@@ -122,6 +122,7 @@ Currently supported distributions are:
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
 - [docker-compose](https://docs.docker.com/compose/)
+- [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [hadolint](https://github.com/hadolint/hadolint)
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
@@ -138,6 +139,7 @@ Currently supported distributions are:
   [#11](https://github.com/devops-works/binenv/issues/11))
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
+- [toji](https://github.com/leucos/toji/)
 - [vault](https://www.hashicorp.com/products/vault)
 
 The always up-to-date list is
