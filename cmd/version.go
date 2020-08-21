@@ -13,7 +13,7 @@ var (
 	BuildDate string
 )
 
-// versionCmd lists installable versions 'as seen from cache
+// versionCmd show binenv version
 func versionCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "version",

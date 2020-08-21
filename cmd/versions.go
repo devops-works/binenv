@@ -5,7 +5,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// versionsCmd lists installable versions 'as seen from cache
+// versionsCmd lists installable versions as seen from cache
 func versionsCmd() *cobra.Command {
 	app, err := app.New()
 	if err != nil {
