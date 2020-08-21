@@ -196,6 +196,13 @@ func (a *App) Install(specs ...string) error {
 			log.Errorf("unable to install %q version %q: %v", dist, v, err)
 			continue
 		default:
+			// if dist == "binenv" {
+			// 	err = a.selfInstall()
+			// 	if err != nil {
+			// 		a.logger.Errorf("unable to set-up myself: %v", err)
+			// 		os.Exit(1)
+			// 	}
+			// }
 			fmt.Printf("%q version %q installed\n", dist, v)
 		}
 

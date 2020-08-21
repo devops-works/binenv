@@ -15,8 +15,7 @@ Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
 ### Linux (bash/zsh)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_0.2.0_linux_amd64.tar.gz
-mv binenv-linux-amd64 binenv
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_linux_amd64 -O binenv
 chmod +x binenv
 ./binenv update
 ./binenv install binenv
@@ -32,8 +31,7 @@ exec $SHELL
 ### MacOS (with bash)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-darwin-amd64
-mv binenv-linux-darwin binenv
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64 -O binenv
 chmod +x binenv
 ./binenv update
 ./binenv install binenv 
