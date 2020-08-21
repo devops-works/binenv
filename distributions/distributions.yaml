@@ -124,6 +124,15 @@ sources:
       binaries:
         - k9s
 
+  kind:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes-sigs/kind/releases
+    fetch:
+      url: https://github.com/kubernetes-sigs/kind/releases/download/v{{ .Version }}/kind-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   kops:
     list:
       type: github-releases
@@ -222,6 +231,15 @@ sources:
     install:
       type: direct
 
+  # toji:
+  #   list:
+  #     type: github-releases
+  #     url: https://gitlab.com/api/v4/projects/18399790/releases
+  #   fetch:
+  #     url: https://gitlab.com/leucos/toji/-/archive/v{{ .Version }}/toji-{{ .OS }}-{{ .Arch }}-v{{ .Version }}.gz
+  #   install:
+  #     type: gzip
+
   vault:
     list:
       type: github-tags
@@ -232,14 +250,3 @@ sources:
       type: zip
       binaries:
         - vault
-    # os_map:
-    #   - "darwin"
-    #   - "freebsd"
-    #   - "linux"
-    #   - "openbsd"
-    #   - "solaris"
-    #   - "windows"
-    # arch_map:
-    #   - "amd64"
-    #   - "arm"
-    #   - "386"

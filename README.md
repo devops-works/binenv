@@ -119,26 +119,28 @@ This is the whole point.
 
 Currently supported distributions are:
 
-- awless
-- binenv
-- cli53
-- consul
-- docker-compose
-- hadolint
-- helm
-- helmfile
-- hugo 
-- k9s
-- krew
-- kops
-- kube-bench
-- kubectl
-- kubectx
-- kubens
-- rancher[^1] (soon [#11](https://github.com/devops-works/binenv/issues/11))
-- terraform
-- terragrunt
-- vault
+- [awless](https://github.com/wallix/awless)
+- [binenv](https://github.com/devops-works/binenv)
+- [cli53](https://github.com/barnybug/cli53)
+- [consul](https://www.consul.io/)
+- [docker-compose](https://docs.docker.com/compose/)
+- [hadolint](https://github.com/hadolint/hadolint)
+- [helm](https://helm.sh/)
+- [helmfile](https://github.com/roboll/helmfile)
+- [hugo](https://gohugo.io/)
+- [k9s](https://k9scli.io/)
+- [kind](https://github.com/kubernetes-sigs/kind)
+- [krew](https://github.com/kubernetes-sigs/krew)
+- [kops](https://kops.sigs.k8s.io/)
+- [kube-bench](https://github.com/aquasecurity/kube-bench)
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
+- [kubectx](https://github.com/ahmetb/kubectx)
+- [kubens](https://github.com/ahmetb/kubectx)
+- [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1] (soon
+  [#11](https://github.com/devops-works/binenv/issues/11))
+- [terraform](https://www.hashicorp.com/products/terraform)
+- [terragrunt](https://terragrunt.gruntwork.io/)
+- [vault](https://www.hashicorp.com/products/vault)
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
