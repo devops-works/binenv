@@ -151,7 +151,7 @@ Open an issue (or send a PR) if you need one that is not in the list.
 
 ## Usage
 
-### Updating available distributions
+### Updating available distributions versions
 
 In order to update the list of installable version for distributions, you need
 to update the version list (usually located in `$XDG_CONFIG/cache.json` or
@@ -171,9 +171,34 @@ caution.
 
 There is currently no support for tokens.
 
+#### Update available distributions
+
+Distributions are maintained in this
+[repo](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
+
+To benefit from new additions, you need to update the distribution list from
+time to time.
+
+This list is usually located in your home directory under
+`$XDG_CONFIG/distributions.yaml` or `~/.config/binenv/distribution.yaml`).
+
+To update only definitions:
+
+```bash
+binenv update --definitions # or -d
+```
+
+
+To update definitions **and** distributions versions:
+
+```bash
+binenv update --all # or -a
+```
+
 #### Examples
 
 - `binenv update`: update available versions for all distributions
+- `binenv update -d`: update available distributions
 - `binenv update kubectl helm`: update available versions for `kubectl` and
   `helm`
 
@@ -269,18 +294,6 @@ The command accepts:
 - `binenv uninstall kubectl 1.18.8 kubectl 1.16.15`: uninstall `kubectl` versions
   1.18.8 and 1.16.15
 - `binenv uninstall kubectl`: removes all `kubectl` versions
-
-### Update available distributions
-
-Distributions are mainained in this
-[repo](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
-To benefit from new additions, you need to update the distribution list from
-time to time.
-
-This list is usually located in your home directory under
-`$XDG_CONFIG/distributions.yaml` or `~/.config/binenv/distribution.yaml`).
-
-Usage is `binenv distributions`.
 
 ### Completion
 

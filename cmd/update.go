@@ -11,6 +11,9 @@ func updateCmd() *cobra.Command {
 	if err != nil {
 		panic(err)
 	}
+
+	var definitionsOnly, definitionsAlso bool
+
 	cmd := &cobra.Command{
 		Use:   "update",
 		Short: "Update available software distributions",
@@ -19,9 +22,9 @@ func updateCmd() *cobra.Command {
 		// Args:  cobra.MaximumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) == 1 {
-				return app.Update(args[0])
+				return app.Update(args[0], definitionsOnly, definitionsAlso)
 			}
-			return app.Update("")
+			return app.Update("", definitionsOnly, definitionsAlso)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			// Remove already selected distributions from completion
@@ -33,7 +36,8 @@ func updateCmd() *cobra.Command {
 	// verb, _ := cmd.Root().PersistentFlags().GetBool("verbose")
 
 	// fmt.Printf("verbose is %v\n", verb)
-	// cmd.Flags().IntVarP(&a.Params.MinLength, "min-length", "m", 16, "Specify minimum password length, must not be less than 8")
+	cmd.Flags().BoolVarP(&definitionsOnly, "definitions", "d", false, "Update only distributions definitions")
+	cmd.Flags().BoolVarP(&definitionsAlso, "all", "a", false, "Update distributions definitions and distributions versions")
 	return cmd
 }
 

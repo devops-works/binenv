@@ -2,6 +2,7 @@ package app
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/mitchellh/go-homedir"
 )
@@ -30,6 +31,15 @@ func getConfigDir() (string, error) {
 	}
 
 	return dir, nil
+}
+
+func getDistributionsFilePath() (string, error) {
+	conf, err := getConfigDir()
+	if err != nil {
+		return "", err
+	}
+
+	return filepath.Join(conf, "/distributions.yaml"), nil
 }
 
 func stringInSlice(st string, sl []string) bool {

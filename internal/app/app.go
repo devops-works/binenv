@@ -177,23 +177,6 @@ func (a *App) GetAvailableVersionsFor(dist string) []string {
 	return versions
 }
 
-// Distributions list or update available distributions
-func (a *App) Distributions() error {
-	conf, err := getConfigDir()
-	if err != nil {
-		return err
-	}
-	conf = filepath.Join(conf, "/distributions.yaml")
-
-	err = a.fetchDistributions(conf)
-	if err != nil {
-		log.Errorf("unable to fetch distributions: %v", err)
-	}
-
-	log.Info("distributions updated")
-	return nil
-}
-
 // Install installs or update a distribution
 func (a *App) Install(specs ...string) error {
 	if len(specs)%2 != 0 && len(specs) != 1 {
@@ -384,7 +367,21 @@ func (a *App) Local(distribution, version string) error {
 }
 
 // Update fetches catalog of applications and updates available versions
-func (a *App) Update(which string) error {
+func (a *App) Update(which string, definitions, all bool) error {
+	if definitions || all {
+		conf, err := getDistributionsFilePath()
+		if err != nil {
+			a.logger.Errorf("unable to find distributions: %v", err)
+			os.Exit(1)
+		}
+		a.fetchDistributions(conf)
+
+		// Return if only definitions were requested
+		if definitions {
+			return nil
+		}
+	}
+
 	err := a.readDistributions()
 	if err != nil {
 		a.logger.Errorf("unable to read distributions: %v", err)
@@ -557,12 +554,7 @@ func (a *App) selfInstall() error {
 }
 
 func (a *App) readDistributions() error {
-	conf, err := getConfigDir()
-	if err != nil {
-		return err
-	}
-
-	conf = filepath.Join(conf, "/distributions.yaml")
+	conf, err := getDistributionsFilePath()
 
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		err := a.fetchDistributions(conf)
@@ -586,6 +578,8 @@ func (a *App) readDistributions() error {
 }
 
 func (a *App) fetchDistributions(conf string) error {
+	fmt.Printf("updating distribution list\n")
+	log.Debugf("retrieving distribution list from %s", distributionsURL)
 	resp, err := http.Get(distributionsURL)
 	if err != nil {
 		return err

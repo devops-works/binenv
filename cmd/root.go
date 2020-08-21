@@ -47,7 +47,6 @@ selected.`,
 
 	rootCmd.AddCommand(
 		completionCmd(),
-		distributionsCmd(),
 		installCmd(),
 		localCmd(),
 		uninstallCmd(),
