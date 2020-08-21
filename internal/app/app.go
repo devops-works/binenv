@@ -72,13 +72,13 @@ func New(o ...func(*App) error) (*App, error) {
 		}
 	}
 
-	if strings.HasSuffix(os.Args[0], "binenv") {
-		err = a.selfInstall()
-		if err != nil {
-			a.logger.Errorf("unable to set-up myself: %v", err)
-			os.Exit(1)
-		}
-	}
+	// if strings.HasSuffix(os.Args[0], "binenv") {
+	// 	err = a.selfInstall()
+	// 	if err != nil {
+	// 		a.logger.Errorf("unable to set-up myself: %v", err)
+	// 		os.Exit(1)
+	// 	}
+	// }
 
 	err = a.readDistributions()
 	if err != nil {
@@ -196,13 +196,15 @@ func (a *App) Install(specs ...string) error {
 			log.Errorf("unable to install %q version %q: %v", dist, v, err)
 			continue
 		default:
-			// if dist == "binenv" {
-			// 	err = a.selfInstall()
-			// 	if err != nil {
-			// 		a.logger.Errorf("unable to set-up myself: %v", err)
-			// 		os.Exit(1)
-			// 	}
-			// }
+			// Install new shim version
+			if dist == "binenv" {
+				fmt.Println("executing self install")
+				err = a.selfInstall(v)
+				if err != nil {
+					a.logger.Errorf("unable to set-up myself: %v", err)
+					os.Exit(1)
+				}
+			}
 			fmt.Printf("%q version %q installed\n", dist, v)
 		}
 
@@ -229,7 +231,7 @@ func (a *App) install(dist, version string) (string, error) {
 	}
 
 	if version == "" {
-		return "", fmt.Errorf("unable to select latest stable version for %q: no stable version available", dist)
+		return "", fmt.Errorf("unable to select latest stable version for %q: no stable version available. May be run 'binenv update %s' ?", dist, dist)
 	}
 
 	// If version is specified, check if it exists, return if yes
@@ -519,16 +521,14 @@ func (a *App) Execute(args []string) {
 	}
 }
 
-func (a *App) selfInstall() error {
+func (a *App) selfInstall(version string) error {
 	err := os.MkdirAll(a.bindir, 0750)
 	if err != nil {
 		return err
 	}
 
-	self, err := os.Executable()
-	if err != nil {
-		return err
-	}
+	bd := a.getBinDirFor("binenv")
+	self := filepath.Join(bd, version)
 
 	from, err := os.Open(self)
 	if err != nil {
@@ -541,7 +541,10 @@ func (a *App) selfInstall() error {
 
 	if _, err := os.Stat(shim); os.IsExist(err) {
 		shimold := shim + ".old"
-		os.Rename(shim, shimold)
+		rerr := os.Rename(shim, shimold)
+		if rerr != nil {
+			return rerr
+		}
 	}
 
 	to, err := os.OpenFile(shimnew, os.O_RDWR|os.O_CREATE, 0750)
@@ -554,7 +557,10 @@ func (a *App) selfInstall() error {
 	if err != nil {
 		return err
 	}
-	os.Rename(shimnew, shim)
+	err = os.Rename(shimnew, shim)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
