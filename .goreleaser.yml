@@ -15,8 +15,11 @@ builds:
       - darwin
     ldflags:
      - -s -w -X github.com/devops-works/binenv/cmd.Version={{.Version}} -X github.com/devops-works/binenv/cmd.BuildDate={{.CommitDate}}
+
 archives:
   - format: binary
+    name_template: "{{ .Binary }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}_{{ .Mips }}{{ end }}"
+
 checksum:
   name_template: 'checksums.txt'
 snapshot:

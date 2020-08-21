@@ -17,11 +17,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/devops-works/binenv/releases
     fetch:
-      url: https://github.com/devops-works/binenv/releases/download/v{{ .Version }}/binenv-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/devops-works/binenv/releases/download/v{{ .Version }}/binenv_{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
-      binaries:
-        - "binenv{{ .ExeExtension }}"
 
   cli53:
     list:
