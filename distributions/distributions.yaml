@@ -199,6 +199,18 @@ sources:
       binaries:
         - kubens
 
+  kustomize:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes-sigs/kustomize/releases
+      prefix: "kustomize/"
+    fetch:
+      ur: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v{{ .Version }}/kustomize_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kustomize
+
   # Implement static versions
   # rancher:
   #   list:
@@ -242,7 +254,8 @@ sources:
 
   vault:
     list:
-      type: github-tags
+      type: github-releases
+      version_from: name
       url: https://api.github.com/repos/hashicorp/vault/tags
     fetch:
       url: https://releases.hashicorp.com/vault/{{ .Version }}/vault_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip

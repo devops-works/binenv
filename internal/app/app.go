@@ -404,7 +404,7 @@ func (a *App) Update(which string) error {
 			ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 			defer cancel()
 			a.logger.Debugf("feching available versions for %q", k)
-			versions, err := v.Get(ctx, nil)
+			versions, err := v.Get(ctx)
 			if err != nil {
 				a.logger.Errorf("unable to fetch versions for %q: %v", k, err)
 				continue
