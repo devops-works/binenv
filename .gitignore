@@ -1,3 +1,4 @@
 binenv
 *.json
 /bin
+/dist

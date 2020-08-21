@@ -56,6 +56,10 @@ release: windows darwin linux ; $(info $(M) stripping release executable for Lin
 	# $Q gzip $(BIN)/$(PACKAGE)-win-amd64
 	$Q $(BIN)/$(PACKAGE) version
 
+goreleaser-test: fmt lint clean ; $(info $(M) goreleaser dry-run…) @ ## Build program binary
+	goreleaser --snapshot --skip-publish --rm-dist
+
+
 
 # don't even think about making a joke with this target name
 prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting tests so we should not fail liting in CI
