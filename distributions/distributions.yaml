@@ -236,17 +236,39 @@ sources:
       binaries:
         - kustomize
 
-  # Implement static versions
-  # rancher:
-  #   list:
-  #     type: github-releases
-  #     url: https://api.github.com/repos/helm/helm/releases
-  #   fetch:
-  #     url: https://releases.rancher.com/cli/v{{ .Version }}/rancher-{{ .OS }}-{{ .OS }}-v{{ .Version }}.tar.gz
-  #   install:
-  #     type: tgz
-  #     binaries:
-  #       - "{{ .OS }}-{{ .Arch }}/helm"
+  pomerium:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pomerium/pomerium/releases
+    fetch:
+      url: https://github.com/pomerium/pomerium/releases/download/v{{ .Version }}/pomerium-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pomerium
+
+  pomerium-cli:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pomerium/pomerium/releases
+    fetch:
+      url: https://github.com/pomerium/pomerium/releases/download/v{{ .Version }}/pomerium-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pomerium-cli
+
+  rancher:
+    list:
+      type: static
+      versions:
+        - 0.6.7
+    fetch:
+      url: https://releases.rancher.com/cli/v{{ .Version }}/rancher-{{ .OS }}-{{ .Arch }}-v{{ .Version }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - "v{{ .OS }}-{{ .Arch }}/rancher"
 
   terraform:
     list:

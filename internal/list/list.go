@@ -15,6 +15,7 @@ type List struct {
 	Prefix      string `yaml:"prefix"`
 	VersionFrom string `yaml:"version_from"`
 	URL         string `yaml:"url"`
+	Versions    []string
 }
 
 // Factory returns instances that comply to Lister interface
@@ -26,7 +27,10 @@ func (l List) Factory() Lister {
 			prefix:      l.Prefix,
 			versionFrom: l.VersionFrom,
 		}
+	case "static":
+		return Static{
+			versions: l.Versions,
+		}
 	}
-
 	return nil
 }
