@@ -135,8 +135,7 @@ Currently supported distributions are:
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
-- [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1] (soon
-  [#11](https://github.com/devops-works/binenv/issues/11))
+- [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [toji](https://github.com/leucos/toji/)
@@ -174,7 +173,7 @@ There is currently no support for tokens.
 #### Update available distributions
 
 Distributions are maintained in this
-[repo](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
+[file](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
 
 To benefit from new additions, you need to update the distribution list from
 time to time.
@@ -373,7 +372,7 @@ There are **no tests**. I will probably go to hell for this.
 
 Welcomed !
 
-We will need other instalaltion mechanisms (see
+We will need other installation mechanisms (see
 https://github.com/devops-works/binenv/tree/master/internal/install).
 
 ## Licence
