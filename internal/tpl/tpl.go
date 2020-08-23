@@ -85,6 +85,8 @@ func (a Args) MatchFilters(file string, filters []string) (bool, error) {
 		if err != nil {
 			return false, err
 		}
+		// fmt.Printf("trying to match %s against %s\n", file, buf.String())
+
 		if strings.HasSuffix(file, buf.String()) {
 			// fmt.Printf("file %s matches filters\n", file)
 			return true, nil

@@ -295,7 +295,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - "v{{ .OS }}-{{ .Arch }}/rancher"
+        - "rancher-v{{ .Version }}/rancher"
 
   terraform:
     list:

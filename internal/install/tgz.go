@@ -46,7 +46,6 @@ func (t Tgz) Install(src, dst, version string, mapper mapping.Mapper) error {
 
 		switch header.Typeflag {
 		case tar.TypeReg: // regular file
-			// fmt.Printf("trying to match %s against %s\n", header.Name, t.filters)
 			ok, err := args.MatchFilters(header.Name, t.filters)
 			if err != nil {
 				return err
