@@ -408,6 +408,10 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 		defer cancel()
 		a.logger.Debugf("feching available versions for %q", d)
+		if _, ok := a.listers[d]; !ok {
+			a.logger.Errorf("no distribution named %q", d)
+			continue
+		}
 		versions, err := a.listers[d].Get(ctx)
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
 			fmt.Println()
