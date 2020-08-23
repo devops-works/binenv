@@ -170,6 +170,9 @@ Note that Github enforces rate limits (e.g. 60 unauthenticated API requests per
 hours). So you should update all distributions (e.g. `binenv update`) with
 caution.
 
+`binenv` will stop updating distributions when you only have 4 unauthenticated
+API requests left.
+
 There is currently no support for tokens.
 
 #### Update available distributions
