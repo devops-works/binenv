@@ -114,7 +114,10 @@ func handleRatelimit(resp *http.Response) error {
 	// X-Ratelimit-Limit: 60
 	// X-Ratelimit-Remaining: 50
 	// X-Ratelimit-Reset: 1598169973
-	rr := resp.Header["X-Ratelimit-Remaining"]
+	rr, ok := resp.Header["X-Ratelimit-Remaining"]
+	if !ok {
+		return nil
+	}
 	remain, err := strconv.Atoi(rr[0])
 	if err != nil {
 		// Could not find current usage

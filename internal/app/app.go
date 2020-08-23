@@ -375,7 +375,7 @@ func (a *App) Local(distribution, version string) error {
 }
 
 // Update fetches catalog of applications and updates available versions
-func (a *App) Update(which string, definitions, all bool) error {
+func (a *App) Update(definitions, all bool, which ...string) error {
 	if definitions || all {
 		conf, err := getDistributionsFilePath()
 		if err != nil {
@@ -396,35 +396,37 @@ func (a *App) Update(which string, definitions, all bool) error {
 		os.Exit(1)
 	}
 
-	if which == "" {
-		fmt.Printf("updating %d distributions", len(a.listers))
-	} else {
-		fmt.Printf("updating %q distribution", which)
+	if len(which) == 0 {
+		for k := range a.listers {
+			which = append(which, k)
+		}
 	}
+	fmt.Printf("updating %d distributions", len(which))
 
-	for k, v := range a.listers {
-		if which == k || which == "" {
-			fmt.Printf(".")
-			a.cache[k] = []string{}
-			ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
-			defer cancel()
-			a.logger.Debugf("feching available versions for %q", k)
-			versions, err := v.Get(ctx)
-			if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
-				fmt.Println()
-				a.logger.Errorf("unable to fetch versions for %q: %v", k, err)
-				return err
-			}
-			if err != nil {
-				a.logger.Errorf("unable to fetch versions for %q: %v", k, err)
-				continue
-			}
+	for _, d := range which {
+		fmt.Printf(".")
+		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+		defer cancel()
+		a.logger.Debugf("feching available versions for %q", d)
+		versions, err := a.listers[d].Get(ctx)
+		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
+			fmt.Println()
+			a.logger.Errorf("unable to fetch versions for %q: %v", d, err)
+			return err
+		}
+		if err != nil {
+			a.logger.Errorf("unable to fetch versions for %q: %v", d, err)
+			continue
+		}
 
-			a.logger.Debugf("found versions %q", strings.Join(versions, ","))
-			// Convert versions to canonical form
-			for _, v := range versions {
-				a.cache[k] = append(a.cache[k], gov.Must(gov.NewVersion(v)).String())
-			}
+		a.logger.Debugf("found versions %q", strings.Join(versions, ","))
+
+		// Flush cache entry
+		a.cache[d] = []string{}
+
+		// Convert versions to canonical form
+		for _, v := range versions {
+			a.cache[d] = append(a.cache[d], gov.Must(gov.NewVersion(v)).String())
 		}
 	}
 

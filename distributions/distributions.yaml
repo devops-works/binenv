@@ -1,6 +1,6 @@
 ---
 sources:
-  
+
   awless:
     list:
       type: github-releases
@@ -11,6 +11,22 @@ sources:
       type: tgz
       binaries:
         - awless
+
+  awstaghelper:
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mpostument/awstaghelper/releases
+    fetch:
+      url: https://github.com/mpostument/awstaghelper/releases/v{{ .Version }}/awless-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - awstaghelper
 
   binenv:
     list:

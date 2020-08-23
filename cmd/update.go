@@ -17,14 +17,13 @@ func updateCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "update",
 		Short: "Update available software distributions",
-		Long: `Available versions for every distribution will be updated.
-`,
-		// Args:  cobra.MaximumNArgs(1),
+		Long: `Available versions listed distribution will be updated.
+If not distribution is specified, versions for all distributions will be updated.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if len(args) == 1 {
-				return app.Update(args[0], definitionsOnly, definitionsAlso)
+			if len(args) >= 1 {
+				return app.Update(definitionsOnly, definitionsAlso, args...)
 			}
-			return app.Update("", definitionsOnly, definitionsAlso)
+			return app.Update(definitionsOnly, definitionsAlso)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			// Remove already selected distributions from completion

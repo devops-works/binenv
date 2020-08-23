@@ -118,6 +118,7 @@ This is the whole point.
 Currently supported distributions are:
 
 - [awless](https://github.com/wallix/awless)
+- [awstaghelper](https://github.com/mpostument/awstaghelper)
 - [binenv](https://github.com/devops-works/binenv)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
