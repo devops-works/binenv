@@ -1,11 +1,15 @@
 package install
 
 import (
+	"errors"
 	"io"
 	"os"
 
 	"github.com/devops-works/binenv/internal/mapping"
 )
+
+// ErrNoMatch is returned when not file patched binaries specs
+var ErrNoMatch = errors.New("no file matched binaries to install")
 
 // Install defines the install config struct
 type Install struct {

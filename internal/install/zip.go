@@ -17,6 +17,7 @@ type Zip struct {
 // Install files from zip file
 func (z Zip) Install(src, dst, version string, mapper mapping.Mapper) error {
 	// var filenames []string
+	noMatches := ErrNoMatch
 
 	r, err := zip.OpenReader(src)
 	if err != nil {
@@ -50,6 +51,8 @@ func (z Zip) Install(src, dst, version string, mapper mapping.Mapper) error {
 		if err != nil {
 			return err
 		}
+
+		noMatches = nil
 	}
-	return nil
+	return noMatches
 }

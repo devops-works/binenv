@@ -18,7 +18,7 @@ type Tgz struct {
 
 // Install files from tgz file
 func (t Tgz) Install(src, dst, version string, mapper mapping.Mapper) error {
-	// var filenames []string
+	noMatches := ErrNoMatch
 
 	f, err := os.Open(src)
 	if err != nil {
@@ -63,8 +63,9 @@ func (t Tgz) Install(src, dst, version string, mapper mapping.Mapper) error {
 			if _, err := io.Copy(out, tarReader); err != nil {
 				log.Fatal(err)
 			}
+			noMatches = nil
 		}
 	}
 
-	return nil
+	return noMatches
 }

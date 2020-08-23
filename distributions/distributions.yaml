@@ -154,7 +154,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/corneliusweig/ketall/releases
     fetch:
-      url: https://github.com/corneliusweig/ketall/releases/download/v{{ .Version }}/get-all-{{ .Arch }}-{{ .OS }}.tar.gz
+      url: https://github.com/corneliusweig/ketall/releases/download/v{{ .Version }}/ketall-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:

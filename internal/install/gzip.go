@@ -12,7 +12,7 @@ import (
 type GZip struct {
 }
 
-// Install files from zip file
+// Install files from gzip file
 func (z GZip) Install(src, dst, version string, mapper mapping.Mapper) error {
 	fs, err := os.Open(src)
 	if err != nil {
