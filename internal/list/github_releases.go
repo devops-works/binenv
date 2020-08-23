@@ -13,8 +13,11 @@ import (
 )
 
 var (
-	// ErrRateLimit is returned when we are close to a ratelimit
-	ErrRateLimit = errors.New("rate limit is close")
+	// ErrGithubRateLimitClose is returned when we are close to a ratelimit
+	ErrGithubRateLimitClose = errors.New("github rate limit is close")
+
+	// ErrGithubRateLimited is returned when we are close to a ratelimit
+	ErrGithubRateLimited = errors.New("rate limited")
 
 	// GithubLowRateLimit is the low boundary for rate limits
 	GithubLowRateLimit = 4
@@ -45,6 +48,11 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		return nil, err
 	}
 
+	// Checkif we are already rate limited
+	if isRateLimited(resp) {
+		return nil, handleRatelimit(resp)
+	}
+
 	gr := ghReleaseResponse{}
 	err = json.Unmarshal([]byte(body), &gr)
 	if err != nil {
@@ -69,18 +77,36 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		}
 	}
 
+	if isRateLimitClose(resp) {
+		return versions, handleRatelimit(resp)
+	}
+	return versions, nil
+}
+
+func rateLimit(resp *http.Response) int {
 	if v, ok := resp.Header["X-Ratelimit-Remaining"]; ok {
 		remain, err := strconv.Atoi(v[0])
 		if err != nil {
 			// Could not find current usage
-			// But return the rate limit error anyway
-			return nil, ErrRateLimit
+			return 0
 		}
-		if remain <= GithubLowRateLimit {
-			return versions, handleRatelimit(resp)
-		}
+		return remain
 	}
-	return versions, nil
+	return 0
+}
+
+func isRateLimited(resp *http.Response) bool {
+	if rateLimit(resp) == 0 {
+		return true
+	}
+	return false
+}
+
+func isRateLimitClose(resp *http.Response) bool {
+	if rateLimit(resp) <= GithubLowRateLimit {
+		return true
+	}
+	return false
 }
 
 func handleRatelimit(resp *http.Response) error {
@@ -93,7 +119,7 @@ func handleRatelimit(resp *http.Response) error {
 	if err != nil {
 		// Could not find current usage
 		// But return the ate liit error anyway
-		return ErrRateLimit
+		return ErrGithubRateLimited
 	}
 
 	rl := resp.Header["X-Ratelimit-Limit"]
@@ -101,18 +127,24 @@ func handleRatelimit(resp *http.Response) error {
 	if err != nil {
 		// Could not find current usage
 		// But return the ate liit error anyway
-		return fmt.Errorf("error checking ratelimit limit: %v (%w)", err, ErrRateLimit)
+		return fmt.Errorf("error checking ratelimit limit: %v (%w)", err, ErrGithubRateLimited)
 	}
 
 	rs := resp.Header["X-Ratelimit-Reset"]
 	reset, err := strconv.ParseInt(rs[0], 10, 64)
 	if err != nil {
-		return fmt.Errorf("error checking ratelimit reset: %v (%w)", err, ErrRateLimit)
+		return fmt.Errorf("error checking ratelimit reset: %v (%w)", err, ErrGithubRateLimited)
 	}
 	okdate := time.Unix(reset, 0)
 
+	if remain == 0 {
+		return fmt.Errorf("%w: rate limited by github; please retry after %s",
+			ErrGithubRateLimited,
+			okdate,
+		)
+	}
 	return fmt.Errorf("%w: remaining %d of %d; please retry after %s",
-		ErrRateLimit,
+		ErrGithubRateLimitClose,
 		remain,
 		limit,
 		okdate,

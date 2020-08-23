@@ -410,7 +410,7 @@ func (a *App) Update(which string, definitions, all bool) error {
 			defer cancel()
 			a.logger.Debugf("feching available versions for %q", k)
 			versions, err := v.Get(ctx)
-			if err != nil && errors.Is(err, list.ErrRateLimit) {
+			if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
 				fmt.Println()
 				a.logger.Errorf("unable to fetch versions for %q: %v", k, err)
 				return err
