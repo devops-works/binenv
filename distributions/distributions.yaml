@@ -40,7 +40,7 @@ sources:
   cli53:
     list:
       type: github-releases
-      url: https://api.github.com/repos/barnybug/cli53/releases
+      url: https://github.com/rakyll/hey/releases
     fetch:
       url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
@@ -98,24 +98,17 @@ sources:
       binaries:
         - goreleaser
 
-  hugo:
-    map:
-      amd64: 64bit
-      "386": 32bit
-      darwin: Darwin
-      linux: Linux
-      arm: ARM
-      arm64: ARM64
-      windows: Windows
-      freebsd: FreeBSD
+  hey:
     list:
       type: github-releases
-      url: https://api.github.com/repos/gohugoio/hugo/releases
+      url: https://api.github.com/repos/c1982/bomberman/releases
     fetch:
-      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://storage.googleapis.com/hey-release/hey_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
-  
+      post: >
+        This installer always installs the latest version.
+
   hadolint:
     map:
       amd64: x86_64
@@ -147,6 +140,24 @@ sources:
       url: https://api.github.com/repos/roboll/helmfile/releases
     fetch:
       url: https://github.com/roboll/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
+  hugo:
+    map:
+      amd64: 64bit
+      "386": 32bit
+      darwin: Darwin
+      linux: Linux
+      arm: ARM
+      arm64: ARM64
+      windows: Windows
+      freebsd: FreeBSD
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gohugoio/hugo/releases
+    fetch:
+      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: direct
 

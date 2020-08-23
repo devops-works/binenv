@@ -127,6 +127,7 @@ Currently supported distributions are:
 - [hadolint](https://github.com/hadolint/hadolint)
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
+- [hey](https://github.com/rakyll/hey)
 - [hugo](https://gohugo.io/)
 - [k9s](https://k9scli.io/)
 - [ketall](https://github.com/corneliusweig/ketall)
