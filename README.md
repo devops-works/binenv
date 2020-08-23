@@ -355,7 +355,7 @@ non-prerelease version installed.
 ## Removing binenv stuff
 
 `binenv` stores downloaded binaries in `~/.binenv/binaries`, and a cache in
-`~/.config/binenv/` (or whatever your `XDG_CONFIG` variables points to).
+`~/.config/binenv/` (or whatever your `XDG_CONFIG` variable points to).
 
 To wipe everything clean:
 
