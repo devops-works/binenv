@@ -128,6 +128,7 @@ Currently supported distributions are:
 - [helmfile](https://github.com/roboll/helmfile)
 - [hugo](https://gohugo.io/)
 - [k9s](https://k9scli.io/)
+- [ketall](https://github.com/corneliusweig/ketall)
 - [kind](https://github.com/kubernetes-sigs/kind)
 - [krew](https://github.com/kubernetes-sigs/krew)
 - [kops](https://kops.sigs.k8s.io/)
@@ -140,6 +141,7 @@ Currently supported distributions are:
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [toji](https://github.com/leucos/toji/)
 - [vault](https://www.hashicorp.com/products/vault)
+- [yh](https://github.com/andreazorzetto/yh)
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).

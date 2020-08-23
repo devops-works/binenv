@@ -149,6 +149,17 @@ sources:
       binaries:
         - k9s
 
+  ketall:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/corneliusweig/ketall/releases
+    fetch:
+      url: https://github.com/corneliusweig/ketall/releases/download/v{{ .Version }}/get-all-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ketall-{{ .Arch }}-{{ .OS }}
+
   kind:
     list:
       type: github-releases
@@ -313,3 +324,17 @@ sources:
       type: zip
       binaries:
         - vault
+
+  yh:
+    map:
+      darwin: osx
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/andreazorzetto/yh/releases
+    fetch:
+      url: https://github.com/andreazorzetto/yh/releases/download/v{{ .Version }}/yh-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - yh
+
