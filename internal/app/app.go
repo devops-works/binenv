@@ -189,25 +189,14 @@ func (a *App) Install(specs ...string) error {
 		if len(specs) > 1 {
 			version = specs[i+1]
 		}
+
 		v, err := a.install(dist, version)
-		switch {
-		case errors.Is(err, ErrAlreadyInstalled):
-		case err != nil:
+		if err != nil && !errors.Is(err, ErrAlreadyInstalled) {
 			log.Errorf("unable to install %q version %q: %v", dist, v, err)
 			continue
-		default:
-			// Install new shim version
-			if dist == "binenv" {
-				fmt.Println("executing self install")
-				err = a.selfInstall(v)
-				if err != nil {
-					a.logger.Errorf("unable to set-up myself: %v", err)
-					os.Exit(1)
-				}
-			}
-			fmt.Printf("%q version %q installed\n", dist, v)
 		}
 
+		fmt.Printf("%q version %q installed\n", dist, v)
 	}
 	return nil
 }
@@ -280,6 +269,16 @@ func (a *App) install(dist, version string) (string, error) {
 	)
 	if err != nil {
 		return version, err
+	}
+
+	// Install new shim version if needed
+	if dist == "binenv" {
+		fmt.Println("executing self install")
+		err = a.selfInstall(version)
+		if err != nil {
+			a.logger.Errorf("unable to set-up myself: %v", err)
+			os.Exit(1)
+		}
 	}
 
 	err = a.CreateShimFor(dist)
