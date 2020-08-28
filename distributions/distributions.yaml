@@ -40,9 +40,9 @@ sources:
   cli53:
     list:
       type: github-releases
-      url: https://github.com/rakyll/hey/releases
+      url: https://api.github.com/repos/barnybug/cli53/releases
     fetch:
-      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
