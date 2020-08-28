@@ -6,12 +6,7 @@ import (
 )
 
 // localCmd represents the local command
-func updateCmd() *cobra.Command {
-	app, err := app.New()
-	if err != nil {
-		panic(err)
-	}
-
+func updateCmd(a *app.App) *cobra.Command {
 	var definitionsOnly, definitionsAlso bool
 
 	cmd := &cobra.Command{
@@ -19,22 +14,24 @@ func updateCmd() *cobra.Command {
 		Short: "Update available software distributions",
 		Long: `Available versions listed distribution will be updated.
 If not distribution is specified, versions for all distributions will be updated.`,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		Run: func(cmd *cobra.Command, args []string) {
+			verbose, _ := cmd.Flags().GetBool("verbose")
+			a.SetVerbose(verbose)
+
 			if len(args) >= 1 {
-				return app.Update(definitionsOnly, definitionsAlso, args...)
+				a.Update(definitionsOnly, definitionsAlso, args...)
+				return
 			}
-			return app.Update(definitionsOnly, definitionsAlso)
+			a.Update(definitionsOnly, definitionsAlso)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			// Remove already selected distributions from completion
-			list := app.GetPackagesListWithPrefix(toComplete)
+			list := a.GetPackagesListWithPrefix(toComplete)
 			list = removeFromSlice(list, args)
 			return list, cobra.ShellCompDirectiveNoFileComp
 		},
 	}
-	// verb, _ := cmd.Root().PersistentFlags().GetBool("verbose")
 
-	// fmt.Printf("verbose is %v\n", verb)
 	cmd.Flags().BoolVarP(&definitionsOnly, "definitions", "d", false, "Update only distributions definitions")
 	cmd.Flags().BoolVarP(&definitionsAlso, "all", "a", false, "Update distributions definitions and distributions versions")
 	return cmd

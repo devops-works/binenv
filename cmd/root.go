@@ -11,6 +11,15 @@ import (
 
 // RootCmd returns the root cobra command
 func RootCmd() *cobra.Command {
+	a, err := app.New(
+	// app.WithDiscard(),
+	// app.WithBinDir(bindir),
+	)
+	if err != nil {
+		fmt.Printf("got error %v\n", err)
+		panic(err)
+	}
+
 	rootCmd := &cobra.Command{
 		Use:   "binenv",
 		Short: "Install binary distributions easily",
@@ -22,37 +31,21 @@ selected.`,
 		SilenceUsage: true,
 	}
 
-	// var bindir string
-	// var verbose
-	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
-	// rootCmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
-
 	// Run as a shim for installed distributions
 	if !strings.HasSuffix(os.Args[0], "binenv") {
-		// fmt.Printf("called as %s\n", os.Args[0])
-		// fmt.Printf("bindir is %s\n", bindir)
-
-		a, err := app.New(
-		// app.WithDiscard(),
-		// app.WithBinDir(bindir),
-		)
-		if err != nil {
-			fmt.Printf("got error %v\n", err)
-			panic(err)
-		}
-
-		// fmt.Printf("calling execute for %s\n", os.Args[0])
 		a.Execute(os.Args)
 	}
 
+	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
+
 	rootCmd.AddCommand(
 		completionCmd(),
-		installCmd(),
-		localCmd(),
-		uninstallCmd(),
-		updateCmd(),
+		installCmd(a),
+		localCmd(a),
+		uninstallCmd(a),
+		updateCmd(a),
 		versionCmd(),
-		versionsCmd(),
+		versionsCmd(a),
 	)
 
 	return rootCmd

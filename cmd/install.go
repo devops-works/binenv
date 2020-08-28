@@ -6,20 +6,18 @@ import (
 )
 
 // localCmd represents the local command
-func installCmd() *cobra.Command {
-	// var bindir string
+func installCmd(a *app.App) *cobra.Command {
+	var bindir string
 
-	a, err := app.New()
-	if err != nil {
-		panic(err)
-	}
 	cmd := &cobra.Command{
 		Use:   "install <distribution> <version> [<distribution> <version>]",
 		Short: "Install a version for the package",
 		Long:  `This command will install one or several distributions with the specified versions. `,
-		RunE: func(cmd *cobra.Command, args []string) error {
-			// a.SetBinDir(bindir)
-			return a.Install(args...)
+		Run: func(cmd *cobra.Command, args []string) {
+			verbose, _ := cmd.Flags().GetBool("verbose")
+			a.SetVerbose(verbose)
+			a.SetBinDir(bindir)
+			a.Install(args...)
 		},
 		Args: cobra.MinimumNArgs(1),
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
@@ -37,7 +35,7 @@ func installCmd() *cobra.Command {
 		},
 	}
 
-	// cmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
+	cmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
 
 	return cmd
 }

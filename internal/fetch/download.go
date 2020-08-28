@@ -8,7 +8,8 @@ import (
 	"net/http"
 	"runtime"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/rs/zerolog"
+	"github.com/schollz/progressbar/v3"
 
 	"github.com/devops-works/binenv/internal/mapping"
 	"github.com/devops-works/binenv/internal/tpl"
@@ -20,7 +21,9 @@ type Download struct {
 }
 
 // Fetch gets the package and returns location of downloaded file
-func (d Download) Fetch(ctx context.Context, v string, mapper mapping.Mapper) (string, error) {
+func (d Download) Fetch(ctx context.Context, dist, v string, mapper mapping.Mapper) (string, error) {
+	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
+
 	args := tpl.New(v, mapper)
 
 	url, err := args.Render(d.url)
@@ -28,9 +31,14 @@ func (d Download) Fetch(ctx context.Context, v string, mapper mapping.Mapper) (s
 		return "", err
 	}
 
-	fmt.Printf("fetching version %q for arch %q and OS %q at %s\n", v, runtime.GOARCH, runtime.GOOS, url)
+	logger.Debug().Msgf("fetching version %q for arch %q and OS %q at %s", v, runtime.GOARCH, runtime.GOOS, url)
 
-	resp, err := http.Get(url)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return "", err
+	}
+
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return "", err
 	}
@@ -42,10 +50,16 @@ func (d Download) Fetch(ctx context.Context, v string, mapper mapping.Mapper) (s
 
 	tmpfile, err := ioutil.TempFile("", v)
 	if err != nil {
-		log.Fatal(err)
+		logger.Fatal().Err(err)
 	}
 
 	defer tmpfile.Close()
+
+	bar := progressbar.DefaultBytes(
+		resp.ContentLength,
+		fmt.Sprintf("fetching %s version %s", dist, v),
+	)
+	io.Copy(io.MultiWriter(tmpfile, bar), resp.Body)
 
 	// Write the body to file
 	_, err = io.Copy(tmpfile, resp.Body)

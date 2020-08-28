@@ -9,7 +9,7 @@ import (
 // Fetcher should implement fetching a release from a version
 // and return a path where the release has been downloaded
 type Fetcher interface {
-	Fetch(ctx context.Context, version string, mapper mapping.Mapper) (string, error)
+	Fetch(ctx context.Context, dist, version string, mapper mapping.Mapper) (string, error)
 }
 
 // Fetch contains fetch configuration

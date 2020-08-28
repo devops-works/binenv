@@ -6,13 +6,9 @@ import (
 )
 
 // localCmd represents the local command
-func uninstallCmd() *cobra.Command {
+func uninstallCmd(a *app.App) *cobra.Command {
 	var bindir string
 
-	a, err := app.New()
-	if err != nil {
-		panic(err)
-	}
 	cmd := &cobra.Command{
 		Use:   "uninstall <distribution> [<version> [<distribution> <version>]]",
 		Short: "Uninstall a distribution or a specific version for the distribution",
@@ -20,9 +16,11 @@ func uninstallCmd() *cobra.Command {
 In this case, all versions for the specified distribution will be removed (a confirmation is asked).
 
 Multiple distribution / version pairs can be specified.`,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		Run: func(cmd *cobra.Command, args []string) {
 			a.SetBinDir(bindir)
-			return a.Uninstall(args...)
+			verbose, _ := cmd.Flags().GetBool("verbose")
+			a.SetVerbose(verbose)
+			a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) % 2 {

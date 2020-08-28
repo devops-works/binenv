@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/rs/zerolog"
 )
 
 var (
@@ -37,6 +39,8 @@ type GithubRelease struct {
 
 // Get returns a list of available versions
 func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
+	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
+
 	resp, err := http.Get(g.url)
 	if err != nil {
 		return nil, err
@@ -56,7 +60,7 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 	gr := ghReleaseResponse{}
 	err = json.Unmarshal([]byte(body), &gr)
 	if err != nil {
-		fmt.Printf("error unmarshalling github response for %s: %v\n", g.url, err)
+		logger.Error().Err(err).Msgf("error unmarshalling github response for %s", g.url)
 		return nil, err
 	}
 

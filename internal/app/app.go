@@ -18,12 +18,15 @@ import (
 
 	gov "github.com/hashicorp/go-version"
 	"github.com/mitchellh/go-homedir"
-	log "github.com/sirupsen/logrus"
+	"github.com/rs/zerolog"
+	"github.com/schollz/progressbar/v3"
 	"gopkg.in/yaml.v2"
 
 	"github.com/devops-works/binenv/internal/fetch"
 	"github.com/devops-works/binenv/internal/install"
 	"github.com/devops-works/binenv/internal/list"
+
+	// "github.com/devops-works/binenv/internal/log"
 	"github.com/devops-works/binenv/internal/mapping"
 )
 
@@ -39,7 +42,7 @@ type App struct {
 	cache      map[string][]string
 
 	bindir string
-	logger *log.Logger
+	logger zerolog.Logger
 }
 
 var (
@@ -62,8 +65,14 @@ func New(o ...func(*App) error) (*App, error) {
 		fetchers:   make(map[string]fetch.Fetcher),
 		cache:      make(map[string][]string),
 		bindir:     d,
-		logger:     log.New(),
+		logger: zerolog.New(zerolog.ConsoleWriter{
+			Out:        os.Stderr,
+			TimeFormat: time.RFC3339,
+		}).With().Timestamp().Logger(),
 	}
+
+	// Default to warn log level
+	a.logger = a.logger.Level(zerolog.WarnLevel)
 
 	// Apply functional options
 	for _, f := range o {
@@ -82,7 +91,7 @@ func New(o ...func(*App) error) (*App, error) {
 
 	err = a.readDistributions()
 	if err != nil {
-		a.logger.Errorf("unable to read distributions: %v", err)
+		a.logger.Error().Err(err).Msgf("unable to read distributions")
 		os.Exit(1)
 	}
 
@@ -135,7 +144,7 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 		return nil
 	})
 	if err != nil {
-		a.logger.Errorf("unable to fetch versions for %q: %v", dist, err)
+		a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", dist)
 		return []string{}
 	}
 
@@ -179,7 +188,7 @@ func (a *App) GetAvailableVersionsFor(dist string) []string {
 // Install installs or update a distribution
 func (a *App) Install(specs ...string) error {
 	if len(specs)%2 != 0 && len(specs) != 1 {
-		log.Errorf("invalid number of arguments (must have distribution and version pairs")
+		a.logger.Error().Msg("invalid number of arguments (must have distribution and version pairs")
 		os.Exit(1)
 	}
 
@@ -192,7 +201,7 @@ func (a *App) Install(specs ...string) error {
 
 		v, err := a.install(dist, version)
 		if err != nil && !errors.Is(err, ErrAlreadyInstalled) {
-			log.Errorf("unable to install %q version %q: %v", dist, v, err)
+			a.logger.Error().Err(err).Msgf("unable to install %q version %q", dist, v)
 			continue
 		}
 
@@ -207,7 +216,7 @@ func (a *App) install(dist, version string) (string, error) {
 		return "", fmt.Errorf("no fetcher found for %q", dist)
 	}
 	if _, ok := a.fetchers[dist]; !ok {
-		a.logger.Errorf("no such distribution %q", dist)
+		a.logger.Error().Msgf("no such distribution %q", dist)
 		return "", nil
 	}
 
@@ -216,7 +225,7 @@ func (a *App) install(dist, version string) (string, error) {
 	// If version is not specified, install most recent
 	if version == "" {
 		version = a.GetMostRecent(dist)
-		log.Warnf("version for %q not specified; using %q", dist, version)
+		a.logger.Warn().Msgf("version for %q not specified; using %q", dist, version)
 	}
 
 	if version == "" {
@@ -230,7 +239,7 @@ func (a *App) install(dist, version string) (string, error) {
 	}
 	version = cleanVersion.String()
 	if stringInSlice(version, versions) {
-		a.logger.Warnf("version %q already installed for %q", version, dist)
+		a.logger.Warn().Msgf("version %q already installed for %q", version, dist)
 		return version, ErrAlreadyInstalled
 	}
 
@@ -241,8 +250,9 @@ func (a *App) install(dist, version string) (string, error) {
 		}
 	}
 
+	ctx := a.logger.WithContext(context.TODO())
 	// Call fetcher for distribution
-	file, err := a.fetchers[dist].Fetch(context.Background(), version, m)
+	file, err := a.fetchers[dist].Fetch(ctx, dist, version, m)
 	if err != nil {
 		return version, err
 	}
@@ -276,7 +286,7 @@ func (a *App) install(dist, version string) (string, error) {
 		fmt.Println("executing self install")
 		err = a.selfInstall(version)
 		if err != nil {
-			a.logger.Errorf("unable to set-up myself: %v", err)
+			a.logger.Error().Err(err).Msg("unable to set-up myself")
 			os.Exit(1)
 		}
 	}
@@ -296,7 +306,7 @@ func (a *App) Uninstall(specs ...string) error {
 	// - an even count of arguments (distribution / version pairs)
 
 	if len(specs)%2 != 0 && len(specs) > 1 {
-		log.Fatalf("invalid number of arguments (must have distribution and version pairs")
+		a.logger.Fatal().Msg("invalid number of arguments (must have distribution and version pairs")
 	}
 
 	for i := 0; i < len(specs); i += 2 {
@@ -307,7 +317,7 @@ func (a *App) Uninstall(specs ...string) error {
 		}
 		err := a.uninstall(dist, version)
 		if err != nil {
-			log.Errorf("unable to uninstall %q version %q: %v", dist, version, err)
+			a.logger.Error().Err(err).Msgf("unable to uninstall %q version %q", dist, version)
 		}
 	}
 	return nil
@@ -328,7 +338,7 @@ func (a *App) uninstall(dist, version string) error {
 		// Check this is a version number, just to be sure
 		file := filepath.Base(binary)
 		if _, err := gov.NewSemver(file); err != nil {
-			log.Fatalf("%q does not look like a binary file installed by binenv; bailing out", file)
+			a.logger.Fatal().Msgf("%q does not look like a binary file installed by binenv; bailing out", file)
 		}
 
 		err := os.Remove(binary)
@@ -336,7 +346,7 @@ func (a *App) uninstall(dist, version string) error {
 			return err
 		}
 
-		log.Infof("removed version %q for %q", version, dist)
+		a.logger.Info().Msgf("removed version %q for %q", version, dist)
 		return nil
 	}
 
@@ -369,7 +379,7 @@ func (a *App) Local(distribution, version string) error {
 	// TODO: Check if version is available
 	// TODO: Open local .binenv.lock if exists or create
 	// TODO: Replace or create entry for distribution
-	log.Errorf("not implemented yet")
+	a.logger.Fatal().Msg("not implemented yet")
 	return nil
 }
 
@@ -378,7 +388,7 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 	if definitions || all {
 		conf, err := getDistributionsFilePath()
 		if err != nil {
-			a.logger.Errorf("unable to find distributions: %v", err)
+			a.logger.Error().Err(err).Msg("unable to find distributions")
 			os.Exit(1)
 		}
 		a.fetchDistributions(conf)
@@ -391,7 +401,7 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 
 	err := a.readDistributions()
 	if err != nil {
-		a.logger.Errorf("unable to read distributions: %v", err)
+		a.logger.Error().Err(err).Msg("unable to read distributions")
 		os.Exit(1)
 	}
 
@@ -400,29 +410,31 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 			which = append(which, k)
 		}
 	}
-	fmt.Printf("updating %d distributions", len(which))
+
+	a.logger.Debug().Msgf("updating %d distributions", len(which))
+
+	bar := progressbar.Default(int64(len(which)), "updating distributions")
 
 	for _, d := range which {
-		fmt.Printf(".")
+		bar.Add(1)
 		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 		defer cancel()
-		a.logger.Debugf("feching available versions for %q", d)
+		a.logger.Debug().Msgf("feching available versions for %q", d)
 		if _, ok := a.listers[d]; !ok {
-			a.logger.Errorf("no distribution named %q", d)
+			a.logger.Error().Msgf("no distribution named %q", d)
 			continue
 		}
 		versions, err := a.listers[d].Get(ctx)
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
-			fmt.Println()
-			a.logger.Errorf("unable to fetch versions for %q: %v", d, err)
+			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
 			return err
 		}
 		if err != nil {
-			a.logger.Errorf("unable to fetch versions for %q: %v", d, err)
+			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
 			continue
 		}
 
-		a.logger.Debugf("found versions %q", strings.Join(versions, ","))
+		a.logger.Debug().Msgf("found versions %q", strings.Join(versions, ","))
 
 		// Flush cache entry
 		a.cache[d] = []string{}
@@ -450,7 +462,7 @@ func (a *App) Versions(specs ...string) error {
 	for _, s := range specs {
 		err := a.versions(s)
 		if err != nil {
-			log.Errorf("unable to list versions for %q: %v", s, err)
+			a.logger.Error().Err(err).Msgf("unable to list versions for %q", s)
 		}
 	}
 	return nil
@@ -508,7 +520,7 @@ func (a *App) Execute(args []string) {
 	// the shim.
 	versions := a.GetInstalledVersionsFor(dist)
 	if len(versions) == 0 {
-		log.Errorf("no versions found for distribution %q. Something is really odd.", os.Args[0])
+		a.logger.Error().Msgf("no versions found for distribution %q. Something is really odd.", os.Args[0])
 	}
 
 	// Check version to use, going up to home directory if needeed and
@@ -519,7 +531,7 @@ func (a *App) Execute(args []string) {
 
 	// If we did not find any proper version to run
 	if version == "" {
-		log.Fatalf("binenv: unable to find version %s", why)
+		a.logger.Fatal().Msgf("binenv: unable to find version %s", why)
 	}
 
 	bd := a.getBinDirFor(dist)
@@ -600,7 +612,7 @@ func (a *App) readDistributions() error {
 
 func (a *App) fetchDistributions(conf string) error {
 	fmt.Printf("updating distribution list\n")
-	log.Debugf("retrieving distribution list from %s", distributionsURL)
+	a.logger.Debug().Msgf("retrieving distribution list from %s", distributionsURL)
 	resp, err := http.Get(distributionsURL)
 	if err != nil {
 		return err
@@ -751,7 +763,7 @@ func (a *App) createInstallers() {
 	for k, v := range a.def.Sources {
 		i := v.Install.Factory(v.Install.Binaries)
 		if i == nil {
-			a.logger.Warnf("warning: '%s' install method for %s is not implemented\n", v.Install.Type, k)
+			a.logger.Warn().Msgf("warning: '%s' install method for %s is not implemented\n", v.Install.Type, k)
 			continue
 		}
 		a.installers[k] = i
@@ -771,7 +783,7 @@ func (a *App) createListers() {
 	for k, v := range a.def.Sources {
 		l := v.List.Factory()
 		if l == nil {
-			a.logger.Warnf("warning: '%s' list method for %s is not implemented\n", v.List.Type, k)
+			a.logger.Warn().Msgf("warning: '%s' list method for %s is not implemented\n", v.List.Type, k)
 			continue
 		}
 		a.listers[k] = l
@@ -782,7 +794,7 @@ func (a *App) createFetchers() {
 	for k, v := range a.def.Sources {
 		f := v.Fetch.Factory()
 		if f == nil {
-			a.logger.Warnf("warning: '%s' fetch method for %s is not implemented\n", v.Fetch.Type, k)
+			a.logger.Warn().Msgf("warning: '%s' fetch method for %s is not implemented\n", v.Fetch.Type, k)
 			continue
 		}
 		a.fetchers[k] = f
@@ -791,7 +803,7 @@ func (a *App) createFetchers() {
 
 // Functional options
 
-// WithDiscard sets the repository for this service
+// WithDiscard sets the log output to /dev/null
 func WithDiscard() func(*App) error {
 	return func(a *App) error {
 		return a.setLogOutput(ioutil.Discard)
@@ -799,7 +811,7 @@ func WithDiscard() func(*App) error {
 }
 
 func (a *App) setLogOutput(w io.Writer) error {
-	a.logger.Out = w
+	a.logger = zerolog.Nop()
 
 	return nil
 }
@@ -825,13 +837,20 @@ func WithLogLevel(l string) func(*App) error {
 	}
 }
 
-// SetLogLevel sets bin directory to use
+// SetLogLevel sets the log level to use
 func (a *App) SetLogLevel(l string) error {
-	level, err := log.ParseLevel(l)
+	lvl, err := zerolog.ParseLevel(l)
 	if err != nil {
-		a.logger.Fatalf("invalid log level %q: %v", l, err)
+		a.logger.Fatal().Err(err).Msgf("invalid log level %q", l)
 	}
-	a.logger.SetLevel(level)
+	a.logger.Level(lvl)
 
 	return nil
+}
+
+// SetVerbose sets the log level to debug
+func (a *App) SetVerbose(v bool) {
+	if v {
+		a.logger = a.logger.Level(zerolog.DebugLevel)
+	}
 }
