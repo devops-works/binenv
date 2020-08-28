@@ -103,7 +103,7 @@ exec $SHELL
 ```
 
 See a walkthough on asciinema.org:
-[![asciicast](https://asciinema.org/a/2SY7RRnQahtkfNSiX99gxzZLW.svg)](https://asciinema.org/a/2SY7RRnQahtkfNSiX99gxzZLW)
+[![asciicast](https://asciinema.org/a/KFxVobMtCd2mHrTOk3pAaUzqn.svg)](https://asciinema.org/a/KFxVobMtCd2mHrTOk3pAaUzqn)
 
 ## Updating binenv
 

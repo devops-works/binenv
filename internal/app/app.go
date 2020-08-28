@@ -525,8 +525,6 @@ func (a *App) Execute(args []string) {
 	bd := a.getBinDirFor(dist)
 	binary := filepath.Join(bd, version)
 
-	// fmt.Printf("executing %q\n", binary)
-
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
 		fmt.Println(err)
 	}
@@ -653,7 +651,7 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 	home = filepath.Clean(home)
 	dir = filepath.Clean(dir)
 
-	deflt := a.GetMostRecent(dist)
+	deflt := versions[0]
 
 	for {
 		// fmt.Printf("in directory %s\n", dir)
