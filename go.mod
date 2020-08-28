@@ -4,6 +4,7 @@ go 1.14
 
 require (
 	github.com/hashicorp/go-version v1.2.1
+	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rs/zerolog v1.19.0
 	github.com/schollz/progressbar/v3 v3.4.0

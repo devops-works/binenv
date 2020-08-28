@@ -26,6 +26,8 @@ import (
 	"github.com/devops-works/binenv/internal/install"
 	"github.com/devops-works/binenv/internal/list"
 
+	"github.com/logrusorgru/aurora"
+
 	// "github.com/devops-works/binenv/internal/log"
 	"github.com/devops-works/binenv/internal/mapping"
 )
@@ -183,6 +185,16 @@ func (a *App) GetAvailableVersionsFor(dist string) []string {
 	}
 
 	return versions
+}
+
+// InstallFromLock install distributions/versions to match the local
+// .binenv.lock file
+func (a *App) InstallFromLock() error {
+	// available := a.GetAvailableVersionsFor(dist)
+	// guess, why := a.GuessBestVersionFor(dist, curdir, installed)
+
+	a.logger.Fatal().Msg("not implemented yet")
+	return nil
 }
 
 // Install installs or update a distribution
@@ -459,12 +471,23 @@ func (a *App) Versions(specs ...string) error {
 		}
 	}
 
+	sort.Strings(specs)
+
+	fmt.Printf("# Most recent first; legend: %s, %s, %s\n",
+		aurora.Reverse("active"),
+		aurora.Bold("installed"),
+		aurora.Faint("available"),
+	)
+
 	for _, s := range specs {
 		err := a.versions(s)
 		if err != nil {
 			a.logger.Error().Err(err).Msgf("unable to list versions for %q", s)
 		}
 	}
+
+	// fmt.Println(aurora.Italic("(reverse: active; bold: installed; light: available)"))
+
 	return nil
 }
 
@@ -474,22 +497,40 @@ func (a *App) versions(dist string) error {
 		return fmt.Errorf("unable to determine current directory: %v", err)
 	}
 	available := a.GetAvailableVersionsFor(dist)
+	a.logger.Debug().Strs("versions", available).Msgf("available versions for %s", dist)
 	installed := a.GetInstalledVersionsFor(dist)
+	a.logger.Debug().Strs("versions", installed).Msgf("installed versions for %s", dist)
 	guess, why := a.GuessBestVersionFor(dist, curdir, installed)
+	a.logger.Debug().Str("guessed", guess).Msgf("guessed version for dist %s", dist)
 
-	fmt.Printf("\n%s:\n", dist)
+	// present := []string{}
+	// active := ""
+
+	// for _, v := range available {
+	// 	if stringInSlice(v, installed) {
+	// 		present = append(present, v)
+	// 		if v == guess {
+	// 			active = v
+	// 		}
+	// 	}
+	// }
+
+	fmt.Printf("%s: ", dist)
 
 	for _, v := range available {
-		modifier := ""
+		// var modifier aurora.Value
+		modifier := aurora.Faint(v)
 		if stringInSlice(v, installed) {
-			modifier = "+"
-			// fmt.Printf("compare %s with %s\n", v, guess)
 			if v == guess {
-				modifier = "* (from " + why + ")"
+				modifier = aurora.Reverse(fmt.Sprintf("%s (%s)", v, why))
+			} else {
+				modifier = aurora.Bold(v)
 			}
+			// fmt.Printf("compare %s with %s\n", v, guess)
 		}
-		fmt.Printf("\t%s%s\n", v, modifier)
+		fmt.Printf("%s ", modifier)
 	}
+	fmt.Println()
 	return nil
 }
 
@@ -662,6 +703,10 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 	home, _ := homedir.Dir()
 	home = filepath.Clean(home)
 	dir = filepath.Clean(dir)
+
+	if len(versions) == 0 {
+		return "", ""
+	}
 
 	deflt := versions[0]
 
