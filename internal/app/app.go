@@ -43,6 +43,8 @@ type App struct {
 	fetchers   map[string]fetch.Fetcher
 	cache      map[string][]string
 
+	dryrun bool
+
 	bindir string
 	logger zerolog.Logger
 }
@@ -190,10 +192,33 @@ func (a *App) GetAvailableVersionsFor(dist string) []string {
 // InstallFromLock install distributions/versions to match the local
 // .binenv.lock file
 func (a *App) InstallFromLock() error {
-	// available := a.GetAvailableVersionsFor(dist)
-	// guess, why := a.GuessBestVersionFor(dist, curdir, installed)
+	// Get listed versions from local .binenv.lock
+	curdir, err := os.Getwd()
+	if err != nil {
+		a.logger.Error().Err(err).Msg("unable to determine current directory")
+		return fmt.Errorf("unable to determine current directory: %w", err)
+	}
+	distributions, lines := a.getDistributionsFromLock()
 
-	a.logger.Fatal().Msg("not implemented yet")
+	// Lets loop on each distribution and find the best versions among
+	// available versions
+	for i, d := range distributions {
+		available := a.GetAvailableVersionsFor(d)
+		required, _ := a.GuessBestVersionFor(d, curdir, curdir, available)
+		installed := a.GetInstalledVersionsFor(d)
+
+		if required == "" {
+			a.logger.Warn().Msgf(`no available versions found for %q. Please run "binenv update %s".`, d, d)
+			continue
+		}
+		if !stringInSlice(required, installed) {
+			a.logger.Warn().Msgf("installing %q (%s) to satisfy constraint %q", d, required, lines[i])
+			a.install(d, required)
+		} else {
+			a.logger.Debug().Msgf("will use %q (%s) to satisfy constraint %q", d, required, lines[i])
+		}
+	}
+
 	return nil
 }
 
@@ -263,6 +288,11 @@ func (a *App) install(dist, version string) (string, error) {
 	}
 
 	ctx := a.logger.WithContext(context.TODO())
+	if a.dryrun {
+		a.logger.Warn().Msgf("dry-run mode: skipping install for %q (%s)", dist, version)
+		return version, nil
+	}
+
 	// Call fetcher for distribution
 	file, err := a.fetchers[dist].Fetch(ctx, dist, version, m)
 	if err != nil {
@@ -279,6 +309,11 @@ func (a *App) install(dist, version string) (string, error) {
 
 	if a.installers[dist] == nil {
 		return version, fmt.Errorf("no installer found for %s", dist)
+	}
+
+	if a.dryrun {
+		a.logger.Warn().Msgf("dry-run mode: skipping install fir %q (%s)", dist, version)
+		return version, nil
 	}
 	err = a.installers[dist].Install(
 		file,
@@ -329,7 +364,7 @@ func (a *App) Uninstall(specs ...string) error {
 		}
 		err := a.uninstall(dist, version)
 		if err != nil {
-			a.logger.Error().Err(err).Msgf("unable to uninstall %q version %q", dist, version)
+			a.logger.Error().Err(err).Msgf("unable to uninstall %q (%s)", dist, version)
 		}
 	}
 	return nil
@@ -358,7 +393,7 @@ func (a *App) uninstall(dist, version string) error {
 			return err
 		}
 
-		a.logger.Info().Msgf("removed version %q for %q", version, dist)
+		a.logger.Warn().Msgf("removed version %q for %q", version, dist)
 		return nil
 	}
 
@@ -500,7 +535,7 @@ func (a *App) versions(dist string) error {
 	a.logger.Debug().Strs("versions", available).Msgf("available versions for %s", dist)
 	installed := a.GetInstalledVersionsFor(dist)
 	a.logger.Debug().Strs("versions", installed).Msgf("installed versions for %s", dist)
-	guess, why := a.GuessBestVersionFor(dist, curdir, installed)
+	guess, why := a.GuessBestVersionFor(dist, curdir, "", installed)
 	a.logger.Debug().Str("guessed", guess).Msgf("guessed version for dist %s", dist)
 
 	// present := []string{}
@@ -568,11 +603,11 @@ func (a *App) Execute(args []string) {
 	// try /etc/binenv
 	// Take the first match while going up
 	curdir, _ := os.Getwd()
-	version, why := a.GuessBestVersionFor(dist, curdir, versions)
+	version, why := a.GuessBestVersionFor(dist, curdir, "", versions)
 
 	// If we did not find any proper version to run
 	if version == "" {
-		a.logger.Fatal().Msgf("binenv: unable to find version %s", why)
+		a.logger.Fatal().Msgf("binenv: unable to find proper version for %s (%s)", dist, why)
 	}
 
 	bd := a.getBinDirFor(dist)
@@ -699,7 +734,73 @@ func (a *App) getBinDirFor(dist string) string {
 // GuessBestVersionFor returns closest version requirement given a location,
 // a distribution and a version list.
 // If no match we return the latest version we have
-func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, string) {
+func (a *App) GuessBestVersionFor(dist, dir, stop string, versions []string) (string, string) {
+	// If stop is "", we enforce stopping in home directory
+	if stop == "" {
+		stop, _ = homedir.Dir()
+	}
+	stop = filepath.Clean(stop)
+	dir = filepath.Clean(dir)
+
+	if len(versions) == 0 {
+		return "", ""
+	}
+
+	deflt := versions[0]
+
+	// If no .binenv.lock, try parent until we reach 'stop'
+	if _, err := os.Stat(filepath.Join(dir, ".binenv.lock")); os.IsNotExist(err) {
+		// If in stop dir, we found nothing
+		if dir == stop {
+			return deflt, "default"
+		}
+		// Recurse moving up
+		dir = filepath.Clean(filepath.Join(dir, ".."))
+		return a.GuessBestVersionFor(dist, dir, filepath.Join(stop, ".."), versions)
+	}
+
+	// lock file is found
+	f, err := os.Open(filepath.Join(dir, ".binenv.lock"))
+	if err != nil {
+		return "", ""
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if strings.HasPrefix(line, "#") {
+			continue
+		}
+
+		if strings.HasPrefix(line, dist) {
+			constraint := strings.TrimPrefix(line, dist)
+			for _, v := range versions {
+				v1, _ := gov.NewVersion(v)
+				// Constraints
+				constraints, _ := gov.NewConstraint(constraint)
+				if constraints.Check(v1) {
+					return v1.String(), dir
+				}
+			}
+			constversion := strings.Trim(constraint, "!=<>~")
+			return "", fmt.Sprintf("unable to satisfy constraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return "", ""
+	}
+
+	// We did not match dist, so return default
+	return deflt, "default"
+}
+
+// GuessBestVersionFor2 returns closest version requirement given a location,
+// a distribution and a version list.
+// If no match we return the latest version we have
+func (a *App) GuessBestVersionFor2(dist, dir string, versions []string) (string, string) {
 	home, _ := homedir.Dir()
 	home = filepath.Clean(home)
 	dir = filepath.Clean(dir)
@@ -754,6 +855,51 @@ func (a *App) GuessBestVersionFor(dist, dir string, versions []string) (string, 
 		}
 		return deflt, "default"
 	}
+}
+
+func (a *App) getDistributionsFromLock() ([]string, []string) {
+	var distributions []string
+	var lines []string
+
+	curdir, err := os.Getwd()
+	if err != nil {
+		a.logger.Error().Err(err).Msg("unable to determine current directory")
+		return distributions, lines
+	}
+	lockfile := filepath.Join(curdir, ".binenv.lock")
+	if _, err := os.Stat(lockfile); err != nil {
+		// If in stop dir, we found nothing
+		a.logger.Error().Err(err).Msg("no .binenv.lock in current directory")
+		return distributions, lines
+	}
+
+	// lock file is found
+	f, err := os.Open(lockfile)
+	if err != nil {
+		a.logger.Error().Err(err).Msg("unanle to open .binenv.lock")
+		return distributions, lines
+	}
+	defer f.Close()
+
+	seps := "=!<>~"
+
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// Skip comments
+		if strings.HasPrefix(line, "#") {
+			continue
+		}
+
+		// Get distribution name
+		cpos := strings.IndexAny(line, seps)
+		if cpos > 0 {
+			distributions = append(distributions, line[0:cpos])
+			lines = append(lines, line)
+		}
+	}
+	return distributions, lines
 }
 
 func (a *App) loadCache() {
@@ -897,5 +1043,12 @@ func (a *App) SetLogLevel(l string) error {
 func (a *App) SetVerbose(v bool) {
 	if v {
 		a.logger = a.logger.Level(zerolog.DebugLevel)
+	}
+}
+
+// SetDryRun sets the operation mode to dry-run
+func (a *App) SetDryRun(v bool) {
+	if v {
+		a.dryrun = true
 	}
 }

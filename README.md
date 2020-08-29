@@ -227,6 +227,8 @@ You can also install serveral distribution versions at the same time:
 
 `binenv install something 1.2.3 somethingelse 4.5.6`
 
+Using the `--dry-run` flag (a.k.a `-n`) will show what would be installed.
+
 #### Examples
 
 - `binenv install kubectl`: install latest non-prerelease `kubectl version`
@@ -244,10 +246,10 @@ When invoked without arguments, all version of all distributions will be printed
 With distributions as arguments, only versions for those distributions will be
 printed.
 
-In the output, versions having a `*` next to them are the currenly selected
-versions (see [Selecting versions](#selecting-versions) below.
+In the output, versions printed in reverse mode are the currenly selected
+(a.k.a. active) versions (see [Selecting versions](#selecting-versions) below.
 
-Versions having a `+` next to them are installed. 
+Versions in **bold** are installed.
 
 All other versions are available to be installed.
 
@@ -255,34 +257,14 @@ All other versions are available to be installed.
 
 ```
 $ binenv versions
-kubectl:
-        ...
-        1.19.0-alpha.3
-        1.19.0-alpha.2
-        1.18.8* (from default)
-        1.18.6
-        1.18.5
-        1.18.4
-        1.18.3
-        1.18.2
-        1.17.11
-        1.17.9+
-        1.17.8
-        1.17.8-rc.1
-        1.17.7
-        1.17.6
-        1.17.5+
-        1.16.14
-        1.16.13
-        1.16.12
-        1.16.12-rc.1
-
-terraform:
-        0.13.0
-        0.13.0-rc1
-        0.13.0-beta3
+terraform: 0.13.1 (/home/leucos/dev/perso/devops.works/github-repos/binenv) 0.13.0 0.13.0-rc1 0.13.0-beta3 0.13.0-beta2 0.13.0-beta1 0.12.29 0.12.28 0.12.27 0.12.26 0.12.25 0.12.24 0.12.23 0.12.22 0.12.21 0.12.20 0.12.19 0.12.18 0.12.17 0.12.16 0.12.15 0.12.14 0.12.13 0.12.12 0.12.11 0.12.10 0.12.9 0.12.8 0.12.7 0.12.6 
+terragrunt: 0.23.38 0.23.37 0.23.36 0.23.35 0.23.34 0.23.33 0.23.32 0.23.31 0.23.30 0.23.29 0.23.28 0.23.27 0.23.26 0.23.25 0.23.24 0.23.23 0.23.22 0.23.21 0.23.20 0.23.19 0.23.18 0.23.17 0.23.16 0.23.15 0.23.14 0.23.13 0.23.12 0.23.11 0.23.10 0.23.9 
+toji: 0.2.4 (default) 0.2.2 
+vault: 1.5.3 1.5.2 1.5.1 1.5.0 1.5.0-rc 1.4.6 1.4.5 1.4.4 1.4.3 1.4.2 1.4.1 1.4.0 1.4.0-rc1 1.4.0-beta1 1.3.10 1.3.9 1.3.8 1.3.7 1.3.6 1.3.5 1.3.4 1.3.3 1.3.2 1.3.1 1.3.0 1.3.0-beta1 1.2.7 1.2.6 1.2.5 1.2.4 
 ...
 ```
+
+(the output above does not show bold or reverse terminal output)
 
 ### Uninstalling versions
 
@@ -353,6 +335,28 @@ directory.
 
 If no version requirements are found at this point, `binenv` will use the last
 non-prerelease version installed.
+
+### Install versions form .binenv.lock
+
+Install versions sepcified in `.binenv.lock` file, you can use the `--lock`
+(a.k.a. `-l`) flag.
+
+#### Example
+
+```bash
+$ cat .binenv.lock
+terraform>0.13.0
+helmfile<0.125.0
+hadolint<1.17.0
+$ binenv install -l
+2020-08-29T11:39:18+02:00 WRN installing "terraform" (0.13.1) to satisfy constraint "terraform>0.13.0"
+fetching terraform version 0.13.1 100% |█████████████████████████████████████████████████████████████████████████████████████████████| (33/33 MB, 3.274 MB/s) [10s:0s]
+2020-08-29T11:39:29+02:00 WRN installing "helmfile" (0.124.0) to satisfy constraint "helmfile<0.125.0"
+fetching helmfile version 0.124.0 100% |█████████████████████████████████████████████████████████████████████████████████████████████| (45/45 MB, 1.404 MB/s) [31s:0s]
+2020-08-29T11:40:02+02:00 WRN installing "hadolint" (1.16.3) to satisfy constraint "hadolint<1.17.0"
+fetching hadolint version 1.16.3 100% |███████████████████████████████████████████████████████████████████████████████████████████| (3.5/3.5 MB, 431.886 kB/s) [8s:0s]
+$
+```
 
 ## Removing binenv stuff
 
