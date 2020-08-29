@@ -780,8 +780,7 @@ func (a *App) GuessBestVersionFor(dist, dir, stop string, versions []string) (st
 					return v1.String(), dir
 				}
 			}
-			constversion := strings.Trim(constraint, "!=<>~")
-			return "", fmt.Sprintf("unable to satisfy constraint %q for %q. Try 'binenv install %s %s'.", constraint, dist, dist, constversion)
+			return "", fmt.Sprintf(`unable to satisfy constraint %q for %q. Try "binenv install -l".`, constraint, dist)
 		}
 	}
 
