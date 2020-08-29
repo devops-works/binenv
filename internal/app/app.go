@@ -76,7 +76,7 @@ func New(o ...func(*App) error) (*App, error) {
 	}
 
 	// Default to warn log level
-	a.logger = a.logger.Level(zerolog.WarnLevel)
+	a.logger = a.logger.Level(zerolog.InfoLevel)
 
 	// Apply functional options
 	for _, f := range o {
@@ -242,7 +242,7 @@ func (a *App) Install(specs ...string) error {
 			continue
 		}
 
-		fmt.Printf("%q version %q installed\n", dist, v)
+		a.logger.Info().Msgf("%q version %q installed", dist, v)
 	}
 	return nil
 }
@@ -330,7 +330,7 @@ func (a *App) install(dist, version string) (string, error) {
 
 	// Install new shim version if needed
 	if dist == "binenv" {
-		fmt.Println("executing self install")
+		a.logger.Info().Msg("executing self install")
 		err = a.selfInstall(version)
 		if err != nil {
 			a.logger.Error().Err(err).Msg("unable to set-up myself")
@@ -492,7 +492,6 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 		}
 	}
 
-	fmt.Println()
 	a.saveCache()
 
 	return nil
@@ -520,8 +519,6 @@ func (a *App) Versions(specs ...string) error {
 			a.logger.Error().Err(err).Msgf("unable to list versions for %q", s)
 		}
 	}
-
-	// fmt.Println(aurora.Italic("(reverse: active; bold: installed; light: available)"))
 
 	return nil
 }
@@ -561,11 +558,10 @@ func (a *App) versions(dist string) error {
 			} else {
 				modifier = aurora.Bold(v)
 			}
-			// fmt.Printf("compare %s with %s\n", v, guess)
 		}
 		fmt.Printf("%s ", modifier)
 	}
-	fmt.Println()
+
 	return nil
 }
 
@@ -614,7 +610,7 @@ func (a *App) Execute(args []string) {
 	binary := filepath.Join(bd, version)
 
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
-		fmt.Println(err)
+		a.logger.Fatal().Err(err)
 	}
 }
 
@@ -687,7 +683,7 @@ func (a *App) readDistributions() error {
 }
 
 func (a *App) fetchDistributions(conf string) error {
-	fmt.Printf("updating distribution list\n")
+	a.logger.Info().Msg("updating distribution list")
 	a.logger.Debug().Msgf("retrieving distribution list from %s", distributionsURL)
 	resp, err := http.Get(distributionsURL)
 	if err != nil {
@@ -727,7 +723,6 @@ func (a *App) fetchDistributions(conf string) error {
 }
 
 func (a *App) getBinDirFor(dist string) string {
-	// fmt.Fprintf(os.Stderr, "bindir for %s is %s\n", dist, filepath.Join(a.bindir, "binaries/", dist))
 	return filepath.Join(a.bindir, "binaries/", dist)
 }
 
@@ -812,7 +807,6 @@ func (a *App) GuessBestVersionFor2(dist, dir string, versions []string) (string,
 	deflt := versions[0]
 
 	for {
-		// fmt.Printf("in directory %s\n", dir)
 		if _, err := os.Stat(filepath.Join(dir, ".binenv.lock")); os.IsNotExist(err) {
 			// If in homedir, we found nothing
 			if dir == home {
@@ -820,7 +814,6 @@ func (a *App) GuessBestVersionFor2(dist, dir string, versions []string) (string,
 			}
 			// Move up
 			dir = filepath.Clean(filepath.Join(dir, ".."))
-			// fmt.Printf("new directory %s\n", dir)
 			continue
 		}
 
@@ -915,13 +908,13 @@ func (a *App) loadCache() {
 
 	js, err := ioutil.ReadFile(conf)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to read cache %s: %v\n", conf, err)
+		a.logger.Error().Err(err).Msgf("unable to read cache %s: please check file permissions", conf)
 		return
 	}
 
 	err = json.Unmarshal([]byte(js), &a.cache)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to unmarshal cache %s: %v\n", conf, err)
+		a.logger.Error().Err(err).Msgf(`unable to unmarshal cache %s; try to "rm %s && binenv update"`, conf, conf)
 		return
 	}
 }
@@ -936,13 +929,13 @@ func (a *App) saveCache() {
 
 	js, err := json.Marshal(&a.cache)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to marshal cache: %v\n", err)
+		a.logger.Error().Err(err).Msgf(`unable to marshal cache %s`, conf, conf)
 		return
 	}
 
 	fd, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0640)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "unable to open cache for writing: %v\n", err)
+		a.logger.Error().Err(err).Msgf("unable to write cache %s: please check file permissions", conf)
 		return
 	}
 	defer fd.Close()
@@ -954,7 +947,7 @@ func (a *App) createInstallers() {
 	for k, v := range a.def.Sources {
 		i := v.Install.Factory(v.Install.Binaries)
 		if i == nil {
-			a.logger.Warn().Msgf("warning: '%s' install method for %s is not implemented\n", v.Install.Type, k)
+			a.logger.Warn().Msgf("%q install method for %q is not implemented", v.Install.Type, k)
 			continue
 		}
 		a.installers[k] = i
@@ -974,7 +967,7 @@ func (a *App) createListers() {
 	for k, v := range a.def.Sources {
 		l := v.List.Factory()
 		if l == nil {
-			a.logger.Warn().Msgf("warning: '%s' list method for %s is not implemented\n", v.List.Type, k)
+			a.logger.Warn().Msgf("%q list method for %q is not implemented", v.List.Type, k)
 			continue
 		}
 		a.listers[k] = l
@@ -985,7 +978,7 @@ func (a *App) createFetchers() {
 	for k, v := range a.def.Sources {
 		f := v.Fetch.Factory()
 		if f == nil {
-			a.logger.Warn().Msgf("warning: '%s' fetch method for %s is not implemented\n", v.Fetch.Type, k)
+			a.logger.Warn().Msgf("%q fetch method for %q is not implemented", v.Fetch.Type, k)
 			continue
 		}
 		a.fetchers[k] = f
