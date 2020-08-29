@@ -238,11 +238,12 @@ func (a *App) Install(specs ...string) error {
 
 		v, err := a.install(dist, version)
 		if err != nil && !errors.Is(err, ErrAlreadyInstalled) {
-			a.logger.Error().Err(err).Msgf("unable to install %q version %q", dist, v)
+			a.logger.Error().Err(err).Msgf("unable to install %q (%s)", dist, v)
 			continue
 		}
-
-		a.logger.Info().Msgf("%q version %q installed", dist, v)
+		if err == nil {
+			a.logger.Info().Msgf("%q (%s) installed", dist, v)
+		}
 	}
 	return nil
 }
