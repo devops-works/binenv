@@ -1,6 +1,17 @@
 ---
 sources:
 
+  asciinema-edit:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cirocosta/asciinema-edit/releases
+    fetch:
+      url: https://github.com/cirocosta/asciinema-edit/releases/download/{{ .Version }}/asciinema-edit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - asciinema-edit
+
   awless:
     list:
       type: github-releases
