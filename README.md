@@ -141,6 +141,7 @@ Currently supported distributions are:
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
+- [tflint](https://github.com/terraform-linters/tflint/)
 - [toji](https://github.com/leucos/toji/)
 - [vault](https://www.hashicorp.com/products/vault)
 - [yh](https://github.com/andreazorzetto/yh)
