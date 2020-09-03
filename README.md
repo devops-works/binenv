@@ -138,11 +138,15 @@ Currently supported distributions are:
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
+- [minikube](https://github.com/kubernetes/minikube)
+- [pomerium](https://github.com/pomerium/pomerium)
+- [pomerium-cli](https://github.com/pomerium/pomerium)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
 - [toji](https://github.com/leucos/toji/)
+- [trivy](https://github.com/aquasecurity/trivy)
 - [vault](https://www.hashicorp.com/products/vault)
 - [yh](https://github.com/andreazorzetto/yh)
 
