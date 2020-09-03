@@ -339,6 +339,16 @@ sources:
     install:
       type: direct
 
+  tflint:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/terraform-linters/tflint/releases
+    fetch:
+      url: https://github.com/terraform-linters/tflint/releases/download/v{{ .Version }}/tflint_{{ .OS }}_{{ .Arch }}.zip 
+    install:
+      type: zip
+      binaries:
+        - tflint
 
   toji:
     list:
