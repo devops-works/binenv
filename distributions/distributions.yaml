@@ -285,6 +285,17 @@ sources:
       binaries:
         - kustomize
 
+  minikube:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/minikube/releases
+    fetch: 
+      url: https://github.com/kubernetes/minikube/releases/download/v{{ .Version }}/minikube-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - out/minikube-{{ .OS }}-{{ .Arch }}
+
   pomerium:
     list:
       type: github-releases
