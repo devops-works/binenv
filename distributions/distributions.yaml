@@ -361,6 +361,24 @@ sources:
       binaries:
         - toji
 
+  trivy:
+    map:
+      amd64: 64bit
+      "386": 32bit
+      arm: ARM
+      arm64: ARM64      
+      linux: Linux
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/aquasecurity/trivy/releases
+    fetch:
+      url: https://github.com/aquasecurity/trivy/releases/download/v{{ .Version }}/trivy_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - trivy
+
   vault:
     list:
       type: github-releases
