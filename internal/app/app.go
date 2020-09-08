@@ -418,6 +418,11 @@ func (a *App) uninstall(dist, version string) error {
 		}
 	}
 
+	lnk := filepath.Join(a.bindir, dist)
+	if err = os.Remove(lnk); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -929,7 +934,7 @@ func (a *App) saveCache() {
 
 	js, err := json.Marshal(&a.cache)
 	if err != nil {
-		a.logger.Error().Err(err).Msgf(`unable to marshal cache %s`, conf, conf)
+		a.logger.Error().Err(err).Msgf("unable to marshal cache %q", conf)
 		return
 	}
 
