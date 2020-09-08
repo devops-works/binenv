@@ -354,7 +354,7 @@ func (a *App) Uninstall(specs ...string) error {
 	// - an even count of arguments (distribution / version pairs)
 
 	if len(specs)%2 != 0 && len(specs) > 1 {
-		a.logger.Fatal().Msg("invalid number of arguments (must have distribution and version pairs")
+		a.logger.Fatal().Msg("invalid number of arguments (must have distribution and version pairs)")
 	}
 
 	for i := 0; i < len(specs); i += 2 {
