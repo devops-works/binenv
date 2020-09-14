@@ -285,6 +285,28 @@ sources:
       binaries:
         - kustomize
 
+  logcli:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/loki/releases
+    fetch:
+      url: https://github.com/grafana/loki/releases/download/v{{ .Version }}/logcli-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - "logcli-{{ .OS }}-{{ .Arch }}"
+
+  loki:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/loki/releases
+    fetch:
+      url: https://github.com/grafana/loki/releases/download/v{{ .Version }}/loki-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - "loki-{{ .OS }}-{{ .Arch }}"
+
   minikube:
     list:
       type: github-releases
@@ -317,6 +339,17 @@ sources:
       type: tgz
       binaries:
         - pomerium-cli
+
+  promtail:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/loki/releases
+    fetch:
+      url: https://github.com/grafana/loki/releases/download/v{{ .Version }}/promtail-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - "promtail-{{ .OS }}-{{ .Arch }}"
 
   rancher:
     list:
