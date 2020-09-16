@@ -340,6 +340,22 @@ sources:
       binaries:
         - pomerium-cli
 
+  popeye:
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/derailed/popeye/releases
+    fetch:
+      url: https://github.com/derailed/popeye/releases/download/v{{ .Version }}/popeye_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - popeye
+
   promtail:
     list:
       type: github-releases
