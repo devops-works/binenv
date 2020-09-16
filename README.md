@@ -141,6 +141,7 @@ Currently supported distributions are:
 - [minikube](https://github.com/kubernetes/minikube)
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)
+- [popeye](https://github.com/derailed/popeye)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
