@@ -547,7 +547,7 @@ func (a *App) freeze(dist string) error {
 	a.logger.Debug().Str("guessed", guess).Msgf("guessed version for dist %s", dist)
 
 	if guess != "" {
-		fmt.Printf("# %s\n%s==%s\n", why, dist, guess)
+		fmt.Printf("#%s: %s\n%s=%s\n", dist, why, dist, guess)
 	}
 
 	return nil
