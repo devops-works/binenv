@@ -272,6 +272,24 @@ vault: 1.5.3 1.5.2 1.5.1 1.5.0 1.5.0-rc 1.4.6 1.4.5 1.4.4 1.4.3 1.4.2 1.4.1 1.4.
 
 (the output above does not show bold or reverse terminal output)
 
+#### Freezing versions
+
+When the `versions` command is invoked with the `--freeze` option, it will
+write a `.binenv.lock` style file on stdout.
+
+This way you can "lock" the dependencies for your project just by issuing:
+
+```
+cd myproject
+binenv versions --freeze > .binenv.lock
+```
+
+You can the commit this file to your project so everyone will use the same
+distributions versions when in this repository. See [Selecting Versions](#selecting-versions) for more information on this file.
+
+Note that currently selected versions for _all_ distributions will be
+outputted. You might want to trim stuff you do not use from the file.
+
 ### Uninstalling versions
 
 If you need to clean up a bit, you can uninstall a specific version, or all

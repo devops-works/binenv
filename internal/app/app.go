@@ -504,7 +504,7 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 }
 
 // Versions fetches available versions for the application
-func (a *App) Versions(specs ...string) error {
+func (a *App) Versions(freezemode bool, specs ...string) error {
 	if len(specs) == 0 {
 		for k := range a.cache {
 			specs = append(specs, k)
@@ -513,17 +513,41 @@ func (a *App) Versions(specs ...string) error {
 
 	sort.Strings(specs)
 
-	fmt.Printf("# Most recent first; legend: %s, %s, %s\n",
-		aurora.Reverse("active"),
-		aurora.Bold("installed"),
-		aurora.Faint("available"),
-	)
+	if !freezemode {
+		fmt.Printf("# Most recent first; legend: %s, %s, %s\n",
+			aurora.Reverse("active"),
+			aurora.Bold("installed"),
+			aurora.Faint("available"),
+		)
+	}
 
+	var err error
 	for _, s := range specs {
-		err := a.versions(s)
+		if !freezemode {
+			err = a.versions(s)
+		} else {
+			err = a.freeze(s)
+		}
 		if err != nil {
 			a.logger.Error().Err(err).Msgf("unable to list versions for %q", s)
 		}
+	}
+
+	return nil
+}
+
+func (a *App) freeze(dist string) error {
+	curdir, err := os.Getwd()
+	if err != nil {
+		return fmt.Errorf("unable to determine current directory: %v", err)
+	}
+	installed := a.GetInstalledVersionsFor(dist)
+	a.logger.Debug().Strs("versions", installed).Msgf("installed versions for %s", dist)
+	guess, why := a.GuessBestVersionFor(dist, curdir, "", installed)
+	a.logger.Debug().Str("guessed", guess).Msgf("guessed version for dist %s", dist)
+
+	if guess != "" {
+		fmt.Printf("# %s\n%s==%s\n", why, dist, guess)
 	}
 
 	return nil
@@ -540,18 +564,6 @@ func (a *App) versions(dist string) error {
 	a.logger.Debug().Strs("versions", installed).Msgf("installed versions for %s", dist)
 	guess, why := a.GuessBestVersionFor(dist, curdir, "", installed)
 	a.logger.Debug().Str("guessed", guess).Msgf("guessed version for dist %s", dist)
-
-	// present := []string{}
-	// active := ""
-
-	// for _, v := range available {
-	// 	if stringInSlice(v, installed) {
-	// 		present = append(present, v)
-	// 		if v == guess {
-	// 			active = v
-	// 		}
-	// 	}
-	// }
 
 	fmt.Printf("%s: ", dist)
 
