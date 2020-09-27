@@ -93,6 +93,15 @@ sources:
       binaries:
         - dw-query-digest
 
+  gitjacker:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/liamg/gitjacker/releases
+    fetch:
+      url: https://github.com/liamg/gitjacker/releases/download/v{{ .Version }}/gitjacker-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   goreleaser:
     map:
       amd64: x86_64
