@@ -139,6 +139,7 @@ Currently supported distributions are:
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
 - [minikube](https://github.com/kubernetes/minikube)
+- [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)
 - [popeye](https://github.com/derailed/popeye)
