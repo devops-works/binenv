@@ -32,7 +32,7 @@ If not distribution is specified, versions for all distributions will be updated
 		},
 	}
 
-	cmd.Flags().BoolVarP(&definitionsOnly, "definitions", "d", false, "Update only distributions definitions")
+	cmd.Flags().BoolVarP(&definitionsOnly, "distributions", "d", false, "Update only distributions definitions")
 	cmd.Flags().BoolVarP(&definitionsAlso, "all", "a", false, "Update distributions definitions and distributions versions")
 	return cmd
 }

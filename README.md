@@ -202,14 +202,13 @@ time to time.
 This list is usually located in your home directory under
 `$XDG_CONFIG/distributions.yaml` or `~/.config/binenv/distribution.yaml`).
 
-To update only definitions:
+To update only distributions:
 
 ```bash
-binenv update --definitions # or -d
+binenv update --distributions # or -d
 ```
 
-
-To update definitions **and** distributions versions:
+To update distributions **and** their versions:
 
 ```bash
 binenv update --all # or -a
