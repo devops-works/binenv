@@ -117,6 +117,7 @@ This is the whole point.
 
 Currently supported distributions are:
 
+- [asciinema-edit](https://github.com/cirocosta/asciinema-edit)
 - [awless](https://github.com/wallix/awless)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)
 - [binenv](https://github.com/devops-works/binenv)
@@ -124,6 +125,8 @@ Currently supported distributions are:
 - [consul](https://www.consul.io/)
 - [docker-compose](https://docs.docker.com/compose/)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
+- [gitjacker](https://github.com/liamg/gitjacker)
+- [goreleaser](https://github.com/goreleaser/goreleaser)
 - [hadolint](https://github.com/hadolint/hadolint)
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
@@ -138,11 +141,15 @@ Currently supported distributions are:
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
+- [kustomize](https://github.com/kubernetes-sigs/kustomize)
+- [logcli](https://github.com/grafana/loki/)
+- [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
 - [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)
 - [popeye](https://github.com/derailed/popeye)
+- [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
