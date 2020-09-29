@@ -327,6 +327,17 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  pluto:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/FairwindsOps/pluto/releases
+    fetch:
+      url: https://github.com/FairwindsOps/pluto/releases/download/v{{ .Version }}/pluto_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pluto
+
   pomerium:
     list:
       type: github-releases
