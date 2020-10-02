@@ -157,6 +157,7 @@ Currently supported distributions are:
 - [toji](https://github.com/leucos/toji/)
 - [trivy](https://github.com/aquasecurity/trivy)
 - [vault](https://www.hashicorp.com/products/vault)
+- [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)
 
 The always up-to-date list is
