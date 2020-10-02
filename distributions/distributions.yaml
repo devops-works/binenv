@@ -399,6 +399,15 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  tanka:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/tanka/releases
+    fetch:
+      url: https://github.com/grafana/tanka/releases/download/v{{ .Version }}/tk-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   terraform:
     list:
       type: github-releases
