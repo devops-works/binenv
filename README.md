@@ -127,6 +127,7 @@ Currently supported distributions are:
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [gitjacker](https://github.com/liamg/gitjacker)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
+- [grizzly](https://github.com/grafana/grizzly)
 - [hadolint](https://github.com/hadolint/hadolint)
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)

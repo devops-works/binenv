@@ -118,6 +118,15 @@ sources:
       binaries:
         - goreleaser
 
+  grizzly:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/grizzly/releases
+    fetch:
+      url: https://github.com/grafana/grizzly/releases/download/v0.0.1/grr-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   hey:
     list:
       type: github-releases
