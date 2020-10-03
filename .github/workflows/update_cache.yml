@@ -1,6 +1,6 @@
 name: Update cache
 
-on: repository_dispatch
+on: push
 
 jobs:
   resources:
