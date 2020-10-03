@@ -29,7 +29,7 @@ jobs:
         run: ./bin/binenv update
 
       - name: Copy cache
-        run: cp ~/.config/binenv/cache.json distributions/cache.json
+        run: cat ~/.config/binenv/cache.json | jq > distributions/cache.json
 
       - name: Update cache
         uses: test-room-7/action-update-file@v1
