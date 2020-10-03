@@ -1,0 +1,32 @@
+name: Update cache
+
+on: repository_dispatch
+
+jobs:
+  resources:
+    name: Update cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+
+      - name: Set up Go 1.15
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15
+        id: go
+
+      - name: Build binary
+        run: make all
+
+      - name: Create cache
+        run: ./bin/binenv update
+
+      - name: Update cache
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: ~/.config/binenv/cache.json
+          commit-msg: Update cache
+          github-token: ${{ secrets.GITHUB_TOKEN }}
