@@ -14,7 +14,8 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
 
       - name: Set up Go 1.15
         uses: actions/setup-go@v2
@@ -29,7 +30,7 @@ jobs:
         run: ./bin/binenv update
 
       - name: Copy cache
-        run: cat ~/.config/binenv/cache.json | jq > distributions/cache.json
+        run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
 
       - name: Update cache
         uses: test-room-7/action-update-file@v1
