@@ -180,7 +180,7 @@ to update the version list (usually located in `$XDG_CONFIG/cache.json` or
 This is done automatically when invoking `binenv update`.
 
 Without arguments, il will check for available versions for _all_ distributions
-(watch out for Github API rate limits).
+(watch out for Github API rate limits, [but see below](#updating-versions-from-generated-cache)).
 
 With a distribution passed as an argument (e.g. `binenv update kubectl`), it
 will only update installable versions for `kubectl`.
@@ -192,7 +192,15 @@ caution.
 `binenv` will stop updating distributions when you only have 4 unauthenticated
 API requests left.
 
-There is currently no support for tokens.
+There is currently no support for Github tokens.
+
+#### Updating versions from generated cache
+
+To avoid hitting the Github unauthenticated rate limit, `binenv` can fetch a nightly generated versions cache from github using the `--cache` flag:
+
+```bash
+binenv update --cache # or -c
+```
 
 #### Update available distributions
 

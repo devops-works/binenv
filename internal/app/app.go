@@ -33,6 +33,7 @@ import (
 )
 
 const distributionsURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
+const cacheURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/cache.json"
 
 // App implements the core logic
 type App struct {
@@ -437,7 +438,7 @@ func (a *App) Local(distribution, version string) error {
 }
 
 // Update fetches catalog of applications and updates available versions
-func (a *App) Update(definitions, all bool, which ...string) error {
+func (a *App) Update(definitions, all bool, cache bool, which ...string) error {
 	if definitions || all {
 		conf, err := getDistributionsFilePath()
 		if err != nil {
@@ -465,7 +466,45 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 	}
 
 	a.logger.Debug().Msgf("updating %d distributions", len(which))
+	if cache {
+		err = a.updateGithub()
+	} else {
+		err = a.updateLocally(which...)
+	}
+	if err != nil {
+		return err
+	}
 
+	a.saveCache()
+
+	return nil
+}
+
+func (a *App) updateGithub() error {
+	a.logger.Info().Msgf("retrieving distribution list from %s", cacheURL)
+	resp, err := http.Get(cacheURL)
+	if err != nil {
+		return err
+	}
+
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal([]byte(body), &a.cache)
+	if err != nil {
+		a.logger.Error().Err(err).Msg(`unable to unmarshal Github cache; try to "binenv update" locally`)
+		return err
+	}
+
+	a.logger.Info().Msgf("fetched updates for %d distributions", len(a.cache))
+
+	return nil
+}
+
+func (a *App) updateLocally(which ...string) error {
 	bar := progressbar.Default(int64(len(which)), "updating distributions")
 
 	for _, d := range which {
@@ -497,9 +536,6 @@ func (a *App) Update(definitions, all bool, which ...string) error {
 			a.cache[d] = append(a.cache[d], gov.Must(gov.NewVersion(v)).String())
 		}
 	}
-
-	a.saveCache()
-
 	return nil
 }
 
