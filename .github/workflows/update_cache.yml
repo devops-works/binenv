@@ -29,11 +29,11 @@ jobs:
         run: ./bin/binenv update
 
       - name: Copy cache
-        run: cp ~/.config/binenv/cache.json .
+        run: cp ~/.config/binenv/cache.json distributions/cache.json
 
       - name: Update cache
         uses: test-room-7/action-update-file@v1
         with:
-          file-path: cache.json
+          file-path: distributions/cache.json
           commit-msg: Update cache
           github-token: ${{ secrets.GITHUB_TOKEN }}
