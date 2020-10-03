@@ -489,6 +489,18 @@ sources:
       binaries:
         - vault
 
+  vmctl:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/VictoriaMetrics/vmctl/releases
+    fetch:
+      url: https://github.com/pomerium/pomerium/releases/download/v{{ .Version }}/pomerium-{{ .OS }}-{{ .Arch }}.itar.gz
+      url: https://github.com/VictoriaMetrics/vmctl/releases/download/{{ .Version }}/vmctl-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - vmctl-{{ .OS }}-{{ .Arch }}
+
   yh:
     map:
       darwin: osx
