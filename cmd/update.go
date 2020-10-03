@@ -7,10 +7,10 @@ import (
 
 // localCmd represents the local command
 func updateCmd(a *app.App) *cobra.Command {
-	var definitionsOnly, definitionsAlso bool
+	var distributionsOnly, distributionsAlso, fromCache bool
 
 	cmd := &cobra.Command{
-		Use:   "update",
+		Use:   "update [--all|--distributions] [--cache]",
 		Short: "Update available software distributions",
 		Long: `Available versions listed distribution will be updated.
 If not distribution is specified, versions for all distributions will be updated.`,
@@ -19,10 +19,10 @@ If not distribution is specified, versions for all distributions will be updated
 			a.SetVerbose(verbose)
 
 			if len(args) >= 1 {
-				a.Update(definitionsOnly, definitionsAlso, args...)
+				a.Update(distributionsOnly, distributionsAlso, fromCache, args...)
 				return
 			}
-			a.Update(definitionsOnly, definitionsAlso)
+			a.Update(distributionsOnly, distributionsAlso, fromCache)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			// Remove already selected distributions from completion
@@ -32,8 +32,9 @@ If not distribution is specified, versions for all distributions will be updated
 		},
 	}
 
-	cmd.Flags().BoolVarP(&definitionsOnly, "distributions", "d", false, "Update only distributions definitions")
-	cmd.Flags().BoolVarP(&definitionsAlso, "all", "a", false, "Update distributions definitions and distributions versions")
+	cmd.Flags().BoolVarP(&distributionsOnly, "distributions", "d", false, "Update only distributions")
+	cmd.Flags().BoolVarP(&distributionsAlso, "all", "a", false, "Update distributions and distributions versions")
+	cmd.Flags().BoolVarP(&fromCache, "cache", "c", false, "Distributions versions will be updated from github cache")
 	return cmd
 }
 
