@@ -151,6 +151,7 @@ Currently supported distributions are:
 - [popeye](https://github.com/derailed/popeye)
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
+- [tanka](https://github.com/grafana/tanka)
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
