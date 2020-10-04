@@ -40,11 +40,11 @@ jobs:
 
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
-        if: steps.compare.outputs.exit_code != 0
+        if: ${{ failure() }}
 
       - name: Update cache
         uses: test-room-7/action-update-file@v1
-        if: steps.compare.outputs.exit_code != 0
+        if: ${{ failure() }}
         with:
           file-path: distributions/cache.json
           commit-msg: Update cache
