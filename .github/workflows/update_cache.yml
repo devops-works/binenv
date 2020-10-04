@@ -31,18 +31,21 @@ jobs:
       - name: Create cache
         run: ./bin/binenv update
 
+      - name: Format caches
+        run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.config/binenv/cache.json > new.json
+
+      - name: Compare caches
+        id: compare
+        run: diff dist.json new.json
+
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
+        if: steps.compare.outputs.exit_code != 0
 
-      - name: Uploads artifact
-        uses: actions/upload-artifact@v2
+      - name: Update cache
+        uses: test-room-7/action-update-file@v1
+        if: steps.compare.outputs.exit_code != 0
         with:
-          name: cache
-          path: distributions/cache.json
-
-      # - name: Update cache
-      #   uses: test-room-7/action-update-file@v1
-      #   with:
-      #     file-path: distributions/cache.json
-      #     commit-msg: Update cache
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+          file-path: distributions/cache.json
+          commit-msg: Update cache
+          github-token: ${{ secrets.GITHUB_TOKEN }}
