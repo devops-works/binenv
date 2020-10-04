@@ -68,6 +68,17 @@ sources:
       binaries:
         - consul
 
+  dive:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/wagoodman/dive/releases
+    fetch:
+      url: https://github.com/wagoodman/dive/releases/download/v{{ .Version }}/dive_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dive
+
   docker-compose:
     map:
       amd64: x86_64
