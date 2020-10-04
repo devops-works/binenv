@@ -37,7 +37,7 @@ jobs:
       - name: Compare caches
         id: compare
         run: |
-          echo ::set-env name=DIFF::$(diff dist.json new.json; echo $?')
+          echo ::set-env name=DIFF::$(diff dist.json new.json; echo $?)
         # run: diff dist.json new.json
 
       - name: Copy cache
