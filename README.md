@@ -124,6 +124,7 @@ Currently supported distributions are:
 - [binenv](https://github.com/devops-works/binenv)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
+- [dive](https://github.com/wagoodman/dive/)
 - [docker-compose](https://docs.docker.com/compose/)
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
