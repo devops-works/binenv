@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - develop
   schedule:
     - cron: '15 0 * * *'
 
@@ -33,9 +34,15 @@ jobs:
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
 
-      - name: Update cache
-        uses: test-room-7/action-update-file@v1
+      - name: Uploads artifact
+        uses: actions/upload-artifact@v2
         with:
-          file-path: distributions/cache.json
-          commit-msg: Update cache
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: cache
+          path: distributions/cache.json
+
+      # - name: Update cache
+      #   uses: test-room-7/action-update-file@v1
+      #   with:
+      #     file-path: distributions/cache.json
+      #     commit-msg: Update cache
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
