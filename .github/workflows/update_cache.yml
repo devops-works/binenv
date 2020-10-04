@@ -36,15 +36,17 @@ jobs:
 
       - name: Compare caches
         id: compare
-        run: diff dist.json new.json
+        run: |
+          echo ::set-env name=DIFF::$(diff dist.json new.json; echo $?')
+        # run: diff dist.json new.json
 
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
-        if: ${{ failure() }}
+        if: ${{ env.DIFF != 0 }}
 
       - name: Update cache
         uses: test-room-7/action-update-file@v1
-        if: ${{ failure() }}
+        if: ${{ env.DIFF != 0 }}
         with:
           file-path: distributions/cache.json
           commit-msg: Update cache
