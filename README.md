@@ -124,6 +124,7 @@ Currently supported distributions are:
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
 - [docker-compose](https://docs.docker.com/compose/)
+- [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [gitjacker](https://github.com/liamg/gitjacker)
 - [goreleaser](https://github.com/goreleaser/goreleaser)

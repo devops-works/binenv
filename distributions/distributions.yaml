@@ -82,6 +82,19 @@ sources:
     install:
       type: direct
 
+  duf:
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/muesli/duf/releases
+    fetch:
+      url: https://github.com/muesli/duf/releases/download/v{{ .Version }}/duf_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - duf
+
   dw-query-digest:
     list:
       type: github-releases
