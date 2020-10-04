@@ -37,7 +37,8 @@ jobs:
       - name: Compare caches
         id: compare
         run: diff dist.json new.json
-
+        continue-on-error: true
+        
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
         if: steps.compare.outputs.exit_code != 0
