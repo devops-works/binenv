@@ -533,7 +533,12 @@ func (a *App) updateLocally(which ...string) error {
 
 		// Convert versions to canonical form
 		for _, v := range versions {
-			a.cache[d] = append(a.cache[d], gov.Must(gov.NewVersion(v)).String())
+			version, err := gov.NewVersion(v)
+			if err != nil {
+				a.logger.Warn().Err(err).Msgf("ignoring invalid version for %q", d)
+				continue
+			}
+			a.cache[d] = append(a.cache[d], version.String())
 		}
 	}
 	return nil
