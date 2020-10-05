@@ -162,6 +162,15 @@ sources:
     install:
       type: direct
 
+  gws:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/StreakyCobra/gws/releases
+    fetch:
+      url: https://github.com/StreakyCobra/gws/releases/download/{{ .Version }}/gws-{{ .Version }}
+    install:
+      type: direct
+
   hey:
     list:
       type: github-releases
