@@ -150,6 +150,7 @@ Currently supported distributions are:
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
+- [packer](https://www.packer.io)
 - [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)
