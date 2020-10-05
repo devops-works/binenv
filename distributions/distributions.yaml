@@ -382,6 +382,17 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  packer:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hashicorp/packer/releases
+    fetch:
+      url: https://releases.hashicorp.com/packer/{{ .Version }}/packer_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - packer
+
   pluto:
     list:
       type: github-releases
