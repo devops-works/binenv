@@ -29,11 +29,12 @@ func RootCmd() *cobra.Command {
 If your directory has a '.binenv.lock', proper versions will always be
 selected.`,
 		SilenceUsage: true,
-	}
-
-	// Run as a shim for installed distributions
-	if !strings.HasSuffix(os.Args[0], "binenv") {
-		a.Execute(os.Args)
+		Run: func(cmd *cobra.Command, args []string) {
+			// Run as a shim for installed distributions
+			if !strings.HasSuffix(os.Args[0], "binenv") {
+				a.Execute(os.Args)
+			}
+		},
 	}
 
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")

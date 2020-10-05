@@ -664,7 +664,7 @@ func (a *App) Execute(args []string) {
 	binary := filepath.Join(bd, version)
 
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
-		a.logger.Fatal().Err(err)
+		a.logger.Fatal().Err(err).Msgf("unable to execute %s", dist)
 	}
 }
 
