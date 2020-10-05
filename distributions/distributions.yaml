@@ -232,7 +232,9 @@ sources:
     fetch:
       url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - hugo
 
   k9s:
     map:
