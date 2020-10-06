@@ -392,7 +392,7 @@ sources:
       exclude: otohttp
       url: https://api.github.com/repos/pacedotdev/oto/releases
     fetch:
-      url: https://github.com/pacedotdev/oto/releases/download/v{{ .Version }}/oto_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/pacedotdev/oto/releases/download/v{{ .Version }}/oto_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
