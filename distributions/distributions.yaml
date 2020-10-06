@@ -515,6 +515,17 @@ sources:
       type: tgz
       binaries:
         - toji
+  
+  traefik:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/traefik/traefik/releases
+    fetch:
+      url: https://github.com/traefik/traefik/releases/download/v{{ .Version }}/traefik_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - traefik
 
   trivy:
     map:
