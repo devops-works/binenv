@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -34,6 +35,7 @@ type ghReleaseResponse []struct {
 type GithubRelease struct {
 	url         string
 	prefix      string
+	exclude     string
 	versionFrom string
 }
 
@@ -64,17 +66,34 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		return nil, err
 	}
 
+	var re *regexp.Regexp
+	if g.exclude != "" {
+		re, err = regexp.Compile(g.exclude)
+		if err != nil {
+			logger.Error().Err(err).Msgf("error compiling regular expression %q", g.exclude)
+			return nil, err
+		}
+	}
+
 	versions := []string{}
+
 	for _, v := range gr {
 		sv := v.TagName
 		switch g.versionFrom {
 		case "name":
 			sv = v.Name
 		}
+
+		if re != nil && re.Match([]byte(sv)) {
+			logger.Debug().Msgf("skipping version %q excluded by exclude regexp %q", sv, g.exclude)
+			continue
+		}
+
 		if g.prefix == "" {
 			versions = append(versions, sv)
 			continue
 		}
+
 		if strings.HasPrefix(sv, g.prefix) {
 			cleanv := strings.TrimPrefix(sv, g.prefix)
 			versions = append(versions, cleanv)

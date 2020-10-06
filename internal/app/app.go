@@ -511,12 +511,15 @@ func (a *App) updateLocally(which ...string) error {
 		bar.Add(1)
 		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 		defer cancel()
+
+		subctx := a.logger.WithContext(ctx)
+
 		a.logger.Debug().Msgf("feching available versions for %q", d)
 		if _, ok := a.listers[d]; !ok {
 			a.logger.Error().Msgf("no distribution named %q", d)
 			continue
 		}
-		versions, err := a.listers[d].Get(ctx)
+		versions, err := a.listers[d].Get(subctx)
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
 			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
 			return err

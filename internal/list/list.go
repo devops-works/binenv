@@ -13,6 +13,7 @@ type Lister interface {
 type List struct {
 	Type        string `yaml:"type"`
 	Prefix      string `yaml:"prefix"`
+	Exclude     string `yaml:"exclude"` // exclude versions containing this regex
 	VersionFrom string `yaml:"version_from"`
 	URL         string `yaml:"url"`
 	Versions    []string
@@ -26,6 +27,7 @@ func (l List) Factory() Lister {
 			url:         l.URL,
 			prefix:      l.Prefix,
 			versionFrom: l.VersionFrom,
+			exclude:     l.Exclude,
 		}
 	case "static":
 		return Static{

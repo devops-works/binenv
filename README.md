@@ -2,6 +2,40 @@
 
 The last binary you'll ever install.
 
+## TOC
+
+- [TOC](#toc)
+- [What](#what)
+- [Quick start](#quick-start)
+  - [Linux (bash/zsh)](#linux-bashzsh)
+  - [MacOS (with bash)](#macos-with-bash)
+  - [Windows](#windows)
+- [Install](#install)
+- [Updating binenv](#updating-binenv)
+- [Supported "distributions"](#supported-distributions)
+- [Usage](#usage)
+    [Updating available distributions versions](#updating-available-distributions-versions)
+    - [Updating versions from generated cache](#updating-versions-from-generated-cache)
+    - [Update available distributions](#update-available-distributions)
+    - [Examples](#examples)
+  - [Installing new versions](#installing-new-versions)
+    - [Examples](#examples-1)
+  - [Listing versions](#listing-versions)
+    - [Examples](#examples-2)
+    - [Freezing versions](#freezing-versions)
+  - [Uninstalling versions](#uninstalling-versions)
+    - [Examples](#examples-3)
+  - [Completion](#completion)
+- [Selecting versions](#selecting-versions)
+  - [Version selection process](#version-selection-process)
+  - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
+    - [Example](#example)
+- [Removing binenv stuff](#removing-binenv-stuff)
+- [Status](#status)
+- [Distributions file format](#distributions-file-format)
+- [Contributions](#contributions)
+- [Licence](#licence)
+
 ## What
 
 `binenv` will help you download, install and manage the binaries programs
@@ -150,6 +184,7 @@ Currently supported distributions are:
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
+- [oto](https://github.com/pacedotdev/oto)
 - [packer](https://www.packer.io)
 - [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)
@@ -426,6 +461,10 @@ This is really _super alpha_ and has only be tested on Linux & MacOS. YMMV on
 other platforms.
 
 There are **no tests**. I will probably go to hell for this.
+
+## Distributions file format
+
+TBD
 
 ## Contributions
 
