@@ -162,6 +162,7 @@ Currently supported distributions are:
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
 - [toji](https://github.com/leucos/toji/)
+- [traefik](https://doc.traefik.io/traefik/)
 - [trivy](https://github.com/aquasecurity/trivy)
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
