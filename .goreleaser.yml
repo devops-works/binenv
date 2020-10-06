@@ -35,3 +35,4 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+      - '^Update cache'

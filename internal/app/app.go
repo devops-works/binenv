@@ -28,12 +28,16 @@ import (
 
 	"github.com/logrusorgru/aurora"
 
-	// "github.com/devops-works/binenv/internal/log"
 	"github.com/devops-works/binenv/internal/mapping"
 )
 
+// Where to fetch distribution list and cached version
+// Distributions are fetched from master
+// Cache is fetched from develop
+// Since master is always behind (or at) develop, it ensures we always have
+// cache for listed entries
 const distributionsURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
-const cacheURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/cache.json"
+const cacheURL string = "https://raw.githubusercontent.com/devops-works/binenv/develop/distributions/cache.json"
 
 // App implements the core logic
 type App struct {
