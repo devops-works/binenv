@@ -163,6 +163,7 @@ Currently supported distributions are:
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [gitjacker](https://github.com/liamg/gitjacker)
+- [glow](https://github.com/charmbracelet/glow)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [grizzly](https://github.com/grafana/grizzly)
 - [gws](https://github.com/StreakyCobra/gws)
