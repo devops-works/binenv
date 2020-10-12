@@ -236,6 +236,21 @@ sources:
       binaries:
         - hugo
 
+  k6:
+    map:
+      amd64: "64"
+      "386": "32"
+      darwin: mac
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/loadimpact/k6/releases
+    fetch:
+      url: https://github.com/loadimpact/k6/releases/download/v{{ .Version }}/k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}/k6
+
   k9s:
     map:
       amd64: x86_64

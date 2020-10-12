@@ -171,6 +171,7 @@ Currently supported distributions are:
 - [helmfile](https://github.com/roboll/helmfile)
 - [hey](https://github.com/rakyll/hey)
 - [hugo](https://gohugo.io/)
+- [k6](https://github.com/loadimpact/k6)
 - [k9s](https://k9scli.io/)
 - [ketall](https://github.com/corneliusweig/ketall)
 - [kind](https://github.com/kubernetes-sigs/kind)
