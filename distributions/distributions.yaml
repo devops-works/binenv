@@ -150,6 +150,18 @@ sources:
       type: tgz
       binaries:
         - glow
+  gocloc:
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hhatto/gocloc/releases
+    fetch:
+      url: https://github.com/hhatto/gocloc/releases/download/v{{ .Version }}/gocloc_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gocloc
 
   goreleaser:
     map:

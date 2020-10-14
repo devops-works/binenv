@@ -164,6 +164,7 @@ Currently supported distributions are:
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [gitjacker](https://github.com/liamg/gitjacker)
 - [glow](https://github.com/charmbracelet/glow)
+- [gocloc](https://github.com/hhatto/gocloc)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [grizzly](https://github.com/grafana/grizzly)
 - [gws](https://github.com/StreakyCobra/gws)
