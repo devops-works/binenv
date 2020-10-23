@@ -16,6 +16,9 @@ type Args struct {
 	OS           string
 	Arch         string
 	Version      string
+	VersionMajor string
+	VersionMinor string
+	VersionPatch string
 	NakedVersion string
 	ExeExtension string
 }
@@ -35,6 +38,9 @@ func New(v string, mapper mapping.Mapper) Args {
 		Arch:         rarch,
 		OS:           ros,
 		Version:      v,
+		VersionMajor: strings.Split(v, ".")[0],
+		VersionMinor: strings.Split(v, ".")[1],
+		VersionPatch: strings.Split(v, ".")[2],
 		NakedVersion: gov.Must(gov.NewVersion(v)).String(),
 	}
 

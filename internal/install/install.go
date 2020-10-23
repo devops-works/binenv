@@ -33,6 +33,10 @@ func (i Install) Factory(filters []string) Installer {
 		return Tgz{filters: filters}
 	case "gzip":
 		return GZip{}
+	case "xz":
+		return XZ{}
+	case "tarxz":
+		return TarXZ{filters: filters}
 	}
 	return nil
 }
