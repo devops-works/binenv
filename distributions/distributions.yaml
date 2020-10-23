@@ -343,6 +343,17 @@ sources:
       binaries:
         - kube-bench
 
+  kubeconf:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mumoshu/kubeconf/releases
+    fetch:
+      url: https://github.com/mumoshu/kubeconf/releases/download/v{{ .Version }}/kubeconf_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeconf
+
   kubectl:
     list:
       type: github-releases

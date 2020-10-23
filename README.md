@@ -180,6 +180,7 @@ Currently supported distributions are:
 - [krew](https://github.com/kubernetes-sigs/krew)
 - [kops](https://kops.sigs.k8s.io/)
 - [kube-bench](https://github.com/aquasecurity/kube-bench)
+- [kubeconf](https://github.com/mumoshu/kubeconf)
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
