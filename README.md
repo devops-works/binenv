@@ -203,6 +203,7 @@ Currently supported distributions are:
 - [toji](https://github.com/leucos/toji/)
 - [traefik](https://doc.traefik.io/traefik/)
 - [trivy](https://github.com/aquasecurity/trivy)
+- [upx](https://github.com/upx/upx)
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)

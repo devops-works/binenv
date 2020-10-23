@@ -613,6 +613,19 @@ sources:
       binaries:
         - trivy
 
+  upx:
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/upx/upx/tags
+    fetch:
+      filters: filters
+      url: https://github.com/upx/upx/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/upx-{{ .VersionMajor }}.{{ .VersionMinor }}-{{ .Arch }}_{{ .OS }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - upx
+
   vault:
     list:
       type: github-releases
