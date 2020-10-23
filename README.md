@@ -156,6 +156,7 @@ Currently supported distributions are:
 - [awless](https://github.com/wallix/awless)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)
 - [binenv](https://github.com/devops-works/binenv)
+- [bomberman](https://github.com/c1982/bomberman)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
 - [dive](https://github.com/wagoodman/dive/)

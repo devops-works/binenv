@@ -59,6 +59,15 @@ sources:
     install:
       type: direct
 
+  bomberman:
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/c1982/bomberman/releases
+    fetch:
+      url: https://github.com/c1982/bomberman/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/bomberman_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   cli53:
     list:
       type: github-releases
@@ -200,7 +209,7 @@ sources:
   hey:
     list:
       type: github-releases
-      url: https://api.github.com/repos/c1982/bomberman/releases
+      url: https://api.github.com/repos/rakyll/hey/releases
     fetch:
       url: https://storage.googleapis.com/hey-release/hey_{{ .OS }}_{{ .Arch }}
     install:
