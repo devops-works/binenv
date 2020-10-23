@@ -189,6 +189,7 @@ Currently supported distributions are:
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
+- [onefetch](https://github.com/o2sh/onefetch/)
 - [oto](https://github.com/pacedotdev/oto)
 - [packer](https://www.packer.io)
 - [pluto](https://github.com/FairwindsOps/pluto)

@@ -443,6 +443,21 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  onefetch:
+    map:
+      windows: win
+      darwin: mac
+    list:
+      type: github-releases
+      exclude: otohttp
+      url: https://api.github.com/repos/o2sh/onefetch/releases
+    fetch:
+      url: https://github.com/o2sh/onefetch/releases/download/v{{ .Version }}/onefetch-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - onefetch
+
   oto:
     map:
       amd64: x86_64
