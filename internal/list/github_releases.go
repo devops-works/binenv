@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -43,7 +44,18 @@ type GithubRelease struct {
 func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
 
-	resp, err := http.Get(g.url)
+	client := &http.Client{}
+
+	req, err := http.NewRequest(http.MethodGet, g.url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if token := os.Getenv("GITHUB_TOKEN"); token != "" {
+		req.Header.Set("Authorization", "token "+token)
+	}
+
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}

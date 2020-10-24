@@ -238,16 +238,31 @@ hours). So you should update all distributions (e.g. `binenv update`) with
 caution.
 
 `binenv` will stop updating distributions when you only have 4 unauthenticated
-API requests left.
+API requests left so you can [update from generated cache](#updating-versions-from-generated-cache).
 
-There is currently no support for Github tokens.
+[GitHub tokens](#updating-versions-using-a-token) are also supported to avoid
+being rate-limited.
 
 #### Updating versions from generated cache
 
-To avoid hitting the Github unauthenticated rate limit, `binenv` can fetch a nightly generated versions cache from github using the `--cache` flag:
+To avoid hitting the GitHub unauthenticated rate limit, `binenv` can fetch a
+nightly generated versions cache from github using the `--cache` flag:
 
 ```bash
 binenv update --cache # or -c
+```
+
+#### Updating versions using a token
+
+To avoid being rate limited, you can also use a personal access token.
+
+- go to [Settings/Personal Access Tokens/New personal access token](https://github.com/settings/tokens/new?description=GitHunt&scopes=public_repo)
+- click "Generate token"
+
+To use the token, just export it in the GITHUB_TOKEN environment variable:
+
+```bash
+export GITHUB_TOKEN=aaa...bbb
 ```
 
 #### Update available distributions
