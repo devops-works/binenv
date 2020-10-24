@@ -3,7 +3,6 @@ name: Update cache
 on:
   push:
     branches:
-      - master
       - develop
   schedule:
     - cron: '15 0 * * *'
