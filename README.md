@@ -152,6 +152,7 @@ This is the whole point.
 Currently supported distributions are:
 
 - [ali](https://github.com/nakabonne/ali)
+- [annie](https://github.com/iawia002/annie)
 - [asciinema-edit](https://github.com/cirocosta/asciinema-edit)
 - [awless](https://github.com/wallix/awless)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)

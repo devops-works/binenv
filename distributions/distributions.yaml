@@ -12,6 +12,23 @@ sources:
       binaries:
         - ali
 
+  annie:
+    map:
+      amd64: 64-bit
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+      "386": 32-bit
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/iawia002/annie/releases
+    fetch:
+      url: https://github.com/iawia002/annie/releases/download/{{ .Version }}/annie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - annie
+
   asciinema-edit:
     list:
       type: github-releases
