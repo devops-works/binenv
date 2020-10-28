@@ -90,14 +90,6 @@ func New(o ...func(*App) error) (*App, error) {
 		}
 	}
 
-	// if strings.HasSuffix(os.Args[0], "binenv") {
-	// 	err = a.selfInstall()
-	// 	if err != nil {
-	// 		a.logger.Errorf("unable to set-up myself: %v", err)
-	// 		os.Exit(1)
-	// 	}
-	// }
-
 	err = a.readDistributions()
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read distributions")
@@ -112,6 +104,37 @@ func New(o ...func(*App) error) (*App, error) {
 	a.createInstallers()
 
 	return a, nil
+}
+
+// Search show a list returns a list of packages contains string
+// in name or description
+func (a *App) Search(pfix string) []string {
+	res := []string{}
+	// First add matching distributions
+	for k, v := range a.def.Sources {
+		if strings.Contains(k, pfix) {
+			res = append(res, k)
+		}
+		if strings.Contains(v.Description, pfix) {
+			res = append(res, k)
+		}
+	}
+
+	sort.Strings(res)
+	previous := ""
+	for _, d := range res {
+		if d == previous {
+			// Skip duplicate
+			continue
+		}
+		previous = d
+		fmt.Printf("%s: %s\n",
+			aurora.Bold(d),
+			aurora.Faint(strings.TrimSpace(a.def.Sources[d].Description)),
+		)
+	}
+
+	return res
 }
 
 // GetPackagesListWithPrefix returns a list of packages that starts with prefix

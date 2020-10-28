@@ -2,6 +2,7 @@
 sources:
 
   ali:
+    description: Generate HTTP load and plot the results in real-time
     list:
       type: github-releases
       url: https://api.github.com/repos/nakabonne/ali/releases
@@ -13,6 +14,7 @@ sources:
         - ali
 
   annie:
+    description: Fast, simple and clean video downloader
     map:
       amd64: 64-bit
       darwin: macOS
@@ -30,6 +32,7 @@ sources:
         - annie
 
   asciinema-edit:
+    description: asciinema casts post-production tools
     list:
       type: github-releases
       url: https://api.github.com/repos/cirocosta/asciinema-edit/releases
@@ -41,6 +44,7 @@ sources:
         - asciinema-edit
 
   awless:
+    description: A Mighty CLI for AWS
     list:
       type: github-releases
       url: https://api.github.com/repos/wallix/awless/releases
@@ -52,6 +56,7 @@ sources:
         - awless
 
   awstaghelper:
+    description: AWS bulk tagging tool
     map:
       amd64: x86_64
       darwin: Darwin
@@ -68,6 +73,7 @@ sources:
         - awstaghelper
 
   binenv:
+    description: One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/binenv/releases
@@ -77,6 +83,7 @@ sources:
       type: direct
 
   bomberman:
+    description: SMTP Performance and Load Test Tool
     list:
       type: github-releases
       url: https://api.github.com/repos/c1982/bomberman/releases
@@ -86,6 +93,7 @@ sources:
       type: direct
 
   cli53:
+    description: Command line tool for Amazon Route 53
     list:
       type: github-releases
       url: https://api.github.com/repos/barnybug/cli53/releases
@@ -95,6 +103,9 @@ sources:
       type: direct
 
   consul:
+    description: >
+      Consul is a distributed, highly available, and data center aware solution 
+      to connect and configure applications across dynamic, distributed infrastructure.
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/consul/releases
@@ -106,6 +117,7 @@ sources:
         - consul
 
   dive:
+    description: A tool for exploring each layer in a docker image
     list:
       type: github-releases
       url: https://api.github.com/repos/wagoodman/dive/releases
@@ -117,6 +129,7 @@ sources:
         - dive
 
   docker-compose:
+    description: Define and run multi-container applications with Docker
     map:
       amd64: x86_64
       darwin: Darwin
@@ -131,6 +144,7 @@ sources:
       type: direct
 
   duf:
+    description: Disk Usage/Free Utility
     map:
       amd64: x86_64
     list:
@@ -144,6 +158,7 @@ sources:
         - duf
 
   dw-query-digest:
+    description: MySQL slow log analyzer. Alternative to pt-query-digest.
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/dw-query-digest/releases
@@ -155,6 +170,7 @@ sources:
         - dw-query-digest
 
   gitjacker:
+    description: Leak git repositories from misconfigured websites
     list:
       type: github-releases
       url: https://api.github.com/repos/liamg/gitjacker/releases
@@ -164,6 +180,7 @@ sources:
       type: direct
 
   glow:
+    description: Render markdown on the CLI, with pizzazz! 💅🏻
     map:
       amd64: x86_64
       darwin: Darwin
@@ -176,7 +193,9 @@ sources:
       type: tgz
       binaries:
         - glow
+
   gocloc:
+    description: A little fast cloc(Count Lines Of Code)
     map:
       amd64: x86_64
     list:
@@ -190,6 +209,7 @@ sources:
         - gocloc
 
   goreleaser:
+    description: Deliver Go binaries as fast and easily as possible
     map:
       amd64: x86_64
       darwin: Darwin
@@ -206,6 +226,7 @@ sources:
         - goreleaser
 
   grizzly:
+    description: A utility for managing Jsonnet dashboards against the Grafana API
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/grizzly/releases
@@ -215,6 +236,7 @@ sources:
       type: direct
 
   gws:
+    description: Colorful KISS helper for git workspaces
     list:
       type: github-releases
       url: https://api.github.com/repos/StreakyCobra/gws/releases
@@ -224,6 +246,7 @@ sources:
       type: direct
 
   hey:
+    description: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
     list:
       type: github-releases
       url: https://api.github.com/repos/rakyll/hey/releases
@@ -235,6 +258,7 @@ sources:
         This installer always installs the latest version.
 
   hadolint:
+    description: Dockerfile linter, validate inline bash, written in Haskell
     map:
       amd64: x86_64
       darwin: Darwin
@@ -249,6 +273,7 @@ sources:
       type: direct
 
   helm:
+    description: The Kubernetes Package Manager 
     list:
       type: github-releases
       url: https://api.github.com/repos/helm/helm/releases
@@ -260,6 +285,7 @@ sources:
         - "{{ .OS }}-{{ .Arch }}/helm"
 
   helmfile:
+    description: Deploy Kubernetes Helm Charts
     list:
       type: github-releases
       url: https://api.github.com/repos/roboll/helmfile/releases
@@ -269,6 +295,7 @@ sources:
       type: direct
 
   hugo:
+    description: The world’s fastest framework for building websites.
     map:
       amd64: 64bit
       "386": 32bit
@@ -289,6 +316,7 @@ sources:
         - hugo
 
   k6:
+    description: A modern load testing tool, using Go and JavaScript - https://k6.io
     map:
       amd64: "64"
       "386": "32"
@@ -304,6 +332,7 @@ sources:
         - k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}/k6
 
   k9s:
+    description: Kubernetes CLI To Manage Your Clusters In Style!
     map:
       amd64: x86_64
       linux: Linux
@@ -319,6 +348,7 @@ sources:
         - k9s
 
   ketall:
+    description: Like `kubectl get all`, but get really all resources
     list:
       type: github-releases
       url: https://api.github.com/repos/corneliusweig/ketall/releases
@@ -330,6 +360,7 @@ sources:
         - ketall-{{ .Arch }}-{{ .OS }}
 
   kind:
+    description: Kubernetes IN Docker - local clusters for testing Kubernetes
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/kind/releases
@@ -339,6 +370,7 @@ sources:
       type: direct
 
   kops:
+    description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kops/releases
@@ -348,6 +380,7 @@ sources:
       type: direct
 
   krew:
+    description: Find and install kubectl plugins 
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/krew/releases
@@ -359,6 +392,9 @@ sources:
         - krew-{{ .OS }}_{{ .Arch }}
 
   kube-bench:
+    description: >
+      Checks whether Kubernetes is deployed according to security best practices as 
+      defined in the CIS Kubernetes Benchmark
     list:
       type: github-releases
       url: https://api.github.com/repos/aquasecurity/kube-bench/releases
@@ -370,6 +406,7 @@ sources:
         - kube-bench
 
   kubeconf:
+    description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
     list:
       type: github-releases
       url: https://api.github.com/repos/mumoshu/kubeconf/releases
@@ -381,6 +418,7 @@ sources:
         - kubeconf
 
   kubectl:
+    description: Production-Grade Container Scheduling and Management (cli)
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kubernetes/releases
@@ -390,6 +428,7 @@ sources:
       type: direct
 
   kubectx:
+    description: Faster way to switch between clusters in kubectl
     map:
       amd64: x86_64
     list:
@@ -403,6 +442,7 @@ sources:
         - kubectx
 
   kubens:
+    description: Faster way to switch between namespaces in kubectl
     map:
       amd64: x86_64
     list:
@@ -416,6 +456,7 @@ sources:
         - kubens
 
   kustomize:
+    description: Customization of kubernetes YAML configurations
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/kustomize/releases
@@ -428,6 +469,7 @@ sources:
         - kustomize
 
   logcli:
+    description: Like Prometheus, but for logs (cli).
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -439,6 +481,7 @@ sources:
         - "logcli-{{ .OS }}-{{ .Arch }}"
 
   loki:
+    description: Like Prometheus, but for logs.
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -450,6 +493,7 @@ sources:
         - "loki-{{ .OS }}-{{ .Arch }}"
 
   minikube:
+    description: Run Kubernetes locally
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/minikube/releases
@@ -461,6 +505,7 @@ sources:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
   onefetch:
+    description: Git repository summary on your terminal
     map:
       windows: win
       darwin: mac
@@ -476,6 +521,7 @@ sources:
         - onefetch
 
   oto:
+    description: Go driven rpc code generation tool for right now (cli).
     map:
       amd64: x86_64
       linux: Linux
@@ -492,6 +538,9 @@ sources:
         - oto
 
   packer:
+    description: >
+      Packer is a tool for creating identical machine images for 
+      multiple platforms from a single source configuration.
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/packer/releases
@@ -503,6 +552,7 @@ sources:
         - packer
 
   pluto:
+    description: A cli tool to help discover deprecated apiVersions in Kubernetes
     list:
       type: github-releases
       url: https://api.github.com/repos/FairwindsOps/pluto/releases
@@ -514,6 +564,7 @@ sources:
         - pluto
 
   pomerium:
+    description: Pomerium is an identity-aware access proxy.
     list:
       type: github-releases
       url: https://api.github.com/repos/pomerium/pomerium/releases
@@ -525,6 +576,7 @@ sources:
         - pomerium
 
   pomerium-cli:
+    description: Pomerium is an identity-aware access proxy (cli).
     list:
       type: github-releases
       url: https://api.github.com/repos/pomerium/pomerium/releases
@@ -536,6 +588,7 @@ sources:
         - pomerium-cli
 
   popeye:
+    description: A Kubernetes cluster resource sanitizer
     map:
       amd64: x86_64
       darwin: Darwin
@@ -552,6 +605,7 @@ sources:
         - popeye
 
   promtail:
+    description: Like Prometheus, but for logs (promtail).
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -563,6 +617,9 @@ sources:
         - "promtail-{{ .OS }}-{{ .Arch }}"
 
   rancher:
+    description: >
+      Rancher is an open source software platform that enables organizations to 
+      run and manage Docker and Kubernetes in production. (cli)
     list:
       type: static
       versions:
@@ -575,6 +632,7 @@ sources:
         - "rancher-v{{ .Version }}/rancher"
 
   tanka:
+    description: Flexible, reusable and concise configuration for Kubernetes
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/tanka/releases
@@ -583,7 +641,26 @@ sources:
     install:
       type: direct
 
+  teler:
+    description: Real-time HTTP Intrusion Detection
+    map:
+      arm: ARM
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kitabisa/teler/releases
+    fetch:
+      url: https://github.com/kitabisa/teler/releases/download/v{{ .Version }}/teler_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - teler
+
   terraform:
+    description: >
+      Terraform enables you to safely and predictably create, change, and improve infrastructure.
+      It is an open source tool that codifies APIs into declarative configuration files that can 
+      be shared amongst team members, treated as code, edited, reviewed, and versioned.
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/terraform/releases
@@ -595,6 +672,9 @@ sources:
         - terraform
 
   terragrunt:
+    description: >
+      Terragrunt is a thin wrapper for Terraform that provides extra 
+      tools for working with multiple Terraform modules.
     list:
       type: github-releases
       url: https://api.github.com/repos/gruntwork-io/terragrunt/releases
@@ -604,6 +684,7 @@ sources:
       type: direct
 
   tflint:
+    description: TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12)
     list:
       type: github-releases
       url: https://api.github.com/repos/terraform-linters/tflint/releases
@@ -615,6 +696,7 @@ sources:
         - tflint
 
   toji:
+    description: "Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog"
     list:
       type: github-releases
       url: https://api.github.com/repos/leucos/toji/releases
@@ -626,6 +708,7 @@ sources:
         - toji
   
   traefik:
+    description: The Cloud Native Application Proxy
     list:
       type: github-releases
       url: https://api.github.com/repos/traefik/traefik/releases
@@ -637,6 +720,7 @@ sources:
         - traefik
 
   trivy:
+    description: A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
     map:
       amd64: 64bit
       "386": 32bit
@@ -655,6 +739,7 @@ sources:
         - trivy
 
   upx:
+    description: UPX - the Ultimate Packer for eXecutables
     list:
       type: github-releases
       version_from: name
@@ -668,6 +753,7 @@ sources:
         - upx
 
   vault:
+    description: A tool for secrets management, encryption as a service, and privileged access management
     list:
       type: github-releases
       version_from: name
@@ -680,6 +766,7 @@ sources:
         - vault
 
   vmctl:
+    description: Victoria Metrics command line tool
     list:
       type: github-releases
       url: https://api.github.com/repos/VictoriaMetrics/vmctl/releases
@@ -691,6 +778,7 @@ sources:
         - vmctl-{{ .OS }}-{{ .Arch }}
 
   yh:
+    description: YAML syntax highlighter to bring colours to kubectl output
     map:
       darwin: osx
     list:
