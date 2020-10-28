@@ -110,12 +110,13 @@ func New(o ...func(*App) error) (*App, error) {
 // in name or description
 func (a *App) Search(pfix string) []string {
 	res := []string{}
+	pfix = strings.ToLower(pfix)
 	// First add matching distributions
 	for k, v := range a.def.Sources {
-		if strings.Contains(k, pfix) {
+		if strings.Contains(strings.ToLower(k), pfix) {
 			res = append(res, k)
 		}
-		if strings.Contains(v.Description, pfix) {
+		if strings.Contains(strings.ToLower(v.Description), pfix) {
 			res = append(res, k)
 		}
 	}
