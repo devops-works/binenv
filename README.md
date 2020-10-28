@@ -4,16 +4,40 @@ The last binary you'll ever install.
 
 ## TOC
 
-- [TOC](#toc)
-- [What](#what)
-- [Quick start](#quick-start)
-  - [Linux (bash/zsh)](#linux-bashzsh)
-  - [MacOS (with bash)](#macos-with-bash)
-  - [Windows](#windows)
-- [Install](#install)
-- [Updating binenv](#updating-binenv)
-- [Supported "distributions"](#supported-distributions)
-- [Usage](#usage)
+- [binenv](#binenv)
+  - [TOC](#toc)
+  - [What](#what)
+  - [Quick start](#quick-start)
+    - [Linux (bash/zsh)](#linux-bashzsh)
+    - [MacOS (with bash)](#macos-with-bash)
+    - [Windows](#windows)
+  - [Install](#install)
+  - [Updating binenv](#updating-binenv)
+  - [Supported "distributions"](#supported-distributions)
+  - [Usage](#usage)
+    - [Updating available distributions versions](#updating-available-distributions-versions)
+      - [Updating versions from generated cache](#updating-versions-from-generated-cache)
+      - [Updating versions using a token](#updating-versions-using-a-token)
+      - [Update available distributions](#update-available-distributions)
+      - [Examples](#examples)
+    - [Searching distributions](#searching-distributions)
+    - [Installing new versions](#installing-new-versions)
+      - [Examples](#examples-1)
+    - [Listing versions](#listing-versions)
+      - [Examples](#examples-2)
+      - [Freezing versions](#freezing-versions)
+    - [Uninstalling versions](#uninstalling-versions)
+      - [Examples](#examples-3)
+    - [Completion](#completion)
+  - [Selecting versions](#selecting-versions)
+    - [Version selection process](#version-selection-process)
+    - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
+      - [Example](#example)
+  - [Removing binenv stuff](#removing-binenv-stuff)
+  - [Status](#status)
+  - [Distributions file format](#distributions-file-format)
+  - [Contributions](#contributions)
+  - [Licence](#licence)
     [Updating available distributions versions](#updating-available-distributions-versions)
     - [Updating versions from generated cache](#updating-versions-from-generated-cache)
     - [Update available distributions](#update-available-distributions)
@@ -26,15 +50,40 @@ The last binary you'll ever install.
   - [Uninstalling versions](#uninstalling-versions)
     - [Examples](#examples-3)
   - [Completion](#completion)
-- [Selecting versions](#selecting-versions)
-  - [Version selection process](#version-selection-process)
-  - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
-    - [Example](#example)
-- [Removing binenv stuff](#removing-binenv-stuff)
-- [Status](#status)
-- [Distributions file format](#distributions-file-format)
-- [Contributions](#contributions)
-- [Licence](#licence)
+- [binenv](#binenv)
+  - [TOC](#toc)
+  - [What](#what)
+  - [Quick start](#quick-start)
+    - [Linux (bash/zsh)](#linux-bashzsh)
+    - [MacOS (with bash)](#macos-with-bash)
+    - [Windows](#windows)
+  - [Install](#install)
+  - [Updating binenv](#updating-binenv)
+  - [Supported "distributions"](#supported-distributions)
+  - [Usage](#usage)
+    - [Updating available distributions versions](#updating-available-distributions-versions)
+      - [Updating versions from generated cache](#updating-versions-from-generated-cache)
+      - [Updating versions using a token](#updating-versions-using-a-token)
+      - [Update available distributions](#update-available-distributions)
+      - [Examples](#examples)
+    - [Searching distributions](#searching-distributions)
+    - [Installing new versions](#installing-new-versions)
+      - [Examples](#examples-1)
+    - [Listing versions](#listing-versions)
+      - [Examples](#examples-2)
+      - [Freezing versions](#freezing-versions)
+    - [Uninstalling versions](#uninstalling-versions)
+      - [Examples](#examples-3)
+    - [Completion](#completion)
+  - [Selecting versions](#selecting-versions)
+    - [Version selection process](#version-selection-process)
+    - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
+      - [Example](#example)
+  - [Removing binenv stuff](#removing-binenv-stuff)
+  - [Status](#status)
+  - [Distributions file format](#distributions-file-format)
+  - [Contributions](#contributions)
+  - [Licence](#licence)
 
 ## What
 
@@ -43,6 +92,8 @@ The last binary you'll ever install.
 helm, ...).
 
 Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
+
+Now you can install your [favorite utility](#supported-distributions) just by typing `binenv install something`.
 
 ## Quick start
 
@@ -296,6 +347,20 @@ binenv update --all # or -a
 - `binenv update -d`: update available distributions
 - `binenv update kubectl helm`: update available versions for `kubectl` and
   `helm`
+
+### Searching distributions
+
+The `search` command lets you search a distribution by name or description:
+
+```bash
+$ binenv search kube
+binenv: One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
+helm: The Kubernetes Package Manager
+helmfile: Deploy Kubernetes Helm Charts
+k9s: Kubernetes CLI To Manage Your Clusters In Style!
+ketall: Like `kubectl get all`, but get really all resources
+... (lots of things with "kube" in it)
+```
 
 ### Installing new versions
 
