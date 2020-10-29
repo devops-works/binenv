@@ -1,6 +1,5 @@
 ---
 sources:
-
   ali:
     description: Generate HTTP load and plot the results in real-time
     list:
@@ -273,7 +272,7 @@ sources:
       type: direct
 
   helm:
-    description: The Kubernetes Package Manager 
+    description: The Kubernetes Package Manager
     list:
       type: github-releases
       url: https://api.github.com/repos/helm/helm/releases
@@ -380,7 +379,7 @@ sources:
       type: direct
 
   krew:
-    description: Find and install kubectl plugins 
+    description: Find and install kubectl plugins
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/krew/releases
@@ -497,7 +496,7 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/minikube/releases
-    fetch: 
+    fetch:
       url: https://github.com/kubernetes/minikube/releases/download/v{{ .Version }}/minikube-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
@@ -550,6 +549,16 @@ sources:
       type: zip
       binaries:
         - packer
+
+  pass-checker:
+    description: Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/pass-checker/releases
+    fetch:
+      url: https://github.com/devops-works/pass-checker/releases/download/v{{ .Version }}/pass-checker_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
@@ -689,7 +698,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/terraform-linters/tflint/releases
     fetch:
-      url: https://github.com/terraform-linters/tflint/releases/download/v{{ .Version }}/tflint_{{ .OS }}_{{ .Arch }}.zip 
+      url: https://github.com/terraform-linters/tflint/releases/download/v{{ .Version }}/tflint_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
       binaries:
@@ -706,7 +715,7 @@ sources:
       type: tgz
       binaries:
         - toji
-  
+
   traefik:
     description: The Cloud Native Application Proxy
     list:
@@ -790,4 +799,3 @@ sources:
       type: zip
       binaries:
         - yh
-
