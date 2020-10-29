@@ -631,7 +631,7 @@ sources:
         - "rancher-v{{ .Version }}/rancher"
 
   scan-exporter:
-    description: Export ports scans to Prometheus in a Kubernetes cluster.
+    description: Scans targets and exposes results to Prometheus.
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/scan-exporter/releases
