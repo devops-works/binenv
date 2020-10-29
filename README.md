@@ -243,6 +243,7 @@ Currently supported distributions are:
 - [minikube](https://github.com/kubernetes/minikube)
 - [onefetch](https://github.com/o2sh/onefetch/)
 - [oto](https://github.com/pacedotdev/oto)
+- [pass-checker](https://github.com/devops-works/pass-checker)
 - [packer](https://www.packer.io)
 - [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)

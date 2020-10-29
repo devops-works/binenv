@@ -550,6 +550,16 @@ sources:
       binaries:
         - packer
 
+  pass-checker:
+    description: Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/pass-checker/releases
+    fetch:
+      url: https://github.com/devops-works/pass-checker/releases/download/v{{ .Version }}/pass-checker_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
     list:
