@@ -250,6 +250,7 @@ Currently supported distributions are:
 - [popeye](https://github.com/derailed/popeye)
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
+- [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [tanka](https://github.com/grafana/tanka)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
