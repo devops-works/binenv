@@ -473,7 +473,11 @@ func (a *App) Update(definitions, all bool, cache bool, which ...string) error {
 			a.logger.Error().Err(err).Msg("unable to find distributions")
 			os.Exit(1)
 		}
-		a.fetchDistributions(conf)
+		err = a.fetchDistributions(conf)
+		if err != nil {
+			a.logger.Error().Err(err).Msgf("unable to fetch distributions: %v", err)
+			os.Exit(1)
+		}
 
 		// Return if only definitions were requested
 		if definitions {
