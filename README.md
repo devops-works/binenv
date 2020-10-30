@@ -169,6 +169,7 @@ Currently supported distributions are:
 - [docker-compose](https://docs.docker.com/compose/)
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
+- [gh](https://github.com/cli/cli/)
 - [gitjacker](https://github.com/liamg/gitjacker)
 - [glab](https://github.com/profclems/glab/)
 - [glow](https://github.com/charmbracelet/glow)
