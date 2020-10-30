@@ -178,6 +178,21 @@ sources:
     install:
       type: direct
 
+  glab:
+    description: An open-source GitLab command line tool
+    map:
+      darwin: macOS
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/profclems/glab/releases
+    fetch:
+      url: https://github.com/profclems/glab/releases/download/v{{ .Version }}/glab_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - glab
+
   glow:
     description: Render markdown on the CLI, with pizzazz! 💅🏻
     map:

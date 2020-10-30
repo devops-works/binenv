@@ -170,6 +170,7 @@ Currently supported distributions are:
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [gitjacker](https://github.com/liamg/gitjacker)
+- [glab](https://github.com/profclems/glab/)
 - [glow](https://github.com/charmbracelet/glow)
 - [gocloc](https://github.com/hhatto/gocloc)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
