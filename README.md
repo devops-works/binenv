@@ -35,6 +35,8 @@ The last binary you'll ever install.
       - [Example](#example)
   - [Removing binenv stuff](#removing-binenv-stuff)
   - [Status](#status)
+  - [FAQ](#faq)
+    - [I installed a binary but is still see the system (or wrong) version](#i-installed-a-binary-but-is-still-see-the-system-or-wrong-version)
   - [Distributions file format](#distributions-file-format)
   - [Contributions](#contributions)
   - [Licence](#licence)
@@ -509,6 +511,12 @@ This is really _super alpha_ and has only be tested on Linux & MacOS. YMMV on
 other platforms.
 
 There are **no tests**. I will probably go to hell for this.
+
+## FAQ
+
+### I installed a binary but is still see the system (or wrong) version
+
+Try to rehash your binaries (`hash -r` in bash or `rehahsh` in Zsh).
 
 ## Distributions file format
 
