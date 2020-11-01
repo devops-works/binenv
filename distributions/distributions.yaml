@@ -532,6 +532,22 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  nomad:
+    description: >
+      Nomad is an easy-to-use, flexible, and performant workload orchestrator
+      that can deploy a mix of microservice, batch, containerized, and non-containerized
+      applications. Nomad is easy to operate and scale and has native Consul and
+      Vault integrations.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hashicorp/nomad/releases
+    fetch:
+      url: https://releases.hashicorp.com/nomad/{{ .Version }}/nomad_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - packer
+
   onefetch:
     description: Git repository summary on your terminal
     map:

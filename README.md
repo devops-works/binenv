@@ -197,6 +197,7 @@ Currently supported distributions are:
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
+- [nomad](https://www.nomadproject.io)
 - [onefetch](https://github.com/o2sh/onefetch/)
 - [oto](https://github.com/pacedotdev/oto)
 - [pass-checker](https://github.com/devops-works/pass-checker)
