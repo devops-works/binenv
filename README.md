@@ -196,6 +196,7 @@ Currently supported distributions are:
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
+- [lazygit](https://github.com/jesseduffield/lazygit)
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
