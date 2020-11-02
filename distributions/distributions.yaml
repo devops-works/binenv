@@ -496,6 +496,24 @@ sources:
       binaries:
         - kustomize
 
+  lazygit:
+    map:
+      amd64: x86_64
+      "386": 32-bit
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    description: A simple terminal UI for git commands.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jesseduffield/lazygit/releases
+    fetch:
+      url: https://github.com/jesseduffield/lazygit/releases/download/v{{ .Version }}/lazygit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - lazygit
+
   logcli:
     description: Like Prometheus, but for logs (cli).
     list:
