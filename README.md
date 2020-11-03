@@ -183,6 +183,7 @@ Currently supported distributions are:
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
 - [hey](https://github.com/rakyll/hey)
+- [httpx](https://github.com/projectdiscovery/httpx)
 - [hugo](https://gohugo.io/)
 - [k6](https://github.com/loadimpact/k6)
 - [k9s](https://k9scli.io/)
@@ -200,6 +201,7 @@ Currently supported distributions are:
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
 - [minikube](https://github.com/kubernetes/minikube)
+- [naabu](https://github.com/projectdiscovery/naabu)
 - [nomad](https://www.nomadproject.io)
 - [onefetch](https://github.com/o2sh/onefetch/)
 - [oto](https://github.com/pacedotdev/oto)
@@ -212,6 +214,7 @@ Currently supported distributions are:
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
+- [subfinder](https://github.com/projectdiscovery/subfinder)
 - [tanka](https://github.com/grafana/tanka)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)

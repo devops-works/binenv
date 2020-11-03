@@ -322,6 +322,36 @@ sources:
     install:
       type: direct
 
+  httpx:
+    description: >
+      httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
+      probers using retryablehttp library, it is designed to maintain the
+      result reliability with increased threads.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/httpx/releases
+    fetch:
+      url: https://github.com/projectdiscovery/httpx/releases/download/v{{ .Version }}/httpx_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - httpx
+
+  httpx-win:
+    description: >
+      httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
+      probers using retryablehttp library, it is designed to maintain the
+      result reliability with increased threads (windows).
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/httpx/releases
+    fetch:
+      url: https://github.com/projectdiscovery/httpx/releases/download/v{{ .Version }}/httpx_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - httpx
+
   hugo:
     description: The world’s fastest framework for building websites.
     map:
@@ -550,6 +580,36 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  naabu:
+    description: >
+      A fast port scanner written in go with focus on reliability and
+      simplicity. Designed to be used in combination with other tools for
+      attack surface discovery in bug bounties and pentests
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/naabu/releases
+    fetch:
+      url: https://github.com/projectdiscovery/naabu/releases/download/v{{ .Version }}/naabu_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - naabu
+
+  naabu-win:
+    description: >
+      A fast port scanner written in go with focus on reliability and
+      simplicity. Designed to be used in combination with other tools for
+      attack surface discovery in bug bounties and pentests (windows)
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/naabu/releases
+    fetch:
+      url: https://github.com/projectdiscovery/naabu/releases/download/v{{ .Version }}/naabu_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - naabu
+
   nomad:
     description: >
       Nomad is an easy-to-use, flexible, and performant workload orchestrator
@@ -712,6 +772,36 @@ sources:
       url: https://github.com/devops-works/scan-exporter/releases/download/v{{ .Version }}/scan-exporter_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  subfinder:
+    description: >
+      Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.
+      Designed as a passive framework to be useful for bug bounties and safe for penetration
+      testing.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/subfinder/releases
+    fetch:
+      url: https://github.com/projectdiscovery/subfinder/releases/download/v{{ .Version }}/subfinder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - subfinder
+
+  subfinder-win:
+    description: >
+      Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.
+      Designed as a passive framework to be useful for bug bounties and safe for penetration
+      testing (windows).
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/subfinder/releases
+    fetch:
+      url: https://github.com/projectdiscovery/subfinder/releases/download/v{{ .Version }}/subfinder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - subfinder
 
   tanka:
     description: Flexible, reusable and concise configuration for Kubernetes
