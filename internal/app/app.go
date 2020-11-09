@@ -258,6 +258,8 @@ func (a *App) Install(specs ...string) error {
 		os.Exit(1)
 	}
 
+	errored := false
+
 	for i := 0; i < len(specs); i += 2 {
 		dist := specs[i]
 		version := ""
@@ -268,12 +270,18 @@ func (a *App) Install(specs ...string) error {
 		v, err := a.install(dist, version)
 		if err != nil && !errors.Is(err, ErrAlreadyInstalled) {
 			a.logger.Error().Err(err).Msgf("unable to install %q (%s)", dist, v)
+			errored = true
 			continue
 		}
 		if err == nil {
 			a.logger.Info().Msgf("%q (%s) installed", dist, v)
 		}
 	}
+
+	if errored {
+		os.Exit(1)
+	}
+
 	return nil
 }
 

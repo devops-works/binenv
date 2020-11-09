@@ -84,7 +84,7 @@ exec $SHELL
 
 ### Windows
 
-TBD
+Download latest binary from https://github.com/devops-works/binenv/releases.
 
 ## Install
 
