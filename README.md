@@ -37,6 +37,8 @@ The last binary you'll ever install.
   - [Status](#status)
   - [FAQ](#faq)
     - [I installed a binary but is still see the system (or wrong) version](#i-installed-a-binary-but-is-still-see-the-system-or-wrong-version)
+    - [After installing a distribution, I get a "shim: no such file or directory"](#after-installing-a-distribution-i-get-a-shim-no-such-file-or-directory)
+    - [I don't like binenv, are there alternatives ?](#i-dont-like-binenv-are-there-alternatives-)
   - [Distributions file format](#distributions-file-format)
   - [Contributions](#contributions)
   - [Licence](#licence)
@@ -521,6 +523,29 @@ There are **no tests**. I will probably go to hell for this.
 ### I installed a binary but is still see the system (or wrong) version
 
 Try to rehash your binaries (`hash -r` in bash or `rehahsh` in Zsh).
+
+### After installing a distribution, I get a "shim: no such file or directory"
+
+If you see something like:
+
+```
+2020-11-10T09:01:20+01:00 ERR unable to install "kubectl" (1.19.3) error="unable to find shim file: stat /Users/foo/.binenv/shim: no such file or directory"
+```
+
+you probably did not follow the [installation instructions](#quick-start).
+
+Running `./binenv update binenv && ./binenv install binenv` should correct the
+problem.
+
+### I don't like binenv, are there alternatives ?
+
+Sorry to hear that. Don't hesitate opening an issue or sending a PR is
+something does not fit your use case
+
+Some nice alternatives exist:
+
+- https://gofi.sh/
+- https://asdf-vm.com/#/
 
 ## Distributions file format
 
