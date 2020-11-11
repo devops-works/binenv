@@ -165,6 +165,7 @@ Currently supported distributions are:
 - [asciinema-edit](https://github.com/cirocosta/asciinema-edit)
 - [awless](https://github.com/wallix/awless)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)
+- [bat](https://github.com/sharkdp/bat)
 - [binenv](https://github.com/devops-works/binenv)
 - [bomberman](https://github.com/c1982/bomberman)
 - [cli53](https://github.com/barnybug/cli53)
@@ -216,6 +217,8 @@ Currently supported distributions are:
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
+- [starship](https://github.com/starship/starship)
+- [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
 - [tanka](https://github.com/grafana/tanka)
 - [teler](https://github.com/kitabisa/teler/)
