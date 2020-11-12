@@ -642,7 +642,7 @@ sources:
     install:
       type: zip
       binaries:
-        - packer
+        - nomad
 
   onefetch:
     description: Git repository summary on your terminal
