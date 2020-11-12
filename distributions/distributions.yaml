@@ -642,7 +642,7 @@ sources:
     install:
       type: zip
       binaries:
-        - packer
+        - nomad
 
   onefetch:
     description: Git repository summary on your terminal
@@ -974,6 +974,19 @@ sources:
       type: tarxz
       binaries:
         - upx
+
+  vagrant:
+    description: A toolfor building and distributing development environments.
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/hashicorp/vagrant/tags
+    fetch:
+      url: https://releases.hashicorp.com/vagrant/{{ .Version }}/vagrant_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - vagrant
 
   vault:
     description: A tool for secrets management, encryption as a service, and privileged access management
