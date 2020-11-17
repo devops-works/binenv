@@ -36,7 +36,7 @@ jobs:
       - name: Compare caches
         id: compare
         run: |
-          echo "DIFF=$(diff dist.json new.json; echo $?)" >> $GITHUB_ENV
+          echo "DIFF=$(diff dist.json new.json > /dev/null 2>&1; echo $?)" >> $GITHUB_ENV
 
       - name: Copy cache
         run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
