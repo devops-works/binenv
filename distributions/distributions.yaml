@@ -809,7 +809,6 @@ sources:
       binaries:
         - starship
 
-
   stern:
     description: >
       ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of 
