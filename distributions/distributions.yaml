@@ -186,6 +186,18 @@ sources:
       binaries:
         - dw-query-digest
 
+  fzf:
+    description: fzf is a general-purpose command-line fuzzy finder.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/junegunn/fzf/releases
+    fetch:
+      url: https://github.com/junegunn/fzf/releases/download/{{ .Version }}/fzf-{{ .Version }}-{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - fzf
+
   gh:
     description: GitHub’s official command line tool
     map:
