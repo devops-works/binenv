@@ -60,7 +60,7 @@ Now you can install your [favorite utility](#supported-distributions) just by ty
 ```
 wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_linux_amd64 -O binenv
 chmod +x binenv
-./binenv update
+./binenv update --cache
 ./binenv install binenv
 rm binenv
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
@@ -76,7 +76,7 @@ exec $SHELL
 ```
 wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64 -O binenv
 chmod +x binenv
-./binenv update
+./binenv update --cache
 ./binenv install binenv 
 rm binenv
 echo 'export PATH=~/.binenv:$PATH' >> ~/.bashrc
