@@ -232,6 +232,7 @@ Currently supported distributions are:
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)
+- [yq](https://github.com/mikefarah/yq)
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).

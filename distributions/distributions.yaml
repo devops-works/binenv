@@ -1013,3 +1013,15 @@ sources:
       type: zip
       binaries:
         - yh
+
+  yq:
+    description: a lightweight and portable command-line YAML processor
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mikefarah/yq/releases
+    fetch:
+      url: https://github.com/mikefarah/yq/releases/download/{{ .Version }}/yq-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - yq
