@@ -223,6 +223,7 @@ Currently supported distributions are:
 - [tanka](https://github.com/grafana/tanka)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
+- [terraform-inventory](https://github.com/adammck/terraform-inventory)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
 - [toji](https://github.com/leucos/toji/)

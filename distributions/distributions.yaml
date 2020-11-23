@@ -894,6 +894,18 @@ sources:
       binaries:
         - terraform
 
+  terraform-inventory:
+    description: terraform-inventory creates an ansible inventory from terraform
+    list:
+      type: github-releases
+      url: https://github.com/adammck/terraform-inventory/releases
+    fetch:
+      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .Version }}/terraform-inventory_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - terraform-inventory
+ 
   terragrunt:
     description: >
       Terragrunt is a thin wrapper for Terraform that provides extra 
