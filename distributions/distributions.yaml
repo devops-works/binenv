@@ -803,6 +803,16 @@ sources:
     install:
       type: direct
 
+  shaloc:
+    description: LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/eze-kiel/shaloc/releases
+    fetch:
+      url: https://github.com/eze-kiel/shaloc/releases/download/v{{ .Version }}/shaloc_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   starship:
     description: The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     map:
