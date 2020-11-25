@@ -508,7 +508,7 @@ $
 To wipe everything clean:
 
 ```bash
-rm -rf ~/.binenv ~/.config/binenv/
+rm -rfi ~/.binenv ~/.config/binenv/
 ```
 
 Don't forget to remove the `PATH` and the completion you might have changed in
