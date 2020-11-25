@@ -252,7 +252,7 @@ to update the version list (usually located in `$XDG_CONFIG/cache.json` or
 
 This is done automatically when invoking `binenv update`.
 
-Without arguments, il will check for available versions for _all_ distributions
+Without arguments, it will check for available versions for _all_ distributions
 (watch out for Github API rate limits, [but see below](#updating-versions-from-generated-cache)).
 
 With a distribution passed as an argument (e.g. `binenv update kubectl`), it
@@ -349,7 +349,7 @@ If you want a specific version:
 
 Note that completion works, so don't be afraid to use it.
 
-You can also install serveral distribution versions at the same time:
+You can also install several distribution versions at the same time:
 
 `binenv install something 1.2.3 somethingelse 4.5.6`
 
@@ -372,7 +372,7 @@ When invoked without arguments, all version of all distributions will be printed
 With distributions as arguments, only versions for those distributions will be
 printed.
 
-In the output, versions printed in reverse mode are the currenly selected
+In the output, versions printed in reverse mode are the currently selected
 (a.k.a. active) versions (see [Selecting versions](#selecting-versions) below.
 
 Versions in **bold** are installed.
@@ -437,7 +437,7 @@ info.
 To specify which version to use, you have to create a `.binenv.lock` file in
 the directory. Note that only **semver** is supported.
 
-This file has the follosing structure:
+This file has the following structure:
 
 ```
 <distributionA><constraintA>
@@ -464,7 +464,7 @@ The constraint operators are:
 - `<`:  version must be strictly lower
 - `>=`: version must be at least
 - `<=`: version must be at most
-- `~>`: version must be at least this one in the same but match teh same minor
+- `~>`: version must be at least this one in the same but match the same minor
   versions
 
 ### Version selection process
@@ -482,7 +482,7 @@ non-prerelease version installed.
 
 ### Install versions form .binenv.lock
 
-Install versions sepcified in `.binenv.lock` file, you can use the `--lock`
+Install versions specified in `.binenv.lock` file, you can use the `--lock`
 (a.k.a. `-l`) flag.
 
 #### Example
@@ -527,7 +527,7 @@ There are **no tests**. I will probably go to hell for this.
 
 ### I installed a binary but is still see the system (or wrong) version
 
-Try to rehash your binaries (`hash -r` in bash or `rehahsh` in Zsh).
+Try to rehash your binaries (`hash -r` in bash or `rehash` in Zsh).
 
 ### After installing a distribution, I get a "shim: no such file or directory"
 
