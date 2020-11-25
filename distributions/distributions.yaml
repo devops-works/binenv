@@ -898,9 +898,9 @@ sources:
     description: terraform-inventory creates an ansible inventory from terraform
     list:
       type: github-releases
-      url: https://github.com/adammck/terraform-inventory/releases
+      url: https://api.github.com/adammck/terraform-inventory/releases
     fetch:
-      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .Version }}/terraform-inventory_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
       binaries:
@@ -1032,7 +1032,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/mikefarah/yq/releases
     fetch:
-      url: https://github.com/mikefarah/yq/releases/download/{{ .Version }}/yq-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/mikefarah/yq/releases/download/{{ .Version }}/yq_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
       binaries:
