@@ -224,6 +224,7 @@ Currently supported distributions are:
 - [tanka](https://github.com/grafana/tanka)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
+- [terraform-inventory](https://github.com/adammck/terraform-inventory)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
 - [toji](https://github.com/leucos/toji/)
@@ -234,6 +235,7 @@ Currently supported distributions are:
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)
+- [yq](https://github.com/mikefarah/yq)
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
