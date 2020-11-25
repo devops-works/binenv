@@ -218,6 +218,7 @@ Currently supported distributions are:
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
+- [shaloc]("https://github.com/eze-kiel/shaloc")
 - [starship](https://github.com/starship/starship)
 - [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
