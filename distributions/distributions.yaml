@@ -553,6 +553,16 @@ sources:
       binaries:
         - kubens
 
+  kubeseal:
+    description: A Kubernetes controller and tool for one-way encrypted Secrets 
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
+    fetch:
+      url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   kustomize:
     description: Customization of kubernetes YAML configurations
     list:
@@ -813,16 +823,6 @@ sources:
     install:
       type: direct
 
-  kubeseal:
-    description: A Kubernetes controller and tool for one-way encrypted Secrets 
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
-    fetch:
-      url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .OS }}-{{ .Arch }}
-    install:
-      type: direct
- 
   starship:
     description: The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     map:
