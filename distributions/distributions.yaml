@@ -813,7 +813,7 @@ sources:
     install:
       type: direct
 
-  sealed-secrets:
+  kubeseal:
     description: A Kubernetes controller and tool for one-way encrypted Secrets 
     list:
       type: github-releases
