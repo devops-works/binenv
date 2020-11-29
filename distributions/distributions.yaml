@@ -109,6 +109,16 @@ sources:
     install:
       type: direct
 
+  buildx:
+    description: Docker CLI plugin for extended build capabilities with BuildKit 
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/docker/buildx/releases
+    fetch:
+      url: https://github.com/c1982/bomberman/releases/download/v{{ .Version }}/buildx-v{{ .Version}}.{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   cli53:
     description: Command line tool for Amazon Route 53
     list:
