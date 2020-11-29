@@ -403,6 +403,18 @@ sources:
       binaries:
         - hugo
 
+  imgpkg:
+    description: >
+      Allows you to store and distribute sets of files
+      (e.g. application configuration) as images in Docker (OCI) registries
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-imgpkg/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v{{ .Version }}/imgpkg-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
     map:
@@ -434,6 +446,27 @@ sources:
       type: tgz
       binaries:
         - k9s
+
+  kapp:
+    description: A simple deployment tool focused on the concept of "Kubernetes application"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-kapp/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v{{ .Version }}/kapp-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
+  kbld:
+    description: >
+      Seamlessly incorporates image building and image pushing into your development and deployment workflows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-kbld/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-kbld/releases/download/v{{ .Version }}/kbld-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   ketall:
     description: Like `kubectl get all`, but get really all resources
@@ -926,7 +959,7 @@ sources:
       type: zip
       binaries:
         - terraform-inventory
- 
+
   terragrunt:
     description: >
       Terragrunt is a thin wrapper for Terraform that provides extra 
@@ -1071,3 +1104,13 @@ sources:
       type: direct
       binaries:
         - yq
+
+  ytt:
+    description: YAML templating tool that works on YAML structure instead of text
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-ytt/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v{{ .Version }}/ytt-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct

@@ -189,8 +189,11 @@ Currently supported distributions are:
 - [hey](https://github.com/rakyll/hey)
 - [httpx](https://github.com/projectdiscovery/httpx)
 - [hugo](https://gohugo.io/)
+- [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)
 - [k6](https://github.com/loadimpact/k6)
 - [k9s](https://k9scli.io/)
+- [kapp](https://get-kapp.io/)
+- [kbld](https://get-kbld.io/)
 - [ketall](https://github.com/corneliusweig/ketall)
 - [kind](https://github.com/kubernetes-sigs/kind)
 - [krew](https://github.com/kubernetes-sigs/krew)
@@ -237,6 +240,7 @@ Currently supported distributions are:
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)
 - [yq](https://github.com/mikefarah/yq)
+- [ytt](https://get-ytt.io/)
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
