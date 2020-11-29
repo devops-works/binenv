@@ -160,6 +160,18 @@ sources:
     install:
       type: direct
 
+  doctl:
+    description: The official digital ocean command line interface
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/digitalocean/doctl/releases
+    fetch:
+      url: https://github.com/digitalocean/doctl/releases/download/v{{ .Version }}/doctl-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - doctl
+
   duf:
     description: Disk Usage/Free Utility
     map:
