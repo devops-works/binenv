@@ -115,7 +115,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/docker/buildx/releases
     fetch:
-      url: https://github.com/c1982/bomberman/releases/download/v{{ .Version }}/buildx-v{{ .Version}}.{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+      url: https://github.com/docker/buildx/releases/download/v{{ .Version }}/buildx-v{{ .Version}}.{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
 
