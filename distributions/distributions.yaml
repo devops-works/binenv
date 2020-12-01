@@ -878,6 +878,24 @@ sources:
     install:
       type: direct
 
+  ssllabs-scan:
+    description: >
+      A command-line reference-implementation client for SSL Labs APIs,
+      designed for automated and/or bulk testing.
+    map:
+      amd64: 64
+      darwin: osx
+      windows: win
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ssllabs/ssllabs-scan/releases
+    fetch:
+      url: https://github.com/ssllabs/ssllabs-scan/releases/download/v{{ .Version }}/ssllabs-scan_{{ .Version }}-{{ .OS }}{{ .Arch }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - ssllabs-scan
+
   starship:
     description: The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     map:

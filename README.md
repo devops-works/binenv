@@ -225,6 +225,7 @@ Currently supported distributions are:
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [shaloc]("https://github.com/eze-kiel/shaloc")
+- [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)
 - [starship](https://github.com/starship/starship)
 - [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
