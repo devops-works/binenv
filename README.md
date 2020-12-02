@@ -223,6 +223,7 @@ Currently supported distributions are:
 - [popeye](https://github.com/derailed/popeye)
 - [promtail](https://github.com/grafana/loki/)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
+- [saml2aws](https://github.com/Versent/saml2aws)
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [shaloc]("https://github.com/eze-kiel/shaloc")
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)

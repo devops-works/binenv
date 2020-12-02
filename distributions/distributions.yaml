@@ -858,6 +858,20 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  saml2aws:
+    description: >
+      CLI tool which enables you to login and retrieve AWS temporary
+      credentials using a SAML IDP
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Versent/saml2aws/releases
+    fetch:
+      url: https://github.com/Versent/saml2aws/releases/download/v{{ .Version }}/saml2aws_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - saml2aws
+
   scan-exporter:
     description: Scans targets and exposes results to Prometheus.
     list:
