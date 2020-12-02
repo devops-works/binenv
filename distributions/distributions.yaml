@@ -109,6 +109,16 @@ sources:
     install:
       type: direct
 
+  buildx:
+    description: Docker CLI plugin for extended build capabilities with BuildKit 
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/docker/buildx/releases
+    fetch:
+      url: https://github.com/docker/buildx/releases/download/v{{ .Version }}/buildx-v{{ .Version}}.{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   cli53:
     description: Command line tool for Amazon Route 53
     list:
@@ -160,6 +170,18 @@ sources:
     install:
       type: direct
 
+  doctl:
+    description: The official digital ocean command line interface
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/digitalocean/doctl/releases
+    fetch:
+      url: https://github.com/digitalocean/doctl/releases/download/v{{ .Version }}/doctl-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - doctl
+
   duf:
     description: Disk Usage/Free Utility
     map:
@@ -185,6 +207,18 @@ sources:
       type: tgz
       binaries:
         - dw-query-digest
+
+  fzf:
+    description: fzf is a general-purpose command-line fuzzy finder.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/junegunn/fzf/releases
+    fetch:
+      url: https://github.com/junegunn/fzf/releases/download/{{ .Version }}/fzf-{{ .Version }}-{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - fzf
 
   gh:
     description: GitHub’s official command line tool
@@ -391,6 +425,18 @@ sources:
       binaries:
         - hugo
 
+  imgpkg:
+    description: >
+      Allows you to store and distribute sets of files
+      (e.g. application configuration) as images in Docker (OCI) registries
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-imgpkg/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v{{ .Version }}/imgpkg-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
     map:
@@ -422,6 +468,27 @@ sources:
       type: tgz
       binaries:
         - k9s
+
+  kapp:
+    description: A simple deployment tool focused on the concept of "Kubernetes application"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-kapp/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-kapp/releases/download/v{{ .Version }}/kapp-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
+  kbld:
+    description: >
+      Seamlessly incorporates image building and image pushing into your development and deployment workflows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-kbld/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-kbld/releases/download/v{{ .Version }}/kbld-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   ketall:
     description: Like `kubectl get all`, but get really all resources
@@ -530,6 +597,16 @@ sources:
       type: tgz
       binaries:
         - kubens
+
+  kubeseal:
+    description: A Kubernetes controller and tool for one-way encrypted Secrets 
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
+    fetch:
+      url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   kustomize:
     description: Customization of kubernetes YAML configurations
@@ -781,6 +858,20 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  saml2aws:
+    description: >
+      CLI tool which enables you to login and retrieve AWS temporary
+      credentials using a SAML IDP
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Versent/saml2aws/releases
+    fetch:
+      url: https://github.com/Versent/saml2aws/releases/download/v{{ .Version }}/saml2aws_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - saml2aws
+
   scan-exporter:
     description: Scans targets and exposes results to Prometheus.
     list:
@@ -788,6 +879,16 @@ sources:
       url: https://api.github.com/repos/devops-works/scan-exporter/releases
     fetch:
       url: https://github.com/devops-works/scan-exporter/releases/download/v{{ .Version }}/scan-exporter_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
+  shaloc:
+    description: LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/eze-kiel/shaloc/releases
+    fetch:
+      url: https://github.com/eze-kiel/shaloc/releases/download/v{{ .Version }}/shaloc_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
 
@@ -910,6 +1011,18 @@ sources:
       type: zip
       binaries:
         - terraform
+
+  terraform-inventory:
+    description: terraform-inventory creates an ansible inventory from terraform
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/adammck/terraform-inventory/releases
+    fetch:
+      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - terraform-inventory
 
   terragrunt:
     description: >
@@ -1043,3 +1156,25 @@ sources:
       type: zip
       binaries:
         - yh
+
+  yq:
+    description: a lightweight and portable command-line YAML processor
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mikefarah/yq/releases
+    fetch:
+      url: https://github.com/mikefarah/yq/releases/download/{{ .Version }}/yq_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - yq
+
+  ytt:
+    description: YAML templating tool that works on YAML structure instead of text
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/carvel-ytt/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v{{ .Version }}/ytt-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
