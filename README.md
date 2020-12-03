@@ -86,7 +86,7 @@ exec $SHELL
 
 ### Windows
 
-Download latest binary from https://github.com/devops-works/binenv/releases.
+binenv does not support windows.
 
 ## Install
 
