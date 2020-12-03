@@ -155,21 +155,6 @@ sources:
       binaries:
         - dive
 
-  docker-compose:
-    description: Define and run multi-container applications with Docker
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/docker/compose/releases
-    fetch:
-      url: https://github.com/docker/compose/releases/download/{{ .Version }}/docker-compose-{{ .OS }}-{{ .Arch }}
-    install:
-      type: direct
-
   doctl:
     description: The official digital ocean command line interface
     list:
