@@ -173,7 +173,6 @@ Currently supported distributions are:
 - [consul](https://www.consul.io/)
 - [dive](https://github.com/wagoodman/dive/)
 - [doctl](https://github.com/digitalocean/doctl)
-- [docker-compose](https://docs.docker.com/compose/)
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [fzf](https://github.com/junegunn/fzf)
