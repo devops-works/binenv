@@ -188,6 +188,7 @@ Currently supported distributions are:
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
 - [hey](https://github.com/rakyll/hey)
+- [hcloud](https://github.com/hetznercloud/cli)
 - [httpx](https://github.com/projectdiscovery/httpx)
 - [hugo](https://gohugo.io/)
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)

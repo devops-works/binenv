@@ -337,6 +337,18 @@ sources:
     install:
       type: direct
 
+  hcloud:
+    description: a tool for controlling hetzner cloud resources
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hetznercloud/cli/releases
+    fetch:
+      url: https://github.com/hetznercloud/cli/releases/download/v{{ .Version }}/hcloud-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - hcloud
+
   helm:
     description: The Kubernetes Package Manager
     list:
