@@ -30,6 +30,18 @@ sources:
       binaries:
         - annie
 
+  argocd:
+    description: Declarative continuous deployment for Kubernetes. 
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/argoproj/argo-cd/releases
+    fetch:
+      url: https://github.com/argoproj/argo-cd/releases/download/v{{ .Version }}/argocd-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - argocd
+
   asciinema-edit:
     description: asciinema casts post-production tools
     list:

@@ -162,6 +162,7 @@ Currently supported distributions are:
 
 - [ali](https://github.com/nakabonne/ali)
 - [annie](https://github.com/iawia002/annie)
+- [argocd](https://github.com/argoproj/argo-cd/)
 - [asciinema-edit](https://github.com/cirocosta/asciinema-edit)
 - [awless](https://github.com/wallix/awless)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)
