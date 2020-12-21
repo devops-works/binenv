@@ -889,6 +889,16 @@ sources:
     install:
       type: direct
 
+  sops:
+    description: Simple and flexible tool for managing secrets
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mozilla/sops/releases
+    fetch:
+      url: https://github.com/mozilla/sops/releases/download/v{{ .Version }}/sops-v{{ .Version }}.{{ .OS }}
+    install:
+      type: direct
+
   ssllabs-scan:
     description: >
       A command-line reference-implementation client for SSL Labs APIs,
