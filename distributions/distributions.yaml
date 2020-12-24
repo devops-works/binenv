@@ -349,6 +349,18 @@ sources:
     install:
       type: direct
 
+  hcloud:
+    description: a tool for controlling hetzner cloud resources
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hetznercloud/cli/releases
+    fetch:
+      url: https://github.com/hetznercloud/cli/releases/download/v{{ .Version }}/hcloud-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - hcloud
+
   helm:
     description: The Kubernetes Package Manager
     list:
@@ -886,6 +898,16 @@ sources:
       url: https://api.github.com/repos/eze-kiel/shaloc/releases
     fetch:
       url: https://github.com/eze-kiel/shaloc/releases/download/v{{ .Version }}/shaloc_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
+  sops:
+    description: Simple and flexible tool for managing secrets
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mozilla/sops/releases
+    fetch:
+      url: https://github.com/mozilla/sops/releases/download/v{{ .Version }}/sops-v{{ .Version }}.{{ .OS }}
     install:
       type: direct
 
