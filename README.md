@@ -16,7 +16,6 @@ The last binary you'll ever install.
   - [Supported "distributions"](#supported-distributions)
   - [Usage](#usage)
     - [Updating available distributions versions](#updating-available-distributions-versions)
-      - [Updating versions from generated cache](#updating-versions-from-generated-cache)
       - [Updating versions using a token](#updating-versions-using-a-token)
       - [Update available distributions](#update-available-distributions)
       - [Examples](#examples)
@@ -266,30 +265,23 @@ to update the version list (usually located in `$XDG_CONFIG/cache.json` or
 
 This is done automatically when invoking `binenv update`.
 
-Without arguments, it will check for available versions for _all_ distributions
-(watch out for Github API rate limits, [but see below](#updating-versions-from-generated-cache)).
+Without arguments, it will fetch the cache from this repo. This cache is
+generated automatically daily.
+
+Using the `-f` argument, `binenv` will retrieve available versions for _all_
+distributions (watch out for Github API rate limits, [but see
+below](#updating-versions-from-generated-cache)).
 
 With a distribution passed as an argument (e.g. `binenv update kubectl`), it
 will only update installable versions for `kubectl`.
 
 Note that Github enforces rate limits (e.g. 60 unauthenticated API requests per
-hours). So you should update all distributions (e.g. `binenv update`) with
-caution.
-
-`binenv` will stop updating distributions when you only have 4 unauthenticated
-API requests left so you can [update from generated cache](#updating-versions-from-generated-cache).
+hours). So you should update all distributions (e.g. `binenv update -f`) with
+caution. `binenv` will stop updating distributions when you only have 4
+unauthenticated API requests left.
 
 [GitHub tokens](#updating-versions-using-a-token) are also supported to avoid
-being rate-limited.
-
-#### Updating versions from generated cache
-
-To avoid hitting the GitHub unauthenticated rate limit, `binenv` can fetch a
-nightly generated versions cache from github using the `--cache` flag:
-
-```bash
-binenv update --cache # or -c
-```
+being rate-limited and fetch releases from their respective sources.
 
 #### Updating versions using a token
 
@@ -329,7 +321,10 @@ binenv update --all # or -a
 
 #### Examples
 
-- `binenv update`: update available versions for all distributions
+- `binenv update`: update available versions for all distributions from github
+  cache
+- `binenv update -f`: update available versions for all distributions from all
+  releases
 - `binenv update -d`: update available distributions
 - `binenv update kubectl helm`: update available versions for `kubectl` and
   `helm`

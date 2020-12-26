@@ -479,7 +479,7 @@ func (a *App) Local(distribution, version string) error {
 }
 
 // Update fetches catalog of applications and updates available versions
-func (a *App) Update(definitions, all bool, cache bool, which ...string) error {
+func (a *App) Update(definitions, all bool, nocache bool, which ...string) error {
 	if definitions || all {
 		conf, err := getDistributionsFilePath()
 		if err != nil {
@@ -511,10 +511,10 @@ func (a *App) Update(definitions, all bool, cache bool, which ...string) error {
 	}
 
 	a.logger.Debug().Msgf("updating %d distributions", len(which))
-	if cache {
-		err = a.updateGithub()
-	} else {
+	if nocache {
 		err = a.updateLocally(which...)
+	} else {
+		err = a.updateGithub()
 	}
 	if err != nil {
 		return err
@@ -526,7 +526,7 @@ func (a *App) Update(definitions, all bool, cache bool, which ...string) error {
 }
 
 func (a *App) updateGithub() error {
-	a.logger.Info().Msgf("retrieving distribution list from %s", cacheURL)
+	a.logger.Info().Msgf("retrieving distribution cache from %s", cacheURL)
 	resp, err := http.Get(cacheURL)
 	if err != nil {
 		return err
