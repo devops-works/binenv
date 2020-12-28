@@ -624,7 +624,7 @@ sources:
       url: https://api.github.com/repos/kubernetes-sigs/kustomize/releases
       prefix: "kustomize/"
     fetch:
-      ur: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v{{ .Version }}/kustomize_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v{{ .Version }}/kustomize_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
