@@ -1001,6 +1001,18 @@ sources:
     install:
       type: direct
 
+  taskctl:
+    description: simple modern alternative to GNU Make.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/taskctl/taskctl/releases
+    fetch:
+      url: https://github.com/taskctl/taskctl/releases/download/v{{ .Version }}/taskctl_{{ .VERSION }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - taskctl
+
   teler:
     description: Real-time HTTP Intrusion Detection
     map:
