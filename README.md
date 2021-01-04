@@ -232,6 +232,7 @@ Currently supported distributions are:
 - [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
 - [tanka](https://github.com/grafana/tanka)
+- [taskctl](https://github.com/taskctl/taskctl)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terraform-inventory](https://github.com/adammck/terraform-inventory)
