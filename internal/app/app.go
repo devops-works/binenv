@@ -520,9 +520,9 @@ func (a *App) Update(definitions, all bool, nocache bool, which ...string) error
 		return err
 	}
 
-	a.saveCache()
+	err = a.saveCache()
 
-	return nil
+	return err
 }
 
 func (a *App) updateGithub() error {
@@ -1035,7 +1035,7 @@ func (a *App) getDistributionsFromLock() ([]string, []string) {
 }
 
 func (a *App) loadCache() {
-	conf, err := getConfigDir()
+	conf, err := getCacheDir()
 	if err != nil {
 		return
 	}
@@ -1058,28 +1058,35 @@ func (a *App) loadCache() {
 	}
 }
 
-func (a *App) saveCache() {
-	conf, err := getConfigDir()
+func (a *App) saveCache() error {
+	cache, err := getCacheDir()
 	if err != nil {
-		return
+		return nil
 	}
 
-	conf = filepath.Join(conf, "/cache.json")
+	err = os.MkdirAll(cache, 0750)
+	if err != nil {
+		return fmt.Errorf("unable to create cache directory '%s': %w", cache, err)
+	}
+
+	cache = filepath.Join(cache, "/cache.json")
 
 	js, err := json.Marshal(&a.cache)
 	if err != nil {
-		a.logger.Error().Err(err).Msgf("unable to marshal cache %q", conf)
-		return
+		a.logger.Error().Err(err).Msgf("unable to marshal cache %q", cache)
+		return nil
 	}
 
-	fd, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0640)
+	fd, err := os.OpenFile(cache, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0640)
 	if err != nil {
-		a.logger.Error().Err(err).Msgf("unable to write cache %s: please check file permissions", conf)
-		return
+		a.logger.Error().Err(err).Msgf("unable to write cache %s: please check file permissions", cache)
+		return nil
 	}
 	defer fd.Close()
 
 	fd.Write(js)
+
+	return nil
 }
 
 func (a *App) createInstallers() {

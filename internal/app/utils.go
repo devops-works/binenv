@@ -33,6 +33,21 @@ func getConfigDir() (string, error) {
 	return dir, nil
 }
 
+func getCacheDir() (string, error) {
+	var err error
+
+	dir := os.Getenv("XDG_CACHE_HOME")
+	if dir == "" {
+		dir, err = homedir.Dir()
+		if err != nil {
+			return "", err
+		}
+		dir += "/.cache/binenv"
+	}
+
+	return dir, nil
+}
+
 func getDistributionsFilePath() (string, error) {
 	conf, err := getConfigDir()
 	if err != nil {
