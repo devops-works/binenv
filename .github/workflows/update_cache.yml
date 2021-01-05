@@ -28,7 +28,7 @@ jobs:
         run: make all
 
       - name: Create cache
-        run: export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} && ./bin/binenv update
+        run: export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} && ./bin/binenv update -f
 
       - name: Format caches
         run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.cache/binenv/cache.json > new.json
