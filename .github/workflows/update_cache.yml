@@ -31,7 +31,7 @@ jobs:
         run: export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} && ./bin/binenv update
 
       - name: Format caches
-        run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.config/binenv/cache.json > new.json
+        run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.cache/binenv/cache.json > new.json
 
       - name: Compare caches
         id: compare
@@ -39,7 +39,7 @@ jobs:
           echo "DIFF=$(diff dist.json new.json > /dev/null 2>&1; echo $?)" >> $GITHUB_ENV
 
       - name: Copy cache
-        run: cat ~/.config/binenv/cache.json | jq . > distributions/cache.json
+        run: cat ~/.cache/binenv/cache.json | jq . > distributions/cache.json
         if: ${{ env.DIFF != 0 }}
 
       - name: Update cache
