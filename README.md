@@ -214,6 +214,7 @@ Currently supported distributions are:
 - [naabu](https://github.com/projectdiscovery/naabu)
 - [nomad](https://www.nomadproject.io)
 - [onefetch](https://github.com/o2sh/onefetch/)
+- [operator-sdk, ansible-operator, helm-operator](https://github.com/operator-framework/operator-sdk)
 - [oto](https://github.com/pacedotdev/oto)
 - [pass-checker](https://github.com/devops-works/pass-checker)
 - [packer](https://www.packer.io)
