@@ -314,6 +314,23 @@ sources:
       binaries:
         - goreleaser
 
+  gping:
+    description: Ping, but with a graph
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/orf/gping/releases
+    fetch:
+      url: https://github.com/orf/gping/releases/download/v{{ .Version }}/gping-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gping
+
   grizzly:
     description: A utility for managing Jsonnet dashboards against the Grafana API
     list:

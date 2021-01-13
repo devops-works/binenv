@@ -182,6 +182,7 @@ Currently supported distributions are:
 - [glow](https://github.com/charmbracelet/glow)
 - [gocloc](https://github.com/hhatto/gocloc)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
+- [gping](https://github.com/orf/gping)
 - [grizzly](https://github.com/grafana/grizzly)
 - [gws](https://github.com/StreakyCobra/gws)
 - [hadolint](https://github.com/hadolint/hadolint)
