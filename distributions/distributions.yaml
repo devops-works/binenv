@@ -689,6 +689,16 @@ sources:
       binaries:
         - lazygit
 
+  local-php-security-checker:
+    description: PHP security vulnerabilities checker
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fabpot/local-php-security-checker/releases
+    fetch:
+      url: https://github.com/fabpot/local-php-security-checker/releases/download/v{{ .Version }}/local-php-security-checker_{{ .Version }}_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   logcli:
     description: Like Prometheus, but for logs (cli).
     list:
@@ -839,6 +849,18 @@ sources:
       url: https://github.com/devops-works/pass-checker/releases/download/v{{ .Version }}/pass-checker_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  phpsecscan:
+    description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/phpsecscan/releases
+    fetch:
+      url: https://github.com/devops-works/phpsecscan/releases/download/v{{ .Version }}/phpsecscan_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - phpsecscan
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
