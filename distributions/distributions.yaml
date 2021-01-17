@@ -191,6 +191,16 @@ sources:
       binaries:
         - doctl
 
+  drift:
+    description: AWS resource drift detection utility
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cloudskiff/driftctl/releases
+    fetch:
+      url: https://github.com/cloudskiff/driftctl/releases/download/v{{ .Version }}/driftctl_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   duf:
     description: Disk Usage/Free Utility
     map:
