@@ -191,7 +191,7 @@ sources:
       binaries:
         - doctl
 
-  drift:
+  driftctl:
     description: AWS resource drift detection utility
     list:
       type: github-releases
