@@ -43,7 +43,7 @@ sources:
       type: direct
 
   argocd:
-    description: Declarative continuous deployment for Kubernetes. 
+    description: Declarative continuous deployment for Kubernetes.
     list:
       type: github-releases
       url: https://api.github.com/repos/argoproj/argo-cd/releases
@@ -134,7 +134,7 @@ sources:
       type: direct
 
   buildx:
-    description: Docker CLI plugin for extended build capabilities with BuildKit 
+    description: Docker CLI plugin for extended build capabilities with BuildKit
     list:
       type: github-releases
       url: https://api.github.com/repos/docker/buildx/releases
@@ -166,6 +166,19 @@ sources:
       type: zip
       binaries:
         - consul
+
+  devspace:
+    description: >
+      DevSpace - The Fastest Developer Tool for Kubernetes ￼
+      Automate your deployment workflow with DevSpace and develop software
+      directly inside Kubernetes.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devspace-cloud/devspace/releases
+    fetch:
+      url: https://github.com/devspace-cloud/devspace/releases/download/v{{ .Version }}/devspace-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   dive:
     description: A tool for exploring each layer in a docker image
@@ -649,7 +662,7 @@ sources:
         - kubens
 
   kubeseal:
-    description: A Kubernetes controller and tool for one-way encrypted Secrets 
+    description: A Kubernetes controller and tool for one-way encrypted Secrets
     list:
       type: github-releases
       url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases

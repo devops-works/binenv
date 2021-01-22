@@ -171,6 +171,7 @@ Currently supported distributions are:
 - [buildx](https://github.com/docker/buildx)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
+- [devspace](https://github.com/devspace-cloud/devspace)
 - [dive](https://github.com/wagoodman/dive/)
 - [doctl](https://github.com/digitalocean/doctl)
 - [duf](https://github.com/muesli/duf)
