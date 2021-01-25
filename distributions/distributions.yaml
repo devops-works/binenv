@@ -1141,12 +1141,24 @@ sources:
       binaries:
         - terraform
 
+  terraform-docs:
+    description: >
+      Generate documentation from Terraform modules in various output formats
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/terraform-docs/terraform-docs/releases
+    fetch:
+      url: https://github.com/terraform-docs/terraform-docs/releases/download/v{{ .Version }}/terraform-docs-v{{ .Version }}-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   terraform-inventory:
     description: terraform-inventory creates an ansible inventory from terraform
     list:
       type: github-releases
       url: https://api.github.com/repos/adammck/terraform-inventory/releases
     fetch:
+
       url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
