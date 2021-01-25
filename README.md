@@ -241,6 +241,7 @@ Currently supported distributions are:
 - [taskctl](https://github.com/taskctl/taskctl)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
+- [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 - [terraform-inventory](https://github.com/adammck/terraform-inventory)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
