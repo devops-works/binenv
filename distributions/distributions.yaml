@@ -153,6 +153,18 @@ sources:
     install:
       type: direct
 
+  chezmoi:
+    description: Dotfile management tool
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/twpayne/chezmoi/releases
+    fetch:
+      url: https://github.com/twpayne/chezmoi/releases/download/v{{ .Version }}/chezmoi_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - chezmoi
+
   consul:
     description: >
       Consul is a distributed, highly available, and data center aware solution 

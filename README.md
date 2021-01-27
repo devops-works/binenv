@@ -169,6 +169,7 @@ Currently supported distributions are:
 - [binenv](https://github.com/devops-works/binenv)
 - [bomberman](https://github.com/c1982/bomberman)
 - [buildx](https://github.com/docker/buildx)
+- [chezmoi](https://github.com/twpayne/chezmoi)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
 - [devspace](https://github.com/devspace-cloud/devspace)
