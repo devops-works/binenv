@@ -76,7 +76,7 @@ exec $SHELL
 wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64 -O binenv
 chmod +x binenv
 ./binenv update
-./binenv install binenv 
+./binenv install binenv
 rm binenv
 echo 'export PATH=~/.binenv:$PATH' >> ~/.bashrc
 echo 'source <(binenv completion bash)' >> ~/.bashrc
@@ -179,6 +179,7 @@ Currently supported distributions are:
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [fzf](https://github.com/junegunn/fzf)
+- [gdu](https://github.com/dundee/gdu/)
 - [gh](https://github.com/cli/cli/)
 - [gitjacker](https://github.com/liamg/gitjacker)
 - [glab](https://github.com/profclems/glab/)
@@ -356,7 +357,7 @@ ketall: Like `kubectl get all`, but get really all resources
 
 After updating the list, you might want to install a shiny new version. No
  problem,`binenv install` has you covered.
- 
+
 If you want the latest non-prerelease version for something, just run:
 
 `binenv install something`
@@ -401,10 +402,10 @@ All other versions are available to be installed.
 
 ```
 $ binenv versions
-terraform: 0.13.1 (/home/you/some/dir) 0.13.0 0.13.0-rc1 0.13.0-beta3 0.13.0-beta2 0.13.0-beta1 0.12.29 0.12.28 0.12.27 0.12.26 0.12.25 0.12.24 0.12.23 0.12.22 0.12.21 0.12.20 0.12.19 0.12.18 0.12.17 0.12.16 0.12.15 0.12.14 0.12.13 0.12.12 0.12.11 0.12.10 0.12.9 0.12.8 0.12.7 0.12.6 
-terragrunt: 0.23.38 0.23.37 0.23.36 0.23.35 0.23.34 0.23.33 0.23.32 0.23.31 0.23.30 0.23.29 0.23.28 0.23.27 0.23.26 0.23.25 0.23.24 0.23.23 0.23.22 0.23.21 0.23.20 0.23.19 0.23.18 0.23.17 0.23.16 0.23.15 0.23.14 0.23.13 0.23.12 0.23.11 0.23.10 0.23.9 
-toji: 0.2.4 (default) 0.2.2 
-vault: 1.5.3 1.5.2 1.5.1 1.5.0 1.5.0-rc 1.4.6 1.4.5 1.4.4 1.4.3 1.4.2 1.4.1 1.4.0 1.4.0-rc1 1.4.0-beta1 1.3.10 1.3.9 1.3.8 1.3.7 1.3.6 1.3.5 1.3.4 1.3.3 1.3.2 1.3.1 1.3.0 1.3.0-beta1 1.2.7 1.2.6 1.2.5 1.2.4 
+terraform: 0.13.1 (/home/you/some/dir) 0.13.0 0.13.0-rc1 0.13.0-beta3 0.13.0-beta2 0.13.0-beta1 0.12.29 0.12.28 0.12.27 0.12.26 0.12.25 0.12.24 0.12.23 0.12.22 0.12.21 0.12.20 0.12.19 0.12.18 0.12.17 0.12.16 0.12.15 0.12.14 0.12.13 0.12.12 0.12.11 0.12.10 0.12.9 0.12.8 0.12.7 0.12.6
+terragrunt: 0.23.38 0.23.37 0.23.36 0.23.35 0.23.34 0.23.33 0.23.32 0.23.31 0.23.30 0.23.29 0.23.28 0.23.27 0.23.26 0.23.25 0.23.24 0.23.23 0.23.22 0.23.21 0.23.20 0.23.19 0.23.18 0.23.17 0.23.16 0.23.15 0.23.14 0.23.13 0.23.12 0.23.11 0.23.10 0.23.9
+toji: 0.2.4 (default) 0.2.2
+vault: 1.5.3 1.5.2 1.5.1 1.5.0 1.5.0-rc 1.4.6 1.4.5 1.4.4 1.4.3 1.4.2 1.4.1 1.4.0 1.4.0-rc1 1.4.0-beta1 1.3.10 1.3.9 1.3.8 1.3.7 1.3.6 1.3.5 1.3.4 1.3.3 1.3.2 1.3.1 1.3.0 1.3.0-beta1 1.2.7 1.2.6 1.2.5 1.2.4
 ...
 ```
 
