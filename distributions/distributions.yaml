@@ -264,6 +264,18 @@ sources:
       binaries:
         - fzf
 
+  gdu:
+    description: Pretty fast disk usage analyzer written in Go.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dundee/gdu/releases
+    fetch:
+      url: https://github.com/dundee/gdu/releases/download/v{{ .Version }}/gdu_{{ .OS }}_{{ .Arch }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - gdu_{{ .OS }}_{{ .Arch }}
+
   gh:
     description: GitHub’s official command line tool
     map:
