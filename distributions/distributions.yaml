@@ -143,6 +143,20 @@ sources:
     install:
       type: direct
 
+  changie:
+    description: >
+      Automated changelog tool for preparing releases with lots of
+      customization options
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/miniscruff/changie/releases
+    fetch:
+      url: https://github.com/miniscruff/changie/releases/download/v{{ .Version }}/changie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - changie
+
   cli53:
     description: Command line tool for Amazon Route 53
     list:
@@ -289,6 +303,18 @@ sources:
       type: tgz
       binaries:
         - gh
+
+  github-release-notes:
+    description: Generate release notes content from GitHub Pull Request history.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/buchanae/github-release-notes/releases
+    fetch:
+      url: https://github.com/buchanae/github-release-notes/releases/download/{{ .Version }}/github-release-notes-{{ .OS }}-{{ .Arch }}-{{ .Version }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - github-release-notes
 
   gitjacker:
     description: Leak git repositories from misconfigured websites
