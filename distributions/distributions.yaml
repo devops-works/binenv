@@ -344,6 +344,18 @@ sources:
       binaries:
         - gocloc
 
+  golangci-lint:
+    description: Fast linters Runner for Go
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/golangci/golangci-lint/releases
+    fetch:
+      url: https://github.com/golangci/golangci-lint/releases/download/v{{ .Version }}/golangci-lint-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - golangci-lint
+
   goreleaser:
     description: Deliver Go binaries as fast and easily as possible
     map:
