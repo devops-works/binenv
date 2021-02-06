@@ -244,6 +244,7 @@ Currently supported distributions are:
 - [starship](https://github.com/starship/starship)
 - [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
+- [sonobuoy](https://github.com/vmware-tanzu/sonobuoy)
 - [tanka](https://github.com/grafana/tanka)
 - [taskctl](https://github.com/taskctl/taskctl)
 - [teler](https://github.com/kitabisa/teler/)

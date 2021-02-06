@@ -1085,6 +1085,22 @@ sources:
     install:
       type: direct
 
+
+  sonobuoy:
+    description: > 
+      Sonobuoy is a diagnostic tool that makes it easier to understand the
+      state of a Kubernetes cluster by running a set of Kubernetes conformance
+      tests and other plugins in an accessible and non-destructive manner.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/sonobuoy/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/sonobuoy/releases/download/v{{ .Version }}/sonobuoy_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - github-release-notes
+
   sops:
     description: Simple and flexible tool for managing secrets
     list:
