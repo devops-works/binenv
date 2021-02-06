@@ -390,6 +390,18 @@ sources:
       binaries:
         - gping
 
+  gosec:
+    description: Golang security checker
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/securego/gosec/releases
+    fetch:
+      url: https://github.com/securego/gosec/releases/download/v{{ .Version }}/gosec_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gosec
+
   grizzly:
     description: A utility for managing Jsonnet dashboards against the Grafana API
     list:
