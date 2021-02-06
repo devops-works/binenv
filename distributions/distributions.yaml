@@ -534,6 +534,18 @@ sources:
     install:
       type: direct
 
+  juicefs:
+    description: JuiceFS is a distributed POSIX file system built on top of Redis and S3.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/juicedata/juicefs/releases
+    fetch:
+      url: https://github.com/juicedata/juicefs/releases/download/v{{ .Version }}/juicefs-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - juicefs
+
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
     map:

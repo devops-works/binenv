@@ -197,6 +197,7 @@ Currently supported distributions are:
 - [httpx](https://github.com/projectdiscovery/httpx)
 - [hugo](https://gohugo.io/)
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)
+- [juicefs](https://github.com/juicedata/juicefs)
 - [k6](https://github.com/loadimpact/k6)
 - [k9s](https://k9scli.io/)
 - [kapp](https://get-kapp.io/)
