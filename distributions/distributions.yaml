@@ -1,5 +1,6 @@
 ---
 sources:
+
   ali:
     description: Generate HTTP load and plot the results in real-time
     list:
@@ -11,6 +12,24 @@ sources:
       type: tgz
       binaries:
         - ali
+
+  asciigraph:
+    description: >
+      Go package to make lightweight ASCII line graph ╭┈╯ in command line apps
+      with no other dependencies.
+    map:
+      linux: Linux
+      darwin: Darwin
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/guptarohit/asciigraph/releases
+    fetch:
+      url: https://github.com/guptarohit/asciigraph/releases/download/v{{ .Version }}/asciigraph_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - asciigraph
 
   annie:
     description: Fast, simple and clean video downloader
@@ -142,6 +161,20 @@ sources:
       url: https://github.com/docker/buildx/releases/download/v{{ .Version }}/buildx-v{{ .Version}}.{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  changie:
+    description: >
+      Automated changelog tool for preparing releases with lots of
+      customization options
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/miniscruff/changie/releases
+    fetch:
+      url: https://github.com/miniscruff/changie/releases/download/v{{ .Version }}/changie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - changie
 
   cli53:
     description: Command line tool for Amazon Route 53
@@ -290,6 +323,18 @@ sources:
       binaries:
         - gh
 
+  github-release-notes:
+    description: Generate release notes content from GitHub Pull Request history.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/buchanae/github-release-notes/releases
+    fetch:
+      url: https://github.com/buchanae/github-release-notes/releases/download/{{ .Version }}/github-release-notes-{{ .OS }}-{{ .Arch }}-{{ .Version }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - github-release-notes
+
   gitjacker:
     description: Leak git repositories from misconfigured websites
     list:
@@ -344,6 +389,18 @@ sources:
       binaries:
         - gocloc
 
+  golangci-lint:
+    description: Fast linters Runner for Go
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/golangci/golangci-lint/releases
+    fetch:
+      url: https://github.com/golangci/golangci-lint/releases/download/v{{ .Version }}/golangci-lint-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - golangci-lint
+
   goreleaser:
     description: Deliver Go binaries as fast and easily as possible
     map:
@@ -377,6 +434,18 @@ sources:
       type: tgz
       binaries:
         - gping
+
+  gosec:
+    description: Golang security checker
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/securego/gosec/releases
+    fetch:
+      url: https://github.com/securego/gosec/releases/download/v{{ .Version }}/gosec_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gosec
 
   grizzly:
     description: A utility for managing Jsonnet dashboards against the Grafana API
@@ -533,6 +602,18 @@ sources:
       url: https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v{{ .Version }}/imgpkg-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  juicefs:
+    description: JuiceFS is a distributed POSIX file system built on top of Redis and S3.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/juicedata/juicefs/releases
+    fetch:
+      url: https://github.com/juicedata/juicefs/releases/download/v{{ .Version }}/juicefs-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - juicefs
 
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
@@ -1022,6 +1103,22 @@ sources:
       url: https://github.com/eze-kiel/shaloc/releases/download/v{{ .Version }}/shaloc_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+
+  sonobuoy:
+    description: > 
+      Sonobuoy is a diagnostic tool that makes it easier to understand the
+      state of a Kubernetes cluster by running a set of Kubernetes conformance
+      tests and other plugins in an accessible and non-destructive manner.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vmware-tanzu/sonobuoy/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/sonobuoy/releases/download/v{{ .Version }}/sonobuoy_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - github-release-notes
 
   sops:
     description: Simple and flexible tool for managing secrets
