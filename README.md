@@ -165,6 +165,7 @@ Currently supported distributions are:
 - [asciigraph](https://github.com/guptarohit/asciigraph)
 - [asciinema-edit](https://github.com/cirocosta/asciinema-edit)
 - [awless](https://github.com/wallix/awless)
+- [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator)
 - [awstaghelper](https://github.com/mpostument/awstaghelper)
 - [bat](https://github.com/sharkdp/bat)
 - [binenv](https://github.com/devops-works/binenv)

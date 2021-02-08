@@ -97,6 +97,17 @@ sources:
       binaries:
         - awless
 
+  aws-iam-authenticator:
+    description: >
+      A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases
+    fetch:
+      url: https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v{{ .Version }}/aws-iam-authenticator_{{ .Version }}_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   awstaghelper:
     description: AWS bulk tagging tool
     map:
