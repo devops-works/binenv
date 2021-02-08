@@ -348,6 +348,7 @@ sources:
   glab:
     description: An open-source GitLab command line tool
     map:
+      amd64: x86_64
       darwin: macOS
       linux: Linux
     list:
