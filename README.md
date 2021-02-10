@@ -182,6 +182,7 @@ Currently supported distributions are:
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [fzf](https://github.com/junegunn/fzf)
+- [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
 - [gh](https://github.com/cli/cli/)
 - [github-release-notes](https://github.com/buchanae/github-release-notes)

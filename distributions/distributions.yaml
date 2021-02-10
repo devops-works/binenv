@@ -308,6 +308,18 @@ sources:
       binaries:
         - fzf
 
+  gbt:
+    description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jtyr/gbt/releases
+    fetch:
+      url: https://github.com/jtyr/gbt/releases/download/v{{ .Version }}/gbt-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gbt
+
   gdu:
     description: Pretty fast disk usage analyzer written in Go.
     list:
