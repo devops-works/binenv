@@ -39,6 +39,8 @@ The last binary you'll ever install.
     - [After installing a distribution, I get a "shim: no such file or directory"](#after-installing-a-distribution-i-get-a-shim-no-such-file-or-directory)
     - [I don't like binenv, are there alternatives ?](#i-dont-like-binenv-are-there-alternatives-)
   - [Distributions file format](#distributions-file-format)
+    - [Distributions file reference](#distributions-file-reference)
+    - [Distributions file example](#distributions-file-example)
   - [Contributions](#contributions)
   - [Licence](#licence)
 
@@ -582,7 +584,108 @@ Some nice alternatives exist:
 
 ## Distributions file format
 
-TBD
+[distributions.yaml](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml) contains all the distributions supported by `binenv`, and how to fetch them. It is written in YALM and is defined by the scheme below.
+
+
+### Distributions file reference
+
+```yaml
+sources:
+
+  # Name of the distribution
+  <string>:
+
+    # Description provided by the binary author(s).
+    description: <string>
+
+    # map creates aliases between architectures known by binenv and those
+    # expected by the original author(s).
+    # Check `bat` distribution for a more meaningful example.
+    [map: <map_config>]
+
+    # list contains the kind of releases and where to fetch their
+    # history.
+    list:
+
+      # Type of the releases.
+      # Typically "github-releases"
+      type: <string>
+
+      # Where to fetch the releases.
+      # I.e. https://github.com/devops-works/binenv/releases
+      url: <string>
+
+    # fetch holds the URL from where the binaries can be downloaded.
+    fetch:
+
+      # Templatised URL to the binary. Values to templatise can be:
+      # Host architecture with {{ .Arch }}, operating system with {{ .OS }},
+      # version with {{ .Version }}, sometimes .exe with {{ .ExeExtension}}.
+      url: <string>
+
+    # Defines how to install the binary.
+    install:
+
+      # Type of installation. Can be :
+      # "direct" if after download the binary is executable as is; 
+      # "tgz" if it needs to be uncompressed using tar and gzip;
+      # "zip" if it needs to be unzipped;
+      # "tarx" if it needs to be uncompressed with tar;
+      type: <string>
+
+      # Name of the binar(y|ies) that will be downloaded
+      [binaries: <binaries_config>]
+```
+
+`map_config`:
+
+```yaml
+# Alias to amd64 arch
+[amd64: <string>]
+
+# Alias to i386 arch
+[i386: <string>]
+
+# Alias to darwin arch
+[darwin: <string>]
+
+# Alias to linux arch
+[linux: <string>]
+
+# Alias to windows arch
+[windows: <string>]
+```
+
+`binaries_config`:
+
+```yaml
+# Array of binaries names that will be downloaded
+ - <string>
+```
+
+### Distributions file example
+
+```yaml
+sources:
+  popeye:
+    description: A Kubernetes cluster resource sanitizer
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/derailed/popeye/releases
+    fetch:
+      url: https://github.com/derailed/popeye/releases/download/v{{ .Version }/popeye_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - popeye
+```
+
+The `distributions.yaml` file used by default by `binenv` is located [here](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml), don't hesitate to have a look on it's structure.
 
 ## Contributions
 
