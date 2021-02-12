@@ -1128,6 +1128,15 @@ sources:
     install:
       type: direct
 
+  skaffold:
+    description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/GoogleContainerTools/skaffold/releases
+    fetch:
+      url: https://storage.googleapis.com/skaffold/releases/v{{ .Version }}/skaffold-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   sonobuoy:
     description: > 
