@@ -244,6 +244,7 @@ Currently supported distributions are:
 - [saml2aws](https://github.com/Versent/saml2aws)
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [shaloc](https://github.com/eze-kiel/shaloc)
+- [skaffold](https://github.com/GoogleContainerTools/skaffold)
 - [sops](https://github.com/mozilla/sops/)
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)
 - [starship](https://github.com/starship/starship)
