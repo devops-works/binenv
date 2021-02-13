@@ -689,6 +689,18 @@ sources:
 
 The `distributions.yaml` file used by default by `binenv` is located [here](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml), don't hesitate to have a look on it's structure.
 
+## Caveats
+
+Since `binenv` uses your PATH and HOME to find binaries and layout it's
+configuration files, using sudo with binenv-installed binaries is not very
+straightforward. You can either install binenv as the root user (so it can find
+it's config), or pass those two environment variables when invoking sudo, like
+so:
+
+```
+sudo env "PATH=$PATH" "HOME=$HOME" binary_installed_with_binenv ...
+```
+
 ## Contributions
 
 Welcomed !
