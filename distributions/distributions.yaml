@@ -1253,6 +1253,18 @@ sources:
     install:
       type: direct
 
+  task:
+    description: A task runner / simpler Make alternative written in Go
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/go-task/task/releases
+    fetch:
+      url: https://github.com/go-task/task/releases/download/v{{ .Version }}/task_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - task
+
   taskctl:
     description: simple modern alternative to GNU Make.
     list:

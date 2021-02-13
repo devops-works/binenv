@@ -252,6 +252,7 @@ Currently supported distributions are:
 - [subfinder](https://github.com/projectdiscovery/subfinder)
 - [sonobuoy](https://github.com/vmware-tanzu/sonobuoy)
 - [tanka](https://github.com/grafana/tanka)
+- [task](https://github.com/go-task/task)
 - [taskctl](https://github.com/taskctl/taskctl)
 - [teler](https://github.com/kitabisa/teler/)
 - [terraform](https://www.hashicorp.com/products/terraform)
