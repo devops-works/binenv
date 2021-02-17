@@ -260,6 +260,7 @@ Currently supported distributions are:
 - [terraform-inventory](https://github.com/adammck/terraform-inventory)
 - [terragrunt](https://terragrunt.gruntwork.io/)
 - [tflint](https://github.com/terraform-linters/tflint/)
+- [tfsec](https://github.com/tfsec/tfsec)
 - [toji](https://github.com/leucos/toji/)
 - [traefik](https://doc.traefik.io/traefik/)
 - [trivy](https://github.com/aquasecurity/trivy)
