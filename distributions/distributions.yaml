@@ -1355,6 +1355,16 @@ sources:
       binaries:
         - tflint
 
+  tfsec:
+    description: TFsec uses static analysis of your terraform templates to spot potential security issues.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/tfsec/tfsec/releases
+    fetch:
+      url: https://github.com/tfsec/tfsec/releases/download/v{{ .Version }}/tfsec-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   toji:
     description: "Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog"
     list:
