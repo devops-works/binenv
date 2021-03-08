@@ -269,6 +269,7 @@ Currently supported distributions are:
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [yh](https://github.com/andreazorzetto/yh)
+- [yj](https://github.com/sclevine/yj)
 - [yq](https://github.com/mikefarah/yq)
 - [ytt](https://get-ytt.io/)
 

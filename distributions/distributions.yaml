@@ -1474,6 +1474,18 @@ sources:
       binaries:
         - yh
 
+  yj:
+    description: Convert between YAML, TOML, JSON, and HCL.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sclevine/yj/releases
+    fetch:
+      url: https://github.com/sclevine/yj/releases/download/v{{ .Version }}/yj-{{ .OS }}
+    install:
+      type: direct
+      binaries:
+        - yj
+
   yq:
     description: a lightweight and portable command-line YAML processor
     list:
