@@ -368,6 +368,21 @@ sources:
     install:
       type: direct
 
+  gitui:
+    map:
+      darwin: mac
+      linux: linux-musl
+    description: Blazing fast terminal client for git written in Rust
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/extrawurst/gitui/releases
+    fetch:
+      url: https://github.com/extrawurst/gitui/releases/download/v{{ .Version }}/gitui-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ./gitui
+
   glab:
     description: An open-source GitLab command line tool
     map:
