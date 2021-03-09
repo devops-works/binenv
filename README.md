@@ -195,6 +195,7 @@ Currently supported distributions are:
 - [golangci-lint](https://github.com/golangci/golangci-lint)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [gosec](https://github.com/securego/gosec)
+- [gotop](https://github.com/xxxserxxx/gotop)
 - [gping](https://github.com/orf/gping)
 - [grizzly](https://github.com/grafana/grizzly)
 - [gws](https://github.com/StreakyCobra/gws)
