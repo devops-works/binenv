@@ -457,6 +457,18 @@ sources:
       binaries:
         - goreleaser
 
+  gotop:
+    description: Just another terminal based graphical activity monitor
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/xxxserxxx/gotop/releases
+    fetch:
+      url: https://github.com/xxxserxxx/gotop/releases/download/v{{ .Version }}/gotop_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - gotop
+
   gping:
     description: Ping, but with a graph
     map:
