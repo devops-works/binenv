@@ -183,6 +183,7 @@ Currently supported distributions are:
 - [driftctl](https://github.com/cloudskiff/driftctl)
 - [duf](https://github.com/muesli/duf)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
+- [eksctl](https://github.com/weaveworks/eksctl/)
 - [fzf](https://github.com/junegunn/fzf)
 - [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
