@@ -189,6 +189,7 @@ Currently supported distributions are:
 - [gh](https://github.com/cli/cli/)
 - [github-release-notes](https://github.com/buchanae/github-release-notes)
 - [gitjacker](https://github.com/liamg/gitjacker)
+- [gitui](https://github.com/extrawurst/gitui/)
 - [glab](https://github.com/profclems/glab/)
 - [glow](https://github.com/charmbracelet/glow)
 - [gocloc](https://github.com/hhatto/gocloc)
