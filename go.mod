@@ -1,6 +1,6 @@
 module github.com/devops-works/binenv
 
-go 1.14
+go 1.16
 
 require (
 	github.com/hashicorp/go-version v1.2.1
