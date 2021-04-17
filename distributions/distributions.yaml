@@ -394,6 +394,16 @@ sources:
     install:
       type: direct
 
+  gitleaks:
+    description: Scan git repos (or files) for secrets using regex and entropy
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/zricethezav/gitleaks/releases
+    fetch:
+      url: https://github.com/zricethezav/gitleaks/releases/download/v{{ .Version }}/gitleaks-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   gitui:
     map:
       darwin: mac
