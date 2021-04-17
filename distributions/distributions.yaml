@@ -209,6 +209,18 @@ sources:
       binaries:
         - chezmoi
 
+  confused:
+    description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/visma-prodsec/confused/releases
+    fetch:
+      url: https://github.com/visma-prodsec/confused/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/confused_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - confused
+
   consul:
     description: >
       Consul is a distributed, highly available, and data center aware solution 
