@@ -211,6 +211,8 @@ sources:
 
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
+    map:
+      darwin: macOS
     list:
       type: github-releases
       url: https://api.github.com/repos/visma-prodsec/confused/releases
