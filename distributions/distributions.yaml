@@ -322,6 +322,20 @@ sources:
       binaries:
         - fzf
 
+  exa:
+    description: A modern replacement for ‘ls’.
+    map:
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ogham/exa/releases
+    fetch:
+      url: https://github.com/ogham/exa/releases/download/{{ .Version }}/exa-{{ .OS }}-{{ .Arch }}-{{ .Version }}.zip
+    install:
+      type: zip
+      binaries:
+        - exa
+
   eksctl:
     description: eksctl is a simple CLI tool for creating clusters on AWS EKS.
     map:
