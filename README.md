@@ -244,6 +244,7 @@ Currently supported distributions are:
 - [pomerium-cli](https://github.com/pomerium/pomerium)
 - [popeye](https://github.com/derailed/popeye)
 - [promtail](https://github.com/grafana/loki/)
+- [pulumi](https://github.com/pulumi/pulumi)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
 - [saml2aws](https://github.com/Versent/saml2aws)
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
