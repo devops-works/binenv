@@ -1146,18 +1146,6 @@ sources:
       binaries:
         - popeye
 
-  pulumi:
-    description: Modern Infrastructure as Code. Any cloud, any language
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/pulumi/pulumi/releases
-    fetch:
-      url: https://github.com/pulumi/pulumi/releases/download/v{{ .Version }}/pulumi-v{{ .Version }}-{{ .OS }}-x64.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - pulumi
-
   promtail:
     description: Like Prometheus, but for logs (promtail).
     list:
@@ -1169,6 +1157,18 @@ sources:
       type: zip
       binaries:
         - "promtail-{{ .OS }}-{{ .Arch }}"
+
+  pulumi:
+    description: Modern Infrastructure as Code. Any cloud, any language
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pulumi/pulumi/releases
+    fetch:
+      url: https://github.com/pulumi/pulumi/releases/download/v{{ .Version }}/pulumi-v{{ .Version }}-{{ .OS }}-x64.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pulumi
 
   rancher:
     description: >
