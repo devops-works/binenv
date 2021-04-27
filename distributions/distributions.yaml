@@ -1383,6 +1383,22 @@ sources:
       binaries:
         - teler
 
+  termshark:
+    description: A terminal UI for tshark, inspired by Wireshark
+    map:
+      amd64: x64
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gcla/termshark/releases
+    fetch:
+      url: https://github.com/gcla/termshark/releases/download/v{{ .Version }}/termshark_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+
+    install:
+      type: tgz
+      binaries:
+        - termshark
+
   terraform:
     description: >
       Terraform enables you to safely and predictably create, change, and improve infrastructure.
