@@ -37,10 +37,12 @@ The last binary you'll ever install.
   - [FAQ](#faq)
     - [I installed a binary but is still see the system (or wrong) version](#i-installed-a-binary-but-is-still-see-the-system-or-wrong-version)
     - [After installing a distribution, I get a "shim: no such file or directory"](#after-installing-a-distribution-i-get-a-shim-no-such-file-or-directory)
+    - [It does not work with sudo !](#it-does-not-work-with-sudo-)
     - [I don't like binenv, are there alternatives ?](#i-dont-like-binenv-are-there-alternatives-)
   - [Distributions file format](#distributions-file-format)
     - [Distributions file reference](#distributions-file-reference)
     - [Distributions file example](#distributions-file-example)
+  - [Caveats](#caveats)
   - [Contributions](#contributions)
   - [Licence](#licence)
 
@@ -260,6 +262,7 @@ Currently supported distributions are:
 - [task](https://github.com/go-task/task)
 - [taskctl](https://github.com/taskctl/taskctl)
 - [teler](https://github.com/kitabisa/teler/)
+- [termshark](https://github.com/gcla/termshark)
 - [terraform](https://www.hashicorp.com/products/terraform)
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 - [terraform-inventory](https://github.com/adammck/terraform-inventory)
@@ -580,6 +583,15 @@ you probably did not follow the [installation instructions](#quick-start).
 
 Running `./binenv update binenv && ./binenv install binenv` should correct the
 problem.
+
+### It does not work with sudo !
+
+Yes, for not we'restuckon this one. You still can reference thereal binary
+directly:
+
+```bash
+sudo ~/.binenv/binaries/termshark/2.2.0
+```
 
 ### I don't like binenv, are there alternatives ?
 
