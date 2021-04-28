@@ -1158,6 +1158,18 @@ sources:
       binaries:
         - popeye
 
+  procs:
+    description: A modern replacement for ps written in Rust.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dalance/procs/releases
+    fetch:
+      url: https://github.com/dalance/procs/releases/download/v{{ .Version }}/procs-v{{ .Version }}-x86_64-lnx.zip
+    install:
+      type: zip
+      binaries:
+        - procs
+
   promtail:
     description: Like Prometheus, but for logs (promtail).
     list:
