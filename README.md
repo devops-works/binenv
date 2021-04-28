@@ -187,6 +187,7 @@ Currently supported distributions are:
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [exa](https://github.com/ogham/exa)
 - [eksctl](https://github.com/weaveworks/eksctl/)
+- [fd](https://github.com/sharkdp/fd)
 - [fzf](https://github.com/junegunn/fzf)
 - [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
