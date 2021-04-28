@@ -310,6 +310,18 @@ sources:
       binaries:
         - dw-query-digest
 
+  fd:
+    description: A simple, fast and user-friendly alternative to 'find'
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sharkdp/fd/releases
+    fetch:
+      url: https://github.com/sharkdp/fd/releases/download/v{{ .Version }}/fd-v{{ .Version }}-x86_64-unknown-{{ .OS }}-gnu.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - fd
+
   fzf:
     description: fzf is a general-purpose command-line fuzzy finder.
     list:
