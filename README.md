@@ -246,6 +246,7 @@ Currently supported distributions are:
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)
 - [popeye](https://github.com/derailed/popeye)
+- [procs](https://github.com/dalance/procs)
 - [promtail](https://github.com/grafana/loki/)
 - [pulumi](https://github.com/pulumi/pulumi)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
