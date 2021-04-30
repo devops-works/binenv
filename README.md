@@ -179,6 +179,7 @@ Currently supported distributions are:
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
+- [devdash](https://github.com/Phantas0s/devdash)
 - [devspace](https://github.com/devspace-cloud/devspace)
 - [dive](https://github.com/wagoodman/dive/)
 - [doctl](https://github.com/digitalocean/doctl)

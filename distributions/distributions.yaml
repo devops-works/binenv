@@ -237,6 +237,22 @@ sources:
       binaries:
         - consul
 
+  devdash:
+    description: Highly Configurable Terminal Dashboard for Developers and Creators
+    map:
+      amd64: x86_64
+      i386: x86
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Phantas0s/devdash/releases
+    fetch:
+      url: https://github.com/Phantas0s/devdash/releases/download/v{{ .Version }}/devdash_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: direct
+
   devspace:
     description: >
       DevSpace - The Fastest Developer Tool for Kubernetes ￼
