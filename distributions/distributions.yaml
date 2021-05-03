@@ -917,6 +917,18 @@ sources:
     install:
       type: direct
 
+  kubestr:
+    description: A tool to discover, validate and evaluate Kubernetes storage options
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kastenhq/kubestr/releases
+    fetch:
+      url: https://github.com/kastenhq/kubestr/releases/download/v{{ .Version }}/kubestr-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubestr
+
   kustomize:
     description: Customization of kubernetes YAML configurations
     list:

@@ -229,6 +229,7 @@ Currently supported distributions are:
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubens](https://github.com/ahmetb/kubectx)
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets)
+- [kubestr](https://github.com/kastenhq/kubestr)
 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker)
