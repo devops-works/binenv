@@ -1237,6 +1237,23 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  rg:
+    description: ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/BurntSushi/ripgrep/releases
+    fetch:
+      url: https://github.com/BurntSushi/ripgrep/releases/download/{{ .Version }}/ripgrep-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - rg
+
   saml2aws:
     description: >
       CLI tool which enables you to login and retrieve AWS temporary

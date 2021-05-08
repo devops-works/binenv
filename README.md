@@ -252,6 +252,7 @@ Currently supported distributions are:
 - [promtail](https://github.com/grafana/loki/)
 - [pulumi](https://github.com/pulumi/pulumi)
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/)[^1]
+- [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`)
 - [saml2aws](https://github.com/Versent/saml2aws)
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [shaloc](https://github.com/eze-kiel/shaloc)
