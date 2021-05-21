@@ -670,6 +670,18 @@ sources:
       url: https://github.com/roboll/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
+  
+  himalaya:
+    description: 📫 CLI email client
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/soywod/himalaya/releases
+    fetch:
+      url: https://github.com/soywod/himalaya/releases/download/v{{ .Version }}/himalaya-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - himalaya
 
   httpx:
     description: >
@@ -1005,6 +1017,22 @@ sources:
       type: tgz
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
+
+  mysql_random_data_load:
+    description: MySQL random data loader
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Percona-Lab/mysql_random_data_load/releases
+    fetch:
+      url: https://github.com/Percona-Lab/mysql_random_data_load/releases/download/v{{ .Version }}/mysql_random_data_load_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - mysql_random_data_load
 
   naabu:
     description: >
