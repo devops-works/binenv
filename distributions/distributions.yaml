@@ -784,7 +784,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/derailed/k9s/releases
     fetch:
-      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_{{ .OS }}_{{ .Arch }}.tar.gz
+      # before v0.24.10
+      # url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
