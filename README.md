@@ -257,6 +257,7 @@ Currently supported distributions are:
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`)
 - [saml2aws](https://github.com/Versent/saml2aws)
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
+- [sd](https://github.com/chmln/sd)
 - [shaloc](https://github.com/eze-kiel/shaloc)
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
 - [sops](https://github.com/mozilla/sops/)
