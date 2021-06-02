@@ -314,6 +314,20 @@ sources:
       binaries:
         - duf
 
+  dust:
+    description: A more intuitive version of du in rust
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bootandy/dust/releases
+    fetch:
+      url: https://github.com/bootandy/dust/releases/download/v{{ .Version }}/dust-v{{ .Version }}-x86_64-unknown-{{ .OS }}-gnu.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dust
+
   dw-query-digest:
     description: MySQL slow log analyzer. Alternative to pt-query-digest.
     list:

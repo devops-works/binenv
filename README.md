@@ -185,6 +185,7 @@ Currently supported distributions are:
 - [doctl](https://github.com/digitalocean/doctl)
 - [driftctl](https://github.com/cloudskiff/driftctl)
 - [duf](https://github.com/muesli/duf)
+- [dust](https://github.com/bootandy/dust)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [exa](https://github.com/ogham/exa)
 - [eksctl](https://github.com/weaveworks/eksctl/)
