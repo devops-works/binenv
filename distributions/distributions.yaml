@@ -1281,6 +1281,23 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  rga:
+    description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/phiresky/ripgrep-all/releases
+    fetch:
+      url: https://github.com/phiresky/ripgrep-all/releases/download/v{{ .Version }}/ripgrep_all-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - rga
+
   rg:
     description: ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
     map:
