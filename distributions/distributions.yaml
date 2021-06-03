@@ -318,11 +318,14 @@ sources:
     description: A more intuitive version of du in rust
     map:
       amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
     list:
       type: github-releases
       url: https://api.github.com/repos/bootandy/dust/releases
     fetch:
-      url: https://github.com/bootandy/dust/releases/download/v{{ .Version }}/dust-v{{ .Version }}-x86_64-unknown-{{ .OS }}-gnu.tar.gz
+      url: https://github.com/bootandy/dust/releases/download/v{{ .Version }}/dust-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1341,11 +1344,15 @@ sources:
 
   sd:
     description: Intuitive find & replace CLI (sed alternative)
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
     list:
       type: github-releases
       url: https://api.github.com/repos/chmln/sd/releases
     fetch:
-      url: https://github.com/chmln/sd/releases/download/v{{ .Version }}/sd-v{{ .Version }}-x86_64-unknown-{{ .OS }}-gnu
+      url: https://github.com/chmln/sd/releases/download/v{{ .Version }}/sd-v{{ .Version }}-{{ .Arch }}-{{ .OS }}
     install:
       type: direct
       binaries:
