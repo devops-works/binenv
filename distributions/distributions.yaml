@@ -1185,6 +1185,18 @@ sources:
     install:
       type: direct
 
+  peco:
+    description: Simplistic interactive filtering tool
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/peco/peco/releases
+    fetch:
+      url: https://github.com/peco/peco/releases/download/v{{ .Version }}/peco_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - peco
+
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
     list:

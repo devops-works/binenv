@@ -246,6 +246,7 @@ Currently supported distributions are:
 - [operator-sdk, ansible-operator, helm-operator](https://github.com/operator-framework/operator-sdk)
 - [oto](https://github.com/pacedotdev/oto)
 - [pass-checker](https://github.com/devops-works/pass-checker)
+- [peco](https://github.com/peco/peco)
 - [packer](https://www.packer.io)
 - [phpsecscan](https://github.com/devops-works/phpsecscan)
 - [pluto](https://github.com/FairwindsOps/pluto)
