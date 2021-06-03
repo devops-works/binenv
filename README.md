@@ -263,6 +263,7 @@ Currently supported distributions are:
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [sd](https://github.com/chmln/sd)
 - [shaloc](https://github.com/eze-kiel/shaloc)
+- [shell2http](https://github.com/msoap/shell2http)
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
 - [sops](https://github.com/mozilla/sops/)
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)

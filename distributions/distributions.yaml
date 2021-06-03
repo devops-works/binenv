@@ -1397,6 +1397,20 @@ sources:
     install:
       type: direct
 
+  shell2http:
+    description: Executing shell commands via HTTP server
+    map:
+      i386: 386
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/msoap/shell2http/releases
+    fetch:
+      url: https://github.com/msoap/shell2http/releases/download/{{ .VersionMajor }}.{{ .VersionMinor }}/shell2http-{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .OS }}.{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - shell2http
+
   skaffold:
     description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
     list:
