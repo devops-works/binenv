@@ -583,6 +583,23 @@ sources:
       binaries:
         - gping
 
+  grex:
+    description: A command-line tool and library for generating regular expressions from user-provided test cases
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pemistahl/grex/releases
+    fetch:
+      url: https://github.com/pemistahl/grex/releases/download/v{{ .Version }}/grex-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - grex
+
   gosec:
     description: Golang security checker
     list:

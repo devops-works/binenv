@@ -205,6 +205,7 @@ Currently supported distributions are:
 - [gosec](https://github.com/securego/gosec)
 - [gotop](https://github.com/xxxserxxx/gotop)
 - [gping](https://github.com/orf/gping)
+- [grex](https://github.com/pemistahl/grex)
 - [grizzly](https://github.com/grafana/grizzly)
 - [gws](https://github.com/StreakyCobra/gws)
 - [hadolint](https://github.com/hadolint/hadolint)
