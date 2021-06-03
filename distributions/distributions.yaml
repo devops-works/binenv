@@ -1745,6 +1745,23 @@ sources:
       binaries:
         - vmctl-{{ .OS }}-{{ .Arch }}
 
+  xh:
+    description: Friendly and fast tool for sending HTTP requests
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ducaale/xh/releases
+    fetch:
+      url: https://github.com/ducaale/xh/releases/download/v{{ .Version }}/xh-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - xh
+
   yh:
     description: YAML syntax highlighter to bring colours to kubectl output
     map:

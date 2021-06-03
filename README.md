@@ -288,6 +288,7 @@ Currently supported distributions are:
 - [vagrant](https://www.vagrantup.com/)
 - [vault](https://www.hashicorp.com/products/vault)
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
+- [xh](https://github.com/ducaale/xh)
 - [yh](https://github.com/andreazorzetto/yh)
 - [yj](https://github.com/sclevine/yj)
 - [yq](https://github.com/mikefarah/yq)
