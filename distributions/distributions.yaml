@@ -314,6 +314,23 @@ sources:
       binaries:
         - duf
 
+  dust:
+    description: A more intuitive version of du in rust
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bootandy/dust/releases
+    fetch:
+      url: https://github.com/bootandy/dust/releases/download/v{{ .Version }}/dust-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dust
+
   dw-query-digest:
     description: MySQL slow log analyzer. Alternative to pt-query-digest.
     list:
@@ -565,6 +582,23 @@ sources:
       type: tgz
       binaries:
         - gping
+
+  grex:
+    description: A command-line tool and library for generating regular expressions from user-provided test cases
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pemistahl/grex/releases
+    fetch:
+      url: https://github.com/pemistahl/grex/releases/download/v{{ .Version }}/grex-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - grex
 
   gosec:
     description: Golang security checker
@@ -1151,6 +1185,18 @@ sources:
     install:
       type: direct
 
+  peco:
+    description: Simplistic interactive filtering tool
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/peco/peco/releases
+    fetch:
+      url: https://github.com/peco/peco/releases/download/v{{ .Version }}/peco_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - peco
+
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
     list:
@@ -1267,6 +1313,23 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  rga:
+    description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/phiresky/ripgrep-all/releases
+    fetch:
+      url: https://github.com/phiresky/ripgrep-all/releases/download/v{{ .Version }}/ripgrep_all-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - rga
+
   rg:
     description: ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
     map:
@@ -1308,6 +1371,22 @@ sources:
     install:
       type: direct
 
+  sd:
+    description: Intuitive find & replace CLI (sed alternative)
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/chmln/sd/releases
+    fetch:
+      url: https://github.com/chmln/sd/releases/download/v{{ .Version }}/sd-v{{ .Version }}-{{ .Arch }}-{{ .OS }}
+    install:
+      type: direct
+      binaries:
+        - sd
+
   shaloc:
     description: LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
     list:
@@ -1317,6 +1396,20 @@ sources:
       url: https://github.com/eze-kiel/shaloc/releases/download/v{{ .Version }}/shaloc_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  shell2http:
+    description: Executing shell commands via HTTP server
+    map:
+      i386: 386
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/msoap/shell2http/releases
+    fetch:
+      url: https://github.com/msoap/shell2http/releases/download/{{ .VersionMajor }}.{{ .VersionMinor }}/shell2http-{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .OS }}.{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - shell2http
 
   skaffold:
     description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
@@ -1665,6 +1758,23 @@ sources:
       type: tgz
       binaries:
         - vmctl-{{ .OS }}-{{ .Arch }}
+
+  xh:
+    description: Friendly and fast tool for sending HTTP requests
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ducaale/xh/releases
+    fetch:
+      url: https://github.com/ducaale/xh/releases/download/v{{ .Version }}/xh-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - xh
 
   yh:
     description: YAML syntax highlighter to bring colours to kubectl output
