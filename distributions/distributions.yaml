@@ -290,7 +290,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/goodwithtech/dockle/releases
     fetch:
-      url: https://github.com/goodwithtech/dockle/releases/download/v{{ .Version }}/dockle_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/goodwithtech/dockle/releases/download/v{{ .Version }}/dockle_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
