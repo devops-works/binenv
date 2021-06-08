@@ -10,7 +10,7 @@ sources:
       url: https://github.com/nakabonne/ali/releases/download/v{{ .Version }}/ali_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
-      binaries:
+    binaries:
         - ali
 
   asciigraph:
