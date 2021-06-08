@@ -225,7 +225,7 @@ sources:
 
   consul:
     description: >
-      Consul is a distributed, highly available, and data center aware solution 
+      Consul is a distributed, highly available, and data center aware solution
       to connect and configure applications across dynamic, distributed infrastructure.
     list:
       type: github-releases
@@ -738,7 +738,7 @@ sources:
       url: https://github.com/roboll/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
-  
+
   himalaya:
     description: 📫 CLI email client
     list:
@@ -927,7 +927,7 @@ sources:
 
   kube-bench:
     description: >
-      Checks whether Kubernetes is deployed according to security best practices as 
+      Checks whether Kubernetes is deployed according to security best practices as
       defined in the CIS Kubernetes Benchmark
     list:
       type: github-releases
@@ -1197,7 +1197,7 @@ sources:
 
   packer:
     description: >
-      Packer is a tool for creating identical machine images for 
+      Packer is a tool for creating identical machine images for
       multiple platforms from a single source configuration.
     list:
       type: github-releases
@@ -1334,7 +1334,7 @@ sources:
 
   rancher:
     description: >
-      Rancher is an open source software platform that enables organizations to 
+      Rancher is an open source software platform that enables organizations to
       run and manage Docker and Kubernetes in production. (cli)
     list:
       type: static
@@ -1456,7 +1456,7 @@ sources:
       type: direct
 
   sonobuoy:
-    description: > 
+    description: >
       Sonobuoy is a diagnostic tool that makes it easier to understand the
       state of a Kubernetes cluster by running a set of Kubernetes conformance
       tests and other plugins in an accessible and non-destructive manner.
@@ -1518,7 +1518,7 @@ sources:
 
   stern:
     description: >
-      ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of 
+      ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of
       https://github.com/wercker/stern
     list:
       type: github-releases
@@ -1628,7 +1628,7 @@ sources:
   terraform:
     description: >
       Terraform enables you to safely and predictably create, change, and improve infrastructure.
-      It is an open source tool that codifies APIs into declarative configuration files that can 
+      It is an open source tool that codifies APIs into declarative configuration files that can
       be shared amongst team members, treated as code, edited, reviewed, and versioned.
     list:
       type: github-releases
@@ -1666,7 +1666,7 @@ sources:
 
   terragrunt:
     description: >
-      Terragrunt is a thin wrapper for Terraform that provides extra 
+      Terragrunt is a thin wrapper for Terraform that provides extra
       tools for working with multiple Terraform modules.
     list:
       type: github-releases
