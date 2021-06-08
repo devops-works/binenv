@@ -373,6 +373,22 @@ sources:
       binaries:
         - fd
 
+  fselect:
+    description: Find files with SQL-like queries
+    map:
+      amd64: x86_64
+      linux: linux-musl
+      windows: win
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jhspetersson/fselect/releases
+    fetch:
+      url: https://github.com/jhspetersson/fselect/releases/download/{{ .Version }}/fselect-{{ .Arch }}-{{ .OS }}.gz
+    install:
+      type: gzip
+      binaries:
+        - fselect
+
   fzf:
     description: fzf is a general-purpose command-line fuzzy finder.
     list:

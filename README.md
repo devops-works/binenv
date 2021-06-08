@@ -191,6 +191,7 @@ Currently supported distributions are:
 - [exa](https://github.com/ogham/exa)
 - [eksctl](https://github.com/weaveworks/eksctl/)
 - [fd](https://github.com/sharkdp/fd)
+- [fselect](https://github.com/jhspetersson/fselect)
 - [fzf](https://github.com/junegunn/fzf)
 - [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
