@@ -278,6 +278,24 @@ sources:
       binaries:
         - dive
 
+  dockle:
+    description: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
+    map:
+      amd64: 64bit
+      i386: 32bit
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/goodwithtech/dockle/releases
+    fetch:
+      url: https://github.com/goodwithtech/dockle/releases/download/v{{ .Version }}/dockle_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dockle
+
   doctl:
     description: The official digital ocean command line interface
     list:
