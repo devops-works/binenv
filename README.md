@@ -80,7 +80,10 @@ exec $SHELL
 ### MacOS (with bash)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64 -O binenv
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64
+wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+sha256sum  --check --ignore-missing checksums.txt
+mv binenv_darwin_amd64 binenv
 chmod +x binenv
 ./binenv update
 ./binenv install binenv
