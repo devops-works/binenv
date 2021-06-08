@@ -361,6 +361,34 @@ sources:
       binaries:
         - dw-query-digest
 
+  eksctl:
+    description: eksctl is a simple CLI tool for creating clusters on AWS EKS.
+    map:
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/weaveworks/eksctl/releases
+    fetch:
+      url: https://github.com/weaveworks/eksctl/releases/download/{{ .Version }}/eksctl_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - eksctl
+
+  exa:
+    description: A modern replacement for ‘ls’.
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ogham/exa/releases
+    fetch:
+      url: https://github.com/ogham/exa/releases/download/v{{ .Version }}/exa-{{ .OS }}-{{ .Arch }}-v{{ .Version }}.zip
+    install:
+      type: zip
+      binaries:
+        - exa
+
   fd:
     description: A simple, fast and user-friendly alternative to 'find'
     list:
@@ -400,34 +428,6 @@ sources:
       type: tgz
       binaries:
         - fzf
-
-  exa:
-    description: A modern replacement for ‘ls’.
-    map:
-      amd64: x86_64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/ogham/exa/releases
-    fetch:
-      url: https://github.com/ogham/exa/releases/download/v{{ .Version }}/exa-{{ .OS }}-{{ .Arch }}-v{{ .Version }}.zip
-    install:
-      type: zip
-      binaries:
-        - exa
-
-  eksctl:
-    description: eksctl is a simple CLI tool for creating clusters on AWS EKS.
-    map:
-      linux: Linux
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/weaveworks/eksctl/releases
-    fetch:
-      url: https://github.com/weaveworks/eksctl/releases/download/{{ .Version }}/eksctl_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - eksctl
 
   gbt:
     description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
