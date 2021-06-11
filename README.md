@@ -226,6 +226,7 @@ Currently supported distributions are:
 - [himalaya](https://github.com/soywod/himalaya)
 - [httpx](https://github.com/projectdiscovery/httpx)
 - [hugo](https://gohugo.io/)
+- [iamlive](https://github.com/iann0036/iamlive)
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)
 - [juicefs](https://github.com/juicedata/juicefs)
 - [k6](https://github.com/loadimpact/k6)

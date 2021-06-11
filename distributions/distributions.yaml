@@ -823,6 +823,19 @@ sources:
       binaries:
         - hugo
 
+  iamlive:
+    description: >
+      Generate an IAM policy from AWS calls using client-side monitoring (CSM) or embedded proxy
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/iann0036/iamlive/releases
+    fetch:
+      url: https://github.com/iann0036/iamlive/releases/download/v{{ .Version }}/iamlive-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - iamlive
+
   imgpkg:
     description: >
       Allows you to store and distribute sets of files
