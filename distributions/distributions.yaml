@@ -108,6 +108,17 @@ sources:
     install:
       type: direct
 
+  aws-vault:
+    description: >
+      A vault for securely storing and accessing AWS credentials in development environments
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/99designs/aws-vault/releases
+    fetch:
+      url: https://github.com/99designs/aws-vault/releases/download/v{{ .Version }}/aws-vault-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   awstaghelper:
     description: AWS bulk tagging tool
     map:
