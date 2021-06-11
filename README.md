@@ -80,7 +80,10 @@ exec $SHELL
 ### MacOS (with bash)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64 -O binenv
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64
+wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+sha256sum  --check --ignore-missing checksums.txt
+mv binenv_darwin_amd64 binenv
 chmod +x binenv
 ./binenv update
 ./binenv install binenv
@@ -182,6 +185,7 @@ Currently supported distributions are:
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [cli53](https://github.com/barnybug/cli53)
 - [consul](https://www.consul.io/)
+- [ctop](https://github.com/bcicen/ctop)
 - [devdash](https://github.com/Phantas0s/devdash)
 - [devspace](https://github.com/devspace-cloud/devspace)
 - [dive](https://github.com/wagoodman/dive/)
@@ -232,6 +236,7 @@ Currently supported distributions are:
 - [krew](https://github.com/kubernetes-sigs/krew)
 - [kops](https://kops.sigs.k8s.io/)
 - [kube-bench](https://github.com/aquasecurity/kube-bench)
+- [kubecolor](https://github.com/dty1er/kubecolor)
 - [kubeconf](https://github.com/mumoshu/kubeconf)
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)

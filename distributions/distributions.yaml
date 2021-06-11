@@ -237,6 +237,16 @@ sources:
       binaries:
         - consul
 
+  ctop:
+    description: Top-like interface for container metrics
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bcicen/ctop/releases
+    fetch:
+      url: https://github.com/bcicen/ctop/releases/download/{{ .Version }}/ctop-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
     map:
@@ -938,6 +948,23 @@ sources:
       type: tgz
       binaries:
         - kube-bench
+
+  kubecolor:
+    description: colorizes kubectl output
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dty1er/kubecolor/releases
+    fetch:
+      url: https://github.com/dty1er/kubecolor/releases/download/v{{ .Version }}/kubecolor_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubecolor
 
   kubeconf:
     description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
