@@ -237,6 +237,16 @@ sources:
       binaries:
         - consul
 
+  ctop:
+    description: Top-like interface for container metrics
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bcicen/ctop/releases
+    fetch:
+      url: https://github.com/bcicen/ctop/releases/download/{{ .Version }}/ctop-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
     map:
