@@ -252,6 +252,7 @@ Currently supported distributions are:
 - [minikube](https://github.com/kubernetes/minikube)
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load)
 - [naabu](https://github.com/projectdiscovery/naabu)
+- [node-problem-detector](https://github.com/kubernetes/node-problem-detector)
 - [nomad](https://www.nomadproject.io)
 - [onefetch](https://github.com/o2sh/onefetch/)
 - [operator-sdk, ansible-operator, helm-operator](https://github.com/operator-framework/operator-sdk)
