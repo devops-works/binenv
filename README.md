@@ -215,6 +215,7 @@ Currently supported distributions are:
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [gosec](https://github.com/securego/gosec)
 - [gotop](https://github.com/xxxserxxx/gotop)
+- [gotty](https://github.com/yudai/gotty)
 - [gping](https://github.com/orf/gping)
 - [grex](https://github.com/pemistahl/grex)
 - [grizzly](https://github.com/grafana/grizzly)
