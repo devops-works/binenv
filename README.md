@@ -169,6 +169,7 @@ This is the whole point.
 
 Currently supported distributions are:
 
+- [act](https://github.com/nektos/act)
 - [ali](https://github.com/nakabonne/ali)
 - [annie](https://github.com/iawia002/annie)
 - [argocd](https://github.com/argoproj/argo-cd/)
