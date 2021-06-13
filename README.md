@@ -185,6 +185,7 @@ Currently supported distributions are:
 - [changie](https://github.com/miniscruff/changie)
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [cli53](https://github.com/barnybug/cli53)
+- [clog-cli](https://github.com/clog-tool/clog-cli)
 - [consul](https://www.consul.io/)
 - [ctop](https://github.com/bcicen/ctop)
 - [devdash](https://github.com/Phantas0s/devdash)

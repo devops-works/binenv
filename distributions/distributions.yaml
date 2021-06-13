@@ -208,6 +208,23 @@ sources:
     install:
       type: direct
 
+  clog-cli:
+    description: Generate beautiful changelogs from your Git commit history
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/clog-tool/clog-cli/releases
+    fetch:
+      url: https://github.com/clog-tool/clog-cli/releases/download/v{{ .Version }}/clog-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - clog
+
   chezmoi:
     description: Dotfile management tool
     list:
