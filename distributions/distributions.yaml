@@ -1586,6 +1586,21 @@ sources:
     install:
       type: direct
 
+  sshproxy:
+    description: Proxy SSH connections on a gateway
+    map:
+      amd64: x86_64
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cea-hpc/sshproxy/releases
+    fetch:
+      url: https://github.com/cea-hpc/sshproxy/releases/download/v{{ .Version }}/sshproxy_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - sshproxy
+
   ssllabs-scan:
     description: >
       A command-line reference-implementation client for SSL Labs APIs,

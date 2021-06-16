@@ -282,6 +282,7 @@ Currently supported distributions are:
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
 - [sloop](https://github.com/salesforce/sloop)
 - [sops](https://github.com/mozilla/sops/)
+- [sshproxy](https://github.com/cea-hpc/sshproxy)
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)
 - [starship](https://github.com/starship/starship)
 - [stern](https://github.com/stern/stern)
