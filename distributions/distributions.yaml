@@ -1557,7 +1557,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/salesforce/sloop/releases
     fetch:
-      url: https://github.com/salesforce/sloop/releases/download/v{{ .Version }}/sloop
+      url: https://github.com/salesforce/sloop/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/sloop
     install:
       type: direct
 
