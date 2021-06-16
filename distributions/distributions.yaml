@@ -1551,6 +1551,16 @@ sources:
     install:
       type: direct
 
+  sloop:
+    description: Kubernetes History Visualization
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/salesforce/sloop/releases
+    fetch:
+      url: https://github.com/salesforce/sloop/releases/download/v{{ .Version }}/sloop
+    install:
+      type: direct
+
   sonobuoy:
     description: >
       Sonobuoy is a diagnostic tool that makes it easier to understand the

@@ -280,6 +280,7 @@ Currently supported distributions are:
 - [shaloc](https://github.com/eze-kiel/shaloc)
 - [shell2http](https://github.com/msoap/shell2http)
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
+- [sloop](https://github.com/salesforce/sloop)
 - [sops](https://github.com/mozilla/sops/)
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)
 - [starship](https://github.com/starship/starship)
