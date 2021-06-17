@@ -902,6 +902,23 @@ sources:
     install:
       type: direct
 
+  kcli:
+    description: Kcli is a kafka read only command line browser.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cswank/kcli/releases
+    fetch:
+      url: https://github.com/cswank/kcli/releases/download/{{ .Version }}/kcli_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    map:
+      linux: Linux
+      darwin: Darwin
+      windows: Windows
+      amd64: x86_64
+    install:
+      type: tgz
+      binaries:
+        - kcli
+
   ketall:
     description: Like `kubectl get all`, but get really all resources
     list:
