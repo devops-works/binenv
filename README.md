@@ -169,6 +169,7 @@ This is the whole point.
 
 Currently supported distributions are:
 
+- [act](https://github.com/nektos/act)
 - [ali](https://github.com/nakabonne/ali)
 - [annie](https://github.com/iawia002/annie)
 - [argocd](https://github.com/argoproj/argo-cd/)
@@ -185,6 +186,7 @@ Currently supported distributions are:
 - [changie](https://github.com/miniscruff/changie)
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [cli53](https://github.com/barnybug/cli53)
+- [clog-cli](https://github.com/clog-tool/clog-cli)
 - [consul](https://www.consul.io/)
 - [ctop](https://github.com/bcicen/ctop)
 - [devdash](https://github.com/Phantas0s/devdash)
@@ -214,6 +216,7 @@ Currently supported distributions are:
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [gosec](https://github.com/securego/gosec)
 - [gotop](https://github.com/xxxserxxx/gotop)
+- [gotty](https://github.com/yudai/gotty)
 - [gping](https://github.com/orf/gping)
 - [grex](https://github.com/pemistahl/grex)
 - [grizzly](https://github.com/grafana/grizzly)
@@ -254,6 +257,7 @@ Currently supported distributions are:
 - [minikube](https://github.com/kubernetes/minikube)
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load)
 - [naabu](https://github.com/projectdiscovery/naabu)
+- [node-problem-detector](https://github.com/kubernetes/node-problem-detector)
 - [nomad](https://www.nomadproject.io)
 - [onefetch](https://github.com/o2sh/onefetch/)
 - [operator-sdk, ansible-operator, helm-operator](https://github.com/operator-framework/operator-sdk)
@@ -278,7 +282,9 @@ Currently supported distributions are:
 - [shaloc](https://github.com/eze-kiel/shaloc)
 - [shell2http](https://github.com/msoap/shell2http)
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
+- [sloop](https://github.com/salesforce/sloop)
 - [sops](https://github.com/mozilla/sops/)
+- [sshproxy](https://github.com/cea-hpc/sshproxy)
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan)
 - [starship](https://github.com/starship/starship)
 - [stern](https://github.com/stern/stern)
