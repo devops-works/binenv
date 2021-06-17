@@ -760,6 +760,22 @@ Welcomed !
 We will need other installation mechanisms (see
 https://github.com/devops-works/binenv/tree/master/internal/install).
 
+Thanks to all contributors:
+
+- @angrox
+- @cleming
+- @deknos
+- @dundee
+- @eze-kiel
+- @gwenall
+- @jakubvokoun
+- @mpepping
+- @patsevanton
+- @pichouk
+- @pklejch
+- @semoac
+- @shr-project
+
 ## Licence
 
 MIT
