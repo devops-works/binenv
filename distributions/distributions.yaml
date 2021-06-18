@@ -1010,7 +1010,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - kompose
+        - kompose-darwin-amd64
 
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
