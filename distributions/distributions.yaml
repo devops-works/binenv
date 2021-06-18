@@ -1000,6 +1000,18 @@ sources:
     install:
       type: direct
 
+  kompose:
+    description: Go from Docker Compose to Kubernetes
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kompose/releases
+    fetch:
+      url: https://github.com/kubernetes/kompose/releases/download/v{{ .Version }}/kompose-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kompose
+
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
     list:
