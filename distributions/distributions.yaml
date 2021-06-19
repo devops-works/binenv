@@ -1000,6 +1000,22 @@ sources:
     install:
       type: direct
 
+  kopia:
+    description: >
+      Cross-platform backup tool for Windows, macOS & Linux with fast, incremental
+      backups, client-side end-to-end encryption, compression and data deduplication.
+      CLI and GUI included.
+    map:
+      darwin: masOS
+      amd64: x64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kopia/kopia/releases
+    fetch:
+      url: https://github.com/kopia/kopia/releases/download/v{{ .Version }}/kopia-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: direct
+
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
     list:
