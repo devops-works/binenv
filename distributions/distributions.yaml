@@ -1014,7 +1014,9 @@ sources:
     fetch:
       url: https://github.com/kopia/kopia/releases/download/v{{ .Version }}/kopia-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - kopia
 
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
