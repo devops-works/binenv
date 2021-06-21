@@ -266,6 +266,16 @@ sources:
       binaries:
         - chezmoi
 
+  choose:
+    description: A human-friendly and fast alternative to cut and (sometimes) awk
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/theryangeary/choose/releases
+    fetch:
+      url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose
+    install:
+      type: direct
+
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
     map:
