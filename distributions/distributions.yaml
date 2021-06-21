@@ -191,6 +191,35 @@ sources:
     install:
       type: direct
 
+  bottom:
+    description: Yet another cross-platform graphical process/system monitor.
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ClementTsang/bottom/releases
+    fetch:
+      url: https://github.com/ClementTsang/bottom/releases/download/{{ .Version }}/bottom_{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - btm
+
+  broot:
+    description: A new way to see and navigate directory trees
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Canop/broot/releases
+    fetch:
+      url: https://github.com/Canop/broot/releases/download/v{{ .Version }}/broot_{{ .Version }}.zip
+    install:
+      type: zip
+      binaries:
+        - broot
+
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
     list:
@@ -214,6 +243,18 @@ sources:
       type: tgz
       binaries:
         - changie
+
+  cheat:
+    description: cheat allows you to create and view interactive cheatsheets on the command-line.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cheat/cheat/releases
+    fetch:
+      url: https://github.com/cheat/cheat/releases/download/{{ .Version }}/cheat-{{ .OS }}-{{ .Arch }}.gz
+    install:
+      type: gzip
+      binaries:
+        - cheat
 
   cli53:
     description: Command line tool for Amazon Route 53
@@ -254,6 +295,16 @@ sources:
       binaries:
         - chezmoi
 
+  choose:
+    description: A human-friendly and fast alternative to cut and (sometimes) awk
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/theryangeary/choose/releases
+    fetch:
+      url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose
+    install:
+      type: direct
+
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
     map:
@@ -291,6 +342,37 @@ sources:
       url: https://github.com/bcicen/ctop/releases/download/{{ .Version }}/ctop-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  curlie:
+    description: The power of curl, the ease of use of httpie.
+    map:
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/rs/curlie/releases
+    fetch:
+      url: https://github.com/rs/curlie/releases/download/v{{ .Version }}/curlie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - curlie
+
+  delta:
+    description: A more intuitive version of du in rust
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dandavison/delta/releases
+    fetch:
+      url: https://github.com/dandavison/delta/releases/download/{{ .Version }}/delta-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - delta
 
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
@@ -806,6 +888,18 @@ sources:
     install:
       type: direct
 
+  helmwave:
+    description: 🌊 Composer for @helm Charts
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/helmwave/helmwave/releases
+    fetch:
+      url: https://github.com/helmwave/helmwave/releases/download/v{{ .Version }}/helmwave_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helmwave
+
   himalaya:
     description: 📫 CLI email client
     list:
@@ -1018,6 +1112,18 @@ sources:
       binaries:
         - kopia
 
+  kompose:
+    description: Go from Docker Compose to Kubernetes
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kompose/releases
+    fetch:
+      url: https://github.com/kubernetes/kompose/releases/download/v{{ .Version }}/kompose-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kompose-linux-amd64
+
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
     list:
@@ -1207,6 +1313,39 @@ sources:
       type: zip
       binaries:
         - "loki-{{ .OS }}-{{ .Arch }}"
+
+  lsd:
+    description: The next gen ls command
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Peltoche/lsd/releases
+    fetch:
+      url: https://github.com/Peltoche/lsd/releases/download/{{ .Version }}/lsd-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - lsd
+
+  mcfly:
+    description: Fly through your shell history. Great Scott!
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cantino/mcfly/releases
+    fetch:
+      url: https://github.com/cantino/mcfly/releases/download/v{{ .Version }}/mcfly-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - mcfly
 
   minikube:
     description: Run Kubernetes locally
