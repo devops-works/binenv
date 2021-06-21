@@ -241,6 +241,7 @@ Currently supported distributions are:
 - [kind](https://github.com/kubernetes-sigs/kind)
 - [krew](https://github.com/kubernetes-sigs/krew)
 - [kopia](https://github.com/kopia/kopia/)
+- [kompose](https://github.com/kubernetes/kompose)
 - [kops](https://kops.sigs.k8s.io/)
 - [kube-bench](https://github.com/aquasecurity/kube-bench)
 - [kubecolor](https://github.com/dty1er/kubecolor)
