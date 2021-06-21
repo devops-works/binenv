@@ -1220,6 +1220,23 @@ sources:
       binaries:
         - "loki-{{ .OS }}-{{ .Arch }}"
 
+  lsd:
+    description: The next gen ls command
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Peltoche/lsd/releases
+    fetch:
+      url: https://github.com/Peltoche/lsd/releases/download/{{ .Version }}/lsd-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - lsd
+
   minikube:
     description: Run Kubernetes locally
     list:

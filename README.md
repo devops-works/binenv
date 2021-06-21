@@ -256,6 +256,7 @@ Currently supported distributions are:
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker)
 - [logcli](https://github.com/grafana/loki/)
 - [loki](https://github.com/grafana/loki/)
+- [lsd](https://github.com/Peltoche/lsd)
 - [minikube](https://github.com/kubernetes/minikube)
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load)
 - [naabu](https://github.com/projectdiscovery/naabu)
