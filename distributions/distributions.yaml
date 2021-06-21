@@ -1266,6 +1266,22 @@ sources:
       binaries:
         - lsd
 
+  mcfly:
+    description: Fly through your shell history. Great Scott!
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cantino/mcfly/releases
+    fetch:
+      url: https://github.com/cantino/mcfly/releases/download/v{{ .Version }}/mcfly-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - mcfly
+
   minikube:
     description: Run Kubernetes locally
     list:
