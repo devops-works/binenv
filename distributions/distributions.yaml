@@ -191,6 +191,18 @@ sources:
     install:
       type: direct
 
+  broot:
+    description: A new way to see and navigate directory trees
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Canop/broot/releases
+    fetch:
+      url: https://github.com/Canop/broot/releases/download/v{{ .Version }}/broot_{{ .Version }}.zip
+    install:
+      type: zip
+      binaries:
+        - broot
+
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
     list:

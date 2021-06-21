@@ -182,6 +182,7 @@ Currently supported distributions are:
 - [bat](https://github.com/sharkdp/bat)
 - [binenv](https://github.com/devops-works/binenv)
 - [bomberman](https://github.com/c1982/bomberman)
+- [broot](https://github.com/Canop/broot)
 - [buildx](https://github.com/docker/buildx)
 - [changie](https://github.com/miniscruff/changie)
 - [chezmoi](https://github.com/twpayne/chezmoi)
