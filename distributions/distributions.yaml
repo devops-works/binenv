@@ -292,6 +292,23 @@ sources:
     install:
       type: direct
 
+  delta:
+    description: A more intuitive version of du in rust
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dandavison/delta/releases
+    fetch:
+      url: https://github.com/dandavison/delta/releases/download/{{ .Version }}/delta-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - delta
+
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
     map:

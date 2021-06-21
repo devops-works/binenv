@@ -189,6 +189,7 @@ Currently supported distributions are:
 - [clog-cli](https://github.com/clog-tool/clog-cli)
 - [consul](https://www.consul.io/)
 - [ctop](https://github.com/bcicen/ctop)
+- [delta](https://github.com/dandavison/delta)
 - [devdash](https://github.com/Phantas0s/devdash)
 - [devspace](https://github.com/devspace-cloud/devspace)
 - [dive](https://github.com/wagoodman/dive/)
