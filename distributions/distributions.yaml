@@ -888,6 +888,18 @@ sources:
     install:
       type: direct
 
+  helmwave:
+    description: 🌊 Composer for @helm Charts
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/helmwave/helmwave/releases
+    fetch:
+      url: https://github.com/helmwave/helmwave/releases/download/v{{ .Version }}/helmwave_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helmwave
+
   himalaya:
     description: 📫 CLI email client
     list:
