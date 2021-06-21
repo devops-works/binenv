@@ -343,6 +343,20 @@ sources:
     install:
       type: direct
 
+  curlie:
+    description: The power of curl, the ease of use of httpie.
+    map:
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/rs/curlie/releases
+    fetch:
+      url: https://github.com/rs/curlie/releases/download/v{{ .Version }}/curlie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - curlie
+
   delta:
     description: A more intuitive version of du in rust
     map:
