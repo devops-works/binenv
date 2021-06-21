@@ -191,6 +191,23 @@ sources:
     install:
       type: direct
 
+  bottom:
+    description: Yet another cross-platform graphical process/system monitor.
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ClementTsang/bottom/releases
+    fetch:
+      url: https://github.com/ClementTsang/bottom/releases/download/{{ .Version }}/bottom_{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - btm
+
   broot:
     description: A new way to see and navigate directory trees
     list:
