@@ -185,6 +185,7 @@ Currently supported distributions are:
 - [broot](https://github.com/Canop/broot)
 - [buildx](https://github.com/docker/buildx)
 - [changie](https://github.com/miniscruff/changie)
+- [cheat](https://github.com/cheat/cheat)
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [choose](https://github.com/theryangeary/choose)
 - [cli53](https://github.com/barnybug/cli53)

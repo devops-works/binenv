@@ -227,6 +227,18 @@ sources:
       binaries:
         - changie
 
+  cheat:
+    description: cheat allows you to create and view interactive cheatsheets on the command-line.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cheat/cheat/releases
+    fetch:
+      url: https://github.com/cheat/cheat/releases/download/{{ .Version }}/cheat-{{ .OS }}-{{ .Arch }}.gz
+    install:
+      type: gzip
+      binaries:
+        - cheat
+
   cli53:
     description: Command line tool for Amazon Route 53
     list:
