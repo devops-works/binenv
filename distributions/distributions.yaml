@@ -566,6 +566,18 @@ sources:
       binaries:
         - fzf
 
+  fzy:
+    description: A simple, fast fuzzy finder for the terminal
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jhawthorn/fzy/releases
+    fetch:
+      url: https://github.com/jhawthorn/fzy/releases/download/{{ .Version }}/fzy-{{ .Version }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - fzy
+
   gbt:
     description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
     list:
@@ -1250,7 +1262,7 @@ sources:
         - kubestr
 
   kubesurvival:
-    description: A tool to discover, validate and evaluate Kubernetes storage options
+    description: Significantly reduce Kubernetes costs by finding the cheapest machine types that can run your workloads
     map:
       amd64: x86_64
       darwin: Darwin
