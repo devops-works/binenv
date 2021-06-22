@@ -1249,6 +1249,23 @@ sources:
       binaries:
         - kubestr
 
+  kubesurvival:
+    description: A tool to discover, validate and evaluate Kubernetes storage options
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/aporia-ai/kubesurvival/releases
+    fetch:
+      url: https://github.com/aporia-ai/kubesurvival/releases/download/v{{ .Version }}/KubeSurvival_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubesurvival
+
   kustomize:
     description: Customization of kubernetes YAML configurations
     list:
