@@ -2161,6 +2161,20 @@ sources:
       binaries:
         - yj
 
+  yor:
+    description: >
+      Extensible auto-tagger for your IaC files. 
+      The ultimate way to link entities in the cloud back to the codified resource which created it.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bridgecrewio/yor/releases
+    fetch:
+      url: https://github.com/bridgecrewio/yor/releases/download/{{ .Version }}/yor-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - yor
+
   yq:
     description: a lightweight and portable command-line YAML processor
     list:

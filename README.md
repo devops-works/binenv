@@ -322,7 +322,8 @@ Currently supported distributions are:
 - [vmctl](https://github.com/VictoriaMetrics/vmctl)
 - [xh](https://github.com/ducaale/xh)
 - [yh](https://github.com/andreazorzetto/yh)
-- [yj](https://github.com/sclevine/yj)
+- [yj](https://github.com/sclevine/yj)/
+- [yor](https://github.com/bridgecrewio/yor)
 - [yq](https://github.com/mikefarah/yq)
 - [ytt](https://get-ytt.io/)
 
