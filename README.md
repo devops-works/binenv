@@ -209,7 +209,6 @@ Currently supported distributions are:
 - [fd](https://github.com/sharkdp/fd)
 - [fselect](https://github.com/jhspetersson/fselect)
 - [fzf](https://github.com/junegunn/fzf)
-- [fzy](https://github.com/jhawthorn/fzy)
 - [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
 - [gh](https://github.com/cli/cli/)

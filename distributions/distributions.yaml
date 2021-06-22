@@ -566,18 +566,6 @@ sources:
       binaries:
         - fzf
 
-  fzy:
-    description: A simple, fast fuzzy finder for the terminal
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/jhawthorn/fzy/releases
-    fetch:
-      url: https://github.com/jhawthorn/fzy/releases/download/{{ .Version }}/fzy-{{ .Version }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - fzy
-
   gbt:
     description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
     list:
