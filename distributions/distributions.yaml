@@ -1266,6 +1266,18 @@ sources:
       binaries:
         - kubesurvival
 
+  kubetail:
+    description: Repository for kubetail - The pod log tailer
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jbvmio/kubetail/releases
+    fetch:
+      url: https://github.com/jbvmio/kubetail/releases/download/v{{ .Version }}/{{ .OS }}.{{ .Arch }}.kubetail.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubetail
+
   kustomize:
     description: Customization of kubernetes YAML configurations
     list:

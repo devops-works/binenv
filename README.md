@@ -259,6 +259,7 @@ Currently supported distributions are:
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets)
 - [kubestr](https://github.com/kastenhq/kubestr)
 - [kubesurvival](https://github.com/aporia-ai/kubesurvival)
+- [kubetail](https://github.com/jbvmio/kubetail)
 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker)
