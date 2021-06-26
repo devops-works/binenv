@@ -311,6 +311,7 @@ Currently supported distributions are:
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs)
 - [terraform-inventory](https://github.com/adammck/terraform-inventory)
 - [terragrunt](https://terragrunt.gruntwork.io/)
+- [tf2pulumi](https://github.com/pulumi/tf2pulumi)
 - [tflint](https://github.com/terraform-linters/tflint/)
 - [tfsec](https://github.com/tfsec/tfsec)
 - [toji](https://github.com/leucos/toji/)
