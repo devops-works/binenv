@@ -1213,6 +1213,21 @@ sources:
       binaries:
         - kubectx
 
+  kubeeye:
+    description: >
+      KubeEye aims to find various problems on Kubernetes,
+      such as application misconfiguration,
+      unhealthy cluster components and node problems.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubesphere/kubeeye/releases
+    fetch:
+      url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeeye
+
   kubens:
     description: Faster way to switch between namespaces in kubectl
     map:

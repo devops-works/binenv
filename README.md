@@ -255,6 +255,7 @@ Currently supported distributions are:
 - [kubeconf](https://github.com/mumoshu/kubeconf)
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [kubectx](https://github.com/ahmetb/kubectx)
+- [kubeeye](https://github.com/kubesphere/kubeeye)
 - [kubens](https://github.com/ahmetb/kubectx)
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets)
 - [kubestr](https://github.com/kastenhq/kubestr)
