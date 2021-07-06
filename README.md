@@ -257,6 +257,7 @@ Currently supported distributions are:
 - [kubectx](https://github.com/ahmetb/kubectx)
 - [kubeeye](https://github.com/kubesphere/kubeeye)
 - [kubens](https://github.com/ahmetb/kubectx)
+- [kubepug](https://github.com/rikatz/kubepug)
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets)
 - [kubestr](https://github.com/kastenhq/kubestr)
 - [kubesurvival](https://github.com/aporia-ai/kubesurvival)

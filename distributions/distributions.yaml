@@ -1242,6 +1242,18 @@ sources:
       binaries:
         - kubens
 
+  kubepug:
+    description: Kubernetes PreUpGrade (Checker)
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/rikatz/kubepug/releases
+    fetch:
+      url: https://github.com/rikatz/kubepug/releases/download/v{{ .Version }}/kubepug_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubepug
+
   kubeseal:
     description: A Kubernetes controller and tool for one-way encrypted Secrets
     list:
