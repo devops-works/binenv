@@ -1227,7 +1227,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - kubens
+        - kubefwd
 
   kubens:
     description: Faster way to switch between namespaces in kubectl
