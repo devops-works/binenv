@@ -1213,6 +1213,22 @@ sources:
       binaries:
         - kubectx
 
+  kubefwd:
+    description: Forward multiple ports in Kubernetes
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/txn2/kubefwd/releases
+    fetch:
+      url: https://github.com/txn2/kubefwd/releases/download/{{ .Version }}/kubefwd_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubens
+
   kubens:
     description: Faster way to switch between namespaces in kubectl
     map:
