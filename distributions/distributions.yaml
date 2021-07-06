@@ -1026,9 +1026,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/derailed/k9s/releases
     fetch:
-      # before v0.24.10
-      # url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_{{ .OS }}_{{ .Arch }}.tar.gz
-      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      # for v0.24.10:
+      # url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/derailed/k9s/releases/download/v{{ .Version }}/k9s_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1213,6 +1213,21 @@ sources:
       binaries:
         - kubectx
 
+  kubeeye:
+    description: >
+      KubeEye aims to find various problems on Kubernetes,
+      such as application misconfiguration,
+      unhealthy cluster components and node problems.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubesphere/kubeeye/releases
+    fetch:
+      url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeeye
+
   kubefwd:
     description: Forward multiple ports in Kubernetes
     map:
@@ -1264,6 +1279,35 @@ sources:
       type: tgz
       binaries:
         - kubestr
+
+  kubesurvival:
+    description: Significantly reduce Kubernetes costs by finding the cheapest machine types that can run your workloads
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/aporia-ai/kubesurvival/releases
+    fetch:
+      url: https://github.com/aporia-ai/kubesurvival/releases/download/v{{ .Version }}/KubeSurvival_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubesurvival
+
+  kubetail:
+    description: Repository for kubetail - The pod log tailer
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jbvmio/kubetail/releases
+    fetch:
+      url: https://github.com/jbvmio/kubetail/releases/download/v{{ .Version }}/{{ .OS }}.{{ .Arch }}.kubetail.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubetail
 
   kustomize:
     description: Customization of kubernetes YAML configurations
@@ -1760,9 +1804,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/salesforce/sloop/releases
     fetch:
-      url: https://github.com/salesforce/sloop/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/sloop
+      url: https://github.com/salesforce/sloop/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/sloop_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - sloop
 
   sonobuoy:
     description: >
@@ -2000,6 +2046,20 @@ sources:
     install:
       type: direct
 
+  tf2pulumi:
+    description: A tool to convert Terraform projects to Pulumi TypeScript programs
+    map:
+      amd64: x64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pulumi/tf2pulumi/releases
+    fetch:
+      url: https://github.com/pulumi/tf2pulumi/releases/download/v{{ .Version }}/tf2pulumi-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - tf2pulumi
+
   tflint:
     description: TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12)
     list:
@@ -2159,6 +2219,20 @@ sources:
       type: direct
       binaries:
         - yj
+
+  yor:
+    description: >
+      Extensible auto-tagger for your IaC files. 
+      The ultimate way to link entities in the cloud back to the codified resource which created it.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bridgecrewio/yor/releases
+    fetch:
+      url: https://github.com/bridgecrewio/yor/releases/download/{{ .Version }}/yor-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - yor
 
   yq:
     description: a lightweight and portable command-line YAML processor
