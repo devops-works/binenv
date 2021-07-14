@@ -256,6 +256,19 @@ sources:
       binaries:
         - cheat
 
+  check-tls-cert:
+    description: Check-tls-cert is a TLS certificate checker.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/heartbeatsjp/check-tls-cert/releases
+    fetch:
+      filters: filters
+      url: https://github.com/heartbeatsjp/check-tls-cert/releases/download/v{{ .Version }}/check-tls-cert-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - check-tls-cert
+
   cli53:
     description: Command line tool for Amazon Route 53
     list:

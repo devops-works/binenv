@@ -187,6 +187,7 @@ Currently supported distributions are:
 - [buildx](https://github.com/docker/buildx)
 - [changie](https://github.com/miniscruff/changie)
 - [cheat](https://github.com/cheat/cheat)
+- [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert)
 - [chezmoi](https://github.com/twpayne/chezmoi)
 - [choose](https://github.com/theryangeary/choose)
 - [cli53](https://github.com/barnybug/cli53)
