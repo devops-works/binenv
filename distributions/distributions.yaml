@@ -1029,6 +1029,22 @@ sources:
       binaries:
         - k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}/k6
 
+  k8stail:
+    description: tail -f experience for Kubernetes Pods
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: Darwin
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dtan4/k8stail/releases
+    fetch:
+      url: https://github.com/dtan4/k8stail/releases/download/v{{ .Version }}/k8stail_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - k8stail
+
   k9s:
     description: Kubernetes CLI To Manage Your Clusters In Style!
     map:

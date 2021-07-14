@@ -241,6 +241,7 @@ Currently supported distributions are:
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)
 - [juicefs](https://github.com/juicedata/juicefs)
 - [k6](https://github.com/loadimpact/k6)
+- [k8stail](https://github.com/dtan4/k8stail)
 - [k9s](https://k9scli.io/)
 - [kail](https://github.com/boz/kail)
 - [kapp](https://get-kapp.io/)
