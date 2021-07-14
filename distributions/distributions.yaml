@@ -1047,6 +1047,18 @@ sources:
       binaries:
         - k9s
 
+  kail:
+    description: kubernetes log viewer
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/boz/kail/releases
+    fetch:
+      url: https://github.com/boz/kail/releases/download/v{{ .Version }}/kail_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kail
+
   kapp:
     description: A simple deployment tool focused on the concept of "Kubernetes application"
     list:

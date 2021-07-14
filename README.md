@@ -242,6 +242,7 @@ Currently supported distributions are:
 - [juicefs](https://github.com/juicedata/juicefs)
 - [k6](https://github.com/loadimpact/k6)
 - [k9s](https://k9scli.io/)
+- [kail](https://github.com/boz/kail)
 - [kapp](https://get-kapp.io/)
 - [kbld](https://get-kbld.io/)
 - [kcli](https://github.com/cswank/kcli)
