@@ -1031,15 +1031,11 @@ sources:
 
   k8stail:
     description: tail -f experience for Kubernetes Pods
-    map:
-      amd64: x86_64
-      linux: Linux
-      darwin: Darwin
     list:
       type: github-releases
       url: https://api.github.com/repos/dtan4/k8stail/releases
     fetch:
-      url: https://github.com/dtan4/k8stail/releases/download/v{{ .Version }}/k8stail_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/dtan4/k8stail/releases/download/v{{ .Version }}/k8stail-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
