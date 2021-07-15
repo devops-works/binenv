@@ -199,6 +199,7 @@ Currently supported distributions are:
 - [devdash](https://github.com/Phantas0s/devdash)
 - [devspace](https://github.com/devspace-cloud/devspace)
 - [dive](https://github.com/wagoodman/dive/)
+- [docker-compose](https://github.com/docker/compose/)
 - [dockle](https://github.com/goodwithtech/dockle)
 - [doctl](https://github.com/digitalocean/doctl)
 - [driftctl](https://github.com/cloudskiff/driftctl)
