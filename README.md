@@ -243,6 +243,7 @@ Currently supported distributions are:
 - [k6](https://github.com/loadimpact/k6)
 - [k8stail](https://github.com/dtan4/k8stail)
 - [k9s](https://k9scli.io/)
+- [kafkactl](https://github.com/deviceinsight/kafkactl)
 - [kail](https://github.com/boz/kail)
 - [kapp](https://get-kapp.io/)
 - [kbld](https://get-kbld.io/)

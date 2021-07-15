@@ -1059,6 +1059,18 @@ sources:
       binaries:
         - k9s
 
+  kafkactl:
+    description: Command Line Tool for managing Apache Kafka
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/deviceinsight/kafkactl/releases
+    fetch:
+      url: https://github.com/deviceinsight/kafkactl/releases/download/v{{ .Version }}/kafkactl_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kafkactl
+
   kail:
     description: kubernetes log viewer
     list:
