@@ -427,6 +427,16 @@ sources:
       type: tgz
       binaries:
         - dive
+        
+  docker-compose:
+    description: Compose is a tool for defining and running multi-container Docker applications.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/docker/compose/releases
+    fetch:
+      url: https://github.com/docker/compose/releases/download/{{ .Version }}/docker-compose-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   dockle:
     description: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
