@@ -1013,6 +1013,16 @@ sources:
       binaries:
         - juicefs
 
+  k3d:
+    description: Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/rancher/k3d/releases
+    fetch:
+      url: https://github.com/rancher/k3d/releases/download/v{{ .Version }}/k3d-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
     map:
