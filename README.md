@@ -227,6 +227,7 @@ Currently supported distributions are:
 - [gping](https://github.com/orf/gping)
 - [grex](https://github.com/pemistahl/grex)
 - [grizzly](https://github.com/grafana/grizzly)
+- [grype](https://github.com/anchore/grype)
 - [gws](https://github.com/StreakyCobra/gws)
 - [hadolint](https://github.com/hadolint/hadolint)
 - [helm](https://helm.sh/)
