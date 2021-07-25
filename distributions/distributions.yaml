@@ -818,6 +818,18 @@ sources:
     install:
       type: direct
 
+  grype:
+    description: A vulnerability scanner for container images and filesystems
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/anchore/grype/releases
+    fetch:
+      url: https://github.com/anchore/grype/releases/download/v{{ .Version }}/grype_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - grype
+
   gws:
     description: Colorful KISS helper for git workspaces
     list:
@@ -1219,6 +1231,28 @@ sources:
       binaries:
         - kube-bench
 
+  kube-dump:
+    description: Backup a Kubernetes cluster as a yaml manifest
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/WoozyMasta/kube-dump/releases
+    fetch:
+      url: https://github.com/WoozyMasta/kube-dump/releases/download/v{{ .Version }}/kube-dump
+    install:
+      type: direct
+
+  kubeaudit:
+    description: kubeaudit helps you audit your Kubernetes clusters against common security controls
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Shopify/kubeaudit/releases
+    fetch:
+      url: https://github.com/Shopify/kubeaudit/releases/download/v{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeaudit
+
   kubecolor:
     description: colorizes kubectl output
     map:
@@ -1336,6 +1370,16 @@ sources:
       url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
     fetch:
       url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
+  kubesec:
+    description: Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/shyiko/kubesec/releases
+    fetch:
+      url: https://github.com/shyiko/kubesec/releases/download/{{ .Version }}/kubesec-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
