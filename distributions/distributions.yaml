@@ -1339,6 +1339,16 @@ sources:
     install:
       type: direct
 
+  kubesec:
+    description: Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/shyiko/kubesec/releases
+    fetch:
+      url: https://github.com/shyiko/kubesec/releases/download/{{ .Version }}/kubesec-{{ .Version }}-linux-amd64
+    install:
+      type: direct
+
   kubestr:
     description: A tool to discover, validate and evaluate Kubernetes storage options
     list:
