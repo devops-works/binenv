@@ -1219,6 +1219,18 @@ sources:
       binaries:
         - kube-bench
 
+  kubeaudit:
+    description: kubeaudit helps you audit your Kubernetes clusters against common security controls
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Shopify/kubeaudit/releases
+    fetch:
+      url: https://github.com/Shopify/kubeaudit/releases/download/v{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeaudit
+
   kubecolor:
     description: colorizes kubectl output
     map:
@@ -1345,7 +1357,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/shyiko/kubesec/releases
     fetch:
-      url: https://github.com/shyiko/kubesec/releases/download/{{ .Version }}/kubesec-{{ .Version }}-linux-amd64
+      url: https://github.com/shyiko/kubesec/releases/download/{{ .Version }}/kubesec-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
