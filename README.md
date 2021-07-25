@@ -257,6 +257,7 @@ Currently supported distributions are:
 - [kompose](https://github.com/kubernetes/kompose)
 - [kops](https://kops.sigs.k8s.io/)
 - [kube-bench](https://github.com/aquasecurity/kube-bench)
+- [kube-dump](https://github.com/WoozyMasta/kube-dump)
 - [kubeaudit](https://github.com/Shopify/kubeaudit)
 - [kubecolor](https://github.com/dty1er/kubecolor)
 - [kubeconf](https://github.com/mumoshu/kubeconf)
