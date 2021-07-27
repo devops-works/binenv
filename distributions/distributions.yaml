@@ -1217,6 +1217,20 @@ sources:
       binaries:
         - krew-{{ .OS }}_{{ .Arch }}
 
+  kube-beacon:
+    description: >
+      Open Source runtime scanner for k8s cluster and perform security audit 
+      checks based on CIS Kubernetes Benchmark specification
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/chen-keinan/kube-beacon/releases
+    fetch:
+      url: https://github.com/chen-keinan/kube-beacon/releases/download/v{{ .Version }}/kube-beacon_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - kube-beacon
+
   kube-bench:
     description: >
       Checks whether Kubernetes is deployed according to security best practices as
