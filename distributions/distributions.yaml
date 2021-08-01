@@ -2306,6 +2306,18 @@ sources:
       binaries:
         - vmctl-{{ .OS }}-{{ .Arch }}
 
+  websocat:
+    description: >
+      About Command-line client for WebSockets, 
+      like netcat (or curl) for ws:// with advanced socat-like functions
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vi/websocat/releases
+    fetch:
+      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat_{{ .Arch }}-{{ .OS }}
+    install:
+      type: direct
+
   xh:
     description: Friendly and fast tool for sending HTTP requests
     map:
