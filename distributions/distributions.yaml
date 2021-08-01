@@ -1217,6 +1217,20 @@ sources:
       binaries:
         - krew-{{ .OS }}_{{ .Arch }}
 
+  kube-beacon:
+    description: >
+      Open Source runtime scanner for k8s cluster and perform security audit 
+      checks based on CIS Kubernetes Benchmark specification
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/chen-keinan/kube-beacon/releases
+    fetch:
+      url: https://github.com/chen-keinan/kube-beacon/releases/download/v{{ .Version }}/kube-beacon_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - kube-beacon
+
   kube-bench:
     description: >
       Checks whether Kubernetes is deployed according to security best practices as
@@ -2291,6 +2305,18 @@ sources:
       type: tgz
       binaries:
         - vmctl-{{ .OS }}-{{ .Arch }}
+
+  websocat:
+    description: >
+      About Command-line client for WebSockets, 
+      like netcat (or curl) for ws:// with advanced socat-like functions
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/vi/websocat/releases
+    fetch:
+      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat_{{ .Arch }}-{{ .OS }}
+    install:
+      type: direct
 
   xh:
     description: Friendly and fast tool for sending HTTP requests
