@@ -59,8 +59,6 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		versions = append(versions, v...)
 	}
 
-	fmt.Println(versions)
-	fmt.Println(len(versions))
 	return versions, err
 }
 
@@ -136,21 +134,15 @@ func (g GithubRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 		}
 	}
 
-	if strings.Contains(resp.Header["Link"][0], "rel=\"next\"") {
-		fmt.Println("saw next")
-
+	if len(resp.Header["Link"]) > 0 && strings.Contains(resp.Header["Link"][0], "rel=\"next\"") {
 		re := regexp.MustCompile(`page=(\d*)>; rel="next"`)
 		match := re.FindStringSubmatch(resp.Header["Link"][0])
-		fmt.Println(match[1])
 		next, err = strconv.Atoi(match[1])
-		fmt.Println(next)
 
 		if err != nil {
 			return nil, 0, err
 		}
 	}
-	// fmt.Print(resp.Header["Link"])
-	//[<https://api.github.com/repositories/20580498/releases?page=2>; rel="next", <https://api.github.com/repositories/20580498/releases?page=16>; rel="last"][g:devopsworks] (master*%) [p:perso] leucos@dw151:github-repos/binenv$
 
 	if isRateLimitClose(resp) {
 		return versions, next, handleRatelimit(resp)
