@@ -42,13 +42,37 @@ type GithubRelease struct {
 
 // Get returns a list of available versions
 func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
-	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
+	// logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
 
+	var (
+		next     = 1
+		versions = []string{}
+		v        = []string{}
+		err      error
+	)
+
+	for next > 0 {
+		v, next, err = g.doGet(ctx, next)
+		if err != nil {
+			return nil, err
+		}
+		versions = append(versions, v...)
+	}
+
+	fmt.Println(versions)
+	fmt.Println(len(versions))
+	return versions, err
+}
+
+func (g GithubRelease) doGet(ctx context.Context, page int) ([]string, int, error) {
+	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.doGet").Logger()
+
+	next := 0
 	client := &http.Client{}
 
-	req, err := http.NewRequest(http.MethodGet, g.url, nil)
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s?page=%d", g.url, page), nil)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
 	if token := os.Getenv("GITHUB_TOKEN"); token != "" {
@@ -57,25 +81,25 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return nil, 0, err
 	}
 
-	// Checkif we are already rate limited
+	// Check if we are already rate limited
 	if isRateLimited(resp) {
-		return nil, handleRatelimit(resp)
+		return nil, 0, handleRatelimit(resp)
 	}
 
 	gr := ghReleaseResponse{}
 	err = json.Unmarshal([]byte(body), &gr)
 	if err != nil {
 		logger.Error().Err(err).Msgf("error unmarshalling github response for %s", g.url)
-		return nil, err
+		return nil, 0, err
 	}
 
 	var re *regexp.Regexp
@@ -83,7 +107,7 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		re, err = regexp.Compile(g.exclude)
 		if err != nil {
 			logger.Error().Err(err).Msgf("error compiling regular expression %q", g.exclude)
-			return nil, err
+			return nil, 0, err
 		}
 	}
 
@@ -112,10 +136,26 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 		}
 	}
 
-	if isRateLimitClose(resp) {
-		return versions, handleRatelimit(resp)
+	if strings.Contains(resp.Header["Link"][0], "rel=\"next\"") {
+		fmt.Println("saw next")
+
+		re := regexp.MustCompile(`page=(\d*)>; rel="next"`)
+		match := re.FindStringSubmatch(resp.Header["Link"][0])
+		fmt.Println(match[1])
+		next, err = strconv.Atoi(match[1])
+		fmt.Println(next)
+
+		if err != nil {
+			return nil, 0, err
+		}
 	}
-	return versions, nil
+	// fmt.Print(resp.Header["Link"])
+	//[<https://api.github.com/repositories/20580498/releases?page=2>; rel="next", <https://api.github.com/repositories/20580498/releases?page=16>; rel="last"][g:devopsworks] (master*%) [p:perso] leucos@dw151:github-repos/binenv$
+
+	if isRateLimitClose(resp) {
+		return versions, next, handleRatelimit(resp)
+	}
+	return versions, next, nil
 }
 
 func rateLimit(resp *http.Response) int {
