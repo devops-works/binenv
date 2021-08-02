@@ -281,6 +281,11 @@ func (a *App) Install(specs ...string) error {
 		if err == nil {
 			a.logger.Info().Msgf("%q (%s) installed", dist, v)
 		}
+
+		postInstallMessage := strings.TrimSpace(a.def.Sources[dist].PostInstallMessage)
+		if len(postInstallMessage) > 0 {
+			fmt.Printf("===> Post install message for %s <===\n%s\n", aurora.Bold(dist), postInstallMessage)
+		}
 	}
 
 	if errored {

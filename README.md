@@ -682,6 +682,10 @@ sources:
     # Description provided by the binary author(s).
     description: <string>
 
+    # Post install message shown after successful installation
+    # Use `post_install_message: |` for multi-line messages
+    post_install_message: <string>
+
     # map creates aliases between architectures known by binenv and those
     # expected by the original author(s).
     # Check `bat` distribution for a more meaningful example.

@@ -15,9 +15,10 @@ type Distributions struct {
 // Sources contains a software source definition
 type Sources struct {
 	// Name    string  `yaml:"name"`
-	Description string           `yaml:"description"`
-	Map         mapping.Remapper `yaml:"map"`
-	List        list.List        `yaml:"list"`
-	Fetch       fetch.Fetch      `yaml:"fetch"`
-	Install     install.Install  `yaml:"install"`
+	Description        string           `yaml:"description"`
+	Map                mapping.Remapper `yaml:"map"`
+	List               list.List        `yaml:"list"`
+	Fetch              fetch.Fetch      `yaml:"fetch"`
+	Install            install.Install  `yaml:"install"`
+	PostInstallMessage string           `yaml:"post_install_message"`
 }
