@@ -189,6 +189,7 @@ Currently supported distributions are:
 - [cheat](https://github.com/cheat/cheat)
 - [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert)
 - [chezmoi](https://github.com/twpayne/chezmoi)
+- [chisel](https://github.com/jpillora/chisel)
 - [choose](https://github.com/theryangeary/choose)
 - [cli53](https://github.com/barnybug/cli53)
 - [clog-cli](https://github.com/clog-tool/clog-cli)
