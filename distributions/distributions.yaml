@@ -1536,6 +1536,25 @@ sources:
       binaries:
         - mcfly
 
+  micro:
+    description: A modern and intuitive terminal-based text editor
+    # Mapping doesn't work for Darvin - there's no .Arch present in the package name
+    map:
+      amd64: '64'
+      i386: '32'
+      arm: '-arm'
+      arm64: '-arm64'
+      windows: 'win'
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/zyedidia/micro/releases
+    fetch:
+      url: https://github.com/zyedidia/micro/releases/download/v{{ .Version }}/micro-{{ .Version }}-{{ .OS }}{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - micro
+
   minikube:
     description: Run Kubernetes locally
     list:
