@@ -308,6 +308,18 @@ sources:
       binaries:
         - chezmoi
 
+  chisel:
+    description: A fast TCP/UDP tunnel over HTTP
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jpillora/chisel/releases
+    fetch:
+      url: https://github.com/jpillora/chisel/releases/download/v{{ .Version }}/chisel_{{ .Version }}_{{ .OS }}_{{ .Arch }}.gz
+    install:
+      type: gzip
+      binaries:
+        - chisel
+
   choose:
     description: A human-friendly and fast alternative to cut and (sometimes) awk
     list:
