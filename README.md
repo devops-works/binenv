@@ -207,6 +207,7 @@ Currently supported distributions are:
 - [dust](https://github.com/bootandy/dust)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
 - [exa](https://github.com/ogham/exa)
+- [exo](https://github.com/exoscale/cli)
 - [eksctl](https://github.com/weaveworks/eksctl/)
 - [fd](https://github.com/sharkdp/fd)
 - [fselect](https://github.com/jhspetersson/fselect)

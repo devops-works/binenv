@@ -551,6 +551,18 @@ sources:
       binaries:
         - exa
 
+  exo:
+    description: "Command-line tool for everything at Exoscale: compute, storage, dns."
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/exoscale/cli/releases
+    fetch:
+      url: https://github.com/exoscale/cli/releases/download/v{{ .Version }}/exoscale-cli_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - exo
+
   fd:
     description: A simple, fast and user-friendly alternative to 'find'
     list:
