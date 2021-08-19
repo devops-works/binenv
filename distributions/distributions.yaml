@@ -803,6 +803,16 @@ sources:
       binaries:
         - gping
 
+  grafana-kiosk:
+    description: Kiosk utility for Grafana
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/grafana-kiosk/releases
+    fetch:
+      url: https://github.com/grafana/grafana-kiosk/releases/download/v{{ .Version }}/grafana-kiosk.{{ .OS }}.{{ .Arch }}
+    install:
+      type: direct
+
   grex:
     description: A command-line tool and library for generating regular expressions from user-provided test cases
     map:

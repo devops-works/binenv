@@ -228,6 +228,7 @@ Currently supported distributions are:
 - [gotop](https://github.com/xxxserxxx/gotop)
 - [gotty](https://github.com/yudai/gotty)
 - [gping](https://github.com/orf/gping)
+- [grafana-kiosk](https://github.com/grafana/grafana-kiosk/)
 - [grex](https://github.com/pemistahl/grex)
 - [grizzly](https://github.com/grafana/grizzly)
 - [grype](https://github.com/anchore/grype)
