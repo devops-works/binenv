@@ -1579,6 +1579,18 @@ sources:
       binaries:
         - micro
 
+  migrate:
+    description: CLI database migrations tool.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/golang-migrate/migrate/releases
+    fetch:
+      url: https://github.com/golang-migrate/migrate/releases/download/v{{ .Version }}/migrate.{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ./migrate.{{ .OS }}-{{ .Arch }}
+
   minikube:
     description: Run Kubernetes locally
     list:

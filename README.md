@@ -284,6 +284,7 @@ Currently supported distributions are:
 - [lsd](https://github.com/Peltoche/lsd)
 - [mcfly](https://github.com/cantino/mcfly)
 - [micro](https://github.com/zyedidia/micro)
+- [migrate](https://github.com/golang-migrate/migrate)
 - [minikube](https://github.com/kubernetes/minikube)
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load)
 - [naabu](https://github.com/projectdiscovery/naabu)
