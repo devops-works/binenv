@@ -233,6 +233,7 @@ Currently supported distributions are:
 - [grype](https://github.com/anchore/grype)
 - [gws](https://github.com/StreakyCobra/gws)
 - [hadolint](https://github.com/hadolint/hadolint)
+- [havener](https://github.com/homeport/havener)
 - [helm](https://helm.sh/)
 - [helmfile](https://github.com/roboll/helmfile)
 - [helmwave](https://github.com/helmwave/helmwave)

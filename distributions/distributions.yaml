@@ -891,6 +891,18 @@ sources:
     install:
       type: direct
 
+  havener:
+    description: Think of it as a swiss army knife for Kubernetes tasks
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/homeport/havener/releases
+    fetch:
+      url: https://github.com/homeport/havener/releases/download/v{{ .Version }}/havener_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - havener
+
   hcloud:
     description: a tool for controlling hetzner cloud resources
     list:
