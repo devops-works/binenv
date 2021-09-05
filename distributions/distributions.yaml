@@ -480,6 +480,30 @@ sources:
     install:
       type: direct
 
+  dstask:
+    description: Single binary terminal-based todo manager with git-based sync + markdown notes per task
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/naggie/dstask/releases
+    fetch:
+      url: https://github.com/naggie/dstask/releases/download/v{{ .Version }}/dstask-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - dstask
+
+  dstask-import:
+    description: Single binary terminal-based todo manager with git-based sync + markdown notes per task (import tool)
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/naggie/dstask/releases
+    fetch:
+      url: https://github.com/naggie/dstask/releases/download/v{{ .Version }}/dstask-import-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - dstask-import
+
   duf:
     description: Disk Usage/Free Utility
     map:
