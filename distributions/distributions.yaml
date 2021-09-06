@@ -1291,6 +1291,18 @@ sources:
     install:
       type: direct
 
+  kube-no-trouble:
+    description: Easily check your clusters for use of deprecated APIs
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/doitintl/kube-no-trouble/releases
+    fetch:
+      url: https://github.com/doitintl/kube-no-trouble/releases/download/{{ .Version }}/kubent-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kube-no-trouble
+
   kubeaudit:
     description: kubeaudit helps you audit your Kubernetes clusters against common security controls
     list:

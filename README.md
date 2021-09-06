@@ -263,6 +263,7 @@ Currently supported distributions are:
 - [kops](https://kops.sigs.k8s.io/)
 - [kube-bench](https://github.com/aquasecurity/kube-bench)
 - [kube-dump](https://github.com/WoozyMasta/kube-dump)
+- [kube-no-trouble](https://github.com/doitintl/kube-no-trouble)
 - [kubeaudit](https://github.com/Shopify/kubeaudit)
 - [kubecolor](https://github.com/dty1er/kubecolor)
 - [kubeconf](https://github.com/mumoshu/kubeconf)
