@@ -726,6 +726,9 @@ sources:
 
       # Name of the binar(y|ies) that will be downloaded
       [binaries: <binaries_config>]
+
+    # Supported platforms
+    [supported_platforms: <supported_platforms>]
 ```
 
 `map_config`:
@@ -754,6 +757,15 @@ sources:
  - <string>
 ```
 
+`supported_platforms`:
+
+```yaml
+# Array of OS/Arch parirs
+# See: https://pkg.go.dev/runtime#pkg-constants
+- os: <string>
+  arch: <string>
+```
+
 ### Distributions file example
 
 ```yaml
@@ -774,6 +786,13 @@ sources:
       type: tgz
       binaries:
         - popeye
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: windows
+        arch: amd64
+      - os: darwin
+        arch: amd64
 ```
 
 The `distributions.yaml` file used by default by `binenv` is located [here](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml), don't hesitate to have a look on it's structure.
