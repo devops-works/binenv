@@ -486,7 +486,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
     fetch:
-      url: https://github.com/naggie/dstask/releases/download/v{{ .Version }}/dstask-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/naggie/dstask/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/dstask-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:
@@ -498,7 +498,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
     fetch:
-      url: https://github.com/naggie/dstask/releases/download/v{{ .Version }}/dstask-import-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/naggie/dstask/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/dstask-import-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:
