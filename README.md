@@ -203,6 +203,8 @@ Currently supported distributions are:
 - [dockle](https://github.com/goodwithtech/dockle)
 - [doctl](https://github.com/digitalocean/doctl)
 - [driftctl](https://github.com/cloudskiff/driftctl)
+- [dstask](https://github.com/naggie/dstask)
+- [dstask-import](https://github.com/naggie/dstask/blob/master/doc/dstask-import.md)
 - [duf](https://github.com/muesli/duf)
 - [dust](https://github.com/bootandy/dust)
 - [dw-query-digest](https://github.com/devops-works/dw-query-digest)
