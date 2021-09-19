@@ -651,6 +651,16 @@ sources:
       binaries:
         - gdu_{{ .OS }}_{{ .Arch }}
 
+  geesefs:
+    description: Finally, a good FUSE FS implementation over S3
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/yandex-cloud/geesefs/releases
+    fetch:
+      url: https://github.com/yandex-cloud/geesefs/releases/download/v{{ .Version }}/geesefs-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   gh:
     description: GitHub’s official command line tool
     map:
@@ -1459,6 +1469,19 @@ sources:
       binaries:
         - kubepug
 
+  kubescape:
+    description: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
+    map:
+      darwin: macos
+      linux: ubuntu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/armosec/kubescape/releases
+    fetch:
+      url: https://github.com/armosec/kubescape/releases/download/v{{ .Version }}/kubescape-{{ .OS }}-latest
+    install:
+      type: direct
+
   kubeseal:
     description: A Kubernetes controller and tool for one-way encrypted Secrets
     list:
@@ -1648,6 +1671,16 @@ sources:
       type: tgz
       binaries:
         - ./migrate.{{ .OS }}-{{ .Arch }}
+
+  miller:
+    description: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/johnkerl/miller/releases
+    fetch:
+      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/mlr.{{ .OS }}.{{ .Arch }}
+    install:
+      type: direct
 
   minikube:
     description: Run Kubernetes locally
