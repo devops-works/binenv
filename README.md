@@ -216,6 +216,7 @@ Currently supported distributions are:
 - [fzf](https://github.com/junegunn/fzf)
 - [gbt](https://github.com/jtyr/gbt)
 - [gdu](https://github.com/dundee/gdu/)
+- [geesefs](https://github.com/yandex-cloud/geesefs)
 - [gh](https://github.com/cli/cli/)
 - [github-release-notes](https://github.com/buchanae/github-release-notes)
 - [gitjacker](https://github.com/liamg/gitjacker)
