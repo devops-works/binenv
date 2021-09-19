@@ -1659,6 +1659,16 @@ sources:
       binaries:
         - ./migrate.{{ .OS }}-{{ .Arch }}
 
+  miller:
+    description: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/johnkerl/miller/releases
+    fetch:
+      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/mlr.{{ .OS }}.{{ .Arch }}
+    install:
+      type: direct
+
   minikube:
     description: Run Kubernetes locally
     list:
