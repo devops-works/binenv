@@ -1469,6 +1469,19 @@ sources:
       binaries:
         - kubepug
 
+  kubescape:
+    description: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
+    map:
+      darwin: macos
+      linux: ubuntu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/armosec/kubescape/releases
+    fetch:
+      url: https://github.com/armosec/kubescape/releases/download/v{{ .Version }}/kubescape-{{ .OS }}-latest
+    install:
+      type: direct
+
   kubeseal:
     description: A Kubernetes controller and tool for one-way encrypted Secrets
     list:

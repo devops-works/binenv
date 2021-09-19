@@ -277,6 +277,7 @@ Currently supported distributions are:
 - [kubefwd](https://github.com/txn2/kubefwd)
 - [kubens](https://github.com/ahmetb/kubectx)
 - [kubepug](https://github.com/rikatz/kubepug)
+- [kubescape](https://github.com/armosec/kubescape)
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets)
 - [kubesec](https://github.com/shyiko/kubesec)
 - [kubestr](https://github.com/kastenhq/kubestr)
