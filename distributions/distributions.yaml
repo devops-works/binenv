@@ -2239,6 +2239,16 @@ sources:
       binaries:
         - taskctl
 
+  telepresence:
+    description: Fast, local development for Kubernetes and OpenShift microservices.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/telepresenceio/telepresence/releases
+    fetch:
+      url: https://app.getambassador.io/download/tel2/{{ .OS }}/{{ .Arch }}/{{ .Version }}/telepresence
+    install:
+      type: direct
+
   teler:
     description: Real-time HTTP Intrusion Detection
     map:
