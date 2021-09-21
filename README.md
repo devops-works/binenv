@@ -225,6 +225,7 @@ Currently supported distributions are:
 - [glab](https://github.com/profclems/glab/)
 - [glow](https://github.com/charmbracelet/glow)
 - [gocloc](https://github.com/hhatto/gocloc)
+- [gokart](https://github.com/praetorian-inc/gokart)
 - [golangci-lint](https://github.com/golangci/golangci-lint)
 - [goreleaser](https://github.com/goreleaser/goreleaser)
 - [gosec](https://github.com/securego/gosec)
@@ -681,8 +682,9 @@ Some nice alternatives exist:
 
 ## Distributions file format
 
-[distributions.yaml](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml) contains all the distributions supported by `binenv`, and how to fetch them. It is written in YALM and is defined by the scheme below.
-
+[distributions.yaml](https://github.com/devops-works/binenv/blob/develop/distributions/distributions.yaml)
+contains all the distributions supported by `binenv`, and how to fetch them. It
+is written in YAML and is defined by the scheme below.
 
 ### Distributions file reference
 

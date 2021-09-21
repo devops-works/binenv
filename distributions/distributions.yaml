@@ -767,6 +767,26 @@ sources:
       binaries:
         - gocloc
 
+  gokart:
+    description: A static analysis tool for securing Go code
+    map:
+      amd64: x86_64
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/praetorian-inc/gokart/releases
+    fetch:
+      url: https://github.com/praetorian-inc/gokart/releases/download/v{{ .Version }}/gokart_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gokart
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+
   golangci-lint:
     description: Fast linters Runner for Go
     list:
