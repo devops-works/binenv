@@ -332,6 +332,7 @@ Currently supported distributions are:
 - [tanka](https://github.com/grafana/tanka)
 - [task](https://github.com/go-task/task)
 - [taskctl](https://github.com/taskctl/taskctl)
+- [telepresence](https://github.com/telepresenceio/telepresence)
 - [teler](https://github.com/kitabisa/teler/)
 - [termshark](https://github.com/gcla/termshark)
 - [terraform](https://www.hashicorp.com/products/terraform)
