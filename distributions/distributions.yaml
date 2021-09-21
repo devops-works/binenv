@@ -2243,7 +2243,8 @@ sources:
     description: Fast, local development for Kubernetes and OpenShift microservices.
     list:
       type: github-releases
-      url: https://api.github.com/repos/telepresenceio/telepresence/releases
+      url: https://api.github.com/repos/telepresenceio/telepresence/tags
+      version_from: name
     fetch:
       url: https://app.getambassador.io/download/tel2/{{ .OS }}/{{ .Arch }}/{{ .Version }}/telepresence
     install:
