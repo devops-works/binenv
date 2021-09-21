@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 	"syscall"
@@ -270,6 +271,22 @@ func (a *App) Install(specs ...string) error {
 		version := ""
 		if len(specs) > 1 {
 			version = specs[i+1]
+		}
+
+		supportedPlatforms := a.def.Sources[dist].SupportedPlatforms
+		if len(supportedPlatforms) > 0 {
+			isSupported := false
+			for _, platform := range supportedPlatforms {
+				if platform.OS == runtime.GOOS && platform.Arch == runtime.GOARCH {
+					isSupported = true
+					break
+				}
+			}
+			if !isSupported {
+				a.logger.Error().Msgf("%q is not available for %s/%s", dist, runtime.GOOS, runtime.GOARCH)
+				errored = true
+				continue
+			}
 		}
 
 		v, err := a.install(dist, version)
