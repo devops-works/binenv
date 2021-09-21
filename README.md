@@ -72,7 +72,7 @@ rm binenv
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
 echo $ZESHELL
-echo 'export PATH=~/.binenv:$PATH' >> ~/.${ZESHELL}rc
+echo -e '\nexport PATH=~/.binenv:$PATH' >> ~/.${ZESHELL}rc
 echo "source <(binenv completion ${ZESHELL})" >> ~/.${ZESHELL}rc
 exec $SHELL
 ```
@@ -88,7 +88,7 @@ chmod +x binenv
 ./binenv update
 ./binenv install binenv
 rm binenv
-echo 'export PATH=~/.binenv:$PATH' >> ~/.bashrc
+echo -e '\nexport PATH=~/.binenv:$PATH' >> ~/.bashrc
 echo 'source <(binenv completion bash)' >> ~/.bashrc
 exec $SHELL
 ```
