@@ -320,6 +320,7 @@ Currently supported distributions are:
 - [scan-exporter](https://github.com/devops-works/scan-exporter)
 - [sd](https://github.com/chmln/sd)
 - [shaloc](https://github.com/eze-kiel/shaloc)
+- [shdotenv](https://github.com/ko1nksm/shdotenv)
 - [shell2http](https://github.com/msoap/shell2http)
 - [skaffold](https://github.com/GoogleContainerTools/skaffold)
 - [sloop](https://github.com/salesforce/sloop)
