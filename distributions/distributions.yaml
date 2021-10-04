@@ -1567,6 +1567,18 @@ sources:
       binaries:
         - kubetail
 
+  kubeval:
+    description: Validate your Kubernetes configuration files, supports multiple Kubernetes versions
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/instrumenta/kubeval/releases
+    fetch:
+      url: https://github.com/instrumenta/kubeval/releases/download/v{{ .Version }}/kubeval-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeval
+
   kustomize:
     description: Customization of kubernetes YAML configurations
     list:

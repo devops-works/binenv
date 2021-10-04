@@ -285,6 +285,7 @@ Currently supported distributions are:
 - [kubesurvival](https://github.com/aporia-ai/kubesurvival)
 - [kubeswitch](https://github.com/danielfoehrKn/kubeswitch)
 - [kubetail](https://github.com/jbvmio/kubetail)
+- [kubeval](https://github.com/instrumenta/kubeval)
 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker)
