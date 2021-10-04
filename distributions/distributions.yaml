@@ -220,6 +220,20 @@ sources:
       binaries:
         - broot
 
+  btop:
+    description: A monitor of resources
+    map:
+      amd64: x86-64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/aristocratos/btop/releases
+    fetch:
+      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tbz
+    install:
+      type: tbz
+      binaries:
+        - btop
+
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
     list:
@@ -1551,6 +1565,16 @@ sources:
       binaries:
         - kubesurvival
 
+  kubeswitch:
+    description: The kubectx for operators
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/danielfoehrKn/kubeswitch/releases
+    fetch:
+      url: https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ .Version }}/switcher_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   kubetail:
     description: Repository for kubetail - The pod log tailer
     list:
@@ -1562,6 +1586,18 @@ sources:
       type: tgz
       binaries:
         - kubetail
+
+  kubeval:
+    description: Validate your Kubernetes configuration files, supports multiple Kubernetes versions
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/instrumenta/kubeval/releases
+    fetch:
+      url: https://github.com/instrumenta/kubeval/releases/download/v{{ .Version }}/kubeval-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeval
 
   kustomize:
     description: Customization of kubernetes YAML configurations
@@ -2130,6 +2166,16 @@ sources:
       type: tgz
       binaries:
         - github-release-notes
+
+  sysz:
+    description: An fzf terminal UI for systemctl
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/oehillen/sysz/releases
+    fetch:
+      url: https://github.com/joehillen/sysz/releases/download/{{ .Version }}/sysz
+    install:
+      type: direct
 
   sops:
     description: Simple and flexible tool for managing secrets
