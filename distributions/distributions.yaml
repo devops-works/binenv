@@ -1305,18 +1305,6 @@ sources:
     install:
       type: direct
 
-  krew:
-    description: Find and install kubectl plugins
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/kubernetes-sigs/krew/releases
-    fetch:
-      url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ .Version }}/krew.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - krew-{{ .OS }}_{{ .Arch }}
-
   kube-beacon:
     description: >
       Open Source runtime scanner for k8s cluster and perform security audit 
@@ -1417,6 +1405,18 @@ sources:
       url: https://storage.googleapis.com/kubernetes-release/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
     install:
       type: direct
+
+  kubectl-krew:
+    description: Find and install kubectl plugins
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes-sigs/krew/releases
+    fetch:
+      url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ .Version }}/krew.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - krew-{{ .OS }}_{{ .Arch }}
 
   kubectx:
     description: Faster way to switch between clusters in kubectl
