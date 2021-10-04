@@ -1545,6 +1545,16 @@ sources:
       binaries:
         - kubesurvival
 
+  kubeswitch:
+    description: The kubectx for operators
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/danielfoehrKn/kubeswitch/releases
+    fetch:
+      url: https://github.com/danielfoehrKn/kubeswitch/releases/download/{{ .Version }}/switcher_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   kubetail:
     description: Repository for kubetail - The pod log tailer
     list:

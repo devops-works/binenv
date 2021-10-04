@@ -283,6 +283,7 @@ Currently supported distributions are:
 - [kubesec](https://github.com/shyiko/kubesec)
 - [kubestr](https://github.com/kastenhq/kubestr)
 - [kubesurvival](https://github.com/aporia-ai/kubesurvival)
+- [kubeswitch](https://github.com/danielfoehrKn/kubeswitch)
 - [kubetail](https://github.com/jbvmio/kubetail)
 - [kustomize](https://github.com/kubernetes-sigs/kustomize)
 - [lazygit](https://github.com/jesseduffield/lazygit)
