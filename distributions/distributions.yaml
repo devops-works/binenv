@@ -2069,6 +2069,17 @@ sources:
     install:
       type: direct
 
+  shdotenv:
+    description: dotenv support for shell and POSIX-compliant .env syntax specification.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ko1nksm/shdotenv/releases
+      version_from: name
+    fetch:
+      url: https://github.com/ko1nksm/shdotenv/releases/download/v{{ .Version }}/shdotenv
+    install:
+      type: direct
+
   shell2http:
     description: Executing shell commands via HTTP server
     map:
