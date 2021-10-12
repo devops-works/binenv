@@ -260,6 +260,7 @@ Currently supported distributions are:
 - [kapp](https://get-kapp.io/)
 - [kbld](https://get-kbld.io/)
 - [kcli](https://github.com/cswank/kcli)
+- [kdigger](https://github.com/quarkslab/kdigger)
 - [ketall](https://github.com/corneliusweig/ketall)
 - [kind](https://github.com/kubernetes-sigs/kind)
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon)

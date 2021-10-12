@@ -1257,6 +1257,18 @@ sources:
       binaries:
         - kcli
 
+  kdigger:
+    description: kdigger is a context discovery tool for Kubernetes penetration testing.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/quarkslab/kdigger/releases
+    fetch:
+      url: https://github.com/quarkslab/kdigger/releases/download/v{{ .Version }}/kdigger-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kdigger
+
   ketall:
     description: Like `kubectl get all`, but get really all resources
     list:
