@@ -731,6 +731,16 @@ sources:
     install:
       type: direct
 
+  gitlab-terraform-manager:
+    description: The tool for manage gitlab terraform backend
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/CRASH-Tech/gitlab-terraform-manager/releases
+    fetch:
+      url: https://github.com/CRASH-Tech/gitlab-terraform-manager/releases/download/{{ .Version }}/gitlab-terraform-manager_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   gitleaks:
     description: Scan git repos (or files) for secrets using regex and entropy
     list:

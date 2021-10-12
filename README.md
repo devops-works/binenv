@@ -222,6 +222,7 @@ Currently supported distributions are:
 - [gh](https://github.com/cli/cli/)
 - [github-release-notes](https://github.com/buchanae/github-release-notes)
 - [gitjacker](https://github.com/liamg/gitjacker)
+- [gitlab-terraform-manager](https://github.com/CRASH-Tech/gitlab-terraform-manager)
 - [gitleaks](https://github.com/zricethezav/gitleaks)
 - [gitui](https://github.com/extrawurst/gitui/)
 - [glab](https://github.com/profclems/glab/)
