@@ -313,6 +313,7 @@ Currently supported distributions are:
 - [pass-checker](https://github.com/devops-works/pass-checker)
 - [peco](https://github.com/peco/peco)
 - [phpsecscan](https://github.com/devops-works/phpsecscan)
+- [pint](https://github.com/cloudflare/pint)
 - [pluto](https://github.com/FairwindsOps/pluto)
 - [pomerium](https://github.com/pomerium/pomerium)
 - [pomerium-cli](https://github.com/pomerium/pomerium)

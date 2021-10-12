@@ -1978,6 +1978,18 @@ sources:
       binaries:
         - phpsecscan
 
+  pint:
+    description: Prometheus rule linter
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cloudflare/pint/releases
+    fetch:
+      url: https://github.com/cloudflare/pint/releases/download/v{{ .Version }}/pint_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pint
+
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
     list:
