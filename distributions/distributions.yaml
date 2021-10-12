@@ -1297,7 +1297,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - kdigger
+        - kdigger-{{ .OS }}-{{ .Arch }}
 
   ketall:
     description: Like `kubectl get all`, but get really all resources
@@ -1980,6 +1980,11 @@ sources:
 
   pint:
     description: Prometheus rule linter
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
     list:
       type: github-releases
       url: https://api.github.com/repos/cloudflare/pint/releases
