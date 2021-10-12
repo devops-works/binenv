@@ -396,6 +396,26 @@ sources:
       binaries:
         - curlie
 
+  datree:
+    description: >
+      Prevent Kubernetes misconfigurations from reaching production (again 😤 )!
+      Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.
+    map:
+      amd64: x86_64
+      i386: x86
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/datreeio/datree/releases
+    fetch:
+      url: https://github.com/datreeio/datree/releases/download/{{ .Version }}/datree-cli_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - datree
+
   delta:
     description: A more intuitive version of du in rust
     map:
