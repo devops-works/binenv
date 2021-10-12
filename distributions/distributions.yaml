@@ -1993,7 +1993,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - pint
+        - pint-linux-amd64
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
