@@ -29,6 +29,9 @@ jobs:
 
       - name: Create cache
         run: export GITHUB_TOKEN=${{ secrets.GO_RELEASER_GITHUB_TOKEN }} && ./bin/binenv update -f
+        
+      - name: List date create of cache.json file
+        run: ls -l distributions/cache.json && ls -l ~/.cache/binenv/cache.json
 
       - name: Format caches
         run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.cache/binenv/cache.json > new.json
