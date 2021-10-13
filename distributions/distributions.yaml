@@ -223,7 +223,7 @@ sources:
   btop:
     description: A monitor of resources
     map:
-      amd64: x86-64
+      amd64: x86_64
     list:
       type: github-releases
       url: https://api.github.com/repos/aristocratos/btop/releases
