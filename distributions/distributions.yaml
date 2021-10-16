@@ -433,6 +433,17 @@ sources:
       binaries:
         - delta
 
+  derefexo:
+    description: A process manager & log viewer for dev
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/deref/exo/releases
+    fetch:
+      url: https://github.com/deref/exo/releases/download/v{{ .Version }}/exo-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+    post_install_message: "Warning: the binary will be named 'derefexo' and not 'exo'"
+
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
     map:
