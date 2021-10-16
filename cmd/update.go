@@ -7,7 +7,10 @@ import (
 
 // localCmd represents the local command
 func updateCmd(a *app.App) *cobra.Command {
-	var distributionsOnly, distributionsAlso, noCache bool
+	var (
+		distributionsOnly, distributionsAlso, noCache bool
+		concurrency                                   int
+	)
 
 	cmd := &cobra.Command{
 		Use:   "update [--all|--distributions] [--cache]",
@@ -17,6 +20,7 @@ If not distribution is specified, versions for all distributions will be updated
 		Run: func(cmd *cobra.Command, args []string) {
 			verbose, _ := cmd.Flags().GetBool("verbose")
 			a.SetVerbose(verbose)
+			a.SetConcurrency(concurrency)
 
 			if len(args) >= 1 {
 				a.Update(distributionsOnly, distributionsAlso, noCache, args...)
@@ -35,6 +39,7 @@ If not distribution is specified, versions for all distributions will be updated
 	cmd.Flags().BoolVarP(&distributionsOnly, "distributions", "d", false, "Update only distributions")
 	cmd.Flags().BoolVarP(&distributionsAlso, "all", "a", false, "Update distributions and distributions versions")
 	cmd.Flags().BoolVarP(&noCache, "nocache", "f", false, "Distributions versions will be updated from each release and not from github cache")
+	cmd.Flags().IntVarP(&concurrency, "concurrency", "c", 8, "Concurrency for cache update")
 	return cmd
 }
 

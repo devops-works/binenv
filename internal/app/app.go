@@ -49,7 +49,8 @@ type App struct {
 	fetchers   map[string]fetch.Fetcher
 	cache      map[string][]string
 
-	dryrun bool
+	dryrun      bool
+	concurrency int
 
 	bindir string
 	logger zerolog.Logger
@@ -614,7 +615,7 @@ func (a *App) updateLocally(which ...string) error {
 	res := make(chan jobResult, 1000)
 	timeout := 1 * time.Second
 
-	for w := 1; w <= 1; w++ {
+	for w := 1; w <= a.concurrency; w++ {
 		go a.fetcher(w, jobs, res, timeout)
 	}
 
@@ -1228,4 +1229,9 @@ func (a *App) SetDryRun(v bool) {
 	if v {
 		a.dryrun = true
 	}
+}
+
+// SetConcurrency sets the number of goroutines for cache update
+func (a *App) SetConcurrency(c int) {
+	a.concurrency = c
 }

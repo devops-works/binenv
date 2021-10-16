@@ -390,6 +390,10 @@ below](#updating-versions-from-generated-cache)).
 With a distribution passed as an argument (e.g. `binenv update kubectl`), it
 will only update installable versions for `kubectl`.
 
+When updating the cache, you can control fetch concurrency using the `-c` flag.
+It defaults to 8 which is already pretty high. Do go crazy. This setting is
+mainly used to set a lower concurrency and be nice to GitHub. 
+
 Note that Github enforces rate limits (e.g. 60 unauthenticated API requests per
 hours). So you should update all distributions (e.g. `binenv update -f`) with
 caution. `binenv` will stop updating distributions when you only have 4
