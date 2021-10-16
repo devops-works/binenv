@@ -237,19 +237,19 @@ sources:
       binaries:
         - broot
 
-  btop:
-    description: A monitor of resources
-    map:
-      amd64: x86_64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/aristocratos/btop/releases
-    fetch:
-      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tbz
-    install:
-      type: tbz
-      binaries:
-        - btop
+  # btop:
+  #   description: A monitor of resources
+  #   map:
+  #     amd64: x86_64
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/aristocratos/btop/releases
+  #   fetch:
+  #     url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tbz
+  #   install:
+  #     type: tbz
+  #     binaries:
+  #       - btop
 
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
