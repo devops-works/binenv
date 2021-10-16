@@ -597,11 +597,10 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 
 		if len(r.versions) == 0 {
 			a.logger.Warn().Msgf("found no versions for %q", d)
-			cancel()
-			continue
+		} else {
+			a.logger.Debug().Msgf("found versions %q for %q", strings.Join(r.versions, ","), d)
 		}
 
-		a.logger.Debug().Msgf("found versions %q for %q", strings.Join(r.versions, ","), d)
 		res <- r
 
 		cancel()
@@ -638,7 +637,13 @@ func (a *App) updateLocally(which ...string) error {
 	for c := 0; c < count; c++ {
 		r := <-res
 
-		// Flush cache entry
+		// Skip this entry if no versions are provided
+		// see #157, #159, #162...
+		if len(r.versions) == 0 {
+			continue
+		}
+
+		// Flush cache entry if
 		a.cache[r.distribution] = []string{}
 
 		// Convert versions to canonical form
