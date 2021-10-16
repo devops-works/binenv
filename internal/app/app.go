@@ -594,7 +594,7 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 			// continue
 		}
 
-		a.logger.Debug().Msgf("found versions %q", strings.Join(r.versions, ","))
+		a.logger.Debug().Msgf("found versions %q for %q", strings.Join(r.versions, ","), d)
 
 		res <- r
 
