@@ -2,10 +2,7 @@
 
 The last binary you'll ever install.
 
-## TOC
-
 - [binenv](#binenv)
-  - [TOC](#toc)
   - [What](#what)
   - [Quick start](#quick-start)
     - [Linux (bash/zsh)](#linux-bashzsh)
