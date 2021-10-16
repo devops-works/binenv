@@ -583,6 +583,7 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 
 		subctx := a.logger.WithContext(ctx)
 		r.versions, err = a.listers[d].Get(subctx)
+
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
 			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
 			// return err
@@ -594,8 +595,13 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 			// continue
 		}
 
-		a.logger.Debug().Msgf("found versions %q for %q", strings.Join(r.versions, ","), d)
+		if len(r.versions) == 0 {
+			a.logger.Warn().Msgf("found no versions for %q", d)
+			cancel()
+			continue
+		}
 
+		a.logger.Debug().Msgf("found versions %q for %q", strings.Join(r.versions, ","), d)
 		res <- r
 
 		cancel()
