@@ -574,7 +574,6 @@ func (a *App) updateGithub() error {
 func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout time.Duration) {
 	for d := range jobs {
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
-		defer cancel()
 
 		var err error
 
@@ -587,7 +586,7 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
 			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
 			// return err
-
+			cancel()
 			continue
 		}
 		if err != nil {
@@ -598,6 +597,8 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 		a.logger.Debug().Msgf("found versions %q", strings.Join(r.versions, ","))
 
 		res <- r
+
+		cancel()
 	}
 }
 
@@ -822,6 +823,9 @@ func (a *App) selfInstall(version string) error {
 
 func (a *App) readDistributions() error {
 	conf, err := getDistributionsFilePath()
+	if err != nil {
+		return err
+	}
 
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		err := a.fetchDistributions(conf)
@@ -1074,6 +1078,7 @@ func (a *App) loadCache() {
 	}
 
 	err = json.Unmarshal([]byte(js), &a.cache)
+
 	if err != nil {
 		a.logger.Error().Err(err).Msgf(`unable to unmarshal cache %s; try to "rm %s && binenv update"`, conf, conf)
 		return
