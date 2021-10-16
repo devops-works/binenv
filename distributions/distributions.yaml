@@ -951,13 +951,26 @@ sources:
       binaries:
         - gosec
 
+  grafana_cli:
+    description: A CLI based utility to operate Grafana dashboards, folders, annotations, etc.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kckecheng/grafana_cli/releases
+    fetch:
+      url: https://github.com/kckecheng/grafana_cli/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/grafana_cli
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+
   grizzly:
     description: A utility for managing Jsonnet dashboards against the Grafana API
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/grizzly/releases
     fetch:
-      url: https://github.com/grafana/grizzly/releases/download/v0.0.1/grr-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/grafana/grizzly/releases/download/v{{ .Version }}/grr-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
