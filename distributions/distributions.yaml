@@ -223,7 +223,7 @@ sources:
   btop:
     description: A monitor of resources
     map:
-      amd64: x86-64
+      amd64: x86_64
     list:
       type: github-releases
       url: https://api.github.com/repos/aristocratos/btop/releases
@@ -395,6 +395,26 @@ sources:
       type: tgz
       binaries:
         - curlie
+
+  datree:
+    description: >
+      Prevent Kubernetes misconfigurations from reaching production (again 😤 )!
+      Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.
+    map:
+      amd64: x86_64
+      i386: x86
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/datreeio/datree/releases
+    fetch:
+      url: https://github.com/datreeio/datree/releases/download/{{ .Version }}/datree-cli_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - datree
 
   delta:
     description: A more intuitive version of du in rust
@@ -708,6 +728,16 @@ sources:
       url: https://api.github.com/repos/liamg/gitjacker/releases
     fetch:
       url: https://github.com/liamg/gitjacker/releases/download/v{{ .Version }}/gitjacker-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
+  gitlab-terraform-manager:
+    description: The tool for manage gitlab terraform backend
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/CRASH-Tech/gitlab-terraform-manager/releases
+    fetch:
+      url: https://github.com/CRASH-Tech/gitlab-terraform-manager/releases/download/{{ .Version }}/gitlab-terraform-manager_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
 
@@ -1256,6 +1286,18 @@ sources:
       type: tgz
       binaries:
         - kcli
+
+  kdigger:
+    description: kdigger is a context discovery tool for Kubernetes penetration testing.
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/quarkslab/kdigger/releases
+    fetch:
+      url: https://github.com/quarkslab/kdigger/releases/download/v{{ .Version }}/kdigger-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kdigger-{{ .OS }}-{{ .Arch }}
 
   ketall:
     description: Like `kubectl get all`, but get really all resources
@@ -1883,6 +1925,25 @@ sources:
       binaries:
         - packer
 
+  parca:
+    description: >
+      Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.
+      Saving infrastructure cost, improving performance, and increasing reliability.
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: Darwin
+    list:
+      type: github-releases
+      exclude: otohttp
+      url: https://api.github.com/repos/parca-dev/parca/releases
+    fetch:
+      url: https://github.com/parca-dev/parca/releases/download/v{{ .Version }}/parca_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - parca
+
   pass-checker:
     description: Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
     list:
@@ -1916,6 +1977,23 @@ sources:
       type: tgz
       binaries:
         - phpsecscan
+
+  pint:
+    description: Prometheus rule linter
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cloudflare/pint/releases
+    fetch:
+      url: https://github.com/cloudflare/pint/releases/download/v{{ .Version }}/pint_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pint-linux-amd64
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
@@ -2408,6 +2486,24 @@ sources:
       url: https://github.com/gruntwork-io/terragrunt/releases/download/v{{ .Version }}/terragrunt_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
+
+  terrascan:
+    description: >
+      Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/accurics/terrascan/releases
+    fetch:
+      url: https://github.com/accurics/terrascan/releases/download/v{{ .Version }}/terrascan_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - terrascan
 
   tf2pulumi:
     description: A tool to convert Terraform projects to Pulumi TypeScript programs
