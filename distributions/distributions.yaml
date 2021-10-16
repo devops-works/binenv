@@ -89,6 +89,23 @@ sources:
       type: direct
       binaries:
         - argocd
+  arkade:
+    description: Declarative continuous deployment for Kubernetes.
+    map:
+      linux: ""
+      darwin: "-darwin"
+      arm64: "-arm64"
+      amd64: ""
+      armhf: "-armhf"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/alexellis/arkade/releases
+    fetch:
+      url: https://github.com/alexellis/arkade/releases/download/{{ .Version }}/arkade{{ .Arch }}{{ .OS }}
+    install:
+      type: direct
+      binaries:
+        - arkade
 
   asciinema-edit:
     description: asciinema casts post-production tools
