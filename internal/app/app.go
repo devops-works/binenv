@@ -614,7 +614,7 @@ func (a *App) updateLocally(which ...string) error {
 	res := make(chan jobResult, 1000)
 	timeout := 1 * time.Second
 
-	for w := 1; w <= 8; w++ {
+	for w := 1; w <= 4; w++ {
 		go a.fetcher(w, jobs, res, timeout)
 	}
 
