@@ -641,6 +641,7 @@ func (a *App) updateLocally(which ...string) error {
 		// Skip this entry if no versions are provided
 		// see #157, #159, #162...
 		if len(r.versions) == 0 {
+			a.logger.Warn().Msgf("no versions found for %s; keeping previous versions %s", r.distribution, strings.Join(a.cache[r.distribution], ","))
 			continue
 		}
 
