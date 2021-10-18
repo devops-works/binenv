@@ -2290,7 +2290,7 @@ sources:
     description: An fzf terminal UI for systemctl
     list:
       type: github-releases
-      url: https://api.github.com/repos/oehillen/sysz/releases
+      url: https://api.github.com/repos/joehillen/sysz/releases
     fetch:
       url: https://github.com/joehillen/sysz/releases/download/{{ .Version }}/sysz
     install:
