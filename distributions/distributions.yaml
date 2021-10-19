@@ -2298,6 +2298,29 @@ sources:
       binaries:
         - github-release-notes
 
+  swag:
+    description: Automatically generate RESTful API documentation with Swagger 2.0 for Go.
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/swaggo/swag/releases
+    fetch:
+      url: https://github.com/swaggo/swag/releases/download/v{{ .Version }}/swag_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - swag
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+
   sysz:
     description: An fzf terminal UI for systemctl
     list:

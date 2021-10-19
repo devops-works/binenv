@@ -337,6 +337,7 @@ Currently supported distributions are:
 - [stern](https://github.com/stern/stern)
 - [subfinder](https://github.com/projectdiscovery/subfinder)
 - [sonobuoy](https://github.com/vmware-tanzu/sonobuoy)
+- [swag](https://github.com/swaggo/swag)
 - [sysz](https://github.com/joehillen/sysz)
 - [tanka](https://github.com/grafana/tanka)
 - [task](https://github.com/go-task/task)
