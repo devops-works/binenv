@@ -249,6 +249,7 @@ Currently supported distributions are:
 - [hugo](https://gohugo.io/)
 - [iamlive](https://github.com/iann0036/iamlive)
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg)
+- [infracost](https://github.com/infracost/infracost/)
 - [juicefs](https://github.com/juicedata/juicefs)
 - [k3d](https://github.com/rancher/k3d)
 - [k6](https://github.com/loadimpact/k6)

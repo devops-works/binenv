@@ -1198,6 +1198,18 @@ sources:
     install:
       type: direct
 
+  infracost:
+    description:  Cloud cost estimates for Terraform
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/infracost/infracost/releases
+    fetch:
+      url: https://github.com/infracost/infracost/releases/download/v{{ .Version }}/infracost-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - "infracost-{{ .OS }}-{{ .Arch }}"
+
   juicefs:
     description: JuiceFS is a distributed POSIX file system built on top of Redis and S3.
     list:
