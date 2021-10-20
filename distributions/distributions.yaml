@@ -223,12 +223,12 @@ sources:
   btop:
     description: A monitor of resources
     map:
-      amd64: x86-64
+      amd64: x86_64
     list:
       type: github-releases
       url: https://api.github.com/repos/aristocratos/btop/releases
     fetch:
-      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tbz
+      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .Arch }}-{{ .OS }}-musl.tbz
     install:
       type: tbz
       binaries:
