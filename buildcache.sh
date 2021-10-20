@@ -12,13 +12,15 @@
 
 set -eu
 
+make
+
 echo "Copying distribution to your config directory"
 cp distributions/distributions.yaml ~/.config/binenv/
 
-echo "Updating the cache (2 threads)"
-binenv update -f -c2
+echo "Updating the cache (4 threads)"
+./bin/binenv update -f -c4
 
 echo "Importing resulting cache into code"
 cat ~/.cache/binenv/cache.json | jq '.' > distributions/cache.json
 
-echo "Please test the cache using `./validate.sh code`"
+echo "Please test the cache using './validate.sh code'"
