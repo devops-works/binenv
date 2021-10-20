@@ -51,7 +51,8 @@ helm, ...).
 
 Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
 
-Now you can install your [favorite utility](#supported-distributions) just by typing `binenv install something`.
+Now you can install your [favorite utility](#supported-distributions) just by
+typing `binenv install something`.
 
 ## Quick start
 
