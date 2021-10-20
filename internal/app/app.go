@@ -115,7 +115,7 @@ func New(o ...func(*App) error) (*App, error) {
 
 // Search show a list returns a list of packages contains string
 // in name or description
-func (a *App) Search(pfix string) []string {
+func (a *App) Search(pfix string, wide bool) []string {
 	res := []string{}
 	pfix = strings.ToLower(pfix)
 	// First add matching distributions
@@ -136,10 +136,19 @@ func (a *App) Search(pfix string) []string {
 			continue
 		}
 		previous = d
-		fmt.Printf("%s: %s\n",
-			aurora.Bold(d),
-			aurora.Faint(strings.TrimSpace(a.def.Sources[d].Description)),
-		)
+
+		if wide {
+			fmt.Printf("%s,%s,%q\n",
+				aurora.Bold(d),
+				strings.TrimSpace(a.def.Sources[d].URL),
+				aurora.Faint(strings.TrimSpace(a.def.Sources[d].Description)),
+			)
+		} else {
+			fmt.Printf("%s: %s\n",
+				aurora.Bold(d),
+				aurora.Faint(strings.TrimSpace(a.def.Sources[d].Description)),
+			)
+		}
 	}
 
 	return res

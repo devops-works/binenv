@@ -3,6 +3,7 @@ sources:
 
   act:
     description: Run your GitHub Actions locally
+    url: https://github.com/nektos/act/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -20,6 +21,7 @@ sources:
 
   ali:
     description: Generate HTTP load and plot the results in real-time
+    url: https://github.com/nakabonne/ali/
     list:
       type: github-releases
       url: https://api.github.com/repos/nakabonne/ali/releases
@@ -34,6 +36,7 @@ sources:
     description: >
       Go package to make lightweight ASCII line graph ╭┈╯ in command line apps
       with no other dependencies.
+    url: https://github.com/guptarohit/asciigraph/
     map:
       linux: Linux
       darwin: Darwin
@@ -50,6 +53,7 @@ sources:
 
   annie:
     description: Fast, simple and clean video downloader
+    url: https://github.com/iawia002/annie/
     map:
       amd64: 64-bit
       darwin: macOS
@@ -70,6 +74,7 @@ sources:
     description: >
       SDK for building Kubernetes applications. Provides high level APIs,
       useful abstractions, and project scaffolding.
+    url: https://github.com/operator-framework/
     list:
       type: github-releases
       url: https://api.github.com/repos/operator-framework/operator-sdk/releases
@@ -83,6 +88,7 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/argoproj/argo-cd/releases
+    url: https://github.com/argoproj/argo-
     fetch:
       url: https://github.com/argoproj/argo-cd/releases/download/v{{ .Version }}/argocd-{{ .OS }}-{{ .Arch }}
     install:
@@ -91,6 +97,7 @@ sources:
         - argocd
   arkade:
     description: Declarative continuous deployment for Kubernetes.
+    url: https://github.com/alexellis/arkade/
     map:
       linux: ""
       darwin: "-darwin"
@@ -109,6 +116,7 @@ sources:
 
   asciinema-edit:
     description: asciinema casts post-production tools
+    url: https://github.com/cirocosta/asciinema-
     list:
       type: github-releases
       url: https://api.github.com/repos/cirocosta/asciinema-edit/releases
@@ -121,6 +129,7 @@ sources:
 
   awless:
     description: A Mighty CLI for AWS
+    url: https://github.com/wallix/awless/
     list:
       type: github-releases
       url: https://api.github.com/repos/wallix/awless/releases
@@ -134,6 +143,7 @@ sources:
   aws-iam-authenticator:
     description: >
       A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
+    url: https://github.com/kubernetes-sigs/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/aws-iam-authenticator/releases
@@ -145,6 +155,7 @@ sources:
   aws-vault:
     description: >
       A vault for securely storing and accessing AWS credentials in development environments
+    url: https://github.com/99designs/aws-
     list:
       type: github-releases
       url: https://api.github.com/repos/99designs/aws-vault/releases
@@ -155,6 +166,7 @@ sources:
 
   awstaghelper:
     description: AWS bulk tagging tool
+    url: https://github.com/mpostument/awstaghelper/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -172,6 +184,7 @@ sources:
 
   bat:
     description: A cat(1) clone with wings.
+    url: https://github.com/sharkdp/bat/
     map:
       amd64: x86_64
       i386: i686
@@ -190,6 +203,7 @@ sources:
 
   binenv:
     description: One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
+    url: https://github.com/devops-works/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/binenv/releases
@@ -200,6 +214,7 @@ sources:
 
   bomberman:
     description: SMTP Performance and Load Test Tool
+    url: https://github.com/c1982/bomberman/
     list:
       type: github-releases
       url: https://api.github.com/repos/c1982/bomberman/releases
@@ -210,6 +225,7 @@ sources:
 
   bottom:
     description: Yet another cross-platform graphical process/system monitor.
+    url: https://github.com/ClementTsang/bottom/
     map:
       amd64: x86_64
       i386: i686
@@ -227,6 +243,7 @@ sources:
 
   broot:
     description: A new way to see and navigate directory trees
+    url: https://github.com/Canop/broot/
     list:
       type: github-releases
       url: https://api.github.com/repos/Canop/broot/releases
@@ -239,6 +256,7 @@ sources:
 
   btop:
     description: A monitor of resources
+    url: https://github.com/aristocratos/btop/
     map:
       amd64: x86_64
     list:
@@ -253,6 +271,7 @@ sources:
 
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
+    url: https://github.com/docker/buildx/
     list:
       type: github-releases
       url: https://api.github.com/repos/docker/buildx/releases
@@ -265,6 +284,7 @@ sources:
     description: >
       Automated changelog tool for preparing releases with lots of
       customization options
+    url: https://github.com/miniscruff/changie/
     list:
       type: github-releases
       url: https://api.github.com/repos/miniscruff/changie/releases
@@ -277,6 +297,7 @@ sources:
 
   cheat:
     description: cheat allows you to create and view interactive cheatsheets on the command-line.
+    url: https://github.com/cheat/cheat/
     list:
       type: github-releases
       url: https://api.github.com/repos/cheat/cheat/releases
@@ -289,6 +310,7 @@ sources:
 
   check-tls-cert:
     description: Check-tls-cert is a TLS certificate checker.
+    url: https://github.com/heartbeatsjp/check-tls-cert/
     list:
       type: github-releases
       url: https://api.github.com/repos/heartbeatsjp/check-tls-cert/releases
@@ -302,6 +324,7 @@ sources:
 
   cli53:
     description: Command line tool for Amazon Route 53
+    url: https://github.com/barnybug/cli53/
     list:
       type: github-releases
       url: https://api.github.com/repos/barnybug/cli53/releases
@@ -312,6 +335,7 @@ sources:
 
   clog-cli:
     description: Generate beautiful changelogs from your Git commit history
+    url: https://github.com/clog-tool/
     map:
       amd64: x86_64
       i386: i686
@@ -329,6 +353,7 @@ sources:
 
   chezmoi:
     description: Dotfile management tool
+    url: https://github.com/twpayne/chezmoi/
     list:
       type: github-releases
       url: https://api.github.com/repos/twpayne/chezmoi/releases
@@ -341,6 +366,7 @@ sources:
 
   chisel:
     description: A fast TCP/UDP tunnel over HTTP
+    url: https://github.com/jpillora/chisel/
     list:
       type: github-releases
       url: https://api.github.com/repos/jpillora/chisel/releases
@@ -353,6 +379,7 @@ sources:
 
   choose:
     description: A human-friendly and fast alternative to cut and (sometimes) awk
+    url: https://github.com/theryangeary/choose/
     list:
       type: github-releases
       url: https://api.github.com/repos/theryangeary/choose/releases
@@ -363,6 +390,7 @@ sources:
 
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
+    url: https://github.com/visma-prodsec/
     map:
       darwin: macOS
     list:
@@ -379,6 +407,7 @@ sources:
     description: >
       Consul is a distributed, highly available, and data center aware solution
       to connect and configure applications across dynamic, distributed infrastructure.
+    url: https://releases.hashicorp.com/consul/
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/consul/releases
@@ -391,6 +420,7 @@ sources:
 
   ctop:
     description: Top-like interface for container metrics
+    url: https://github.com/bcicen/ctop/
     list:
       type: github-releases
       url: https://api.github.com/repos/bcicen/ctop/releases
@@ -401,6 +431,7 @@ sources:
 
   curlie:
     description: The power of curl, the ease of use of httpie.
+    url: https://github.com/rs/curlie/
     map:
       darwin: macOS
     list:
@@ -417,6 +448,7 @@ sources:
     description: >
       Prevent Kubernetes misconfigurations from reaching production (again 😤 )!
       Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.
+    url: https://github.com/datreeio/datree/
     map:
       amd64: x86_64
       i386: x86
@@ -435,6 +467,7 @@ sources:
 
   delta:
     description: A more intuitive version of du in rust
+    url: https://github.com/dandavison/delta/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -452,6 +485,7 @@ sources:
 
   derefexo:
     description: A process manager & log viewer for dev
+    url: https://github.com/deref/exo/
     list:
       type: github-releases
       url: https://api.github.com/repos/deref/exo/releases
@@ -463,6 +497,7 @@ sources:
 
   devdash:
     description: Highly Configurable Terminal Dashboard for Developers and Creators
+    url: https://github.com/Phantas0s/devdash/
     map:
       amd64: x86_64
       i386: x86
@@ -482,6 +517,7 @@ sources:
       DevSpace - The Fastest Developer Tool for Kubernetes ￼
       Automate your deployment workflow with DevSpace and develop software
       directly inside Kubernetes.
+    url: https://github.com/devspace-cloud/
     list:
       type: github-releases
       url: https://api.github.com/repos/devspace-cloud/devspace/releases
@@ -492,6 +528,7 @@ sources:
 
   dive:
     description: A tool for exploring each layer in a docker image
+    url: https://github.com/wagoodman/dive/
     list:
       type: github-releases
       url: https://api.github.com/repos/wagoodman/dive/releases
@@ -504,6 +541,7 @@ sources:
 
   dockle:
     description: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
+    url: https://github.com/goodwithtech/dockle/
     map:
       amd64: 64bit
       i386: 32bit
@@ -522,6 +560,7 @@ sources:
 
   doctl:
     description: The official digital ocean command line interface
+    url: https://github.com/digitalocean/doctl/
     list:
       type: github-releases
       url: https://api.github.com/repos/digitalocean/doctl/releases
@@ -534,6 +573,7 @@ sources:
 
   driftctl:
     description: Detect, track and alert on infrastructure drift
+    url: https://github.com/cloudskiff/driftctl/
     list:
       type: github-releases
       url: https://api.github.com/repos/cloudskiff/driftctl/releases
@@ -544,6 +584,7 @@ sources:
 
   dstask:
     description: Single binary terminal-based todo manager with git-based sync + markdown notes per task
+    url: https://github.com/naggie/dstask/
     list:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
@@ -556,6 +597,7 @@ sources:
 
   dstask-import:
     description: Single binary terminal-based todo manager with git-based sync + markdown notes per task (import tool)
+    url: https://github.com/naggie/dstask/
     list:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
@@ -568,6 +610,7 @@ sources:
 
   duf:
     description: Disk Usage/Free Utility
+    url: https://github.com/muesli/duf/
     map:
       amd64: x86_64
     list:
@@ -582,6 +625,7 @@ sources:
 
   dust:
     description: A more intuitive version of du in rust
+    url: https://github.com/bootandy/dust/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -599,6 +643,7 @@ sources:
 
   dw-query-digest:
     description: MySQL slow log analyzer. Alternative to pt-query-digest.
+    url: https://github.com/devops-works/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/dw-query-digest/releases
@@ -611,6 +656,7 @@ sources:
 
   eksctl:
     description: eksctl is a simple CLI tool for creating clusters on AWS EKS.
+    url: https://github.com/weaveworks/eksctl/
     map:
       linux: Linux
     list:
@@ -625,6 +671,7 @@ sources:
 
   exa:
     description: A modern replacement for ‘ls’.
+    url: https://github.com/ogham/exa/
     map:
       amd64: x86_64
     list:
@@ -639,6 +686,7 @@ sources:
 
   exo:
     description: "Command-line tool for everything at Exoscale: compute, storage, dns."
+    url: https://github.com/exoscale/cli/
     list:
       type: github-releases
       url: https://api.github.com/repos/exoscale/cli/releases
@@ -651,6 +699,7 @@ sources:
 
   fd:
     description: A simple, fast and user-friendly alternative to 'find'
+    url: https://github.com/sharkdp/fd/
     list:
       type: github-releases
       url: https://api.github.com/repos/sharkdp/fd/releases
@@ -663,6 +712,7 @@ sources:
 
   fselect:
     description: Find files with SQL-like queries
+    url: https://github.com/jhspetersson/fselect/
     map:
       amd64: x86_64
       linux: linux-musl
@@ -679,6 +729,7 @@ sources:
 
   fzf:
     description: fzf is a general-purpose command-line fuzzy finder.
+    url: https://github.com/junegunn/fzf/
     list:
       type: github-releases
       url: https://api.github.com/repos/junegunn/fzf/releases
@@ -691,6 +742,7 @@ sources:
 
   gbt:
     description: Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
+    url: https://github.com/jtyr/gbt/
     list:
       type: github-releases
       url: https://api.github.com/repos/jtyr/gbt/releases
@@ -703,6 +755,7 @@ sources:
 
   gdu:
     description: Pretty fast disk usage analyzer written in Go.
+    url: https://github.com/dundee/gdu/
     list:
       type: github-releases
       url: https://api.github.com/repos/dundee/gdu/releases
@@ -715,6 +768,7 @@ sources:
 
   geesefs:
     description: Finally, a good FUSE FS implementation over S3
+    url: https://github.com/yandex-cloud/
     list:
       type: github-releases
       url: https://api.github.com/repos/yandex-cloud/geesefs/releases
@@ -725,6 +779,7 @@ sources:
 
   gh:
     description: GitHub’s official command line tool
+    url: https://github.com/cli/cli/
     map:
       darwin: macOS
     list:
@@ -739,6 +794,7 @@ sources:
 
   github-release-notes:
     description: Generate release notes content from GitHub Pull Request history.
+    url: https://github.com/buchanae/github-release-notes/
     list:
       type: github-releases
       url: https://api.github.com/repos/buchanae/github-release-notes/releases
@@ -751,6 +807,7 @@ sources:
 
   gitjacker:
     description: Leak git repositories from misconfigured websites
+    url: https://github.com/liamg/gitjacker/
     list:
       type: github-releases
       url: https://api.github.com/repos/liamg/gitjacker/releases
@@ -761,6 +818,7 @@ sources:
 
   gitlab-terraform-manager:
     description: The tool for manage gitlab terraform backend
+    url: https://github.com/CRASH-Tech/gitlab-terraform-manager/
     list:
       type: github-releases
       url: https://api.github.com/repos/CRASH-Tech/gitlab-terraform-manager/releases
@@ -771,6 +829,7 @@ sources:
 
   gitleaks:
     description: Scan git repos (or files) for secrets using regex and entropy
+    url: https://github.com/zricethezav/gitleaks/
     list:
       type: github-releases
       url: https://api.github.com/repos/zricethezav/gitleaks/releases
@@ -780,10 +839,11 @@ sources:
       type: direct
 
   gitui:
+    description: Blazing fast terminal client for git written in Rust
+    url: https://github.com/extrawurst/gitui/
     map:
       darwin: mac
       linux: linux-musl
-    description: Blazing fast terminal client for git written in Rust
     list:
       type: github-releases
       url: https://api.github.com/repos/extrawurst/gitui/releases
@@ -796,6 +856,7 @@ sources:
 
   glab:
     description: An open-source GitLab command line tool
+    url: https://github.com/profclems/glab/
     map:
       amd64: x86_64
       darwin: macOS
@@ -812,6 +873,7 @@ sources:
 
   glow:
     description: Render markdown on the CLI, with pizzazz! 💅🏻
+    url: https://github.com/charmbracelet/glow/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -827,6 +889,7 @@ sources:
 
   gocloc:
     description: A little fast cloc(Count Lines Of Code)
+    url: https://github.com/hhatto/gocloc/
     map:
       amd64: x86_64
     list:
@@ -841,6 +904,7 @@ sources:
 
   gokart:
     description: A static analysis tool for securing Go code
+    url: https://github.com/praetorian-inc/gokart/
     map:
       amd64: x86_64
       darwin: macOS
@@ -861,6 +925,7 @@ sources:
 
   golangci-lint:
     description: Fast linters Runner for Go
+    url: https://github.com/golangci/golangci-
     list:
       type: github-releases
       url: https://api.github.com/repos/golangci/golangci-lint/releases
@@ -873,6 +938,7 @@ sources:
 
   goreleaser:
     description: Deliver Go binaries as fast and easily as possible
+    url: https://github.com/goreleaser/goreleaser/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -890,6 +956,7 @@ sources:
 
   gotop:
     description: Just another terminal based graphical activity monitor
+    url: https://github.com/xxxserxxx/gotop/
     list:
       type: github-releases
       url: https://api.github.com/repos/xxxserxxx/gotop/releases
@@ -902,6 +969,7 @@ sources:
 
   gotty:
     description: Share your terminal as a web application
+    url: https://github.com/yudai/gotty/
     list:
       type: github-releases
       url: https://api.github.com/repos/yudai/gotty/releases
@@ -914,6 +982,7 @@ sources:
 
   gping:
     description: Ping, but with a graph
+    url: https://github.com/orf/gping/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -931,6 +1000,7 @@ sources:
 
   grafana-kiosk:
     description: Kiosk utility for Grafana
+    url: https://github.com/grafana/grafana-kiosk/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/grafana-kiosk/releases
@@ -941,6 +1011,7 @@ sources:
 
   grex:
     description: A command-line tool and library for generating regular expressions from user-provided test cases
+    url: https://github.com/pemistahl/grex/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -958,6 +1029,7 @@ sources:
 
   gosec:
     description: Golang security checker
+    url: https://github.com/securego/gosec/
     list:
       type: github-releases
       url: https://api.github.com/repos/securego/gosec/releases
@@ -970,6 +1042,7 @@ sources:
 
   grafana_cli:
     description: A CLI based utility to operate Grafana dashboards, folders, annotations, etc.
+    url: https://github.com/kckecheng/grafana_cli/
     list:
       type: github-releases
       url: https://api.github.com/repos/kckecheng/grafana_cli/releases
@@ -983,6 +1056,7 @@ sources:
 
   grizzly:
     description: A utility for managing Jsonnet dashboards against the Grafana API
+    url: https://github.com/grafana/grizzly/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/grizzly/releases
@@ -993,6 +1067,7 @@ sources:
 
   grype:
     description: A vulnerability scanner for container images and filesystems
+    url: https://github.com/anchore/grype/
     list:
       type: github-releases
       url: https://api.github.com/repos/anchore/grype/releases
@@ -1005,6 +1080,7 @@ sources:
 
   gws:
     description: Colorful KISS helper for git workspaces
+    url: https://github.com/StreakyCobra/gws/
     list:
       type: github-releases
       url: https://api.github.com/repos/StreakyCobra/gws/releases
@@ -1015,6 +1091,7 @@ sources:
 
   hey:
     description: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
+    url: https://github.com/rakyll/hey/
     list:
       type: github-releases
       url: https://api.github.com/repos/rakyll/hey/releases
@@ -1027,6 +1104,7 @@ sources:
 
   hadolint:
     description: Dockerfile linter, validate inline bash, written in Haskell
+    url: https://github.com/hadolint/hadolint/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -1042,6 +1120,7 @@ sources:
 
   havener:
     description: Think of it as a swiss army knife for Kubernetes tasks
+    url: https://github.com/homeport/havener/
     list:
       type: github-releases
       url: https://api.github.com/repos/homeport/havener/releases
@@ -1054,6 +1133,7 @@ sources:
 
   hcloud:
     description: a tool for controlling hetzner cloud resources
+    url: https://github.com/hetznercloud/cli/
     list:
       type: github-releases
       url: https://api.github.com/repos/hetznercloud/cli/releases
@@ -1066,6 +1146,7 @@ sources:
 
   helm:
     description: The Kubernetes Package Manager
+    url: https://github.com/helm/helm/
     list:
       type: github-releases
       url: https://api.github.com/repos/helm/helm/releases
@@ -1080,6 +1161,7 @@ sources:
     description: >
       SDK for building Kubernetes applications. Provides high level APIs,
       useful abstractions, and project scaffolding.
+    url: https://github.com/operator-framework/operator-sdk/
     list:
       type: github-releases
       url: https://api.github.com/repos/operator-framework/operator-sdk/releases
@@ -1090,6 +1172,7 @@ sources:
 
   helmfile:
     description: Deploy Kubernetes Helm Charts
+    url: https://github.com/roboll/helmfile/
     list:
       type: github-releases
       url: https://api.github.com/repos/roboll/helmfile/releases
@@ -1100,6 +1183,7 @@ sources:
 
   helmwave:
     description: 🌊 Composer for @helm Charts
+    url: https://github.com/helmwave/helmwave/
     list:
       type: github-releases
       url: https://api.github.com/repos/helmwave/helmwave/releases
@@ -1112,6 +1196,7 @@ sources:
 
   himalaya:
     description: 📫 CLI email client
+    url: https://github.com/soywod/himalaya/
     list:
       type: github-releases
       url: https://api.github.com/repos/soywod/himalaya/releases
@@ -1127,6 +1212,7 @@ sources:
       httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
       probers using retryablehttp library, it is designed to maintain the
       result reliability with increased threads.
+    url: https://github.com/projectdiscovery/httpx/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/httpx/releases
@@ -1142,6 +1228,7 @@ sources:
       httpx is a fast and multi-purpose HTTP toolkit allow to run multiple
       probers using retryablehttp library, it is designed to maintain the
       result reliability with increased threads (windows).
+    url: https://github.com/projectdiscovery/httpx/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/httpx/releases
@@ -1154,6 +1241,7 @@ sources:
 
   hugo:
     description: The world’s fastest framework for building websites.
+    url: https://github.com/gohugoio/hugo/
     map:
       amd64: 64bit
       "386": 32bit
@@ -1176,6 +1264,7 @@ sources:
   iamlive:
     description: >
       Generate an IAM policy from AWS calls using client-side monitoring (CSM) or embedded proxy
+    url: https://github.com/iann0036/iamlive/
     list:
       type: github-releases
       url: https://api.github.com/repos/iann0036/iamlive/releases
@@ -1190,6 +1279,7 @@ sources:
     description: >
       Allows you to store and distribute sets of files
       (e.g. application configuration) as images in Docker (OCI) registries
+    url: https://github.com/vmware-tanzu/carvel-imgpkg/
     list:
       type: github-releases
       url: https://api.github.com/repos/vmware-tanzu/carvel-imgpkg/releases
@@ -1199,7 +1289,8 @@ sources:
       type: direct
 
   infracost:
-    description:  Cloud cost estimates for Terraform
+    description: Cloud cost estimates for Terraform
+    url: https://github.com/infracost/infracost/
     list:
       type: github-releases
       url: https://api.github.com/repos/infracost/infracost/releases
@@ -1212,6 +1303,7 @@ sources:
 
   juicefs:
     description: JuiceFS is a distributed POSIX file system built on top of Redis and S3.
+    url: https://github.com/juicedata/juicefs/
     list:
       type: github-releases
       url: https://api.github.com/repos/juicedata/juicefs/releases
@@ -1224,6 +1316,7 @@ sources:
 
   k3d:
     description: Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
+    url: https://github.com/rancher/k3d/
     list:
       type: github-releases
       url: https://api.github.com/repos/rancher/k3d/releases
@@ -1234,6 +1327,7 @@ sources:
 
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
+    url: https://github.com/loadimpact/k6/
     map:
       amd64: "64"
       "386": "32"
@@ -1250,6 +1344,7 @@ sources:
 
   k8stail:
     description: tail -f experience for Kubernetes Pods
+    url: https://github.com/dtan4/k8stail/
     list:
       type: github-releases
       url: https://api.github.com/repos/dtan4/k8stail/releases
@@ -1262,6 +1357,7 @@ sources:
 
   k9s:
     description: Kubernetes CLI To Manage Your Clusters In Style!
+    url: https://github.com/derailed/k9s/
     map:
       amd64: x86_64
       linux: Linux
@@ -1280,6 +1376,7 @@ sources:
 
   kafkactl:
     description: Command Line Tool for managing Apache Kafka
+    url: https://github.com/deviceinsight/kafkactl/
     list:
       type: github-releases
       url: https://api.github.com/repos/deviceinsight/kafkactl/releases
@@ -1292,6 +1389,7 @@ sources:
 
   kail:
     description: kubernetes log viewer
+    url: https://github.com/boz/kail/
     list:
       type: github-releases
       url: https://api.github.com/repos/boz/kail/releases
@@ -1304,6 +1402,7 @@ sources:
 
   kapp:
     description: A simple deployment tool focused on the concept of "Kubernetes application"
+    url: https://github.com/vmware-tanzu/carvel-kapp/
     list:
       type: github-releases
       url: https://api.github.com/repos/vmware-tanzu/carvel-kapp/releases
@@ -1315,6 +1414,7 @@ sources:
   kbld:
     description: >
       Seamlessly incorporates image building and image pushing into your development and deployment workflows
+    url: https://github.com/vmware-tanzu/carvel-kbld/
     list:
       type: github-releases
       url: https://api.github.com/repos/vmware-tanzu/carvel-kbld/releases
@@ -1325,6 +1425,7 @@ sources:
 
   kcli:
     description: Kcli is a kafka read only command line browser.
+    url: https://github.com/cswank/kcli/
     list:
       type: github-releases
       url: https://api.github.com/repos/cswank/kcli/releases
@@ -1342,6 +1443,7 @@ sources:
 
   kdigger:
     description: kdigger is a context discovery tool for Kubernetes penetration testing.
+    url: https://github.com/quarkslab/kdigger/
     list:
       type: github-releases
       url: https://api.github.com/repos/quarkslab/kdigger/releases
@@ -1354,6 +1456,7 @@ sources:
 
   ketall:
     description: Like `kubectl get all`, but get really all resources
+    url: https://github.com/corneliusweig/ketall/
     list:
       type: github-releases
       url: https://api.github.com/repos/corneliusweig/ketall/releases
@@ -1366,6 +1469,7 @@ sources:
 
   kind:
     description: Kubernetes IN Docker - local clusters for testing Kubernetes
+    url: https://github.com/kubernetes-sigs/kind/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/kind/releases
@@ -1379,6 +1483,7 @@ sources:
       Cross-platform backup tool for Windows, macOS & Linux with fast, incremental
       backups, client-side end-to-end encryption, compression and data deduplication.
       CLI and GUI included.
+    url: https://github.com/kopia/kopia/
     map:
       darwin: masOS
       amd64: x64
@@ -1394,6 +1499,7 @@ sources:
 
   kompose:
     description: Go from Docker Compose to Kubernetes
+    url: https://github.com/kubernetes/kompose/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kompose/releases
@@ -1406,6 +1512,7 @@ sources:
 
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
+    url: https://github.com/kubernetes/kops/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kops/releases
@@ -1416,8 +1523,9 @@ sources:
 
   kube-beacon:
     description: >
-      Open Source runtime scanner for k8s cluster and perform security audit 
+      Open Source runtime scanner for k8s cluster and perform security audit
       checks based on CIS Kubernetes Benchmark specification
+    url: https://github.com/chen-keinan/kube-beacon/
     list:
       type: github-releases
       url: https://api.github.com/repos/chen-keinan/kube-beacon/releases
@@ -1432,6 +1540,7 @@ sources:
     description: >
       Checks whether Kubernetes is deployed according to security best practices as
       defined in the CIS Kubernetes Benchmark
+    url: https://github.com/aquasecurity/kube-bench/
     list:
       type: github-releases
       url: https://api.github.com/repos/aquasecurity/kube-bench/releases
@@ -1444,6 +1553,7 @@ sources:
 
   kube-dump:
     description: Backup a Kubernetes cluster as a yaml manifest
+    url: https://github.com/WoozyMasta/kube-dump/
     list:
       type: github-releases
       url: https://api.github.com/repos/WoozyMasta/kube-dump/releases
@@ -1454,6 +1564,7 @@ sources:
 
   kubent:
     description: kube-no-trouble - Easily check your clusters for use of deprecated APIs
+    url: https://github.com/doitintl/kube-no-trouble/
     list:
       type: github-releases
       url: https://api.github.com/repos/doitintl/kube-no-trouble/releases
@@ -1466,6 +1577,7 @@ sources:
 
   kubeaudit:
     description: kubeaudit helps you audit your Kubernetes clusters against common security controls
+    url: https://github.com/Shopify/kubeaudit/
     list:
       type: github-releases
       url: https://api.github.com/repos/Shopify/kubeaudit/releases
@@ -1478,6 +1590,7 @@ sources:
 
   kubecolor:
     description: colorizes kubectl output
+    url: https://github.com/dty1er/kubecolor/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -1495,6 +1608,7 @@ sources:
 
   kubeconf:
     description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
+    url: https://github.com/mumoshu/kubeconf/
     list:
       type: github-releases
       url: https://api.github.com/repos/mumoshu/kubeconf/releases
@@ -1507,6 +1621,7 @@ sources:
 
   kubectl:
     description: Production-Grade Container Scheduling and Management (cli)
+    url: https://github.com/kubernetes/kubernetes/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kubernetes/releases
@@ -1517,6 +1632,7 @@ sources:
 
   kubectl-krew:
     description: Find and install kubectl plugins
+    url: https://github.com/kubernetes-sigs/krew/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/krew/releases
@@ -1529,6 +1645,7 @@ sources:
 
   kubectx:
     description: Faster way to switch between clusters in kubectl
+    url: https://github.com/ahmetb/kubectx/
     map:
       amd64: x86_64
     list:
@@ -1546,6 +1663,7 @@ sources:
       KubeEye aims to find various problems on Kubernetes,
       such as application misconfiguration,
       unhealthy cluster components and node problems.
+    url: https://github.com/kubesphere/kubeeye/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubesphere/kubeeye/releases
@@ -1558,6 +1676,7 @@ sources:
 
   kubefwd:
     description: Forward multiple ports in Kubernetes
+    url: https://github.com/txn2/kubefwd/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -1574,6 +1693,7 @@ sources:
 
   kubens:
     description: Faster way to switch between namespaces in kubectl
+    url: https://github.com/ahmetb/kubectx/
     map:
       amd64: x86_64
     list:
@@ -1588,6 +1708,7 @@ sources:
 
   kubepug:
     description: Kubernetes PreUpGrade (Checker)
+    url: https://github.com/rikatz/kubepug/
     list:
       type: github-releases
       url: https://api.github.com/repos/rikatz/kubepug/releases
@@ -1600,6 +1721,7 @@ sources:
 
   kubescape:
     description: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
+    url: https://github.com/armosec/kubescape/
     map:
       darwin: macos
       linux: ubuntu
@@ -1613,6 +1735,7 @@ sources:
 
   kubeseal:
     description: A Kubernetes controller and tool for one-way encrypted Secrets
+    url: https://github.com/bitnami-labs/sealed-secrets/
     list:
       type: github-releases
       url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
@@ -1623,6 +1746,7 @@ sources:
 
   kubesec:
     description: Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
+    url: https://github.com/shyiko/kubesec/
     list:
       type: github-releases
       url: https://api.github.com/repos/shyiko/kubesec/releases
@@ -1633,6 +1757,7 @@ sources:
 
   kubestr:
     description: A tool to discover, validate and evaluate Kubernetes storage options
+    url: https://github.com/kastenhq/kubestr/
     list:
       type: github-releases
       url: https://api.github.com/repos/kastenhq/kubestr/releases
@@ -1645,6 +1770,7 @@ sources:
 
   kubesurvival:
     description: Significantly reduce Kubernetes costs by finding the cheapest machine types that can run your workloads
+    url: https://github.com/aporia-ai/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -1662,6 +1788,7 @@ sources:
 
   kubeswitch:
     description: The kubectx for operators
+    url: https://github.com/danielfoehrKn/kubeswitch/
     list:
       type: github-releases
       url: https://api.github.com/repos/danielfoehrKn/kubeswitch/releases
@@ -1672,6 +1799,7 @@ sources:
 
   kubetail:
     description: Repository for kubetail - The pod log tailer
+    url: https://github.com/jbvmio/kubetail/
     list:
       type: github-releases
       url: https://api.github.com/repos/jbvmio/kubetail/releases
@@ -1684,6 +1812,7 @@ sources:
 
   kubeval:
     description: Validate your Kubernetes configuration files, supports multiple Kubernetes versions
+    url: https://github.com/instrumenta/kubeval/
     list:
       type: github-releases
       url: https://api.github.com/repos/instrumenta/kubeval/releases
@@ -1696,6 +1825,7 @@ sources:
 
   kustomize:
     description: Customization of kubernetes YAML configurations
+    url: https://github.com/kubernetes-sigs/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/kustomize/releases
@@ -1708,13 +1838,14 @@ sources:
         - kustomize
 
   lazygit:
+    description: A simple terminal UI for git commands.
+    url: https://github.com/jesseduffield/lazygit/
     map:
       amd64: x86_64
       "386": 32-bit
       darwin: Darwin
       linux: Linux
       windows: Windows
-    description: A simple terminal UI for git commands.
     list:
       type: github-releases
       url: https://api.github.com/repos/jesseduffield/lazygit/releases
@@ -1727,6 +1858,7 @@ sources:
 
   local-php-security-checker:
     description: PHP security vulnerabilities checker
+    url: https://github.com/fabpot/local-php-security-checker/
     list:
       type: github-releases
       url: https://api.github.com/repos/fabpot/local-php-security-checker/releases
@@ -1737,6 +1869,7 @@ sources:
 
   logcli:
     description: Like Prometheus, but for logs (cli).
+    url: https://github.com/grafana/loki/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -1749,6 +1882,7 @@ sources:
 
   loki:
     description: Like Prometheus, but for logs.
+    url: https://github.com/grafana/loki/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -1761,6 +1895,7 @@ sources:
 
   lsd:
     description: The next gen ls command
+    url: https://github.com/Peltoche/lsd/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -1778,6 +1913,7 @@ sources:
 
   mcfly:
     description: Fly through your shell history. Great Scott!
+    url: https://github.com/cantino/mcfly/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -1794,6 +1930,7 @@ sources:
 
   micro:
     description: A modern and intuitive terminal-based text editor
+    url: https://github.com/zyedidia/micro/
     # Mapping doesn't work for Darvin - there's no .Arch present in the package name
     map:
       amd64: '64'
@@ -1813,6 +1950,7 @@ sources:
 
   migrate:
     description: CLI database migrations tool.
+    url: https://github.com/golang-migrate/migrate/
     list:
       type: github-releases
       url: https://api.github.com/repos/golang-migrate/migrate/releases
@@ -1824,7 +1962,10 @@ sources:
         - ./migrate.{{ .OS }}-{{ .Arch }}
 
   miller:
-    description: Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV, and tabular JSON
+    description: >
+      Miller is like awk, sed, cut, join, and sort for name-indexed data such as
+      CSV, TSV, and tabular JSON
+    url: https://github.com/johnkerl/miller/
     list:
       type: github-releases
       url: https://api.github.com/repos/johnkerl/miller/releases
@@ -1835,6 +1976,7 @@ sources:
 
   minikube:
     description: Run Kubernetes locally
+    url: https://github.com/kubernetes/minikube/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/minikube/releases
@@ -1847,6 +1989,7 @@ sources:
 
   mysql_random_data_load:
     description: MySQL random data loader
+    url: https://github.com/Percona-Lab/mysql_random_data_load/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -1866,6 +2009,7 @@ sources:
       A fast port scanner written in go with focus on reliability and
       simplicity. Designed to be used in combination with other tools for
       attack surface discovery in bug bounties and pentests
+    url: https://github.com/projectdiscovery/naabu/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/naabu/releases
@@ -1878,6 +2022,7 @@ sources:
 
   node-problem-detector:
     description: This is a place for various problem detectors running on the Kubernetes nodes.
+    url: https://github.com/kubernetes/node-problem-detector/
     list:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/node-problem-detector/releases
@@ -1893,6 +2038,7 @@ sources:
       A fast port scanner written in go with focus on reliability and
       simplicity. Designed to be used in combination with other tools for
       attack surface discovery in bug bounties and pentests (windows)
+    url: https://github.com/projectdiscovery/naabu/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/naabu/releases
@@ -1909,6 +2055,7 @@ sources:
       that can deploy a mix of microservice, batch, containerized, and non-containerized
       applications. Nomad is easy to operate and scale and has native Consul and
       Vault integrations.
+    url: https://www.nomadproject.io/
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/nomad/releases
@@ -1921,6 +2068,7 @@ sources:
 
   onefetch:
     description: Git repository summary on your terminal
+    url: https://github.com/o2sh/onefetch/
     map:
       windows: win
       darwin: mac
@@ -1939,6 +2087,7 @@ sources:
     description: >
       SDK for building Kubernetes applications. Provides high level APIs,
       useful abstractions, and project scaffolding.
+    url: https://github.com/operator-framework/operator-sdk/
     list:
       type: github-releases
       url: https://api.github.com/repos/operator-framework/operator-sdk/releases
@@ -1949,6 +2098,7 @@ sources:
 
   oto:
     description: Go driven rpc code generation tool for right now (cli).
+    url: https://github.com/pacedotdev/oto/
     map:
       amd64: x86_64
       linux: Linux
@@ -1968,6 +2118,7 @@ sources:
     description: >
       Packer is a tool for creating identical machine images for
       multiple platforms from a single source configuration.
+    url: https://www.packer.io/
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/packer/releases
@@ -1982,6 +2133,7 @@ sources:
     description: >
       Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.
       Saving infrastructure cost, improving performance, and increasing reliability.
+    url: https://github.com/parca-dev/parca/
     map:
       amd64: x86_64
       linux: Linux
@@ -1999,6 +2151,7 @@ sources:
 
   pass-checker:
     description: Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
+    url: https://github.com/devops-works/pass-checker/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/pass-checker/releases
@@ -2009,6 +2162,7 @@ sources:
 
   peco:
     description: Simplistic interactive filtering tool
+    url: https://github.com/peco/peco/
     list:
       type: github-releases
       url: https://api.github.com/repos/peco/peco/releases
@@ -2021,6 +2175,7 @@ sources:
 
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
+    url: https://github.com/devops-works/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/phpsecscan/releases
@@ -2033,6 +2188,7 @@ sources:
 
   pint:
     description: Prometheus rule linter
+    url: https://github.com/cloudflare/pint/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -2050,6 +2206,7 @@ sources:
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
+    url: https://github.com/FairwindsOps/pluto/
     list:
       type: github-releases
       url: https://api.github.com/repos/FairwindsOps/pluto/releases
@@ -2062,6 +2219,7 @@ sources:
 
   pomerium:
     description: Pomerium is an identity-aware access proxy.
+    url: https://github.com/pomerium/pomerium/
     list:
       type: github-releases
       url: https://api.github.com/repos/pomerium/pomerium/releases
@@ -2074,6 +2232,7 @@ sources:
 
   pomerium-cli:
     description: Pomerium is an identity-aware access proxy (cli).
+    url: https://github.com/pomerium/pomerium/
     list:
       type: github-releases
       url: https://api.github.com/repos/pomerium/pomerium/releases
@@ -2086,6 +2245,7 @@ sources:
 
   popeye:
     description: A Kubernetes cluster resource sanitizer
+    url: https://github.com/derailed/popeye/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -2103,6 +2263,7 @@ sources:
 
   procs:
     description: A modern replacement for ps written in Rust.
+    url: https://github.com/dalance/procs/
     list:
       type: github-releases
       url: https://api.github.com/repos/dalance/procs/releases
@@ -2115,6 +2276,7 @@ sources:
 
   promtail:
     description: Like Prometheus, but for logs (promtail).
+    url: https://github.com/grafana/loki/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/loki/releases
@@ -2127,6 +2289,7 @@ sources:
 
   pulumi:
     description: Modern Infrastructure as Code. Any cloud, any language
+    url: https://github.com/pulumi/pulumi/
     list:
       type: github-releases
       url: https://api.github.com/repos/pulumi/pulumi/releases
@@ -2141,6 +2304,7 @@ sources:
     description: >
       Rancher is an open source software platform that enables organizations to
       run and manage Docker and Kubernetes in production. (cli)
+    url: https://rancher.com/docs/rancher/v1.6/en/
     list:
       type: static
       versions:
@@ -2154,6 +2318,7 @@ sources:
 
   rga:
     description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+    url: https://github.com/phiresky/ripgrep-all/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -2171,6 +2336,7 @@ sources:
 
   rg:
     description: ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
+    url: https://github.com/BurntSushi/ripgrep/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -2190,6 +2356,7 @@ sources:
     description: >
       CLI tool which enables you to login and retrieve AWS temporary
       credentials using a SAML IDP
+    url: https://github.com/Versent/saml2aws/
     list:
       type: github-releases
       url: https://api.github.com/repos/Versent/saml2aws/releases
@@ -2202,6 +2369,7 @@ sources:
 
   scan-exporter:
     description: Scans targets and exposes results to Prometheus.
+    url: https://github.com/devops-works/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/scan-exporter/releases
@@ -2212,6 +2380,7 @@ sources:
 
   sd:
     description: Intuitive find & replace CLI (sed alternative)
+    url: https://github.com/chmln/sd/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -2227,7 +2396,10 @@ sources:
         - sd
 
   shaloc:
-    description: LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
+    description: >
+      LAN-scoped command line sharing tool with cool features (zip archives,
+      AES-256, download limits...).
+    url: https://github.com/eze-kiel/shaloc/
     list:
       type: github-releases
       url: https://api.github.com/repos/eze-kiel/shaloc/releases
@@ -2238,6 +2410,7 @@ sources:
 
   shdotenv:
     description: dotenv support for shell and POSIX-compliant .env syntax specification.
+    url: https://github.com/ko1nksm/shdotenv/
     list:
       type: github-releases
       url: https://api.github.com/repos/ko1nksm/shdotenv/releases
@@ -2249,6 +2422,7 @@ sources:
 
   shell2http:
     description: Executing shell commands via HTTP server
+    url: https://github.com/msoap/shell2http/
     map:
       i386: 386
     list:
@@ -2263,6 +2437,7 @@ sources:
 
   skaffold:
     description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
+    url: https://skaffold.dev/
     list:
       type: github-releases
       url: https://api.github.com/repos/GoogleContainerTools/skaffold/releases
@@ -2273,6 +2448,7 @@ sources:
 
   sloop:
     description: Kubernetes History Visualization
+    url: https://github.com/salesforce/sloop/
     list:
       type: github-releases
       url: https://api.github.com/repos/salesforce/sloop/releases
@@ -2288,6 +2464,7 @@ sources:
       Sonobuoy is a diagnostic tool that makes it easier to understand the
       state of a Kubernetes cluster by running a set of Kubernetes conformance
       tests and other plugins in an accessible and non-destructive manner.
+    url: https://github.com/vmware-tanzu/
     list:
       type: github-releases
       url: https://api.github.com/repos/vmware-tanzu/sonobuoy/releases
@@ -2300,6 +2477,7 @@ sources:
 
   swag:
     description: Automatically generate RESTful API documentation with Swagger 2.0 for Go.
+    url: https://github.com/swaggo/swag/
     map:
       darwin: Darwin
       linux: Linux
@@ -2323,6 +2501,7 @@ sources:
 
   sysz:
     description: An fzf terminal UI for systemctl
+    url: https://github.com/joehillen/sysz/
     list:
       type: github-releases
       url: https://api.github.com/repos/joehillen/sysz/releases
@@ -2333,6 +2512,7 @@ sources:
 
   sops:
     description: Simple and flexible tool for managing secrets
+    url: https://github.com/mozilla/sops/
     list:
       type: github-releases
       url: https://api.github.com/repos/mozilla/sops/releases
@@ -2343,6 +2523,7 @@ sources:
 
   sshproxy:
     description: Proxy SSH connections on a gateway
+    url: https://github.com/cea-hpc/sshproxy/
     map:
       amd64: x86_64
       linux: Linux
@@ -2360,6 +2541,7 @@ sources:
     description: >
       A command-line reference-implementation client for SSL Labs APIs,
       designed for automated and/or bulk testing.
+    url: https://github.com/ssllabs/ssllabs-scan/
     map:
       amd64: 64
       darwin: osx
@@ -2376,6 +2558,7 @@ sources:
 
   starship:
     description: The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+    url: https://github.com/starship/starship/
     map:
       amd64: x86_64
       i386: i686
@@ -2396,6 +2579,7 @@ sources:
     description: >
       ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of
       https://github.com/wercker/stern
+    url: https://github.com/stern/stern/
     list:
       type: github-releases
       url: https://api.github.com/repos/stern/stern/releases
@@ -2411,6 +2595,7 @@ sources:
       Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.
       Designed as a passive framework to be useful for bug bounties and safe for penetration
       testing.
+    url: https://github.com/projectdiscovery/subfinder/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/subfinder/releases
@@ -2426,6 +2611,7 @@ sources:
       Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.
       Designed as a passive framework to be useful for bug bounties and safe for penetration
       testing (windows).
+    url: https://github.com/projectdiscovery/subfinder/
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/subfinder/releases
@@ -2438,6 +2624,7 @@ sources:
 
   tanka:
     description: Flexible, reusable and concise configuration for Kubernetes
+    url: https://github.com/grafana/tanka/
     list:
       type: github-releases
       url: https://api.github.com/repos/grafana/tanka/releases
@@ -2448,6 +2635,7 @@ sources:
 
   task:
     description: A task runner / simpler Make alternative written in Go
+    url: https://github.com/go-task/task/
     list:
       type: github-releases
       url: https://api.github.com/repos/go-task/task/releases
@@ -2460,6 +2648,7 @@ sources:
 
   taskctl:
     description: simple modern alternative to GNU Make.
+    url: https://github.com/taskctl/taskctl/
     list:
       type: github-releases
       url: https://api.github.com/repos/taskctl/taskctl/releases
@@ -2472,6 +2661,7 @@ sources:
 
   telepresence:
     description: Fast, local development for Kubernetes and OpenShift microservices.
+    url: https://www.telepresence.io/
     list:
       type: github-releases
       url: https://api.github.com/repos/telepresenceio/telepresence/tags
@@ -2483,6 +2673,7 @@ sources:
 
   teler:
     description: Real-time HTTP Intrusion Detection
+    url: https://github.com/kitabisa/teler/
     map:
       arm: ARM
       darwin: macOS
@@ -2498,6 +2689,7 @@ sources:
 
   termshark:
     description: A terminal UI for tshark, inspired by Wireshark
+    url: https://github.com/gcla/termshark/
     map:
       amd64: x64
       darwin: macOS
@@ -2517,6 +2709,7 @@ sources:
       Terraform enables you to safely and predictably create, change, and improve infrastructure.
       It is an open source tool that codifies APIs into declarative configuration files that can
       be shared amongst team members, treated as code, edited, reviewed, and versioned.
+    url: https://www.terraform.io/
     list:
       type: github-releases
       url: https://api.github.com/repos/hashicorp/terraform/releases
@@ -2530,6 +2723,7 @@ sources:
   terraform-docs:
     description: >
       Generate documentation from Terraform modules in various output formats
+    url: https://github.com/terraform-docs/terraform-docs/
     list:
       type: github-releases
       url: https://api.github.com/repos/terraform-docs/terraform-docs/releases
@@ -2540,11 +2734,11 @@ sources:
 
   terraform-inventory:
     description: terraform-inventory creates an ansible inventory from terraform
+    url: https://github.com/adammck/terraform-inventory/
     list:
       type: github-releases
       url: https://api.github.com/repos/adammck/terraform-inventory/releases
     fetch:
-
       url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
@@ -2555,6 +2749,7 @@ sources:
     description: >
       Terragrunt is a thin wrapper for Terraform that provides extra
       tools for working with multiple Terraform modules.
+    url: https://github.com/gruntwork-io/terragrunt/
     list:
       type: github-releases
       url: https://api.github.com/repos/gruntwork-io/terragrunt/releases
@@ -2565,7 +2760,9 @@ sources:
 
   terrascan:
     description: >
-      Detect compliance and security violations across Infrastructure as Code to mitigate risk before provisioning cloud native infrastructure.
+      Detect compliance and security violations across Infrastructure as Code
+      to mitigate risk before provisioning cloud native infrastructure.
+    url: https://github.com/accurics/terrascan/
     map:
       amd64: x86_64
       darwin: Darwin
@@ -2583,6 +2780,7 @@ sources:
 
   tf2pulumi:
     description: A tool to convert Terraform projects to Pulumi TypeScript programs
+    url: https://github.com/pulumi/tf2pulumi/
     map:
       amd64: x64
     list:
@@ -2596,7 +2794,10 @@ sources:
         - tf2pulumi
 
   tflint:
-    description: TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12)
+    description: >
+      TFLint is a Terraform linter focused on possible errors, best
+      practices, etc. (Terraform >= 0.12)
+    url: https://github.com/terraform-linters/tflint/
     list:
       type: github-releases
       url: https://api.github.com/repos/terraform-linters/tflint/releases
@@ -2608,7 +2809,10 @@ sources:
         - tflint
 
   tfsec:
-    description: TFsec uses static analysis of your terraform templates to spot potential security issues.
+    description: >
+      TFsec uses static analysis of your terraform templates to spot potential
+      security issues.
+    url: https://github.com/tfsec/tfsec/
     list:
       type: github-releases
       url: https://api.github.com/repos/tfsec/tfsec/releases
@@ -2618,7 +2822,10 @@ sources:
       type: direct
 
   toji:
-    description: "Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog"
+    description: >
+      Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into
+      Jira issues worklog
+    url: https://github.com/leucos/toji/
     list:
       type: github-releases
       url: https://api.github.com/repos/leucos/toji/releases
@@ -2631,6 +2838,7 @@ sources:
 
   traefik:
     description: The Cloud Native Application Proxy
+    url: https://github.com/traefik/traefik/
     list:
       type: github-releases
       url: https://api.github.com/repos/traefik/traefik/releases
@@ -2642,7 +2850,10 @@ sources:
         - traefik
 
   trivy:
-    description: A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
+    description: >
+      A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable
+      for CI
+    url: https://github.com/aquasecurity/trivy/
     map:
       amd64: 64bit
       "386": 32bit
@@ -2662,6 +2873,7 @@ sources:
 
   upx:
     description: UPX - the Ultimate Packer for eXecutables
+    url: https://github.com/upx/upx/
     list:
       type: github-releases
       version_from: name
@@ -2676,6 +2888,7 @@ sources:
 
   vagrant:
     description: A toolfor building and distributing development environments.
+    url: https://www.vagrantup.com/
     list:
       type: github-releases
       version_from: name
@@ -2688,7 +2901,10 @@ sources:
         - vagrant
 
   vault:
-    description: A tool for secrets management, encryption as a service, and privileged access management
+    description: >
+      A tool for secrets management, encryption as a service, and privileged
+      access management
+    url: https://www.vaultproject.io/
     list:
       type: github-releases
       version_from: name
@@ -2702,6 +2918,7 @@ sources:
 
   vmctl:
     description: Victoria Metrics command line tool
+    url: https://github.com/VictoriaMetrics/vmctl/
     list:
       type: github-releases
       url: https://api.github.com/repos/VictoriaMetrics/vmctl/releases
@@ -2714,8 +2931,9 @@ sources:
 
   websocat:
     description: >
-      About Command-line client for WebSockets, 
+      About Command-line client for WebSockets,
       like netcat (or curl) for ws:// with advanced socat-like functions
+    url: https://github.com/vi/websocat/
     list:
       type: github-releases
       url: https://api.github.com/repos/vi/websocat/releases
@@ -2726,6 +2944,7 @@ sources:
 
   xh:
     description: Friendly and fast tool for sending HTTP requests
+    url: https://github.com/ducaale/xh/
     map:
       amd64: x86_64
       darwin: apple-darwin
@@ -2743,6 +2962,7 @@ sources:
 
   yh:
     description: YAML syntax highlighter to bring colours to kubectl output
+    url: https://github.com/andreazorzetto/yh/
     map:
       darwin: osx
     list:
@@ -2757,6 +2977,7 @@ sources:
 
   yj:
     description: Convert between YAML, TOML, JSON, and HCL.
+    url: https://github.com/sclevine/yj/
     list:
       type: github-releases
       url: https://api.github.com/repos/sclevine/yj/releases
@@ -2769,8 +2990,10 @@ sources:
 
   yor:
     description: >
-      Extensible auto-tagger for your IaC files. 
-      The ultimate way to link entities in the cloud back to the codified resource which created it.
+      Extensible auto-tagger for your IaC files.
+      The ultimate way to link entities in the cloud back to the codified
+      resource which created it.
+    url: https://github.com/bridgecrewio/yor/
     list:
       type: github-releases
       url: https://api.github.com/repos/bridgecrewio/yor/releases
@@ -2783,6 +3006,7 @@ sources:
 
   yq:
     description: a lightweight and portable command-line YAML processor
+    url: https://github.com/mikefarah/yq/
     list:
       type: github-releases
       url: https://api.github.com/repos/mikefarah/yq/releases
@@ -2795,6 +3019,7 @@ sources:
 
   ytt:
     description: YAML templating tool that works on YAML structure instead of text
+    url: https://github.com/vmware-tanzu/carvel-ytt/
     list:
       type: github-releases
       url: https://api.github.com/repos/vmware-tanzu/carvel-ytt/releases

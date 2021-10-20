@@ -165,6 +165,18 @@ This is the whole point.
 For the whole list of supported binaries (a.k.a. distributions), see
 [DISTRIBUTIONS.md](DISTRIBUTIONS.md).
 
+
+The always up-to-date list is
+[here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
+
+The list can be generated as markdown using:
+
+```bash
+binenv search -w | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | awk -F',' '{ print "- ["$1"]("$2"): "$3","$4","$5","$6","$7","$8}' | sed -e 's/,*$//' | tr -d '"' > DISTRIBUTIONS.md
+```
+
+Open an issue (or send a PR) if you need one that is not in the list.
+
 ## Usage
 
 ### Updating available distributions versions

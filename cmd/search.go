@@ -9,6 +9,10 @@ import (
 
 // localCmd represents the local command
 func searchCmd(a *app.App) *cobra.Command {
+	var (
+		wide bool
+	)
+
 	cmd := &cobra.Command{
 		Use:   "search [term]",
 		Short: "Search term in software distributions",
@@ -21,14 +25,16 @@ func searchCmd(a *app.App) *cobra.Command {
 			case len(args) > 1:
 				return fmt.Errorf("command requires a single argument")
 			case len(args) == 0:
-				a.Search("")
+				a.Search("", wide)
 			default:
-				a.Search(args[0])
+				a.Search(args[0], wide)
 
 			}
 			return nil
 		},
 	}
+
+	cmd.Flags().BoolVarP(&wide, "wide", "w", false, "Wide output")
 
 	return cmd
 }

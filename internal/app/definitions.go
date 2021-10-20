@@ -17,6 +17,7 @@ type Distributions struct {
 type Sources struct {
 	// Name    string  `yaml:"name"`
 	Description        string              `yaml:"description"`
+	URL                string              `yaml:"url"`
 	Map                mapping.Remapper    `yaml:"map"`
 	List               list.List           `yaml:"list"`
 	Fetch              fetch.Fetch         `yaml:"fetch"`

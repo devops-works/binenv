@@ -16,11 +16,15 @@ M = $(shell printf "\033[34;1m▶\033[0m")
 export GO111MODULE=on
 
 .PHONY: all
+
+
 all: fmt lint $(BIN) ; $(info $(M) building executable…) @ ## Build program binary
 	$Q $(GO) build \
 		-tags release \
 		-ldflags '-X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
 		-o $(BIN)/$(PACKAGE)
+
+cache-all: cache validate descriptions
 
 build: linux
 
@@ -67,6 +71,15 @@ prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting test
 	$Q $(GO) vet ./...
 	$Q docker run  -v $(pwd)/README.md:/tmp/README.md pipelinecomponents/markdownlint:latest mdl --style all -r ~MD034,~MD013 /tmp/README.md
 
+descriptions: $(BIN) ; $(info $(M) creating DISTRIBUTIONS.md…) @ ## builds DISTRIBUTIONS.md file from distributions.yaml
+	$Q ./bin/binenv search -w | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | awk -F',' '{ print "- ["$$1"]("$$2"): "$$3","$$4","$$5","$$6","$$7","$$8}' | sed -e 's/,*$$//' | tr -d '"' > DISTRIBUTIONS.md 
+
+validate: bin ; $(info $(M) validating cache against distributions…) @ ## validates cache against distributions
+	$Q ./validate.sh code
+
+cache: bin ; $(info $(M) building distribution cache…) @ ## builds distribution cache
+	$Q ./buildcache.sh
+
 # Tools
 
 $(BIN):
@@ -105,7 +118,7 @@ test-verbose: ARGS=-v            ## Run tests in verbose mode with coverage repo
 test-race:    ARGS=-race         ## Run tests with race detector
 $(TEST_TARGETS): NAME=$(MAKECMDGOALS:test-%=%)
 $(TEST_TARGETS): test
-check test tests: fmt lint ; $(info $(M) running $(NAME:%=% )tests…) @ ## Run tests
+test tests: fmt lint ; $(info $(M) running $(NAME:%=% )tests…) @ ## Run tests
 	$Q $(GO) test -timeout $(TIMEOUT)s $(ARGS) $(TESTPKGS)
 
 test-xml: fmt lint | $(GO2XUNIT) ; $(info $(M) running $(NAME:%=% )tests…) @ ## Run tests with xUnit output
