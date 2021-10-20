@@ -13,13 +13,13 @@ import (
 	"github.com/devops-works/binenv/internal/tpl"
 )
 
-// Tgz handles bzip2 files
-type Tgz struct {
+// Tbz handles bzip2 files
+type Tbz struct {
 	filters []string
 }
 
 // Install file from bzip2 file
-func (x Tgz) Install(src, dst, version string, mapper mapping.Mapper) error {
+func (x Tbz) Install(src, dst, version string, mapper mapping.Mapper) error {
 	noMatches := ErrNoMatch
 
 	data, err := ioutil.ReadFile(src)
