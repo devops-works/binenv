@@ -45,8 +45,8 @@ The last binary you'll ever install.
 
 ## What
 
-`binenv` will help you download, install and manage the binaries programs
-(a.k.a. distributions) you need in you everyday DevOps life (e.g. kubectl,
+`binenv` will help you download, install and manage the binaries programs (we
+call them "distributions") you need in you everyday DevOps life (e.g. kubectl,
 helm, ...).
 
 Think of it as a `tfenv` + `tgenv` + `helmenv` + ...
@@ -164,7 +164,6 @@ This is the whole point.
 
 For the whole list of supported binaries (a.k.a. distributions), see
 [DISTRIBUTIONS.md](DISTRIBUTIONS.md).
-
 
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
