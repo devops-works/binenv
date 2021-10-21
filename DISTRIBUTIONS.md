@@ -170,6 +170,8 @@
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
+- [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
+- [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [sonobuoy](https://github.com/vmware-tanzu/): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
 - [sshproxy](https://github.com/cea-hpc/sshproxy/): Proxy SSH connections on a gateway

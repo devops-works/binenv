@@ -2459,6 +2459,60 @@ sources:
       binaries:
         - sloop
 
+  slowql-digest:
+    description: > 
+      A package to parse slow query logs in Go, with associated tooling 
+      (digester, replayer...), and compatible with multiple databases (MySQL,
+      MariaDB, PerconaDB...).
+    url: https://github.com/devops-works/slowql/
+    map:
+      i386: "386"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/slowql/releases
+    fetch:
+      url: https://github.com/devops-works/slowql/releases/download/v{{ .Version }}/digest_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
+  slowql-replayer:
+    description: > 
+      A package to parse slow query logs in Go, with associated tooling 
+      (digester, replayer...), and compatible with multiple databases (MySQL,
+      MariaDB, PerconaDB...).
+    url: https://github.com/devops-works/slowql/
+    map:
+      i386: "386"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/slowql/releases
+    fetch:
+      url: https://github.com/devops-works/slowql/releases/download/v{{ .Version }}/replayer_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
   sonobuoy:
     description: >
       Sonobuoy is a diagnostic tool that makes it easier to understand the
@@ -2474,41 +2528,6 @@ sources:
       type: tgz
       binaries:
         - github-release-notes
-
-  swag:
-    description: Automatically generate RESTful API documentation with Swagger 2.0 for Go.
-    url: https://github.com/swaggo/swag/
-    map:
-      darwin: Darwin
-      linux: Linux
-      amd64: x86_64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/swaggo/swag/releases
-    fetch:
-      url: https://github.com/swaggo/swag/releases/download/v{{ .Version }}/swag_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - swag
-    supported_platforms:
-      - os: linux
-        arch: amd64
-      - os: linux
-        arch: i386
-      - os: darwin
-        arch: amd64
-
-  sysz:
-    description: An fzf terminal UI for systemctl
-    url: https://github.com/joehillen/sysz/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/joehillen/sysz/releases
-    fetch:
-      url: https://github.com/joehillen/sysz/releases/download/{{ .Version }}/sysz
-    install:
-      type: direct
 
   sops:
     description: Simple and flexible tool for managing secrets
@@ -2621,6 +2640,41 @@ sources:
       type: zip
       binaries:
         - subfinder
+
+  swag:
+    description: Automatically generate RESTful API documentation with Swagger 2.0 for Go.
+    url: https://github.com/swaggo/swag/
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/swaggo/swag/releases
+    fetch:
+      url: https://github.com/swaggo/swag/releases/download/v{{ .Version }}/swag_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - swag
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+
+  sysz:
+    description: An fzf terminal UI for systemctl
+    url: https://github.com/joehillen/sysz/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/joehillen/sysz/releases
+    fetch:
+      url: https://github.com/joehillen/sysz/releases/download/{{ .Version }}/sysz
+    install:
+      type: direct
 
   tanka:
     description: Flexible, reusable and concise configuration for Kubernetes
