@@ -138,6 +138,7 @@
 - [migrate](https://github.com/golang-migrate/migrate/): CLI database migrations tool.
 - [miller](https://github.com/johnkerl/miller/): Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV
 - [minikube](https://github.com/kubernetes/minikube/): Run Kubernetes locally
+- [mygopherhose](https://github.com/devops-works/mygopherhose/): Faster import for mysqldumps
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load/): MySQL random data loader
 - [naabu](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests
 - [naabu-win](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests (windows)

@@ -24,7 +24,7 @@ all: fmt lint $(BIN) ; $(info $(M) building executable…) @ ## Build program bi
 		-ldflags '-X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
 		-o $(BIN)/$(PACKAGE)
 
-cache-all: cache validate descriptions
+cache-all: cache validate distributions
 
 build: linux
 
@@ -71,7 +71,7 @@ prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting test
 	$Q $(GO) vet ./...
 	$Q docker run  -v $(pwd)/README.md:/tmp/README.md pipelinecomponents/markdownlint:latest mdl --style all -r ~MD034,~MD013 /tmp/README.md
 
-descriptions: $(BIN) ; $(info $(M) creating DISTRIBUTIONS.md…) @ ## builds DISTRIBUTIONS.md file from distributions.yaml
+distributions: $(BIN) ; $(info $(M) creating DISTRIBUTIONS.md…) @ ## builds DISTRIBUTIONS.md file from distributions.yaml
 	$Q ./bin/binenv search -w | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | awk -F',' '{ print "- ["$$1"]("$$2"): "$$3","$$4","$$5","$$6","$$7","$$8}' | sed -e 's/,*$$//' | tr -d '"' > DISTRIBUTIONS.md 
 
 validate: bin ; $(info $(M) validating cache against distributions…) @ ## validates cache against distributions

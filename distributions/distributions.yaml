@@ -1987,6 +1987,30 @@ sources:
       binaries:
         - out/minikube-{{ .OS }}-{{ .Arch }}
 
+  mygopherhose:
+    description: Faster import for mysqldumps
+    url: https://github.com/devops-works/mygopherhose/
+    map:
+      i386: 386
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/mygopherhose/releases
+    fetch:
+      url: https://github.com/devops-works/mygopherhose/releases/download/v{{ .Version }}/mygopherhose_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
   mysql_random_data_load:
     description: MySQL random data loader
     url: https://github.com/Percona-Lab/mysql_random_data_load/
