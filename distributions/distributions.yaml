@@ -2580,6 +2580,19 @@ sources:
       - os: darwin
         arch: arm64
 
+  snowcat:
+    description: a tool to audit the istio service mesh
+    url: https://github.com/praetorian-inc/snowcat
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/praetorian-inc/snowcat/releases
+    fetch:
+      url: https://github.com/praetorian-inc/snowcat/releases/download/v{{ .Version }}/snowcat_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - snowcat
+
   sonobuoy:
     description: >
       Sonobuoy is a diagnostic tool that makes it easier to understand the
