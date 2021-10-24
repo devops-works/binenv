@@ -169,6 +169,7 @@
 - [shaloc](https://github.com/eze-kiel/shaloc/): LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
 - [shdotenv](https://github.com/ko1nksm/shdotenv/): dotenv support for shell and POSIX-compliant .env syntax specification.
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
+- [shipyard](https://github.com/shipyard-run/shipyard): Modern cloud native development environments
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
