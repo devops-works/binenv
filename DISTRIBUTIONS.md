@@ -6,6 +6,7 @@
 - [arkade](https://github.com/alexellis/arkade/): Declarative continuous deployment for Kubernetes.
 - [asciigraph](https://github.com/guptarohit/asciigraph/): Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.
 - [asciinema-edit](https://github.com/cirocosta/asciinema-): asciinema casts post-production tools
+- [audit2rbac](https://github.com/liggitt/audit2rbac): Autogenerate RBAC policies based on Kubernetes audit logs
 - [awless](https://github.com/wallix/awless/): A Mighty CLI for AWS
 - [aws-iam-authenticator](https://github.com/kubernetes-sigs/): A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
 - [aws-vault](https://github.com/99designs/aws-): A vault for securely storing and accessing AWS credentials in development environments

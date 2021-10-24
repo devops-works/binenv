@@ -127,6 +127,19 @@ sources:
       binaries:
         - asciinema-edit
 
+  audit2rbac:
+    description: Autogenerate RBAC policies based on Kubernetes audit logs
+    url: https://github.com/liggitt/audit2rbac
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/liggitt/audit2rbac/releases
+    fetch:
+      url: https://github.com/liggitt/audit2rbac/releases/download/v{{ .Version }}/audit2rbac-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - audit2rbac
+
   awless:
     description: A Mighty CLI for AWS
     url: https://github.com/wallix/awless/
