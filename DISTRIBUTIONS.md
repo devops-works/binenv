@@ -151,6 +151,7 @@
 - [parca](https://github.com/parca-dev/parca/): Continuous profiling for analysis of CPU, memory usage over time, and down to the line number. Saving infrastructure cost, improving performance, and increasing reliability.
 - [pass-checker](https://github.com/devops-works/pass-checker/): Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
 - [peco](https://github.com/peco/peco/): Simplistic interactive filtering tool
+- [peirates](https://github.com/inguardians/peirates): Peirates - Kubernetes Penetration Testing tool
 - [phpsecscan](https://github.com/devops-works/): PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes

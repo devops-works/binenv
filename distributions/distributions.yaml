@@ -2197,6 +2197,21 @@ sources:
       binaries:
         - peco
 
+  peirates:
+    description: Peirates - Kubernetes Penetration Testing tool
+    url: https://www.inguardians.com/peirates/
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/inguardians/peirates/tags
+    fetch:
+      filters: filters
+      url: https://github.com/inguardians/peirates/releases/download/v{{ .Version }}/peirates-{{ .OS }}-{{ .Arch }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - peirates
+
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
     url: https://github.com/devops-works/
