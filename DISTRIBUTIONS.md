@@ -164,6 +164,7 @@
 - [procs](https://github.com/dalance/procs/): A modern replacement for ps written in Rust.
 - [promtail](https://github.com/grafana/loki/): Like Prometheus, but for logs (promtail).
 - [pulumi](https://github.com/pulumi/pulumi/): Modern Infrastructure as Code. Any cloud, any language
+- [pwru](https://github.com/cilium/pwru): Packet, where are you? -- Linux kernel networking debugger
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/): Rancher is an open source software platform that enables organizations to run and manage Docker and Kubernetes in production. (cli)
 - [rg](https://github.com/BurntSushi/ripgrep/): ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
 - [rga](https://github.com/phiresky/ripgrep-all/): ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz

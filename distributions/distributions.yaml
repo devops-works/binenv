@@ -2382,6 +2382,19 @@ sources:
       binaries:
         - pulumi
 
+  pwru:
+    description: Packet, where are you? -- Linux kernel networking debugger
+    url: https://github.com/cilium/pwru
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cilium/pwru/releases
+    fetch:
+      url: https://github.com/cilium/pwru/releases/download/v{{ .Version }}/pwru
+    install:
+      type: direct
+      binaries:
+        - pwru
+
   rancher:
     description: >
       Rancher is an open source software platform that enables organizations to
