@@ -2225,6 +2225,21 @@ sources:
       binaries:
         - peirates
 
+  pgmetrics:
+    description: Collect and display information and stats from a running PostgreSQL server
+    url: https://pgmetrics.io/
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/rapidloop/pgmetrics/tags
+    fetch:
+      filters: filters
+      url: https://github.com/rapidloop/pgmetrics/releases/download/v{{ .Version }}/pgmetrics_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tarxz
+      binaries:
+        - pgmetrics
+
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
     url: https://github.com/devops-works/
