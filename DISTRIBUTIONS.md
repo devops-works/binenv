@@ -109,6 +109,7 @@
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon/): Open Source runtime scanner for k8s cluster and perform security audit checks based on CIS Kubernetes Benchmark specification
 - [kube-bench](https://github.com/aquasecurity/kube-bench/): Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 - [kube-dump](https://github.com/WoozyMasta/kube-dump/): Backup a Kubernetes cluster as a yaml manifest
+- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
 - [kubeaudit](https://github.com/Shopify/kubeaudit/): kubeaudit helps you audit your Kubernetes clusters against common security controls
 - [kubecolor](https://github.com/dty1er/kubecolor/): colorizes kubectl output
 - [kubeconf](https://github.com/mumoshu/kubeconf/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
