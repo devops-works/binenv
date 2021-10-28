@@ -127,6 +127,19 @@ sources:
       binaries:
         - asciinema-edit
 
+  audit2rbac:
+    description: Autogenerate RBAC policies based on Kubernetes audit logs
+    url: https://github.com/liggitt/audit2rbac
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/liggitt/audit2rbac/releases
+    fetch:
+      url: https://github.com/liggitt/audit2rbac/releases/download/v{{ .Version }}/audit2rbac-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - audit2rbac
+
   awless:
     description: A Mighty CLI for AWS
     url: https://github.com/wallix/awless/
@@ -1562,6 +1575,21 @@ sources:
     install:
       type: direct
 
+  kube-linter:
+    description: >
+      KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure 
+      the applications represented in them adhere to best practices.
+    url: https://github.com/stackrox/kube-linter
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/stackrox/kube-linter/releases
+    fetch:
+      url: https://github.com/stackrox/kube-linter/releases/download/{{ .Version }}/kube-linter-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kube-linter
+
   kubent:
     description: kube-no-trouble - Easily check your clusters for use of deprecated APIs
     url: https://github.com/doitintl/kube-no-trouble/
@@ -2197,6 +2225,36 @@ sources:
       binaries:
         - peco
 
+  peirates:
+    description: Peirates - Kubernetes Penetration Testing tool
+    url: https://www.inguardians.com/peirates/
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/inguardians/peirates/tags
+    fetch:
+      filters: filters
+      url: https://github.com/inguardians/peirates/releases/download/v{{ .Version }}/peirates-{{ .OS }}-{{ .Arch }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - peirates
+
+  pgmetrics:
+    description: Collect and display information and stats from a running PostgreSQL server
+    url: https://pgmetrics.io/
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/rapidloop/pgmetrics/tags
+    fetch:
+      filters: filters
+      url: https://github.com/rapidloop/pgmetrics/releases/download/v{{ .Version }}/pgmetrics_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tarxz
+      binaries:
+        - pgmetrics
+
   phpsecscan:
     description: PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
     url: https://github.com/devops-works/
@@ -2323,6 +2381,19 @@ sources:
       type: tgz
       binaries:
         - pulumi
+
+  pwru:
+    description: Packet, where are you? -- Linux kernel networking debugger
+    url: https://github.com/cilium/pwru
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cilium/pwru/releases
+    fetch:
+      url: https://github.com/cilium/pwru/releases/download/v{{ .Version }}/pwru
+    install:
+      type: direct
+      binaries:
+        - pwru
 
   rancher:
     description: >
@@ -2459,6 +2530,21 @@ sources:
       binaries:
         - shell2http
 
+  shipyard:
+    description: Modern cloud native development environmentss
+    url: https://shipyard.run/
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/shipyard-run/shipyard/releases
+    fetch:
+      url: https://github.com/shipyard-run/shipyard/releases/download/v{{ .Version }}/shipyard_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - shipyard
+
   skaffold:
     description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
     url: https://skaffold.dev/
@@ -2536,6 +2622,19 @@ sources:
         arch: amd64
       - os: darwin
         arch: arm64
+
+  snowcat:
+    description: a tool to audit the istio service mesh
+    url: https://github.com/praetorian-inc/snowcat
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/praetorian-inc/snowcat/releases
+    fetch:
+      url: https://github.com/praetorian-inc/snowcat/releases/download/v{{ .Version }}/snowcat_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - snowcat
 
   sonobuoy:
     description: >

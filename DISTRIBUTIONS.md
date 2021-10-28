@@ -6,6 +6,7 @@
 - [arkade](https://github.com/alexellis/arkade/): Declarative continuous deployment for Kubernetes.
 - [asciigraph](https://github.com/guptarohit/asciigraph/): Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.
 - [asciinema-edit](https://github.com/cirocosta/asciinema-): asciinema casts post-production tools
+- [audit2rbac](https://github.com/liggitt/audit2rbac): Autogenerate RBAC policies based on Kubernetes audit logs
 - [awless](https://github.com/wallix/awless/): A Mighty CLI for AWS
 - [aws-iam-authenticator](https://github.com/kubernetes-sigs/): A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
 - [aws-vault](https://github.com/99designs/aws-): A vault for securely storing and accessing AWS credentials in development environments
@@ -108,6 +109,7 @@
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon/): Open Source runtime scanner for k8s cluster and perform security audit checks based on CIS Kubernetes Benchmark specification
 - [kube-bench](https://github.com/aquasecurity/kube-bench/): Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 - [kube-dump](https://github.com/WoozyMasta/kube-dump/): Backup a Kubernetes cluster as a yaml manifest
+- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
 - [kubeaudit](https://github.com/Shopify/kubeaudit/): kubeaudit helps you audit your Kubernetes clusters against common security controls
 - [kubecolor](https://github.com/dty1er/kubecolor/): colorizes kubectl output
 - [kubeconf](https://github.com/mumoshu/kubeconf/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
@@ -151,6 +153,8 @@
 - [parca](https://github.com/parca-dev/parca/): Continuous profiling for analysis of CPU, memory usage over time, and down to the line number. Saving infrastructure cost, improving performance, and increasing reliability.
 - [pass-checker](https://github.com/devops-works/pass-checker/): Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
 - [peco](https://github.com/peco/peco/): Simplistic interactive filtering tool
+- [peirates](https://github.com/inguardians/peirates): Peirates - Kubernetes Penetration Testing tool
+- [pgmetrics](https://github.com/rapidloop/pgmetrics): Collect and display information and stats from a running PostgreSQL server
 - [phpsecscan](https://github.com/devops-works/): PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes
@@ -160,6 +164,7 @@
 - [procs](https://github.com/dalance/procs/): A modern replacement for ps written in Rust.
 - [promtail](https://github.com/grafana/loki/): Like Prometheus, but for logs (promtail).
 - [pulumi](https://github.com/pulumi/pulumi/): Modern Infrastructure as Code. Any cloud, any language
+- [pwru](https://github.com/cilium/pwru): Packet, where are you? -- Linux kernel networking debugger
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/): Rancher is an open source software platform that enables organizations to run and manage Docker and Kubernetes in production. (cli)
 - [rg](https://github.com/BurntSushi/ripgrep/): ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
 - [rga](https://github.com/phiresky/ripgrep-all/): ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz
@@ -169,10 +174,12 @@
 - [shaloc](https://github.com/eze-kiel/shaloc/): LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
 - [shdotenv](https://github.com/ko1nksm/shdotenv/): dotenv support for shell and POSIX-compliant .env syntax specification.
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
+- [shipyard](https://github.com/shipyard-run/shipyard): Modern cloud native development environments
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
+- [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
 - [sonobuoy](https://github.com/vmware-tanzu/): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
 - [sshproxy](https://github.com/cea-hpc/sshproxy/): Proxy SSH connections on a gateway
