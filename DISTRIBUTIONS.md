@@ -109,7 +109,7 @@
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon/): Open Source runtime scanner for k8s cluster and perform security audit checks based on CIS Kubernetes Benchmark specification
 - [kube-bench](https://github.com/aquasecurity/kube-bench/): Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 - [kube-dump](https://github.com/WoozyMasta/kube-dump/): Backup a Kubernetes cluster as a yaml manifest
-- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
+- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure  the applications represented in them adhere to best practices.
 - [kubeaudit](https://github.com/Shopify/kubeaudit/): kubeaudit helps you audit your Kubernetes clusters against common security controls
 - [kubecolor](https://github.com/dty1er/kubecolor/): colorizes kubectl output
 - [kubeconf](https://github.com/mumoshu/kubeconf/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
@@ -153,8 +153,8 @@
 - [parca](https://github.com/parca-dev/parca/): Continuous profiling for analysis of CPU, memory usage over time, and down to the line number. Saving infrastructure cost, improving performance, and increasing reliability.
 - [pass-checker](https://github.com/devops-works/pass-checker/): Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
 - [peco](https://github.com/peco/peco/): Simplistic interactive filtering tool
-- [peirates](https://github.com/inguardians/peirates): Peirates - Kubernetes Penetration Testing tool
-- [pgmetrics](https://github.com/rapidloop/pgmetrics): Collect and display information and stats from a running PostgreSQL server
+- [peirates](https://www.inguardians.com/peirates/): Peirates - Kubernetes Penetration Testing tool
+- [pgmetrics](https://pgmetrics.io/): Collect and display information and stats from a running PostgreSQL server
 - [phpsecscan](https://github.com/devops-works/): PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes
@@ -174,7 +174,7 @@
 - [shaloc](https://github.com/eze-kiel/shaloc/): LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
 - [shdotenv](https://github.com/ko1nksm/shdotenv/): dotenv support for shell and POSIX-compliant .env syntax specification.
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
-- [shipyard](https://github.com/shipyard-run/shipyard): Modern cloud native development environments
+- [shipyard](https://shipyard.run/): Modern cloud native development environmentss
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
