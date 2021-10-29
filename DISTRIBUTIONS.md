@@ -12,6 +12,7 @@
 - [aws-vault](https://github.com/99designs/aws-): A vault for securely storing and accessing AWS credentials in development environments
 - [awstaghelper](https://github.com/mpostument/awstaghelper/): AWS bulk tagging tool
 - [bat](https://github.com/sharkdp/bat/): A cat(1) clone with wings.
+- [batect](https://github.com/batect/batect): Build And Testing Environments as Code Tool
 - [binenv](https://github.com/devops-works/): One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
 - [bomberman](https://github.com/c1982/bomberman/): SMTP Performance and Load Test Tool
 - [bottom](https://github.com/ClementTsang/bottom/): Yet another cross-platform graphical process/system monitor.
@@ -28,6 +29,7 @@
 - [clog-cli](https://github.com/clog-tool/): Generate beautiful changelogs from your Git commit history
 - [confused](https://github.com/visma-prodsec/): Tool to check for dependency confusion vulnerabilities in multiple package management systems
 - [consul](https://releases.hashicorp.com/consul/): Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
+- [crabz](https://github.com/sstadick/crabz): Like pigz, but rust
 - [ctop](https://github.com/bcicen/ctop/): Top-like interface for container metrics
 - [curlie](https://github.com/rs/curlie/): The power of curl, the ease of use of httpie.
 - [datree](https://github.com/datreeio/datree/): Prevent Kubernetes misconfigurations from reaching production (again 😤 )! Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.

@@ -214,6 +214,17 @@ sources:
       binaries:
         - bat
 
+  batect:
+    description: Build And Testing Environments as Code Tool
+    url: https://batect.dev/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/batect/batect/releases
+    fetch:
+      url: https://github.com/batect/batect/releases/download/{{ .Version }}/batect
+    install:
+      type: direct
+
   binenv:
     description: One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
     url: https://github.com/devops-works/
@@ -430,6 +441,17 @@ sources:
       type: zip
       binaries:
         - consul
+
+  crabz:
+    description: Like pigz, but rust
+    url: https://github.com/sstadick/crabz
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sstadick/crabz/releases
+    fetch:
+      url: https://github.com/sstadick/crabz/releases/download/v{{ .Version }}/crabz-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
 
   ctop:
     description: Top-like interface for container metrics
