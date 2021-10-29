@@ -12,7 +12,7 @@
 - [aws-vault](https://github.com/99designs/aws-): A vault for securely storing and accessing AWS credentials in development environments
 - [awstaghelper](https://github.com/mpostument/awstaghelper/): AWS bulk tagging tool
 - [bat](https://github.com/sharkdp/bat/): A cat(1) clone with wings.
-- [batect](https://github.com/batect/batect): Build And Testing Environments as Code Tool
+- [batect](https://batect.dev/): Build And Testing Environments as Code Tool
 - [binenv](https://github.com/devops-works/): One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
 - [bomberman](https://github.com/c1982/bomberman/): SMTP Performance and Load Test Tool
 - [bottom](https://github.com/ClementTsang/bottom/): Yet another cross-platform graphical process/system monitor.
@@ -191,6 +191,7 @@
 - [subfinder](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing.
 - [subfinder-win](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing (windows).
 - [swag](https://github.com/swaggo/swag/): Automatically generate RESTful API documentation with Swagger 2.0 for Go.
+- [swagger](https://github.com/go-swagger/go-swagger/): Swagger 2.0 implementation for go
 - [sysz](https://github.com/joehillen/sysz/): An fzf terminal UI for systemctl
 - [tanka](https://github.com/grafana/tanka/): Flexible, reusable and concise configuration for Kubernetes
 - [task](https://github.com/go-task/task/): A task runner / simpler Make alternative written in Go

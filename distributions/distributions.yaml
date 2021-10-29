@@ -2810,6 +2810,27 @@ sources:
       - os: darwin
         arch: amd64
 
+
+  swagger:
+    description: Swagger 2.0 implementation for go
+    url: https://github.com/go-swagger/go-swagger/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/go-swagger/go-swagger/releases
+    fetch:
+      url: https://github.com/go-swagger/go-swagger/releases/download/v{{ .Version }}/swager_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+
   sysz:
     description: An fzf terminal UI for systemctl
     url: https://github.com/joehillen/sysz/
