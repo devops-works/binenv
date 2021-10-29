@@ -2810,7 +2810,6 @@ sources:
       - os: darwin
         arch: amd64
 
-
   swagger:
     description: Swagger 2.0 implementation for go
     url: https://github.com/go-swagger/go-swagger/
