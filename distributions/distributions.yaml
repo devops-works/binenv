@@ -2817,7 +2817,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/go-swagger/go-swagger/releases
     fetch:
-      url: https://github.com/go-swagger/go-swagger/releases/download/v{{ .Version }}/swager_{{ .OS }}_{{ .Arch }}
+      url: https://github.com/go-swagger/go-swagger/releases/download/v{{ .Version }}/swagger_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
     supported_platforms:
