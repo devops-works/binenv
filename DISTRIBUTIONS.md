@@ -124,6 +124,7 @@
 - [kubens](https://github.com/ahmetb/kubectx/): Faster way to switch between namespaces in kubectl
 - [kubent](https://github.com/doitintl/kube-no-trouble/): kube-no-trouble - Easily check your clusters for use of deprecated APIs
 - [kubepug](https://github.com/rikatz/kubepug/): Kubernetes PreUpGrade (Checker)
+- [kuberlogic](https://github.com/kuberlogic/kuberlogic): Kuberlogic is an open-source product that deploys and manages software on top of the Kubernetes cluster and turns infrastructure into a managed PaaS.
 - [kubescape](https://github.com/armosec/kubescape/): kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets/): A Kubernetes controller and tool for one-way encrypted Secrets
 - [kubesec](https://github.com/shyiko/kubesec/): Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)

@@ -1788,6 +1788,17 @@ sources:
       binaries:
         - kubepug
 
+  kuberlogic:
+    description: Kuberlogic is an open-source product that deploys and manages software on top of the Kubernetes cluster and turns infrastructure into a managed PaaS.
+    url: https://github.com/kuberlogic/kuberlogic/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kuberlogic/kuberlogic/releases
+    fetch:
+      url: https://github.com/kuberlogic/kuberlogic/releases/download/v{{ .Version }}/kuberlogic-installer-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   kubescape:
     description: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
     url: https://github.com/armosec/kubescape/
