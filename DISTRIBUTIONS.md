@@ -22,7 +22,7 @@
 - [changie](https://github.com/miniscruff/changie/): Automated changelog tool for preparing releases with lots of customization options
 - [cheat](https://github.com/cheat/cheat/): cheat allows you to create and view interactive cheatsheets on the command-line.
 - [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert/): Check-tls-cert is a TLS certificate checker.
-- [checkip](https://github.com/jreisinger/checkip): Check an IP address using various public services
+- [checkip](https://github.com/jreisinger/checkip/): Check an IP address using various public services
 - [chezmoi](https://github.com/twpayne/chezmoi/): Dotfile management tool
 - [chisel](https://github.com/jpillora/chisel/): A fast TCP/UDP tunnel over HTTP
 - [choose](https://github.com/theryangeary/choose/): A human-friendly and fast alternative to cut and (sometimes) awk
@@ -124,7 +124,7 @@
 - [kubens](https://github.com/ahmetb/kubectx/): Faster way to switch between namespaces in kubectl
 - [kubent](https://github.com/doitintl/kube-no-trouble/): kube-no-trouble - Easily check your clusters for use of deprecated APIs
 - [kubepug](https://github.com/rikatz/kubepug/): Kubernetes PreUpGrade (Checker)
-- [kuberlogic](https://github.com/kuberlogic/kuberlogic): Kuberlogic is an open-source product that deploys and manages software on top of the Kubernetes cluster and turns infrastructure into a managed PaaS.
+- [kuberlogic](https://github.com/kuberlogic/kuberlogic/): Kuberlogic is an open-source product that deploys and manages software on top of the Kubernetes cluster and turns infrastructure into a managed PaaS.
 - [kubescape](https://github.com/armosec/kubescape/): kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets/): A Kubernetes controller and tool for one-way encrypted Secrets
 - [kubesec](https://github.com/shyiko/kubesec/): Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
