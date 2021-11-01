@@ -346,6 +346,25 @@ sources:
       binaries:
         - check-tls-cert
 
+  checkip:
+    description: Check an IP address using various public services
+    url: https://github.com/jreisinger/checkip/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jreisinger/checkip/releases
+    fetch:
+      filters: filters
+      url: https://github.com/jreisinger/checkip/releases/download/v{{ .Version }}/checkip_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - checkip
+
   cli53:
     description: Command line tool for Amazon Route 53
     url: https://github.com/barnybug/cli53/

@@ -22,6 +22,7 @@
 - [changie](https://github.com/miniscruff/changie/): Automated changelog tool for preparing releases with lots of customization options
 - [cheat](https://github.com/cheat/cheat/): cheat allows you to create and view interactive cheatsheets on the command-line.
 - [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert/): Check-tls-cert is a TLS certificate checker.
+- [checkip](https://github.com/jreisinger/checkip): Check an IP address using various public services
 - [chezmoi](https://github.com/twpayne/chezmoi/): Dotfile management tool
 - [chisel](https://github.com/jpillora/chisel/): A fast TCP/UDP tunnel over HTTP
 - [choose](https://github.com/theryangeary/choose/): A human-friendly and fast alternative to cut and (sometimes) awk
@@ -181,6 +182,7 @@
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
+- [sniffglue](https://github.com/kpcyrd/sniffglue): Secure multithreaded packet sniffer
 - [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
 - [sonobuoy](https://github.com/vmware-tanzu/): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
