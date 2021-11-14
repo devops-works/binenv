@@ -636,6 +636,19 @@ sources:
     install:
       type: direct
 
+  driftwood:
+    description: Private key usage verification
+    url: https://github.com/trufflesecurity/driftwood
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/trufflesecurity/driftwood
+    fetch:
+      url: https://github.com/trufflesecurity/driftwood/releases/download/v{{ .Version }}/driftwood_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - driftwood
+
   dstask:
     description: Single binary terminal-based todo manager with git-based sync + markdown notes per task
     url: https://github.com/naggie/dstask/
@@ -1119,6 +1132,19 @@ sources:
     install:
       type: direct
 
+  gron:
+    description: Make JSON greppable!
+    url: https://github.com/tomnomnom/gron/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/tomnomnom/gron/releases
+    fetch:
+      url: https://github.com/tomnomnom/gron/releases/download/v{{ .Version }}/gron-{{ .OS }}-{{ .Arch }}-{{ .Version }}.tgz
+    install:
+      type: tgz
+      binaries:
+        - gron
+
   grype:
     description: A vulnerability scanner for container images and filesystems
     url: https://github.com/anchore/grype/
@@ -1247,6 +1273,24 @@ sources:
       type: tgz
       binaries:
         - helmwave
+
+  hetty:
+    description: Hetty is an HTTP toolkit for security research.
+    url: https://hetty.xyz/
+    map:
+      amd64: x86_64
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dstotijn/hetty/releases
+    fetch:
+      url: https://github.com/dstotijn/hetty/releases/download/v{{ .Version }}/hetty_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - hetty
 
   himalaya:
     description: 📫 CLI email client
