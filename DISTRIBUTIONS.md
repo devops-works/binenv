@@ -77,7 +77,7 @@
 - [grafana_cli](https://github.com/kckecheng/grafana_cli/): A CLI based utility to operate Grafana dashboards, folders, annotations, etc.
 - [grex](https://github.com/pemistahl/grex/): A command-line tool and library for generating regular expressions from user-provided test cases
 - [grizzly](https://github.com/grafana/grizzly/): A utility for managing Jsonnet dashboards against the Grafana API
-- [gron](https://github.com/tomnomnom/gron): Make JSON greppable!
+- [gron](https://github.com/tomnomnom/gron/): Make JSON greppable!
 - [grype](https://github.com/anchore/grype/): A vulnerability scanner for container images and filesystems
 - [gws](https://github.com/StreakyCobra/gws/): Colorful KISS helper for git workspaces
 - [hadolint](https://github.com/hadolint/hadolint/): Dockerfile linter, validate inline bash, written in Haskell
@@ -87,7 +87,7 @@
 - [helm-operator](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [helmfile](https://github.com/roboll/helmfile/): Deploy Kubernetes Helm Charts
 - [helmwave](https://github.com/helmwave/helmwave/): 🌊 Composer for @helm Charts
-- [hetty](https://github.com/dstotijn/hetty): Hetty is an HTTP toolkit for security research.
+- [hetty](https://hetty.xyz/): Hetty is an HTTP toolkit for security research.
 - [hey](https://github.com/rakyll/hey/): HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 - [himalaya](https://github.com/soywod/himalaya/): 📫 CLI email client
 - [httpx](https://github.com/projectdiscovery/httpx/): httpx is a fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads.
