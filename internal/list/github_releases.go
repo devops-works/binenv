@@ -163,17 +163,11 @@ func rateLimit(resp *http.Response) int {
 }
 
 func isRateLimited(resp *http.Response) bool {
-	if rateLimit(resp) == 0 {
-		return true
-	}
-	return false
+	return rateLimit(resp) == 0
 }
 
 func isRateLimitClose(resp *http.Response) bool {
-	if rateLimit(resp) <= GithubLowRateLimit {
-		return true
-	}
-	return false
+	return rateLimit(resp) <= GithubLowRateLimit
 }
 
 func handleRatelimit(resp *http.Response) error {

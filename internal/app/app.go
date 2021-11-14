@@ -193,7 +193,7 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 		return nil
 	})
 	if err != nil {
-		a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", dist)
+		a.logger.Error().Err(err).Msgf("unable to fetch installed versions for %q", dist)
 		return []string{}
 	}
 
@@ -595,7 +595,7 @@ func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout 
 		r.versions, err = a.listers[d].Get(subctx)
 
 		if errors.Is(err, list.ErrGithubRateLimitClose) || errors.Is(err, list.ErrGithubRateLimited) {
-			a.logger.Error().Err(err).Msgf("unable to fetch versions for %q", d)
+			a.logger.Error().Err(err).Msgf("rate limit prevents fetching versions for %q", d)
 			// return err
 			cancel()
 			continue
