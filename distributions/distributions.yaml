@@ -3150,9 +3150,9 @@ sources:
     url: https://gitlab.com/devopsworks/tools/tlsexp/
     list:
       type: gitlab-releases
-      url: https://gitlab.com/api/v4/projects/18707017/releases
+      url: https://gitlab.com/api/v4/projects/18627217/releases
     fetch:
-      url: https://gitlab.com/api/v4/projects/18707017/packages/generic/tlsexp/0.12.1/tlsexp-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
+      url: https://gitlab.com/api/v4/projects/18627217/packages/generic/tlsexp/0.12.1/tlsexp-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
     install:
       type: gzip
       binaries:
