@@ -214,6 +214,7 @@
 - [tf2pulumi](https://github.com/pulumi/tf2pulumi/): A tool to convert Terraform projects to Pulumi TypeScript programs
 - [tflint](https://github.com/terraform-linters/tflint/): TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12)
 - [tfsec](https://github.com/tfsec/tfsec/): TFsec uses static analysis of your terraform templates to spot potential security issues.
+- [tlsexp](https://gitlab.com/devopsworks/tools/tlsexp/): TLS certificate expiration checker.
 - [toji](https://github.com/leucos/toji/): Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog
 - [traefik](https://github.com/traefik/traefik/): The Cloud Native Application Proxy
 - [trivy](https://github.com/aquasecurity/trivy/): A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI

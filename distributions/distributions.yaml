@@ -3145,6 +3145,19 @@ sources:
     install:
       type: direct
 
+  tlsexp:
+    description: TLS certificate expiration checker.
+    url: https://gitlab.com/devopsworks/tools/tlsexp/
+    list:
+      type: gitlab-releases
+      url: https://gitlab.com/api/v4/projects/18707017/releases
+    fetch:
+      url: https://gitlab.com/api/v4/projects/18707017/packages/generic/tlsexp/0.12.1/tlsexp-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
+    install:
+      type: gzip
+      binaries:
+        - "tlsexp-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz"
+
   toji:
     description: >
       Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into
