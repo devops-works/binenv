@@ -95,6 +95,7 @@
 - [hugo](https://github.com/gohugoio/hugo/): The world’s fastest framework for building websites.
 - [iamlive](https://github.com/iann0036/iamlive/): Generate an IAM policy from AWS calls using client-side monitoring (CSM) or embedded proxy
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg/): Allows you to store and distribute sets of files (e.g. application configuration) as images in Docker (OCI) registries
+- [influxevent](https://gitlab.com/devopsworks/tools/influxevent/): Influxevent wraps commands and sends command result, timing & performance samples to an influxDB server.
 - [infracost](https://github.com/infracost/infracost/): Cloud cost estimates for Terraform
 - [juicefs](https://github.com/juicedata/juicefs/): JuiceFS is a distributed POSIX file system built on top of Redis and S3.
 - [k3d](https://github.com/rancher/k3d/): Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
@@ -170,6 +171,7 @@
 - [popeye](https://github.com/derailed/popeye/): A Kubernetes cluster resource sanitizer
 - [procs](https://github.com/dalance/procs/): A modern replacement for ps written in Rust.
 - [promtail](https://github.com/grafana/loki/): Like Prometheus, but for logs (promtail).
+- [pscale](https://github.com/planetscale/cli/): The CLI for PlanetScale Database
 - [pulumi](https://github.com/pulumi/pulumi/): Modern Infrastructure as Code. Any cloud, any language
 - [pwru](https://github.com/cilium/pwru): Packet, where are you? -- Linux kernel networking debugger
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/): Rancher is an open source software platform that enables organizations to run and manage Docker and Kubernetes in production. (cli)
