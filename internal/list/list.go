@@ -29,6 +29,13 @@ func (l List) Factory() Lister {
 			versionFrom: l.VersionFrom,
 			exclude:     l.Exclude,
 		}
+	case "gitlab-releases":
+		return GitlabRelease{
+			url:         l.URL,
+			prefix:      l.Prefix,
+			versionFrom: l.VersionFrom,
+			exclude:     l.Exclude,
+		}
 	case "static":
 		return Static{
 			versions: l.Versions,

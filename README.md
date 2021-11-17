@@ -523,7 +523,7 @@ sources:
     list:
 
       # Type of the releases.
-      # Typically "github-releases"
+      # One of "static", "github-releases", "gitlab-releases"
       type: <string>
 
       # Where to fetch the releases.

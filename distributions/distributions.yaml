@@ -1386,6 +1386,21 @@ sources:
     install:
       type: direct
 
+  influxevent:
+    description: >
+      Influxevent wraps commands and sends command result, timing & performance
+      samples to an influxDB server.
+    url: https://gitlab.com/devopsworks/tools/influxevent/
+    list:
+      type: gitlab-releases
+      url: https://gitlab.com/api/v4/projects/18707017/releases
+    fetch:
+      url: https://gitlab.com/api/v4/projects/18707017/packages/generic/influxevent/0.12.1/influxevent-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
+    install:
+      type: gzip
+      binaries:
+        - "influxevent-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz"
+
   infracost:
     description: Cloud cost estimates for Terraform
     url: https://github.com/infracost/infracost/
@@ -2381,6 +2396,22 @@ sources:
       type: tgz
       binaries:
         - pint-linux-amd64
+
+  pscale:
+    description: The CLI for PlanetScale Database
+    url: https://github.com/planetscale/cli/
+    map:
+      darwin: macOS
+      windows: windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/planetscale/cli/releases
+    fetch:
+      url: https://github.com/planetscale/cli/releases/download/v{{ .Version }}/pscale_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pscale
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
