@@ -36,6 +36,10 @@ selected.`,
 	}
 
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
+	rootCmd.PersistentFlags().BoolP("system", "s", false, "Use system locations for directories")
+	rootCmd.PersistentFlags().StringP("bindir", "B", app.GetDefaultBinDir(), "Distribution binaries path")
+	rootCmd.PersistentFlags().StringP("distdir", "D", app.GetDefaultDistDir(), "Distributions path")
+	rootCmd.PersistentFlags().StringP("cachedir", "C", app.GetDefaultCacheDir(), "Cache path")
 
 	rootCmd.AddCommand(
 		completionCmd(),

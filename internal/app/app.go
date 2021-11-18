@@ -51,8 +51,12 @@ type App struct {
 
 	dryrun      bool
 	concurrency int
+	system      bool // system mode
 
-	bindir string
+	bindir   string // directory for the distribution binaries
+	distdir  string // directory for distributions
+	cachedir string // cache directory
+
 	logger zerolog.Logger
 }
 
@@ -68,19 +72,15 @@ var (
 
 // New create a new app instance
 func New(o ...func(*App) error) (*App, error) {
-	d, err := homedir.Dir()
-	if err != nil {
-		d = "~"
-	}
-	d = filepath.Join(d, "/.binenv/")
-
 	a := &App{
 		mappers:    make(map[string]mapping.Remapper),
 		installers: make(map[string]install.Installer),
 		listers:    make(map[string]list.Lister),
 		fetchers:   make(map[string]fetch.Fetcher),
 		cache:      make(map[string][]string),
-		bindir:     d,
+		bindir:     GetDefaultBinDir(),
+		cachedir:   GetDefaultCacheDir(),
+		distdir:    GetDefaultDistDir(),
 		logger: zerolog.New(zerolog.ConsoleWriter{
 			Out:        os.Stderr,
 			TimeFormat: time.RFC3339,
@@ -97,7 +97,26 @@ func New(o ...func(*App) error) (*App, error) {
 		}
 	}
 
-	err = a.readDistributions()
+	// override directories if needed
+	if val, ok := os.LookupEnv("BINENV_BINDIR"); ok {
+		fmt.Println("BINDIR")
+		a.logger.Debug().Msgf("setting bindir from environment to %s", val)
+		a.SetBindir(val)
+	}
+
+	if val, ok := os.LookupEnv("BINENV_CACHEDIR"); ok {
+		fmt.Println("CACHEDIR")
+		a.logger.Debug().Msgf("setting cachedir from environment to %s", val)
+		a.SetCachedir(val)
+	}
+
+	if val, ok := os.LookupEnv("BINENV_DISTDIR"); ok {
+		fmt.Println("DISTDIR")
+		a.logger.Debug().Msgf("setting distdir from environment to %s", val)
+		a.SetDistdir(val)
+	}
+
+	err := a.readDistributions()
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read distributions")
 		os.Exit(1)
@@ -513,12 +532,7 @@ func (a *App) Local(distribution, version string) error {
 // Update fetches catalog of applications and updates available versions
 func (a *App) Update(definitions, all bool, nocache bool, which ...string) error {
 	if definitions || all {
-		conf, err := getDistributionsFilePath()
-		if err != nil {
-			a.logger.Error().Err(err).Msg("unable to find distributions")
-			os.Exit(1)
-		}
-		err = a.fetchDistributions(conf)
+		err := a.fetchDistributions()
 		if err != nil {
 			a.logger.Error().Err(err).Msgf("unable to fetch distributions: %v", err)
 			os.Exit(1)
@@ -777,7 +791,7 @@ func (a *App) Execute(args []string) {
 	// the shim.
 	versions := a.GetInstalledVersionsFor(dist)
 	if len(versions) == 0 {
-		a.logger.Error().Msgf("no versions found for distribution %q. Something is really odd.", os.Args[0])
+		a.logger.Error().Msgf("no versions found for distribution %q. May be your BINENV_BINDIR environment variable is not set properly ?", os.Args[0])
 	}
 
 	// Check version to use, going up to home directory if needeed and
@@ -844,13 +858,10 @@ func (a *App) selfInstall(version string) error {
 }
 
 func (a *App) readDistributions() error {
-	conf, err := getDistributionsFilePath()
-	if err != nil {
-		return err
-	}
+	conf := a.getDistributionsFilePath()
 
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
-		err := a.fetchDistributions(conf)
+		err := a.fetchDistributions()
 		if err != nil {
 			return fmt.Errorf("unable to fetch distributions: %w", err)
 		}
@@ -870,9 +881,11 @@ func (a *App) readDistributions() error {
 	return nil
 }
 
-func (a *App) fetchDistributions(conf string) error {
+func (a *App) fetchDistributions() error {
 	a.logger.Info().Msg("updating distribution list")
 	a.logger.Debug().Msgf("retrieving distribution list from %s", distributionsURL)
+
+	conf := a.getDistributionsFilePath()
 	resp, err := http.Get(distributionsURL)
 	if err != nil {
 		return err
@@ -884,14 +897,14 @@ func (a *App) fetchDistributions(conf string) error {
 		return err
 	}
 
-	d, err := getConfigDir()
-	if err != nil {
-		return fmt.Errorf("unable to guess configuration directory: %w", err)
-	}
+	// d, err := getDistDir()
+	// if err != nil {
+	// 	return fmt.Errorf("unable to guess distributions directory: %w", err)
+	// }
 
-	err = os.MkdirAll(d, 0750)
+	err = os.MkdirAll(a.distdir, 0750)
 	if err != nil {
-		return fmt.Errorf("unable to create configuration directory '%s': %w", d, err)
+		return fmt.Errorf("unable to create configuration directory '%s': %w", a.distdir, err)
 	}
 
 	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, 0640)
@@ -912,6 +925,10 @@ func (a *App) fetchDistributions(conf string) error {
 
 func (a *App) getBinDirFor(dist string) string {
 	return filepath.Join(a.bindir, "binaries/", dist)
+}
+
+func (a *App) getDistributionsFilePath() string {
+	return filepath.Join(a.distdir, "/distributions.yaml")
 }
 
 // GuessBestVersionFor returns closest version requirement given a location,
@@ -1135,6 +1152,8 @@ func (a *App) saveCache() error {
 
 	fd.Write(js)
 
+	a.logger.Debug().Msgf("wrote cache to %s", cache)
+
 	return nil
 }
 
@@ -1195,27 +1214,6 @@ func (a *App) setLogOutput(w io.Writer) error {
 	return nil
 }
 
-// WithBinDir sets the binaries directory
-func WithBinDir(dir string) func(*App) error {
-	return func(a *App) error {
-		return a.SetBinDir(dir)
-	}
-}
-
-// SetBinDir sets bin directory to use
-func (a *App) SetBinDir(d string) error {
-	a.bindir = d
-
-	return nil
-}
-
-// WithLogLevel sets the binaries directory
-func WithLogLevel(l string) func(*App) error {
-	return func(a *App) error {
-		return a.SetLogLevel(l)
-	}
-}
-
 // SetLogLevel sets the log level to use
 func (a *App) SetLogLevel(l string) error {
 	lvl, err := zerolog.ParseLevel(l)
@@ -1230,6 +1228,7 @@ func (a *App) SetLogLevel(l string) error {
 // SetVerbose sets the log level to debug
 func (a *App) SetVerbose(v bool) {
 	if v {
+		fmt.Println("setting logs to verbose")
 		a.logger = a.logger.Level(zerolog.DebugLevel)
 	}
 }
@@ -1244,4 +1243,41 @@ func (a *App) SetDryRun(v bool) {
 // SetConcurrency sets the number of goroutines for cache update
 func (a *App) SetConcurrency(c int) {
 	a.concurrency = c
+}
+
+// SetBindir sets bin directory to use
+func (a *App) SetBindir(d string) {
+	a.bindir = d
+}
+
+// SetDistdir sets the number of goroutines for cache update
+func (a *App) SetDistdir(c string) {
+	a.distdir = c
+}
+
+// SetCachedir sets the number of goroutines for cache update
+func (a *App) SetCachedir(c string) {
+	a.cachedir = c
+}
+
+// SetSystem sets the number of goroutines for cache update
+func (a *App) SetSystem(c bool) {
+	a.system = c
+
+	if !c {
+		return
+	}
+
+	// Use system defaults
+	if a.cachedir == "" {
+		a.cachedir = SystemCacheDir
+	}
+
+	if a.bindir == "" {
+		a.bindir = SystemBinariesDir
+	}
+
+	if a.distdir == "" {
+		a.distdir = SystemDistributionsDir
+	}
 }

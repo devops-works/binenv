@@ -30,6 +30,7 @@ The last binary you'll ever install.
     - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
       - [Example](#example)
   - [Removing binenv stuff](#removing-binenv-stuff)
+  - [System-wide installation](#system-wide-installation)
   - [Status](#status)
   - [FAQ](#faq)
     - [I installed a binary but is still see the system (or wrong) version](#i-installed-a-binary-but-is-still-see-the-system-or-wrong-version)
@@ -447,10 +448,48 @@ rm -rfi ~/.binenv ~/.config/binenv/
 Don't forget to remove the `PATH` and the completion you might have changed in
 your shell rc file.
 
+## System-wide installation
+
+_since 0.17.0_
+
+By controlling where `binenv` looks for binaries, you can run a system-wide
+installation.
+
+To achieve this, you can point the `BINENV_BINDIR` variable the the system-wide
+`binenv` binaries folder. 
+
+We recommend using something like `/usr/local/libexec/binenv`, or
+`/var/lib/binenv/binaries`.
+
+Since you might need a central place for the cache and the distributions file
+too, those files well be looked for in `BINENV_CACHEDIR` and `BINENV_DISTDIR`
+respectively.
+
+We suggest to use `/var/cache/binenv` for both of them.
+
+This is not mandatory though: one could manage installed binaries
+at the system level with the cache and distributions file present in their home
+directory, since cache and distribution files are not necessary to execute
+installed binaries.
+
+Should you want to set those system-wide, you could do so in
+`/etc/environment`.
+
+An alternate way is to set them in your environment and use `sudo` with the
+`-E` flag.
+
+You can also invoke `binenv` ot other binaries using :
+
+`sudo BINENV_BINDIR=/usr/local/libexec/binenv/ foo`
+
+Note that for binaries executions (i.e. when you want to execute a binary
+installed using binenv), only `BINENV_BINDIR` is required.Il all other cases
+(`update`, `install`, ...), all three are required. If they are not set, the
+directories will default to a local, per-user installation.
+
 ## Status
 
-This is really _super alpha_ and has only be tested on Linux & MacOS. YMMV on
-other platforms.
+This is _beta_ software and has only be tested on Linux & MacOS.
 
 There are **no tests**. I will probably go to hell for this.
 
@@ -468,14 +507,16 @@ If you see something like:
 2020-11-10T09:01:20+01:00 ERR unable to install "kubectl" (1.19.3) error="unable to find shim file: stat /Users/foo/.binenv/shim: no such file or directory"
 ```
 
-you probably did not follow the [installation instructions](#quick-start).
+you probably did not follow the [installation instructions](#quick-start)
+properly.
 
 Running `./binenv update binenv && ./binenv install binenv` should correct the
 problem.
 
 ### It does not work with sudo !
 
-Yes, for not we'restuckon this one. You still can reference thereal binary
+See [System-wide installation](#system-wide-installation) for instructionson
+how to do this. As a last resort, you can always execute the real binaries
 directly:
 
 ```bash
