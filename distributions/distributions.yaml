@@ -519,6 +519,21 @@ sources:
       binaries:
         - datree
 
+  ddosify:
+    description: High-performance load testing tool, written in Golang.
+    url: https://github.com/ddosify/ddosify
+    map:
+      darwin: macos
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ddosify/ddosify/releases
+    fetch:
+      url: https://github.com/ddosify/ddosify/releases/download/v{{ .Version }}/ddosify_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ddosify
+
   delta:
     description: A more intuitive version of du in rust
     url: https://github.com/dandavison/delta/
@@ -2341,28 +2356,47 @@ sources:
     url: https://www.inguardians.com/peirates/
     list:
       type: github-releases
-      version_from: name
-      url: https://api.github.com/repos/inguardians/peirates/tags
+      url: https://api.github.com/repos/inguardians/peirates/releases
     fetch:
-      filters: filters
       url: https://github.com/inguardians/peirates/releases/download/v{{ .Version }}/peirates-{{ .OS }}-{{ .Arch }}.tar.xz
     install:
       type: tarxz
       binaries:
         - peirates
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: 386
+      - os: linux
+        arch: arm
+
+  pet:
+    description: Simple command-line snippet manager, written in Go.
+    url: https://github.com/knqyf263/pet
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/knqyf263/pet/releases
+    fetch:
+      url: https://github.com/knqyf263/pet/releases/download/v{{ .Version }}/pet_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pet
 
   pgmetrics:
     description: Collect and display information and stats from a running PostgreSQL server
     url: https://pgmetrics.io/
     list:
       type: github-releases
-      version_from: name
-      url: https://api.github.com/repos/rapidloop/pgmetrics/tags
+      url: https://api.github.com/repos/rapidloop/pgmetrics/releases
     fetch:
       filters: filters
       url: https://github.com/rapidloop/pgmetrics/releases/download/v{{ .Version }}/pgmetrics_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
-      type: tarxz
+      type: tgz
       binaries:
         - pgmetrics
 

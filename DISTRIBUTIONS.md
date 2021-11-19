@@ -34,6 +34,7 @@
 - [ctop](https://github.com/bcicen/ctop/): Top-like interface for container metrics
 - [curlie](https://github.com/rs/curlie/): The power of curl, the ease of use of httpie.
 - [datree](https://github.com/datreeio/datree/): Prevent Kubernetes misconfigurations from reaching production (again 😤 )! Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies.
+- [ddosify](https://github.com/ddosify/ddosify): High-performance load testing tool, written in Golang.
 - [delta](https://github.com/dandavison/delta/): A more intuitive version of du in rust
 - [derefexo](https://github.com/deref/exo/): A process manager & log viewer for dev
 - [devdash](https://github.com/Phantas0s/devdash/): Highly Configurable Terminal Dashboard for Developers and Creators
@@ -162,6 +163,7 @@
 - [pass-checker](https://github.com/devops-works/pass-checker/): Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
 - [peco](https://github.com/peco/peco/): Simplistic interactive filtering tool
 - [peirates](https://www.inguardians.com/peirates/): Peirates - Kubernetes Penetration Testing tool
+- [pet](https://github.com/knqyf263/pet): Simple command-line snippet manager, written in Go.
 - [pgmetrics](https://pgmetrics.io/): Collect and display information and stats from a running PostgreSQL server
 - [phpsecscan](https://github.com/devops-works/): PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
