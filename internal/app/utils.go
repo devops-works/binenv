@@ -28,50 +28,35 @@ func GetDefaultBinDir() string {
 
 // GetDefaultDistDir returns the default path for distribution
 func GetDefaultDistDir() string {
-	d, err := getDistDir()
-	if err != nil {
-		d = "~"
-	}
-
-	return d
-}
-
-// GetDefaultCacheDir returns the default path for distribution
-func GetDefaultCacheDir() string {
-	d, err := getCacheDir()
-	if err != nil {
-		d = "~"
-	}
-
-	return d
-}
-
-func getDistDir() (string, error) {
 	var err error
-
 	dir := os.Getenv("XDG_CONFIG_HOME")
+
 	if dir == "" {
 		dir, err = homedir.Dir()
 		if err != nil {
-			return "", err
+			return "tmp"
+
 		}
 		dir += "/.config/binenv"
 	}
 
-	return dir, nil
+	return dir
 }
 
-func getCacheDir() (string, error) {
+// GetDefaultCacheDir returns the default path for distribution
+func GetDefaultCacheDir() string {
+	var err error
 	dir := os.Getenv("XDG_CACHE_HOME")
+
 	if dir == "" {
-		dir, err := homedir.Dir()
+		dir, err = homedir.Dir()
 		if err != nil {
-			return "", err
+			return "/tmp"
 		}
 		dir += "/.cache/binenv"
 	}
 
-	return dir, nil
+	return dir
 }
 
 func stringInSlice(st string, sl []string) bool {

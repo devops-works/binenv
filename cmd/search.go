@@ -21,6 +21,8 @@ func searchCmd(a *app.App) *cobra.Command {
 			verbose, _ := cmd.Flags().GetBool("verbose")
 			a.SetVerbose(verbose)
 
+			a.Initialize()
+
 			switch {
 			case len(args) > 1:
 				return fmt.Errorf("command requires a single argument")
@@ -28,7 +30,6 @@ func searchCmd(a *app.App) *cobra.Command {
 				a.Search("", wide)
 			default:
 				a.Search(args[0], wide)
-
 			}
 			return nil
 		},

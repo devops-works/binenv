@@ -27,6 +27,7 @@ Use 'binenv update' to update the list of available versions.`,
 			// bindir, _ := cmd.Flags().GetString("bindir")
 			a.SetVerbose(verbose)
 			// a.SetBindir(bindir)
+			a.Initialize()
 			a.Versions(freeze, args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {

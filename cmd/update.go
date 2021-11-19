@@ -22,6 +22,8 @@ If not distribution is specified, versions for all distributions will be updated
 			a.SetVerbose(verbose)
 			a.SetConcurrency(concurrency)
 
+			a.Initialize()
+
 			if len(args) >= 1 {
 				a.Update(distributionsOnly, distributionsAlso, noCache, args...)
 				return

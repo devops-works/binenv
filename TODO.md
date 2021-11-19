@@ -1,0 +1,4 @@
+- [] separate bindir and shimdir ?
+- [] change modes to 755 for system installs
+- [] check how to handle flags/env precedence
+- [x] prevent factory from setting up stuff except paths; add a setup functixon

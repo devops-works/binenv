@@ -11,10 +11,7 @@ import (
 
 // RootCmd returns the root cobra command
 func RootCmd() *cobra.Command {
-	a, err := app.New(
-	// app.WithDiscard(),
-	// app.WithBinDir(bindir),
-	)
+	a, err := app.New()
 	if err != nil {
 		fmt.Printf("got error %v\n", err)
 		panic(err)

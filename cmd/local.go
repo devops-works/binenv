@@ -15,8 +15,11 @@ func localCmd(a *app.App) *cobra.Command {
 Any previously constraint used in this file for the distribution will be removed, and an exact match ('=') will be used.`,
 		Args: cobra.ExactArgs(2),
 		Run: func(cmd *cobra.Command, args []string) {
+
 			verbose, _ := cmd.Flags().GetBool("verbose")
 			a.SetVerbose(verbose)
+
+			a.Initialize()
 			a.Local(args[0], args[1])
 		},
 	}

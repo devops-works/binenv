@@ -18,9 +18,10 @@ Multiple distribution / version pairs can be specified.`,
 			verbose, _ := cmd.Flags().GetBool("verbose")
 			// bindir, _ := cmd.Flags().GetString("bindir")
 			// cachedir, _ := cmd.Flags().GetString("cachedir")
-			// distributionsdir, _ := cmd.Flags().GetString("distdir")
+			// distdir, _ := cmd.Flags().GetString("distdir")
 			// a.SetBindir(bindir)
 			a.SetVerbose(verbose)
+			a.Initialize()
 			a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {

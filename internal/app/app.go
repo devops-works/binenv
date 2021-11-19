@@ -71,7 +71,7 @@ var (
 )
 
 // New create a new app instance
-func New(o ...func(*App) error) (*App, error) {
+func New() (*App, error) {
 	a := &App{
 		mappers:    make(map[string]mapping.Remapper),
 		installers: make(map[string]install.Installer),
@@ -91,13 +91,19 @@ func New(o ...func(*App) error) (*App, error) {
 	a.logger = a.logger.Level(zerolog.InfoLevel)
 
 	// Apply functional options
-	for _, f := range o {
-		if err := f(a); err != nil {
-			return nil, err
-		}
-	}
+	// for _, f := range o {
+	// 	if err := f(a); err != nil {
+	// 		return nil, err
+	// 	}
+	// }
 
-	// override directories if needed
+	// set default paths
+	a.bindir = GetDefaultBinDir()
+	a.cachedir = GetDefaultCacheDir()
+	a.distdir = GetDefaultDistDir()
+
+	// override directories with en vars if needed
+	// caller can override later with cli flags if needed
 	if val, ok := os.LookupEnv("BINENV_BINDIR"); ok {
 		fmt.Println("BINDIR")
 		a.logger.Debug().Msgf("setting bindir from environment to %s", val)
@@ -115,7 +121,11 @@ func New(o ...func(*App) error) (*App, error) {
 		a.logger.Debug().Msgf("setting distdir from environment to %s", val)
 		a.SetDistdir(val)
 	}
+	return a, nil
+}
 
+// Initialize after paths and logger have been set
+func (a *App) Initialize() {
 	err := a.readDistributions()
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read distributions")
@@ -128,8 +138,6 @@ func New(o ...func(*App) error) (*App, error) {
 	a.createListers()
 	a.createFetchers()
 	a.createInstallers()
-
-	return a, nil
 }
 
 // Search show a list returns a list of packages contains string
@@ -1100,12 +1108,7 @@ func (a *App) getDistributionsFromLock() ([]string, []string) {
 }
 
 func (a *App) loadCache() {
-	conf, err := getCacheDir()
-	if err != nil {
-		return
-	}
-
-	conf = filepath.Join(conf, "/cache.json")
+	conf := filepath.Join(a.cachedir, "/cache.json")
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		return
 	}
@@ -1125,17 +1128,11 @@ func (a *App) loadCache() {
 }
 
 func (a *App) saveCache() error {
-	cache, err := getCacheDir()
-	if err != nil {
-		return nil
+	if err := os.MkdirAll(a.cachedir, 0750); err != nil {
+		return fmt.Errorf("unable to create cache directory '%s': %w", a.cachedir, err)
 	}
 
-	err = os.MkdirAll(cache, 0750)
-	if err != nil {
-		return fmt.Errorf("unable to create cache directory '%s': %w", cache, err)
-	}
-
-	cache = filepath.Join(cache, "/cache.json")
+	cache := filepath.Join(a.cachedir, "/cache.json")
 
 	js, err := json.Marshal(&a.cache)
 	if err != nil {
