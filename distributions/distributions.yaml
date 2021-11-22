@@ -1410,7 +1410,7 @@ sources:
       type: gitlab-releases
       url: https://gitlab.com/api/v4/projects/18707017/releases
     fetch:
-      url: https://gitlab.com/api/v4/projects/18707017/packages/generic/influxevent/0.12.1/influxevent-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
+      url: https://gitlab.com/api/v4/projects/18707017/packages/generic/influxevent/{{ .Version }}/influxevent-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz
     install:
       type: gzip
       binaries:
