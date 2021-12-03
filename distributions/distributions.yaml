@@ -2247,19 +2247,6 @@ sources:
       binaries:
         - naabu
 
-  node-problem-detector:
-    description: This is a place for various problem detectors running on the Kubernetes nodes.
-    url: https://github.com/kubernetes/node-problem-detector/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/kubernetes/node-problem-detector/releases
-    fetch:
-      url: https://github.com/kubernetes/node-problem-detector/releases/download/v{{ .Version }}/node-problem-detector-v{{ .Version }}-{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - node-problem-detector
-
   naabu-win:
     description: >
       A fast port scanner written in go with focus on reliability and
@@ -2275,6 +2262,19 @@ sources:
       type: zip
       binaries:
         - naabu
+
+  node-problem-detector:
+    description: This is a place for various problem detectors running on the Kubernetes nodes.
+    url: https://github.com/kubernetes/node-problem-detector/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/node-problem-detector/releases
+    fetch:
+      url: https://github.com/kubernetes/node-problem-detector/releases/download/v{{ .Version }}/node-problem-detector-v{{ .Version }}-{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - node-problem-detector
 
   nomad:
     description: >
@@ -2292,6 +2292,20 @@ sources:
       type: zip
       binaries:
         - nomad
+
+  nuclei:
+    description: >
+      Fast and customizable vulnerability scanner based on simple YAML based DSL.
+    url: https://github.com/projectdiscovery/nuclei/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/projectdiscovery/nuclei/releases
+    fetch:
+      url: https://github.com/projectdiscovery/nuclei/releases/download/v{{ .Version }}/nuclei_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - nuclei
 
   onefetch:
     description: Git repository summary on your terminal

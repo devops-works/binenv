@@ -158,6 +158,7 @@
 - [naabu-win](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests (windows)
 - [node-problem-detector](https://github.com/kubernetes/node-problem-detector/): This is a place for various problem detectors running on the Kubernetes nodes.
 - [nomad](https://www.nomadproject.io/): Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications. Nomad is easy to operate and scale and has native Consul and Vault integrations.
+- [nuclei](https://github.com/projectdiscovery/nuclei/): Fast and customizable vulnerability scanner based on simple YAML based DSL.
 - [onefetch](https://github.com/o2sh/onefetch/): Git repository summary on your terminal
 - [operator-sdk](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [oto](https://github.com/pacedotdev/oto/): Go driven rpc code generation tool for right now (cli).
