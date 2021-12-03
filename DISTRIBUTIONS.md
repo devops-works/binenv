@@ -20,6 +20,7 @@
 - [btop](https://github.com/aristocratos/btop/): A monitor of resources
 - [buildx](https://github.com/docker/buildx/): Docker CLI plugin for extended build capabilities with BuildKit
 - [changie](https://github.com/miniscruff/changie/): Automated changelog tool for preparing releases with lots of customization options
+- [chart-testing](https://github.com/helm/chart-testing): CLI tool for linting and testing Helm charts
 - [cheat](https://github.com/cheat/cheat/): cheat allows you to create and view interactive cheatsheets on the command-line.
 - [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert/): Check-tls-cert is a TLS certificate checker.
 - [checkip](https://github.com/jreisinger/checkip/): Check an IP address using various public services

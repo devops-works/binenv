@@ -304,6 +304,19 @@ sources:
     install:
       type: direct
 
+  chart-testing:
+    description: CLI tool for linting and testing Helm charts
+    url: https://github.com/helm/chart-testing
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/helm/chart-testing/releases
+    fetch:
+      url: https://github.com/helm/chart-testing/releases/download/v{{ .Version }}/chart-testing_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - chart-testing
+
   changie:
     description: >
       Automated changelog tool for preparing releases with lots of
