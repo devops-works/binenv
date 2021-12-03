@@ -304,6 +304,19 @@ sources:
     install:
       type: direct
 
+  chart-testing:
+    description: CLI tool for linting and testing Helm charts
+    url: https://github.com/helm/chart-testing
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/helm/chart-testing/releases
+    fetch:
+      url: https://github.com/helm/chart-testing/releases/download/v{{ .Version }}/chart-testing_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - chart-testing
+
   changie:
     description: >
       Automated changelog tool for preparing releases with lots of
@@ -430,6 +443,24 @@ sources:
       url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose
     install:
       type: direct
+
+  cloudman:
+    description: Textual user interface to manage ec2 instances.
+    url: https://github.com/dutchcoders/cloudman
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dutchcoders/cloudman/releases
+    fetch:
+      url: https://github.com/dutchcoders/cloudman/releases/download/{{ .Version }}/cloudman-{{ .Version }}-x86_64-unknown-linux-gnu.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - cloudman
 
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
@@ -1225,6 +1256,24 @@ sources:
       type: tgz
       binaries:
         - havener
+
+  helm-docs:
+    description: a tool for controlling hetzner cloud resources
+    url: https://github.com/norwoodj/helm-docs/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/norwoodj/helm-docs/releases
+    fetch:
+      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_Linux_x86_64.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helm-docs
 
   hcloud:
     description: a tool for controlling hetzner cloud resources

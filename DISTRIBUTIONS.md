@@ -20,6 +20,7 @@
 - [btop](https://github.com/aristocratos/btop/): A monitor of resources
 - [buildx](https://github.com/docker/buildx/): Docker CLI plugin for extended build capabilities with BuildKit
 - [changie](https://github.com/miniscruff/changie/): Automated changelog tool for preparing releases with lots of customization options
+- [chart-testing](https://github.com/helm/chart-testing): CLI tool for linting and testing Helm charts
 - [cheat](https://github.com/cheat/cheat/): cheat allows you to create and view interactive cheatsheets on the command-line.
 - [check-tls-cert](https://github.com/heartbeatsjp/check-tls-cert/): Check-tls-cert is a TLS certificate checker.
 - [checkip](https://github.com/jreisinger/checkip/): Check an IP address using various public services
@@ -28,6 +29,7 @@
 - [choose](https://github.com/theryangeary/choose/): A human-friendly and fast alternative to cut and (sometimes) awk
 - [cli53](https://github.com/barnybug/cli53/): Command line tool for Amazon Route 53
 - [clog-cli](https://github.com/clog-tool/): Generate beautiful changelogs from your Git commit history
+- [cloudman](https://github.com/dutchcoders/cloudman): Textual user interface to manage ec2 instances.
 - [confused](https://github.com/visma-prodsec/): Tool to check for dependency confusion vulnerabilities in multiple package management systems
 - [consul](https://releases.hashicorp.com/consul/): Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
 - [crabz](https://github.com/sstadick/crabz): Like pigz, but rust
@@ -84,6 +86,7 @@
 - [hadolint](https://github.com/hadolint/hadolint/): Dockerfile linter, validate inline bash, written in Haskell
 - [havener](https://github.com/homeport/havener/): Think of it as a swiss army knife for Kubernetes tasks
 - [hcloud](https://github.com/hetznercloud/cli/): a tool for controlling hetzner cloud resources
+- [helm-docs](https://github.com/norwoodj/helm-docs): A tool for automatically generating markdown documentation for helm charts
 - [helm](https://github.com/helm/helm/): The Kubernetes Package Manager
 - [helm-operator](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [helmfile](https://github.com/roboll/helmfile/): Deploy Kubernetes Helm Charts
