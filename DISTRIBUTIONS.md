@@ -28,6 +28,7 @@
 - [choose](https://github.com/theryangeary/choose/): A human-friendly and fast alternative to cut and (sometimes) awk
 - [cli53](https://github.com/barnybug/cli53/): Command line tool for Amazon Route 53
 - [clog-cli](https://github.com/clog-tool/): Generate beautiful changelogs from your Git commit history
+- [cloudman](https://github.com/dutchcoders/cloudman): Textual user interface to manage ec2 instances.
 - [confused](https://github.com/visma-prodsec/): Tool to check for dependency confusion vulnerabilities in multiple package management systems
 - [consul](https://releases.hashicorp.com/consul/): Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
 - [crabz](https://github.com/sstadick/crabz): Like pigz, but rust

@@ -431,6 +431,24 @@ sources:
     install:
       type: direct
 
+  cloudman:
+    description: Textual user interface to manage ec2 instances.
+    url: https://github.com/dutchcoders/cloudman
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dutchcoders/cloudman/releases
+    fetch:
+      url: https://github.com/dutchcoders/cloudman/releases/download/{{ .Version }}/cloudman-{{ .Version }}-x86_64-unknown-linux-gnu.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - cloudman
+
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
     url: https://github.com/visma-prodsec/
