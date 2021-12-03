@@ -315,7 +315,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - chart-testing
+        - ct
 
   changie:
     description: >

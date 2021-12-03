@@ -86,8 +86,8 @@
 - [hadolint](https://github.com/hadolint/hadolint/): Dockerfile linter, validate inline bash, written in Haskell
 - [havener](https://github.com/homeport/havener/): Think of it as a swiss army knife for Kubernetes tasks
 - [hcloud](https://github.com/hetznercloud/cli/): a tool for controlling hetzner cloud resources
-- [helm-docs](https://github.com/norwoodj/helm-docs): A tool for automatically generating markdown documentation for helm charts
 - [helm](https://github.com/helm/helm/): The Kubernetes Package Manager
+- [helm-docs](https://github.com/norwoodj/helm-docs/): a tool for controlling hetzner cloud resources
 - [helm-operator](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [helmfile](https://github.com/roboll/helmfile/): Deploy Kubernetes Helm Charts
 - [helmwave](https://github.com/helmwave/helmwave/): 🌊 Composer for @helm Charts
