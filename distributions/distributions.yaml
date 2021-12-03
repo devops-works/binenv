@@ -1244,6 +1244,24 @@ sources:
       binaries:
         - havener
 
+  helm-docs:
+    description: a tool for controlling hetzner cloud resources
+    url: https://github.com/norwoodj/helm-docs/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/norwoodj/helm-docs/releases
+    fetch:
+      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_Linux_x86_64.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helm-docs
+
   hcloud:
     description: a tool for controlling hetzner cloud resources
     url: https://github.com/hetznercloud/cli/
