@@ -197,6 +197,7 @@
 - [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
 - [sonobuoy](https://github.com/vmware-tanzu/): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
+- [spt](https://github.com/Rigellute/spotify-tui): A Spotify client for the terminal written in Rust.
 - [sshproxy](https://github.com/cea-hpc/sshproxy/): Proxy SSH connections on a gateway
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan/): A command-line reference-implementation client for SSL Labs APIs, designed for automated and/or bulk testing.
 - [starship](https://github.com/starship/starship/): The minimal, blazing-fast, and infinitely customizable prompt for any shell!

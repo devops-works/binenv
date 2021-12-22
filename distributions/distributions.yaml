@@ -2887,6 +2887,19 @@ sources:
     install:
       type: direct
 
+  spt:
+    description: A Spotify client for the terminal written in Rust.
+    url: https://github.com/Rigellute/spotify-tui/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Rigellute/spotify-tui/releases
+    fetch:
+      url: https://github.com/Rigellute/spotify-tui/releases/download/v{{ .Version }}/spotify-tui-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - spt
+
   sshproxy:
     description: Proxy SSH connections on a gateway
     url: https://github.com/cea-hpc/sshproxy/
