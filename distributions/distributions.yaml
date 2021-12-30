@@ -1829,7 +1829,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/kubernetes-sigs/krew/releases
     fetch:
-      url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ .Version }}/krew.tar.gz
+      url: https://github.com/kubernetes-sigs/krew/releases/download/v{{ .Version }}/krew-{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
