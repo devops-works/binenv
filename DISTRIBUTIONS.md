@@ -230,6 +230,7 @@
 - [vault](https://www.vaultproject.io/): A tool for secrets management, encryption as a service, and privileged access management
 - [vmctl](https://github.com/VictoriaMetrics/vmctl/): Victoria Metrics command line tool
 - [websocat](https://github.com/vi/websocat/): About Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions
+- [wuzz](https://github.com/asciimoo/wuzz/): Interactive cli tool for HTTP inspection
 - [xh](https://github.com/ducaale/xh/): Friendly and fast tool for sending HTTP requests
 - [yh](https://github.com/andreazorzetto/yh/): YAML syntax highlighter to bring colours to kubectl output
 - [yj](https://github.com/sclevine/yj/): Convert between YAML, TOML, JSON, and HCL.
