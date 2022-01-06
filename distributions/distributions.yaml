@@ -2370,6 +2370,25 @@ sources:
       binaries:
         - packer
 
+  pandoc-plot:
+    description: >
+      Render and include figures in Pandoc documents using your plotting
+      toolkit of choice
+    url: https://laurentrdc.github.io/pandoc-plot/
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/LaurentRDC/pandoc-plot/releases
+    fetch:
+      url: https://github.com/LaurentRDC/pandoc-plot/releases/download/{{ .Version }}/pandoc-plot-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - pandoc-plot
+
   parca:
     description: >
       Continuous profiling for analysis of CPU, memory usage over time, and down to the line number.

@@ -163,6 +163,7 @@
 - [operator-sdk](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [oto](https://github.com/pacedotdev/oto/): Go driven rpc code generation tool for right now (cli).
 - [packer](https://www.packer.io/): Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
+- [pandoc-plot](https://laurentrdc.github.io/pandoc-plot/): Render and include figures in Pandoc documents using your plotting toolkit of choice
 - [parca](https://github.com/parca-dev/parca/): Continuous profiling for analysis of CPU, memory usage over time, and down to the line number. Saving infrastructure cost, improving performance, and increasing reliability.
 - [pass-checker](https://github.com/devops-works/pass-checker/): Get the entropy of your password, the maximum time needed to break it, and if the SHA1 sum appears in HaveIBeenPwned.com API.
 - [peco](https://github.com/peco/peco/): Simplistic interactive filtering tool
