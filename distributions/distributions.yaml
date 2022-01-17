@@ -3338,7 +3338,7 @@ sources:
         - trivy
 
   underpass:
-    description: UPX - the Ultimate Packer for eXecutables
+    description: Self-hosted ngrok alternative
     url: https://github.com/cjdenio/underpass/
     map:
       amd64: x86_64
