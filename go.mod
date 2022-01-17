@@ -1,6 +1,6 @@
 module github.com/devops-works/binenv
 
-go 1.16
+go 1.17
 
 require (
 	github.com/hashicorp/go-version v1.2.1
@@ -15,4 +15,11 @@ require (
 	golang.org/x/sys v0.0.0-20201028215240-c5abc1b1d397 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v2 v2.3.0
+)
+
+require (
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/mattn/go-runewidth v0.0.9 // indirect
+	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 )
