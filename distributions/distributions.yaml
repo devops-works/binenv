@@ -3337,6 +3337,26 @@ sources:
       binaries:
         - trivy
 
+  underpass:
+    description: UPX - the Ultimate Packer for eXecutables
+    url: https://github.com/cjdenio/underpass/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/cjdenio/underpass/tags
+    fetch:
+      filters: filters
+      url: https://github.com/cjdenio/underpass/releases/download/v{{ .Version }}/underpass_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - underpass
+
   upx:
     description: UPX - the Ultimate Packer for eXecutables
     url: https://github.com/upx/upx/
