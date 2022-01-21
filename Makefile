@@ -38,6 +38,16 @@ linux: fmt lint $(BIN) ; $(info $(M) building static executable for Linux……)
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
 		-o $(BIN)/$(PACKAGE)-linux-386
 
+freebsd: fmt lint $(BIN) ; $(info $(M) building static executable for FreeBSD……) @ ## Build program binary
+	$Q env GOOS=freebsd GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
+		-tags release -a \
+		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
+		-o $(BIN)/$(PACKAGE)-freebsd-amd64
+	$Q env GOOS=freebsd GOARCH=386 CGO_ENABLED=0 $(GO) build \
+		-tags release -a \
+		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
+		-o $(BIN)/$(PACKAGE)-freebsd-386
+
 darwin: fmt lint $(BIN) ; $(info $(M) building static executable for MacOS…) @ ## Build program binary
 	$Q env GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 $(GO) build \
 		-tags release -a \
@@ -50,8 +60,9 @@ windows: fmt lint clean $(BIN) ; $(info $(M) building static executable for Wind
 		-ldflags '-w -extldflags "-static" -X github.com/devops-works/binenv/cmd.Version=$(VERSION) -X github.com/devops-works/binenv/cmd.BuildDate=$(DATE)' \
 		-o $(BIN)/$(PACKAGE)-win-amd64
 
-release: windows darwin linux ; $(info $(M) stripping release executable for Linux…) @ ## Build program binary
+release: windows darwin linux freebsd ; $(info $(M) stripping release executable for Linux…) @ ## Build program binary
 	$Q strip $(BIN)/$(PACKAGE)-linux-amd64
+	$Q strip $(BIN)/$(PACKAGE)-freebsd-amd64
 	$Q (cd bin && sha256sum * > SHA256SUMS.txt)
 	$Q cp $(BIN)/$(PACKAGE)-linux-amd64 $(BIN)/$(PACKAGE)
 	# $Q gzip $(BIN)/$(PACKAGE)-linux-amd64
