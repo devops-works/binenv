@@ -8,6 +8,7 @@ The last binary you'll ever install.
     - [Linux (bash/zsh)](#linux-bashzsh)
     - [MacOS (with bash)](#macos-with-bash)
     - [Windows](#windows)
+    - [FreeBSD (bash/zsh)](#freebsd-bashzsh)
   - [Install](#install)
   - [Updating binenv](#updating-binenv)
   - [Supported "distributions"](#supported-distributions)
@@ -94,6 +95,27 @@ exec $SHELL
 ### Windows
 
 binenv does not support windows.
+
+### FreeBSD (bash/zsh)
+
+```
+wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_freebsd_amd64
+wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+sha256sum  --check --ignore-missing checksums.txt
+mv binenv_freebsd_amd64 binenv
+chmod +x binenv
+./binenv update
+./binenv install binenv
+rm binenv
+if [[ -n $BASH ]]; then ZESHELL=bash; fi
+if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
+echo $ZESHELL
+echo -e '\nexport PATH=~/.binenv:$PATH' >> ~/.${ZESHELL}rc
+echo "source <(binenv completion ${ZESHELL})" >> ~/.${ZESHELL}rc
+exec $SHELL
+```
+
+If you are using a different shell, skip adding completion to your `.${SHELL}rc` file.
 
 ## Install
 
