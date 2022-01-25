@@ -3457,6 +3457,19 @@ sources:
     install:
       type: direct
 
+  yeshttp:
+    description: A HTTP server that always says yes
+    url: https://gitlab.com/devopsworks/tools/yeshttp/
+    list:
+      type: gitlab-releases
+      url: https://gitlab.com/api/v4/projects/33117108/releases
+    fetch:
+      url: https://gitlab.com/api/v4/projects/33117108/packages/generic/yeshttp/{{ .Version }}/yeshttp-{{.OS }}-{{ .Arch }}-{{ .Version }}.gz
+    install:
+      type: gzip
+      binaries:
+        - "yeshttp-{{.OS }}-{{ .Arch }}-{{ .Version }}.gz"
+
   yh:
     description: YAML syntax highlighter to bring colours to kubectl output
     url: https://github.com/andreazorzetto/yh/
