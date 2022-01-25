@@ -3460,6 +3460,15 @@ sources:
   yeshttp:
     description: A HTTP server that always says yes
     url: https://gitlab.com/devopsworks/tools/yeshttp/
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+      - os: freebsd
+        arch: amd64
+      - os: openbsd
+        arch: amd64
     list:
       type: gitlab-releases
       url: https://gitlab.com/api/v4/projects/33117108/releases
