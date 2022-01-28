@@ -918,6 +918,24 @@ func (a *App) getBinDirFor(dist string) string {
 // a distribution and a version list.
 // If no match we return the latest version we have
 func (a *App) GuessBestVersionFor(dist, dir, stop string, versions []string) (string, string) {
+	// Look at the environment variables in search for the dist version
+	// The environment variable need to match [a-zA-Z_]+[a-zA-Z0-9_]*.
+	// BINENV is use as prefix and _VERSION as suffix
+
+	envVarName := fmt.Sprintf("BINENV_%v_VERSION", stringToEnvVarName(dist))
+	if target := os.Getenv(envVarName); len(target) > 0 {
+		for _, v := range versions {
+			v1, _ := gov.NewVersion(v)
+			// Constraints
+			constraints, _ := gov.NewConstraint("=" + target)
+			if constraints.Check(v1) {
+				return v1.String(), dir
+			}
+		}
+
+		a.logger.Warn().Msgf(`unable to satisfy constraint %q for %q from environment variable. Ignoring`, target, dist)
+	}
+
 	// If stop is "", we enforce stopping in home directory
 	if stop == "" {
 		stop, _ = homedir.Dir()
