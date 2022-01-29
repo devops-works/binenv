@@ -3286,7 +3286,15 @@ sources:
       type: gzip
       binaries:
         - "tlsexp-{{.OS }}-{{ .Arch }}-v{{ .Version }}.gz"
-
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+      - os: freebsd
+        arch: amd64
+      - os: openbsd
+        arch: amd64
   toji:
     description: >
       Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into
