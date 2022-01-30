@@ -455,6 +455,30 @@ fetching hadolint version 1.16.3 100% |█████████████�
 $
 ```
 
+## Selecting versions using environment variables
+
+In addition to using the .binenv.lock file, it is possible to define the
+distribution version using an environment variable of the form
+`BINENV_<DISTRIBUTION>_VERSION=<CONSTRAINT>`.
+
+When an environment variable with this name exists, binenv will use the `=`
+operator to look for an exact match for that constraint and will ignore the
+contents of the `.binenv.lock` file if it exists.
+
+
+### Example
+
+```bash
+$ cat .binenv.lock
+helm=3.7.2
+
+$ helm version
+version.BuildInfo{Version:"v3.7.2", GitCommit:"663a896f4a815053445eec4153677ddc24a0a361", GitTreeState:"clean", GoVersion:"go1.16.10"}
+
+$ BINENV_HELM_VERSION=3.6.3 helm version
+version.BuildInfo{Version:"v3.6.3", GitCommit:"d506314abfb5d21419df8c7e7e68012379db2354", GitTreeState:"clean", GoVersion:"go1.16.5"}
+```
+
 ## Removing binenv stuff
 
 `binenv` stores downloaded binaries in `~/.binenv/binaries`, and a cache in
