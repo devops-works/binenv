@@ -12,6 +12,8 @@ builds:
     goos:
       - linux
       - darwin
+      - freebsd
+      - openbsd
     ldflags:
      - -s -w -X github.com/devops-works/binenv/cmd.Version={{.Version}} -X github.com/devops-works/binenv/cmd.BuildDate={{.CommitDate}}
     ignore:
