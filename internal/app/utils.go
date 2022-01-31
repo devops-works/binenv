@@ -1,8 +1,11 @@
 package app
 
 import (
+	"log"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
 
 	"github.com/mitchellh/go-homedir"
 )
@@ -65,4 +68,13 @@ func stringInSlice(st string, sl []string) bool {
 	}
 
 	return false
+}
+
+func stringToEnvVarName(st string) string {
+	reg, err := regexp.Compile("[^a-zA-Z0-9_]+")
+	if err != nil {
+		log.Fatal(err)
+	}
+	result := reg.ReplaceAllString(st, "_")
+	return strings.ToUpper(result)
 }
