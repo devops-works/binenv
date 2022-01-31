@@ -30,6 +30,8 @@ The last binary you'll ever install.
     - [Version selection process](#version-selection-process)
     - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
       - [Example](#example)
+  - [Selecting versions using environment variables](#selecting-versions-using-environment-variables)
+    - [Example](#example-1)
   - [Removing binenv stuff](#removing-binenv-stuff)
   - [Status](#status)
   - [FAQ](#faq)
@@ -456,6 +458,8 @@ $
 ```
 
 ## Selecting versions using environment variables
+
+_Introduced in v0.17.0_
 
 In addition to using the .binenv.lock file, it is possible to define the
 distribution version using an environment variable of the form
