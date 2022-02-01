@@ -3202,9 +3202,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/terraform-docs/terraform-docs/releases
     fetch:
-      url: https://github.com/terraform-docs/terraform-docs/releases/download/v{{ .Version }}/terraform-docs-v{{ .Version }}-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/terraform-docs/terraform-docs/releases/download/v{{ .Version }}/terraform-docs-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - terraform-docs
 
   terraform-inventory:
     description: terraform-inventory creates an ansible inventory from terraform
