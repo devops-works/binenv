@@ -101,9 +101,9 @@ binenv does not support windows.
 ### FreeBSD (bash/zsh)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_freebsd_amd64
-wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
-sha256sum  --check --ignore-missing checksums.txt
+fetch https://github.com/devops-works/binenv/releases/latest/download/binenv_freebsd_amd64
+fetch https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+shasum --ignore-missing -a 512 -c checksums.txt
 mv binenv_freebsd_amd64 binenv
 chmod +x binenv
 ./binenv update
@@ -118,6 +118,8 @@ exec $SHELL
 ```
 
 If you are using a different shell, skip adding completion to your `.${SHELL}rc` file.
+
+To be able to verify checksums, you have to install the `p5-Digest-SHA` package.
 
 ## Install
 
