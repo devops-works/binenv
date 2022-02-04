@@ -9,6 +9,7 @@ The last binary you'll ever install.
     - [MacOS (with bash)](#macos-with-bash)
     - [Windows](#windows)
     - [FreeBSD (bash/zsh)](#freebsd-bashzsh)
+    - [OpenBSD (bash/zsh)](#openbsd-bashzsh)
   - [Install](#install)
   - [Updating binenv](#updating-binenv)
   - [Supported "distributions"](#supported-distributions)
@@ -120,6 +121,27 @@ exec $SHELL
 If you are using a different shell, skip adding completion to your `.${SHELL}rc` file.
 
 To be able to verify checksums, you have to install the `p5-Digest-SHA` package.
+
+### OpenBSD (bash/zsh)
+
+```
+ftp https://github.com/devops-works/binenv/releases/latest/download/binenv_openbsd_amd64
+ftp https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
+mv binenv_openbsd_amd64 binenv
+chmod +x binenv
+./binenv update
+./binenv install binenv
+rm binenv
+if [[ -n $BASH ]]; then ZESHELL=bash; fi
+if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
+echo $ZESHELL
+echo -e '\nexport PATH=~/.binenv:$PATH' >> ~/.${ZESHELL}rc
+echo "source <(binenv completion ${ZESHELL})" >> ~/.${ZESHELL}rc
+exec $SHELL
+```
+
+If you are using a different shell, skip adding completion to your `.${SHELL}rc` file.
 
 ## Install
 
