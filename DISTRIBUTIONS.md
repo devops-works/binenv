@@ -51,6 +51,7 @@
 - [duf](https://github.com/muesli/duf/): Disk Usage/Free Utility
 - [dust](https://github.com/bootandy/dust/): A more intuitive version of du in rust
 - [dw-query-digest](https://github.com/devops-works/): MySQL slow log analyzer. Alternative to pt-query-digest.
+- [egress-auditor](https://github.com/devops-works/egress-auditor): Audit your egress connections and finally populate this OUTPUT chain !
 - [eksctl](https://github.com/weaveworks/eksctl/): eksctl is a simple CLI tool for creating clusters on AWS EKS.
 - [exa](https://github.com/ogham/exa/): A modern replacement for ‘ls’.
 - [exo](https://github.com/exoscale/cli/): Command-line tool for everything at Exoscale: compute, storage, dns.

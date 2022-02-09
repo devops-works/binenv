@@ -788,6 +788,28 @@ sources:
       binaries:
         - dw-query-digest
 
+  egress-auditor:
+    description: Audit your egress connections and finally populate this OUTPUT chain !
+    url: https://github.com/devops-works/egress-auditor
+    map:
+      i386: "386"
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/egress-auditor/releases
+    fetch:
+      url: https://github.com/devops-works/egress-auditor/releases/download/v{{ .Version }}/egress-auditor_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: linux
+        arch: arm
+
   eksctl:
     description: eksctl is a simple CLI tool for creating clusters on AWS EKS.
     url: https://github.com/weaveworks/eksctl/
