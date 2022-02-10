@@ -228,6 +228,7 @@
 - [traefik](https://github.com/traefik/traefik/): The Cloud Native Application Proxy
 - [trivy](https://github.com/aquasecurity/trivy/): A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
 - [underpass](https://github.com/cjdenio/underpass/): Self-hosted ngrok alternative
+- [updatecli](https://www.updatecli.io): Updatecli is an automation engine
 - [upx](https://github.com/upx/upx/): UPX - the Ultimate Packer for eXecutables
 - [vagrant](https://www.vagrantup.com/): A toolfor building and distributing development environments.
 - [vault](https://www.vaultproject.io/): A tool for secrets management, encryption as a service, and privileged access management

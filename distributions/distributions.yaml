@@ -3410,6 +3410,38 @@ sources:
       binaries:
         - underpass
 
+  updatecli:
+    description: Updatecli is an automation engine
+    url: https://www.updatecli.io
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: armv6
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: armv6
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    list:
+      type: github-releases
+      version_from: name
+      url: https://api.github.com/repos/updatecli/updatecli/tags
+    fetch:
+      filters: filters
+      url: https://github.com/updatecli/updatecli/releases/download/v{{ .Version }}/updatecli_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - updatecli
+
   upx:
     description: UPX - the Ultimate Packer for eXecutables
     url: https://github.com/upx/upx/
