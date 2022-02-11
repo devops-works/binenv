@@ -2205,7 +2205,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - ./migrate.{{ .OS }}-{{ .Arch }}
+        - migrate # v4.15 started naming files without OS / Arch
 
   miller:
     description: >
