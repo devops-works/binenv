@@ -1521,6 +1521,28 @@ sources:
       binaries:
         - "infracost-{{ .OS }}-{{ .Arch }}"
 
+  jless:
+    description: A command-line pager for JSON data.
+    url: https://github.com/PaulJuliusMartinez/jless
+    map:
+      amd64: "x86_64"
+      darwin: apple-darwinv
+      linux: unknown-linux-gnu
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/PaulJuliusMartinez/jless/releases
+    fetch:
+      url: https://github.com/PaulJuliusMartinez/jless/releases/download/v{{ .Version }}/jless-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.zip
+    install:
+      type: zip
+      binaries:
+        - jless
+
   juicefs:
     description: JuiceFS is a distributed POSIX file system built on top of Redis and S3.
     url: https://github.com/juicedata/juicefs/

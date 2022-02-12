@@ -102,6 +102,7 @@
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg/): Allows you to store and distribute sets of files (e.g. application configuration) as images in Docker (OCI) registries
 - [influxevent](https://gitlab.com/devopsworks/tools/influxevent/): Influxevent wraps commands and sends command result, timing & performance samples to an influxDB server.
 - [infracost](https://github.com/infracost/infracost/): Cloud cost estimates for Terraform
+- [jless](https://github.com/PaulJuliusMartinez/jless): A command-line pager for JSON data.
 - [juicefs](https://github.com/juicedata/juicefs/): JuiceFS is a distributed POSIX file system built on top of Redis and S3.
 - [k3d](https://github.com/rancher/k3d/): Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
 - [k6](https://github.com/loadimpact/k6/): A modern load testing tool, using Go and JavaScript - https://k6.io
