@@ -46,6 +46,7 @@ selected.`,
 		updateCmd(a),
 		versionCmd(),
 		versionsCmd(a),
+		upgradeCmd(a),
 	)
 
 	return rootCmd
