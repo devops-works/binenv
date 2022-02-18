@@ -27,6 +27,7 @@ The last binary you'll ever install.
     - [Uninstalling versions](#uninstalling-versions)
       - [Examples](#examples-3)
     - [Completion](#completion)
+    - [Expanding binary absolute path](#expanding-binary-absolute-path)
   - [Selecting versions](#selecting-versions)
     - [Version selection process](#version-selection-process)
     - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
@@ -410,6 +411,27 @@ The command accepts:
 
 Install completion for your shell. See `binenv help completion` for in-depth
 info.
+
+### Expanding binary absolute path
+
+To get the obsolute path of the binary installed by a distribution you need to
+invoke the command `expand`.
+
+This can be useful when you need to use binenv in conjunction with other tools
+like `sudo`.
+
+#### Example
+
+```bash
+$ binenv install yq
+2022-02-16T14:24:56-03:00 WRN version for "yq" not specified; using "4.18.1"
+fetching yq version 4.18.1 100% |████████████████████████████| (9.1/9.1 MB, 4.858 MB/s)        
+2022-02-16T14:24:59-03:00 INF "yq" (4.18.1) installed
+$ binenv expand yq
+/Users/local-user/.binenv/binaries/yq/4.18.1
+$ sudo $(binenv expand yq) --version
+yq (https://github.com/mikefarah/yq/) version 4.18.1
+```
 
 ## Selecting versions
 
