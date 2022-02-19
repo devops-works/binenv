@@ -3341,6 +3341,40 @@ sources:
     install:
       type: direct
 
+  tlder:
+    description: >
+      TLDs finder — check domain name availability across all valid top-level
+      domains.
+    url: https://github.com/dwisiswant0/tlder/
+    map:
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dwisiswant0/tlder/releases
+    fetch:
+      url: https://github.com/dwisiswant0/tlder/releases/download/v{{ .Version }}/tlder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - "tlder"
+    supported_platforms:
+      - os: linux
+        arch: 386
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: armv6
+      - os: darwin
+        arch: 386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: darwin
+        arch: armv6
+
   tlsexp:
     description: TLS certificate expiration checker.
     url: https://gitlab.com/devopsworks/tools/tlsexp/
@@ -3362,6 +3396,7 @@ sources:
         arch: amd64
       - os: openbsd
         arch: amd64
+
   toji:
     description: >
       Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into
