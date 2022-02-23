@@ -1569,16 +1569,23 @@ sources:
 
   k6:
     description: A modern load testing tool, using Go and JavaScript - https://k6.io
-    url: https://github.com/loadimpact/k6/
+    url: https://github.com/grafana/k6/
     map:
-      amd64: "64"
-      "386": "32"
-      darwin: mac
+      darwin: macos
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
     list:
       type: github-releases
-      url: https://api.github.com/repos/loadimpact/k6/releases
+      url: https://api.github.com/repos/grafana/k6/releases
     fetch:
-      url: https://github.com/loadimpact/k6/releases/download/v{{ .Version }}/k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}.tar.gz
+      url: https://github.com/grafana/k6/releases/download/v{{ .Version }}/k6-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
