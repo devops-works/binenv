@@ -2010,9 +2010,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/bitnami-labs/sealed-secrets/releases
     fetch:
-      url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/bitnami-labs/sealed-secrets/releases/download/v{{ .Version }}/kubeseal-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - kubeseal
 
   kubesec:
     description: Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
