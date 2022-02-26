@@ -2113,24 +2113,25 @@ sources:
       binaries:
         - kustomize
 
-  lazygit:
-    description: A simple terminal UI for git commands.
-    url: https://github.com/jesseduffield/lazygit/
-    map:
-      amd64: x86_64
-      "386": 32-bit
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/jesseduffield/lazygit/releases
-    fetch:
-      url: https://github.com/jesseduffield/lazygit/releases/download/v{{ .Version }}/lazygit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - lazygit
+  # Removed until https://github.com/jesseduffield/lazygit/issues/1791 is fixed
+  # lazygit:
+  #   description: A simple terminal UI for git commands.
+  #   url: https://github.com/jesseduffield/lazygit/
+  #   map:
+  #     amd64: x86_64
+  #     "386": 32-bit
+  #     darwin: Darwin
+  #     linux: Linux
+  #     windows: Windows
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/jesseduffield/lazygit/releases
+  #   fetch:
+  #     url: https://github.com/jesseduffield/lazygit/releases/download/v{{ .Version }}/lazygit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+  #   install:
+  #     type: tgz
+  #     binaries:
+  #       - lazygit
 
   local-php-security-checker:
     description: PHP security vulnerabilities checker
