@@ -1820,19 +1820,6 @@ sources:
       binaries:
         - kube-linter
 
-  kubent:
-    description: kube-no-trouble - Easily check your clusters for use of deprecated APIs
-    url: https://github.com/doitintl/kube-no-trouble/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/doitintl/kube-no-trouble/releases
-    fetch:
-      url: https://github.com/doitintl/kube-no-trouble/releases/download/{{ .Version }}/kubent-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - kubent
-
   kubeaudit:
     description: kubeaudit helps you audit your Kubernetes clusters against common security controls
     url: https://github.com/Shopify/kubeaudit/
@@ -1840,7 +1827,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/Shopify/kubeaudit/releases
     fetch:
-      url: https://github.com/Shopify/kubeaudit/releases/download/v{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/Shopify/kubeaudit/releases/download/{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1963,6 +1950,19 @@ sources:
       type: tgz
       binaries:
         - kubens
+
+  kubent:
+    description: kube-no-trouble - Easily check your clusters for use of deprecated APIs
+    url: https://github.com/doitintl/kube-no-trouble/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/doitintl/kube-no-trouble/releases
+    fetch:
+      url: https://github.com/doitintl/kube-no-trouble/releases/download/{{ .Version }}/kubent-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubent
 
   kubepug:
     description: Kubernetes PreUpGrade (Checker)
