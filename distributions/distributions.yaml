@@ -1264,19 +1264,6 @@ sources:
     install:
       type: direct
 
-  hey:
-    description: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
-    url: https://github.com/rakyll/hey/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/rakyll/hey/releases
-    fetch:
-      url: https://storage.googleapis.com/hey-release/hey_{{ .OS }}_{{ .Arch }}
-    install:
-      type: direct
-      post: >
-        This installer always installs the latest version.
-
   hadolint:
     description: Dockerfile linter, validate inline bash, written in Haskell
     url: https://github.com/hadolint/hadolint/
@@ -1306,24 +1293,6 @@ sources:
       binaries:
         - havener
 
-  helm-docs:
-    description: a tool for controlling hetzner cloud resources
-    url: https://github.com/norwoodj/helm-docs/
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/norwoodj/helm-docs/releases
-    fetch:
-      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_Linux_x86_64.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - helm-docs
-
   hcloud:
     description: a tool for controlling hetzner cloud resources
     url: https://github.com/hetznercloud/cli/
@@ -1349,6 +1318,25 @@ sources:
       type: tgz
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
+
+
+  helm-docs:
+    description: a tool for controlling hetzner cloud resources
+    url: https://github.com/norwoodj/helm-docs/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/norwoodj/helm-docs/releases
+    fetch:
+      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_Linux_x86_64.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - helm-docs
 
   helm-operator:
     description: >
