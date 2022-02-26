@@ -1912,6 +1912,7 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/kubesphere/kubeeye/releases
+      exclude: "0.4.0"
     fetch:
       url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
