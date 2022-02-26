@@ -32,25 +32,6 @@ sources:
       binaries:
         - ali
 
-  annie:
-    description: Fast, simple and clean video downloader
-    url: https://github.com/iawia002/annie/
-    map:
-      amd64: 64-bit
-      darwin: macOS
-      linux: Linux
-      windows: Windows
-      "386": 32-bit
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/iawia002/annie/releases
-    fetch:
-      url: https://github.com/iawia002/annie/releases/download/{{ .Version }}/annie_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - annie
-
   ansible-operator:
     description: >
       SDK for building Kubernetes applications. Provides high level APIs,
@@ -2204,6 +2185,59 @@ sources:
       binaries:
         - lsd
 
+  lux:
+    description: Fast, simple and clean video downloader
+    url: https://github.com/iawia002/lux/
+    map:
+      amd64: 64-bit
+      "386": 32-bit
+      arm: ARM
+      arm64: ARM64
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+      openbsd: OpenBSD
+      freebsd: FreeBSD
+      netbsd: NetBSD
+    supported_platforms:
+      - os: linux
+        arch: i386
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: freebsd
+        arch: i386
+      - os: freebsd
+        arch: amd64
+      - os: openbsd
+        arch: i386
+      - os: openbsd
+        arch: i386
+      - os: openbsd
+        arch: arm64
+      - os: netbsd
+        arch: i386
+      - os: netbsd
+        arch: amd64
+      - os: netbsd
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/iawia002/lux/releases
+    fetch:
+      url: https://github.com/iawia002/lux/releases/download/v{{ .Version }}/lux_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - lux
+  
   mcfly:
     description: Fly through your shell history. Great Scott!
     url: https://github.com/cantino/mcfly/
