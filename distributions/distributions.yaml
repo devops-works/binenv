@@ -1801,7 +1801,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/WoozyMasta/kube-dump/releases
     fetch:
-      url: https://github.com/WoozyMasta/kube-dump/releases/download/v{{ .Version }}/kube-dump
+      url: https://raw.githubusercontent.com/WoozyMasta/kube-dump/{{ .Version }}/kube-dump
     install:
       type: direct
 
