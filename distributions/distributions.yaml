@@ -454,11 +454,14 @@ sources:
   choose:
     description: A human-friendly and fast alternative to cut and (sometimes) awk
     url: https://github.com/theryangeary/choose/
+    map:
+      amd64: x86_64
+      linux: unknown-linux-gnu
     list:
       type: github-releases
       url: https://api.github.com/repos/theryangeary/choose/releases
     fetch:
-      url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose
+      url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose-{{ .Arch }}-{{.OS }}
     install:
       type: direct
 
@@ -608,9 +611,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/deref/exo/releases
     fetch:
-      url: https://github.com/deref/exo/releases/download/v{{ .Version }}/exo-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/deref/exo/releases/download/{{ .Version }}/exo_managed_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - exo
     post_install_message: "Warning: the binary will be named 'derefexo' and not 'exo'"
 
   devdash:
