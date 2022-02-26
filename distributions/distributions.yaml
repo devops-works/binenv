@@ -1583,7 +1583,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - k6-v{{ .Version }}-{{ .OS }}{{ .Arch }}/k6
+        - k6-v{{ .Version }}-{{ .OS }}-{{ .Arch }}/k6
 
   k8stail:
     description: tail -f experience for Kubernetes Pods
