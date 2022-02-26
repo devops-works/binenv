@@ -384,13 +384,9 @@ sources:
   checkip:
     description: Check an IP address using various public services
     url: https://github.com/jreisinger/checkip/
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
     list:
       type: github-releases
+      exclude: "^[0-9]"
       url: https://api.github.com/repos/jreisinger/checkip/releases
     fetch:
       filters: filters
