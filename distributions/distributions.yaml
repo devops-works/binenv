@@ -32,25 +32,6 @@ sources:
       binaries:
         - ali
 
-  asciigraph:
-    description: >
-      Go package to make lightweight ASCII line graph ╭┈╯ in command line apps
-      with no other dependencies.
-    url: https://github.com/guptarohit/asciigraph/
-    map:
-      linux: Linux
-      darwin: Darwin
-      amd64: x86_64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/guptarohit/asciigraph/releases
-    fetch:
-      url: https://github.com/guptarohit/asciigraph/releases/download/v{{ .Version }}/asciigraph_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - asciigraph
-
   annie:
     description: Fast, simple and clean video downloader
     url: https://github.com/iawia002/annie/
@@ -114,6 +95,25 @@ sources:
       binaries:
         - arkade
 
+  asciigraph:
+    description: >
+      Go package to make lightweight ASCII line graph ╭┈╯ in command line apps
+      with no other dependencies.
+    url: https://github.com/guptarohit/asciigraph/
+    map:
+      linux: Linux
+      darwin: Darwin
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/guptarohit/asciigraph/releases
+    fetch:
+      url: https://github.com/guptarohit/asciigraph/releases/download/v{{ .Version }}/asciigraph_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - asciigraph
+
   asciinema-edit:
     description: asciinema casts post-production tools
     url: https://github.com/cirocosta/asciinema-
@@ -126,6 +126,24 @@ sources:
       type: tgz
       binaries:
         - asciinema-edit
+
+  athens:
+    description: A Go module datastore and proxy
+    url: https://github.com/gomods/athens
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gomods/athens/releases
+    fetch:
+      url: https://github.com/gomods/athens/releases/download/v{{ .Version }}/athens_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - athens
 
   audit2rbac:
     description: Autogenerate RBAC policies based on Kubernetes audit logs
