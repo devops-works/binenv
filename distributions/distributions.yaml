@@ -483,6 +483,19 @@ sources:
       binaries:
         - cloudman
 
+  config-registry:
+    description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
+    url: https://github.com/mumoshu/config-registry/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mumoshu/config-registry/releases
+    fetch:
+      url: https://github.com/mumoshu/config-registry/releases/download/v{{ .Version }}/config-registry_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - config-registry
+
   confused:
     description: Tool to check for dependency confusion vulnerabilities in multiple package management systems
     url: https://github.com/visma-prodsec/
@@ -1850,19 +1863,6 @@ sources:
       type: tgz
       binaries:
         - kubecolor
-
-  kubeconf:
-    description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
-    url: https://github.com/mumoshu/kubeconf/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/mumoshu/kubeconf/releases
-    fetch:
-      url: https://github.com/mumoshu/kubeconf/releases/download/v{{ .Version }}/kubeconf_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - kubeconf
 
   kubectl:
     description: Production-Grade Container Scheduling and Management (cli)
