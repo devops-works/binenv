@@ -1416,9 +1416,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/httpx/releases
     fetch:
-      url: https://github.com/projectdiscovery/httpx/releases/download/v{{ .Version }}/httpx_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/projectdiscovery/httpx/releases/download/v{{ .Version }}/httpx_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
     install:
-      type: tgz
+      type: zip
       binaries:
         - httpx
 
