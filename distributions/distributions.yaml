@@ -303,11 +303,13 @@ sources:
     url: https://github.com/aristocratos/btop/
     map:
       amd64: x86_64
+      linux: linux-musl
+      macos: macos-bigsur
     list:
       type: github-releases
       url: https://api.github.com/repos/aristocratos/btop/releases
     fetch:
-      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Version }}-{{ .Arch }}-{{ .OS }}-musl.tbz
+      url: https://github.com/aristocratos/btop/releases/download/v{{ .Version }}/btop-{{ .Arch }}-{{ .OS }}.tbz
     install:
       type: tbz
       binaries:
