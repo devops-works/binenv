@@ -3105,6 +3105,20 @@ sources:
       binaries:
         - stern
 
+  stoppropaganda:
+    description: DOS application to stop pro-Russian aggression websites. Support Ukraine!
+    url: https://github.com/erkexzcx/stoppropaganda/
+    map:
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/erkexzcx/stoppropaganda/releases
+    fetch:
+      url: https://github.com/erkexzcx/stoppropaganda/releases/download/v{{ .Version }}/stoppropaganda_v{{ .Version }}_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+  
   subfinder:
     description: >
       Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.

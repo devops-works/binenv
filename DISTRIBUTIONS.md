@@ -203,6 +203,7 @@
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan/): A command-line reference-implementation client for SSL Labs APIs, designed for automated and/or bulk testing.
 - [starship](https://github.com/starship/starship/): The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 - [stern](https://github.com/stern/stern/): ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of https://github.com/wercker/stern
+- [stoppropaganda](https://github.com/erkexzcx/stoppropaganda/): DOS application to stop pro-Russian aggression websites. Support Ukraine!
 - [subfinder](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing.
 - [subfinder-win](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing (windows).
 - [swag](https://github.com/swaggo/swag/): Automatically generate RESTful API documentation with Swagger 2.0 for Go.
