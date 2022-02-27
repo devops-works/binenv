@@ -2247,7 +2247,7 @@ sources:
     map:
       amd64: x86_64
       darwin: apple-darwin
-      linux: unknown-linux-gnu
+      linux: unknown-linux-musl
     list:
       type: github-releases
       url: https://api.github.com/repos/cantino/mcfly/releases
@@ -2300,9 +2300,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/johnkerl/miller/releases
     fetch:
-      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/mlr.{{ .OS }}.{{ .Arch }}
+      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/miller_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - mlr
 
   minikube:
     description: Run Kubernetes locally
@@ -2364,22 +2366,10 @@ sources:
       simplicity. Designed to be used in combination with other tools for
       attack surface discovery in bug bounties and pentests
     url: https://github.com/projectdiscovery/naabu/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/projectdiscovery/naabu/releases
-    fetch:
-      url: https://github.com/projectdiscovery/naabu/releases/download/v{{ .Version }}/naabu_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - naabu
-
-  naabu-win:
-    description: >
-      A fast port scanner written in go with focus on reliability and
-      simplicity. Designed to be used in combination with other tools for
-      attack surface discovery in bug bounties and pentests (windows)
-    url: https://github.com/projectdiscovery/naabu/
+    map:
+      windows: win
+      darwin: macOS
+      i386: "386"
     list:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/naabu/releases
@@ -2634,27 +2624,11 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/cloudflare/pint/releases
     fetch:
-      url: https://github.com/cloudflare/pint/releases/download/v{{ .Version }}/pint_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/cloudflare/pint/releases/download/v{{ .Version }}/pint-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
         - pint-linux-amd64
-
-  pscale:
-    description: The CLI for PlanetScale Database
-    url: https://github.com/planetscale/cli/
-    map:
-      darwin: macOS
-      windows: windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/planetscale/cli/releases
-    fetch:
-      url: https://github.com/planetscale/cli/releases/download/v{{ .Version }}/pscale_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - pscale
 
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
@@ -2684,12 +2658,12 @@ sources:
 
   pomerium-cli:
     description: Pomerium is an identity-aware access proxy (cli).
-    url: https://github.com/pomerium/pomerium/
+    url: https://github.com/pomerium/cli/
     list:
       type: github-releases
-      url: https://api.github.com/repos/pomerium/pomerium/releases
+      url: https://api.github.com/repos/pomerium/cli/releases
     fetch:
-      url: https://github.com/pomerium/pomerium/releases/download/v{{ .Version }}/pomerium-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/pomerium/cli/releases/download/v{{ .Version }}/pomerium-cli-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2739,6 +2713,22 @@ sources:
       binaries:
         - "promtail-{{ .OS }}-{{ .Arch }}"
 
+  pscale:
+    description: The CLI for PlanetScale Database
+    url: https://github.com/planetscale/cli/
+    map:
+      darwin: macOS
+      windows: windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/planetscale/cli/releases
+    fetch:
+      url: https://github.com/planetscale/cli/releases/download/v{{ .Version }}/pscale_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - pscale
+
   pulumi:
     description: Modern Infrastructure as Code. Any cloud, any language
     url: https://github.com/pulumi/pulumi/
@@ -2759,9 +2749,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/cilium/pwru/releases
     fetch:
-      url: https://github.com/cilium/pwru/releases/download/v{{ .Version }}/pwru
+      url: https://github.com/cilium/pwru/releases/download/v{{ .Version }}/pwru-{{.OS }}-{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
       binaries:
         - pwru
 
@@ -2894,7 +2884,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/msoap/shell2http/releases
     fetch:
-      url: https://github.com/msoap/shell2http/releases/download/{{ .VersionMajor }}.{{ .VersionMinor }}/shell2http-{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .OS }}.{{ .Arch }}.tar.gz
+      url: https://github.com/msoap/shell2http/releases/download/v{{ .Version }}/shell2http_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -3125,9 +3115,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/projectdiscovery/subfinder/releases
     fetch:
-      url: https://github.com/projectdiscovery/subfinder/releases/download/v{{ .Version }}/subfinder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/projectdiscovery/subfinder/releases/download/v{{ .Version }}/subfinder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
     install:
-      type: tgz
+      type: zip
       binaries:
         - subfinder
 
@@ -3321,7 +3311,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/adammck/terraform-inventory/releases
     fetch:
-      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
+      url: https://github.com/adammck/terraform-inventory/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/terraform-inventory_v{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.zip
     install:
       type: zip
       binaries:
@@ -3619,16 +3609,22 @@ sources:
       binaries:
         - vmctl-{{ .OS }}-{{ .Arch }}
 
+  # targets are really limited by the current release naming scheme
+  # https://github.com/vi/websocat/issues/148
   websocat:
     description: >
       About Command-line client for WebSockets,
       like netcat (or curl) for ws:// with advanced socat-like functions
     url: https://github.com/vi/websocat/
+    map:
+      darwin: mac
+      linux: linux64
+      windows: win64
     list:
       type: github-releases
       url: https://api.github.com/repos/vi/websocat/releases
     fetch:
-      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat_{{ .Arch }}-{{ .OS }}
+      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat_{{ .OS }}
     install:
       type: direct
 
@@ -3721,7 +3717,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/bridgecrewio/yor/releases
     fetch:
-      url: https://github.com/bridgecrewio/yor/releases/download/{{ .Version }}/yor-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/bridgecrewio/yor/releases/download/{{ .Version }}/yor_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      # https://github.com/bridgecrewio/yor/releases/download/0.1.139/yor-0.1.139-linux-amd64.tar.gz:
+      # https://github.com/bridgecrewio/yor/releases/download/0.1.139/yor_0.1.139_linux_amd64.tar.gz
     install:
       type: tgz
       binaries:
