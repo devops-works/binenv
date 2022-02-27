@@ -184,6 +184,7 @@
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/): Rancher is an open source software platform that enables organizations to run and manage Docker and Kubernetes in production. (cli)
 - [rg](https://github.com/BurntSushi/ripgrep/): ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
 - [rga](https://github.com/phiresky/ripgrep-all/): ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz
+- [ruflood](https://github.com/zegkljan/ruflood/): Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.
 - [saml2aws](https://github.com/Versent/saml2aws/): CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
 - [scan-exporter](https://github.com/devops-works/): Scans targets and exposes results to Prometheus.
 - [sd](https://github.com/chmln/sd/): Intuitive find & replace CLI (sed alternative)
