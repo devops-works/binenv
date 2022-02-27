@@ -2807,6 +2807,17 @@ sources:
       binaries:
         - rg
 
+  ruflood:
+    description: Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.
+    url: https://github.com/zegkljan/ruflood/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/zegkljan/ruflood/releases
+    fetch:
+      url: https://github.com/zegkljan/ruflood/releases/download/v{{ .Version }}/ruflood-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   saml2aws:
     description: >
       CLI tool which enables you to login and retrieve AWS temporary
