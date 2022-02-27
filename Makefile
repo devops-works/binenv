@@ -77,7 +77,6 @@ goreleaser-test: fmt lint clean ; $(info $(M) goreleaser dry-run…) @ ## Build 
 goreleaser: fmt lint clean test; $(info $(M) create a release with goreleaser…) @ ## Build program binary
 	goreleaser --rm-dist
 
-# don't even think about making a joke with this target name
 prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting tests so we should not fail liting in CI
 	$Q $(GO) vet ./...
 	$Q docker run  -v $(pwd)/README.md:/tmp/README.md pipelinecomponents/markdownlint:latest mdl --style all -r ~MD034,~MD013 /tmp/README.md

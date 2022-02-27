@@ -2,4 +2,3 @@ binenv
 *.json
 /bin
 /dist
-e2e_tests.sh

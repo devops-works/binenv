@@ -50,7 +50,7 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/argoproj/argo-cd/releases
-    url: https://github.com/argoproj/argo-
+    url: https://github.com/argoproj/argo-cd/
     fetch:
       url: https://github.com/argoproj/argo-cd/releases/download/v{{ .Version }}/argocd-{{ .OS }}-{{ .Arch }}
     install:
@@ -97,7 +97,7 @@ sources:
 
   asciinema-edit:
     description: asciinema casts post-production tools
-    url: https://github.com/cirocosta/asciinema-
+    url: https://github.com/cirocosta/asciinema-edit/
     list:
       type: github-releases
       url: https://api.github.com/repos/cirocosta/asciinema-edit/releases
@@ -167,7 +167,7 @@ sources:
   aws-vault:
     description: >
       A vault for securely storing and accessing AWS credentials in development environments
-    url: https://github.com/99designs/aws-
+    url: https://github.com/99designs/aws-vault/
     list:
       type: github-releases
       url: https://api.github.com/repos/99designs/aws-vault/releases
@@ -1100,7 +1100,7 @@ sources:
 
   golangci-lint:
     description: Fast linters Runner for Go
-    url: https://github.com/golangci/golangci-
+    url: https://github.com/golangci/golangci-lint/
     list:
       type: github-releases
       url: https://api.github.com/repos/golangci/golangci-lint/releases
@@ -3611,6 +3611,7 @@ sources:
 
   # targets are really limited by the current release naming scheme
   # https://github.com/vi/websocat/issues/148
+
   websocat:
     description: >
       About Command-line client for WebSockets,
