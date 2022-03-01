@@ -1129,6 +1129,26 @@ sources:
       binaries:
         - goreleaser
 
+  gorss:
+    description: Go Terminal Feed Reader
+    url: https://github.com/Lallassu/gorss/
+    map:
+      darwin: osx
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Lallassu/gorss/releases
+    fetch:
+      url: https://github.com/Lallassu/gorss/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/gorss_{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gorss_{{ .OS }}
+
   gotop:
     description: Just another terminal based graphical activity monitor
     url: https://github.com/xxxserxxx/gotop/
