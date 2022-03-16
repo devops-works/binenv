@@ -74,6 +74,7 @@
 - [gokart](https://github.com/praetorian-inc/gokart/): A static analysis tool for securing Go code
 - [golangci-lint](https://github.com/golangci/golangci-lint/): Fast linters Runner for Go
 - [goreleaser](https://github.com/goreleaser/goreleaser/): Deliver Go binaries as fast and easily as possible
+- [gorss](https://github.com/Lallassu/gorss/): Go Terminal Feed Reader
 - [gosec](https://github.com/securego/gosec/): Golang security checker
 - [gotop](https://github.com/xxxserxxx/gotop/): Just another terminal based graphical activity monitor
 - [gotty](https://github.com/yudai/gotty/): Share your terminal as a web application
