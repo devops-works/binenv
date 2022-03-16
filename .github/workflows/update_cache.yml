@@ -19,10 +19,10 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v1
 
-      - name: Set up Go 1.15
+      - name: Set up Go 1.18
         uses: actions/setup-go@v2
         with:
-          go-version: 1.15
+          go-version: 1.18
         id: go
 
       - name: Build binary
