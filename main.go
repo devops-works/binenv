@@ -1,16 +1,14 @@
 package main
 
 import (
+	"os"
+
 	"github.com/devops-works/binenv/cmd"
 )
 
 func main() {
-	// var verbose bool
-
-	root := cmd.RootCmd()
-	// root.Flags().BoolVarP(&verbose, "verbose", "v", false, "Verbose operation")
-	// verbose, _ := root.PersistentFlags().GetBool("verbose")
-	// fmt.Printf("verbose is %t\n", verbose)
-
-	root.Execute()
+	err := cmd.RootCmd().Execute()
+	if err != nil {
+		os.Exit(1)
+	}
 }
