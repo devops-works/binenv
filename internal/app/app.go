@@ -48,12 +48,19 @@ type App struct {
 	listers    map[string]list.Lister
 	fetchers   map[string]fetch.Fetcher
 	cache      map[string][]string
+	flags      flags
 
 	dryrun      bool
 	concurrency int
 
 	bindir string
 	logger zerolog.Logger
+}
+
+// flags holds App boolean flags
+type flags struct {
+	Setters    map[string](func(*flags, bool))
+	justExpand bool
 }
 
 type jobResult struct {
@@ -110,6 +117,7 @@ func New(o ...func(*App) error) (*App, error) {
 	a.createFetchers()
 	a.createInstallers()
 
+	a.initializeFlags()
 	return a, nil
 }
 
@@ -835,6 +843,11 @@ func (a *App) Execute(args []string) {
 	bd := a.getBinDirFor(dist)
 	binary := filepath.Join(bd, version)
 
+	if a.flags.justExpand {
+		fmt.Print(binary)
+		return
+	}
+
 	if err := syscall.Exec(binary, args, os.Environ()); err != nil {
 		a.logger.Fatal().Err(err).Msgf("unable to execute %s", dist)
 	}
@@ -1303,4 +1316,26 @@ func (a *App) SetDryRun(v bool) {
 // SetConcurrency sets the number of goroutines for cache update
 func (a *App) SetConcurrency(c int) {
 	a.concurrency = c
+}
+
+// initializeFlags sets flags holder
+func (a *App) initializeFlags() {
+	f := flags{}
+	f.Setters = make(map[string]func(*flags, bool))
+
+	// Default behavior here
+	f.justExpand = false
+	f.Setters["justExpand"] = func(obj *flags, b bool) { obj.justExpand = b }
+
+	// bind defaults flags
+	a.flags = f
+}
+
+// SetFlag call a setter function if exists
+func (a *App) SetFlag(name string, value bool) {
+	for key, setter := range a.flags.Setters {
+		if key == name {
+			setter(&a.flags, value)
+		}
+	}
 }

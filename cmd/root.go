@@ -39,6 +39,7 @@ selected.`,
 
 	rootCmd.AddCommand(
 		completionCmd(),
+		expandCmd(a),
 		installCmd(a),
 		localCmd(a),
 		searchCmd(a),
