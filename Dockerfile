@@ -12,7 +12,6 @@ RUN apt-get update \
     && update-ca-certificates
 
 COPY bin/binenv /home/test/binenv
-COPY scripts/entrypoint.sh /entrypoint.sh
 
 USER test
 WORKDIR /home/test
