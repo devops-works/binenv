@@ -750,6 +750,47 @@ func (a *App) versions(dist string) error {
 	return nil
 }
 
+// Upgrade install last version of all locally installed distributions
+func (a *App) Upgrade(ignoreInstallErrors bool) error {
+	errored := false
+	for dist := range a.cache {
+
+		// ignore uninstalled distribution
+		installed := a.GetInstalledVersionsFor(dist)
+		if len(installed) == 0 {
+			continue
+		}
+
+		// get last known version
+		version := a.GetMostRecent(dist)
+
+		// call install function
+		v, err := a.install(dist, version)
+
+		// process install errors logic.
+		if err != nil && !errors.Is(err, ErrAlreadyInstalled) {
+			a.logger.Error().Err(err).Msgf("unable to install %q (%s)", dist, v)
+			errored = true
+			continue
+		}
+
+		if err == nil {
+			a.logger.Info().Msgf("%q (%s) installed", dist, v)
+		}
+
+		postInstallMessage := strings.TrimSpace(a.def.Sources[dist].PostInstallMessage)
+		if len(postInstallMessage) > 0 {
+			fmt.Printf("===> Post upgrade message for %s <===\n%s\n", aurora.Bold(dist), postInstallMessage)
+		}
+	}
+
+	if errored && !ignoreInstallErrors {
+		os.Exit(1)
+	}
+
+	return nil
+}
+
 // CreateShimFor creates a shim for the distribution
 func (a *App) CreateShimFor(dist string) error {
 	// Should not happen

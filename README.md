@@ -26,6 +26,7 @@ The last binary you'll ever install.
       - [Freezing versions](#freezing-versions)
     - [Uninstalling versions](#uninstalling-versions)
       - [Examples](#examples-3)
+    - [Upgrading all installed distributions](#upgrading-all-installed-distributions)
     - [Completion](#completion)
   - [Selecting versions](#selecting-versions)
     - [Version selection process](#version-selection-process)
@@ -410,6 +411,14 @@ The command accepts:
 
 Install completion for your shell. See `binenv help completion` for in-depth
 info.
+
+### Upgrading all installed distributions
+
+To upgrade all installed distributions to the last known version invoke the
+command `upgrade`
+
+This command will always select the last version available and will ignore any
+version selection previously made by the user.
 
 ## Selecting versions
 
