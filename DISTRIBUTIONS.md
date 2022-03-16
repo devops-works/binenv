@@ -1,15 +1,15 @@
 - [act](https://github.com/nektos/act/): Run your GitHub Actions locally
 - [ali](https://github.com/nakabonne/ali/): Generate HTTP load and plot the results in real-time
-- [annie](https://github.com/iawia002/annie/): Fast, simple and clean video downloader
 - [ansible-operator](https://github.com/operator-framework/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
-- [argocd](https://github.com/argoproj/argo-): Declarative continuous deployment for Kubernetes.
+- [argocd](https://github.com/argoproj/argo-cd/): Declarative continuous deployment for Kubernetes.
 - [arkade](https://github.com/alexellis/arkade/): Declarative continuous deployment for Kubernetes.
 - [asciigraph](https://github.com/guptarohit/asciigraph/): Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.
-- [asciinema-edit](https://github.com/cirocosta/asciinema-): asciinema casts post-production tools
+- [asciinema-edit](https://github.com/cirocosta/asciinema-edit/): asciinema casts post-production tools
+- [athens](https://github.com/gomods/athens): A Go module datastore and proxy
 - [audit2rbac](https://github.com/liggitt/audit2rbac): Autogenerate RBAC policies based on Kubernetes audit logs
 - [awless](https://github.com/wallix/awless/): A Mighty CLI for AWS
 - [aws-iam-authenticator](https://github.com/kubernetes-sigs/): A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
-- [aws-vault](https://github.com/99designs/aws-): A vault for securely storing and accessing AWS credentials in development environments
+- [aws-vault](https://github.com/99designs/aws-vault/): A vault for securely storing and accessing AWS credentials in development environments
 - [awstaghelper](https://github.com/mpostument/awstaghelper/): AWS bulk tagging tool
 - [bat](https://github.com/sharkdp/bat/): A cat(1) clone with wings.
 - [batect](https://batect.dev/): Build And Testing Environments as Code Tool
@@ -30,6 +30,7 @@
 - [cli53](https://github.com/barnybug/cli53/): Command line tool for Amazon Route 53
 - [clog-cli](https://github.com/clog-tool/): Generate beautiful changelogs from your Git commit history
 - [cloudman](https://github.com/dutchcoders/cloudman): Textual user interface to manage ec2 instances.
+- [config-registry](https://github.com/mumoshu/config-registry/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
 - [confused](https://github.com/visma-prodsec/): Tool to check for dependency confusion vulnerabilities in multiple package management systems
 - [consul](https://releases.hashicorp.com/consul/): Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.
 - [crabz](https://github.com/sstadick/crabz): Like pigz, but rust
@@ -71,8 +72,9 @@
 - [glow](https://github.com/charmbracelet/glow/): Render markdown on the CLI, with pizzazz! 💅🏻
 - [gocloc](https://github.com/hhatto/gocloc/): A little fast cloc(Count Lines Of Code)
 - [gokart](https://github.com/praetorian-inc/gokart/): A static analysis tool for securing Go code
-- [golangci-lint](https://github.com/golangci/golangci-): Fast linters Runner for Go
+- [golangci-lint](https://github.com/golangci/golangci-lint/): Fast linters Runner for Go
 - [goreleaser](https://github.com/goreleaser/goreleaser/): Deliver Go binaries as fast and easily as possible
+- [gorss](https://github.com/Lallassu/gorss/): Go Terminal Feed Reader
 - [gosec](https://github.com/securego/gosec/): Golang security checker
 - [gotop](https://github.com/xxxserxxx/gotop/): Just another terminal based graphical activity monitor
 - [gotty](https://github.com/yudai/gotty/): Share your terminal as a web application
@@ -93,7 +95,6 @@
 - [helmfile](https://github.com/roboll/helmfile/): Deploy Kubernetes Helm Charts
 - [helmwave](https://github.com/helmwave/helmwave/): 🌊 Composer for @helm Charts
 - [hetty](https://hetty.xyz/): Hetty is an HTTP toolkit for security research.
-- [hey](https://github.com/rakyll/hey/): HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 - [himalaya](https://github.com/soywod/himalaya/): 📫 CLI email client
 - [httpx](https://github.com/projectdiscovery/httpx/): httpx is a fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads.
 - [httpx-win](https://github.com/projectdiscovery/httpx/): httpx is a fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads (windows).
@@ -105,7 +106,7 @@
 - [jless](https://github.com/PaulJuliusMartinez/jless): A command-line pager for JSON data.
 - [juicefs](https://github.com/juicedata/juicefs/): JuiceFS is a distributed POSIX file system built on top of Redis and S3.
 - [k3d](https://github.com/rancher/k3d/): Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
-- [k6](https://github.com/loadimpact/k6/): A modern load testing tool, using Go and JavaScript - https://k6.io
+- [k6](https://github.com/grafana/k6/): A modern load testing tool, using Go and JavaScript - https://k6.io
 - [k8stail](https://github.com/dtan4/k8stail/): tail -f experience for Kubernetes Pods
 - [k9s](https://github.com/derailed/k9s/): Kubernetes CLI To Manage Your Clusters In Style!
 - [kafkactl](https://github.com/deviceinsight/kafkactl/): Command Line Tool for managing Apache Kafka
@@ -125,7 +126,6 @@
 - [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure  the applications represented in them adhere to best practices.
 - [kubeaudit](https://github.com/Shopify/kubeaudit/): kubeaudit helps you audit your Kubernetes clusters against common security controls
 - [kubecolor](https://github.com/dty1er/kubecolor/): colorizes kubectl output
-- [kubeconf](https://github.com/mumoshu/kubeconf/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
 - [kubectl](https://github.com/kubernetes/kubernetes/): Production-Grade Container Scheduling and Management (cli)
 - [kubectl-krew](https://github.com/kubernetes-sigs/krew/): Find and install kubectl plugins
 - [kubectx](https://github.com/ahmetb/kubectx/): Faster way to switch between clusters in kubectl
@@ -144,11 +144,11 @@
 - [kubetail](https://github.com/jbvmio/kubetail/): Repository for kubetail - The pod log tailer
 - [kubeval](https://github.com/instrumenta/kubeval/): Validate your Kubernetes configuration files, supports multiple Kubernetes versions
 - [kustomize](https://github.com/kubernetes-sigs/): Customization of kubernetes YAML configurations
-- [lazygit](https://github.com/jesseduffield/lazygit/): A simple terminal UI for git commands.
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker/): PHP security vulnerabilities checker
 - [logcli](https://github.com/grafana/loki/): Like Prometheus, but for logs (cli).
 - [loki](https://github.com/grafana/loki/): Like Prometheus, but for logs.
 - [lsd](https://github.com/Peltoche/lsd/): The next gen ls command
+- [lux](https://github.com/iawia002/lux/): Fast, simple and clean video downloader
 - [mcfly](https://github.com/cantino/mcfly/): Fly through your shell history. Great Scott!
 - [micro](https://github.com/zyedidia/micro/): A modern and intuitive terminal-based text editor
 - [migrate](https://github.com/golang-migrate/migrate/): CLI database migrations tool.
@@ -157,7 +157,6 @@
 - [mygopherhose](https://github.com/devops-works/mygopherhose/): Faster import for mysqldumps
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load/): MySQL random data loader
 - [naabu](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests
-- [naabu-win](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests (windows)
 - [node-problem-detector](https://github.com/kubernetes/node-problem-detector/): This is a place for various problem detectors running on the Kubernetes nodes.
 - [nomad](https://www.nomadproject.io/): Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications. Nomad is easy to operate and scale and has native Consul and Vault integrations.
 - [nuclei](https://github.com/projectdiscovery/nuclei/): Fast and customizable vulnerability scanner based on simple YAML based DSL.
@@ -176,7 +175,7 @@
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes
 - [pomerium](https://github.com/pomerium/pomerium/): Pomerium is an identity-aware access proxy.
-- [pomerium-cli](https://github.com/pomerium/pomerium/): Pomerium is an identity-aware access proxy (cli).
+- [pomerium-cli](https://github.com/pomerium/cli/): Pomerium is an identity-aware access proxy (cli).
 - [popeye](https://github.com/derailed/popeye/): A Kubernetes cluster resource sanitizer
 - [procs](https://github.com/dalance/procs/): A modern replacement for ps written in Rust.
 - [promtail](https://github.com/grafana/loki/): Like Prometheus, but for logs (promtail).
@@ -186,6 +185,7 @@
 - [rancher](https://rancher.com/docs/rancher/v1.6/en/): Rancher is an open source software platform that enables organizations to run and manage Docker and Kubernetes in production. (cli)
 - [rg](https://github.com/BurntSushi/ripgrep/): ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
 - [rga](https://github.com/phiresky/ripgrep-all/): ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz
+- [ruflood](https://github.com/zegkljan/ruflood/): Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.
 - [saml2aws](https://github.com/Versent/saml2aws/): CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
 - [scan-exporter](https://github.com/devops-works/): Scans targets and exposes results to Prometheus.
 - [sd](https://github.com/chmln/sd/): Intuitive find & replace CLI (sed alternative)
@@ -198,13 +198,14 @@
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
-- [sonobuoy](https://github.com/vmware-tanzu/): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
+- [sonobuoy](https://github.com/vmware-tanzu/sonobuoy): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
 - [spt](https://github.com/Rigellute/spotify-tui/): A Spotify client for the terminal written in Rust.
 - [sshproxy](https://github.com/cea-hpc/sshproxy/): Proxy SSH connections on a gateway
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan/): A command-line reference-implementation client for SSL Labs APIs, designed for automated and/or bulk testing.
 - [starship](https://github.com/starship/starship/): The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 - [stern](https://github.com/stern/stern/): ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of https://github.com/wercker/stern
+- [stoppropaganda](https://github.com/erkexzcx/stoppropaganda/): DOS application to stop pro-Russian aggression websites. Support Ukraine!
 - [subfinder](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing.
 - [subfinder-win](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing (windows).
 - [swag](https://github.com/swaggo/swag/): Automatically generate RESTful API documentation with Swagger 2.0 for Go.
@@ -224,6 +225,7 @@
 - [tf2pulumi](https://github.com/pulumi/tf2pulumi/): A tool to convert Terraform projects to Pulumi TypeScript programs
 - [tflint](https://github.com/terraform-linters/tflint/): TFLint is a Terraform linter focused on possible errors, best practices, etc. (Terraform >= 0.12)
 - [tfsec](https://github.com/tfsec/tfsec/): TFsec uses static analysis of your terraform templates to spot potential security issues.
+- [tlder](https://github.com/dwisiswant0/tlder/): TLDs finder — check domain name availability across all valid top-level domains.
 - [tlsexp](https://gitlab.com/devopsworks/tools/tlsexp/): TLS certificate expiration checker.
 - [toji](https://github.com/leucos/toji/): Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog
 - [traefik](https://github.com/traefik/traefik/): The Cloud Native Application Proxy

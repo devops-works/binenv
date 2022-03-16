@@ -77,7 +77,6 @@ goreleaser-test: fmt lint clean ; $(info $(M) goreleaser dry-run…) @ ## Build 
 goreleaser: fmt lint clean test; $(info $(M) create a release with goreleaser…) @ ## Build program binary
 	goreleaser --rm-dist
 
-# don't even think about making a joke with this target name
 prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting tests so we should not fail liting in CI
 	$Q $(GO) vet ./...
 	$Q docker run  -v $(pwd)/README.md:/tmp/README.md pipelinecomponents/markdownlint:latest mdl --style all -r ~MD034,~MD013 /tmp/README.md
@@ -86,10 +85,15 @@ distributions: $(BIN) ; $(info $(M) creating DISTRIBUTIONS.md…) @ ## builds DI
 	$Q ./bin/binenv search -w | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | awk -F',' '{ print "- ["$$1"]("$$2"): "$$3","$$4","$$5","$$6","$$7","$$8}' | sed -e 's/,*$$//' | tr -d '"' > DISTRIBUTIONS.md 
 
 validate: bin ; $(info $(M) validating cache against distributions…) @ ## validates cache against distributions
-	$Q ./validate.sh code
+	$Q ./scripts/validate.sh code
 
 cache: bin ; $(info $(M) building distribution cache…) @ ## builds distribution cache
-	$Q ./buildcache.sh
+	$Q ./scripts/buildcache.sh
+
+e2e: bin ;  $(info $(M) runs end2end integration tests (very long)…) @ ## installs all supported distribution in a thowaway container
+	$Q docker build . -t binenv-e2e
+	$Q echo starting docker
+	$Q docker run -ti --name binenv-e2e -e GITHUB_TOKEN --rm -v $(pwd)/distributions/distributions.yaml:/home/binenv/.config/binenv/distributions.yaml binenv-e2e
 
 # Tools
 

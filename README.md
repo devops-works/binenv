@@ -26,6 +26,7 @@ The last binary you'll ever install.
       - [Freezing versions](#freezing-versions)
     - [Uninstalling versions](#uninstalling-versions)
       - [Examples](#examples-3)
+    - [Upgrading all installed distributions](#upgrading-all-installed-distributions)
     - [Completion](#completion)
     - [Expanding binary absolute path](#expanding-binary-absolute-path)
   - [Selecting versions](#selecting-versions)
@@ -432,6 +433,14 @@ $ binenv expand yq
 $ sudo $(binenv expand yq) --version
 yq (https://github.com/mikefarah/yq/) version 4.18.1
 ```
+
+### Upgrading all installed distributions
+
+To upgrade all installed distributions to the last known version invoke the
+command `upgrade`
+
+This command will always select the last version available and will ignore any
+version selection previously made by the user.
 
 ## Selecting versions
 

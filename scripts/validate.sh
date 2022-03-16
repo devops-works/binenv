@@ -39,7 +39,7 @@ errors=0
 echo "Using distribution $DISTRIBUTION"
 echo "Using cache        $CACHE"
 
-for i in $($YQCMD '.sources | keys' "${DISTRIBUTION}" | sed -e 's/^- //'); do
+for i in $($YQCMD '.sources | keys' "${DISTRIBUTION}" | sed -e 's/^- //' | grep -v '#'); do
     # dist=$(echo $i | cut -f2 -d' ')
     if [[ $i == \#* ]]; then
       continue

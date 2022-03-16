@@ -12,15 +12,19 @@
 
 set -eu
 
+if [ "$GITHUB_TOKEN" == "" ]; then
+    echo "ERROR: a GITHUB_TOKEN is required but can not be found; exiting"
+fi
+
 make
 
 echo "Copying distribution to your config directory"
 cp distributions/distributions.yaml ~/.config/binenv/
 
-echo "Updating the cache (4 threads)"
-./bin/binenv update -f -c4
+echo "Updating the cache (8 threads)"
+./bin/binenv update -f -c8
 
 echo "Importing resulting cache into code"
 cat ~/.cache/binenv/cache.json | jq '.' > distributions/cache.json
 
-echo "Please test the cache using './validate.sh code'"
+echo "Please test the cache using './scripts/validate.sh code'"
