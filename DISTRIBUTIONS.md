@@ -149,6 +149,7 @@
 - [loki](https://github.com/grafana/loki/): Like Prometheus, but for logs.
 - [lsd](https://github.com/Peltoche/lsd/): The next gen ls command
 - [lux](https://github.com/iawia002/lux/): Fast, simple and clean video downloader
+- [mage](https://github.com/magefile/mage/): a Make/rake-like dev tool using Go
 - [mcfly](https://github.com/cantino/mcfly/): Fly through your shell history. Great Scott!
 - [micro](https://github.com/zyedidia/micro/): A modern and intuitive terminal-based text editor
 - [migrate](https://github.com/golang-migrate/migrate/): CLI database migrations tool.
@@ -237,6 +238,7 @@
 - [vault](https://www.vaultproject.io/): A tool for secrets management, encryption as a service, and privileged access management
 - [vmctl](https://github.com/VictoriaMetrics/vmctl/): Victoria Metrics command line tool
 - [websocat](https://github.com/vi/websocat/): About Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions
+- [wtf](https://github.com/wtfutil/wtf/): The personal information dashboard for your terminal
 - [wuzz](https://github.com/asciimoo/wuzz/): Interactive cli tool for HTTP inspection
 - [xh](https://github.com/ducaale/xh/): Friendly and fast tool for sending HTTP requests
 - [yeshttp](https://gitlab.com/devopsworks/tools/yeshttp/): A HTTP server that always says yes

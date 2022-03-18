@@ -2260,7 +2260,29 @@ sources:
       type: tgz
       binaries:
         - lux
-  
+
+  mage:
+    description: a Make/rake-like dev tool using Go
+    url: https://github.com/magefile/mage/
+    map:
+      amd64: 64bit
+      arm: ARM
+      arm64: ARM64
+      darwin: macOS
+      linux: Linux
+      freebsd: FreeBSD
+      netbsd: NetBSD
+      openbsd: OpenBSD
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/magefile/mage/releases
+    fetch:
+      url: https://github.com/magefile/mage/releases/download/v{{ .Version }}/mage_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - mage
+    
   mcfly:
     description: Fly through your shell history. Great Scott!
     url: https://github.com/cantino/mcfly/
@@ -3674,6 +3696,41 @@ sources:
     install:
       type: direct
 
+  wtf:
+    description: The personal information dashboard for your terminal
+    url: https://github.com/wtfutil/wtf/
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: armv6
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/wtfutil/wtf/releases
+    fetch:
+      url: https://github.com/wtfutil/wtf/releases/download/v{{ .Version }}/wtf_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - wtfutil
+
+  wuzz:
+    description: Interactive cli tool for HTTP inspection
+    url: https://github.com/asciimoo/wuzz/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/asciimoo/wuzz/releases
+    fetch:
+      url: https://github.com/asciimoo/wuzz/releases/download/v{{ .Version }}/wuzz_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   xh:
     description: Friendly and fast tool for sending HTTP requests
     url: https://github.com/ducaale/xh/
@@ -3691,17 +3748,6 @@ sources:
       type: tgz
       binaries:
         - xh
-
-  wuzz:
-    description: Interactive cli tool for HTTP inspection
-    url: https://github.com/asciimoo/wuzz/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/asciimoo/wuzz/releases
-    fetch:
-      url: https://github.com/asciimoo/wuzz/releases/download/v{{ .Version }}/wuzz_{{ .OS }}_{{ .Arch }}
-    install:
-      type: direct
 
   yeshttp:
     description: A HTTP server that always says yes
