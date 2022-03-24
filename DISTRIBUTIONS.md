@@ -30,6 +30,7 @@
 - [cli53](https://github.com/barnybug/cli53/): Command line tool for Amazon Route 53
 - [clog-cli](https://github.com/clog-tool/): Generate beautiful changelogs from your Git commit history
 - [cloudman](https://github.com/dutchcoders/cloudman): Textual user interface to manage ec2 instances.
+- [comet](https://github.com/liamg/comet/): Command line tool to help you use conventional commit messages
 - [config-registry](https://github.com/mumoshu/config-registry/): Switch between kubeconfigs and avoid unintentional operation on your production clusters.
 - [confused](https://github.com/visma-prodsec/): Tool to check for dependency confusion vulnerabilities in multiple package management systems
 - [consul](https://releases.hashicorp.com/consul/): Consul is a distributed, highly available, and data center aware solution to connect and configure applications across dynamic, distributed infrastructure.

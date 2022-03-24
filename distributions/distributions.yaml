@@ -483,6 +483,30 @@ sources:
       binaries:
         - cloudman
 
+  comet:
+    description: Command line tool to help you use conventional commit messages
+    url: https://github.com/liamg/comet/
+    map:
+      i386: 386
+    supported_platforms:
+      - os: linux
+        arch: i386
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/liamg/comet/releases
+    fetch:
+      url: https://github.com/liamg/comet/releases/download/v{{ .Version }}/comet-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   config-registry:
     description: Switch between kubeconfigs and avoid unintentional operation on your production clusters.
     url: https://github.com/mumoshu/config-registry/
