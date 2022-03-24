@@ -1501,7 +1501,7 @@ sources:
     map:
       amd64: 64bit
       "386": 32bit
-      darwin: Darwin
+      darwin: macOS
       linux: Linux
       arm: ARM
       arm64: ARM64
@@ -1512,6 +1512,27 @@ sources:
       url: https://api.github.com/repos/gohugoio/hugo/releases
     fetch:
       url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - hugo
+
+  hugo-extended:
+    description: The world’s fastest framework for building websites.
+    url: https://github.com/gohugoio/hugo/
+    map:
+      amd64: 64bit
+      "386": 32bit
+      darwin: macOS
+      linux: Linux
+      arm: ARM
+      arm64: ARM64
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/gohugoio/hugo/releases
+    fetch:
+      url: https://github.com/gohugoio/hugo/releases/download/v{{ .Version }}/hugo_extended_{{ .Version }}_{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:

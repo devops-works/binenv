@@ -100,6 +100,7 @@
 - [httpx](https://github.com/projectdiscovery/httpx/): httpx is a fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads.
 - [httpx-win](https://github.com/projectdiscovery/httpx/): httpx is a fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads (windows).
 - [hugo](https://github.com/gohugoio/hugo/): The world’s fastest framework for building websites.
+- [hugo-extended](https://github.com/gohugoio/hugo/): The world’s fastest framework for building websites.
 - [iamlive](https://github.com/iann0036/iamlive/): Generate an IAM policy from AWS calls using client-side monitoring (CSM) or embedded proxy
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg/): Allows you to store and distribute sets of files (e.g. application configuration) as images in Docker (OCI) registries
 - [influxevent](https://gitlab.com/devopsworks/tools/influxevent/): Influxevent wraps commands and sends command result, timing & performance samples to an influxDB server.
