@@ -11,6 +11,7 @@ The last binary you'll ever install.
     - [FreeBSD (bash/zsh)](#freebsd-bashzsh)
     - [OpenBSD (bash/zsh)](#openbsd-bashzsh)
   - [Install](#install)
+    - [User install](#user-install)
   - [Updating binenv](#updating-binenv)
   - [Supported "distributions"](#supported-distributions)
   - [Usage](#usage)
@@ -36,6 +37,7 @@ The last binary you'll ever install.
       - [Example](#example-1)
   - [Selecting versions using environment variables](#selecting-versions-using-environment-variables)
     - [Example](#example-2)
+  - [Environment variables](#environment-variables)
   - [Removing binenv stuff](#removing-binenv-stuff)
   - [Status](#status)
   - [FAQ](#faq)
@@ -62,6 +64,8 @@ Now you can install your [favorite utility](#supported-distributions) just by
 typing `binenv install something`.
 
 ## Quick start
+
+See [System-wide installation](./SYSTEM.md) for system-wide installations and global mode.
 
 ### Linux (bash/zsh)
 
@@ -147,6 +151,8 @@ exec $SHELL
 If you are using a different shell, skip adding completion to your `.${SHELL}rc` file.
 
 ## Install
+
+### User install
 
 - download a suitable `binenv` (yes, but wait !) for your architecture/OS at
 http://github.com/devops-works/binenv/releases.
@@ -416,7 +422,7 @@ info.
 
 ### Expanding binary absolute path
 
-To get the obsolute path of the binary installed by a distribution you need to
+To get the absolute path of the binary installed by a distribution you need to
 invoke the command `expand`.
 
 This can be useful when you need to use binenv in conjunction with other tools
@@ -525,7 +531,6 @@ When an environment variable with this name exists, binenv will use the `=`
 operator to look for an exact match for that constraint and will ignore the
 contents of the `.binenv.lock` file if it exists.
 
-
 ### Example
 
 ```bash
@@ -538,6 +543,14 @@ version.BuildInfo{Version:"v3.7.2", GitCommit:"663a896f4a815053445eec4153677ddc2
 $ BINENV_HELM_VERSION=3.6.3 helm version
 version.BuildInfo{Version:"v3.6.3", GitCommit:"d506314abfb5d21419df8c7e7e68012379db2354", GitTreeState:"clean", GoVersion:"go1.16.5"}
 ```
+
+## Environment variables
+
+Two other environment variables exist:
+
+- `BINENV_GLOBAL`: forces `binenv` to run un global mode (same as `-g`); see
+  [SYSTEM.md](./SYSTEM.md) for more information on this mode.
+- `BINENV_VERBOSE`: same as `-v`
 
 ## Removing binenv stuff
 
