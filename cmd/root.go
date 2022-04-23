@@ -33,7 +33,7 @@ selected.`,
 
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation (env: BINENV_VERBOSE)")
 	rootCmd.PersistentFlags().BoolP("global", "g", false, "Global mode (env: BINENV_GLOBAL)")
-	rootCmd.PersistentFlags().StringP("bindir", "b", "~/.binenv", "Binaries directory")
+	rootCmd.PersistentFlags().StringP("bindir", "b", "", "Binaries directory")
 
 	if !strings.HasSuffix(os.Args[0], "binenv") {
 		verbose := truthify(os.Getenv("BINENV_VERBOSE"))
@@ -41,7 +41,7 @@ selected.`,
 
 		a.SetGlobal(global)
 		a.SetVerbose(verbose)
-		
+
 		a.Execute(os.Args)
 	}
 
