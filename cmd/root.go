@@ -31,11 +31,19 @@ selected.`,
 		SilenceUsage: true,
 	}
 
+	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation (env: BINENV_VERBOSE)")
+	rootCmd.PersistentFlags().BoolP("global", "g", false, "Global mode (env: BINENV_GLOBAL)")
+	rootCmd.PersistentFlags().StringP("bindir", "b", "~/.binenv", "Binaries directory")
+
 	if !strings.HasSuffix(os.Args[0], "binenv") {
+		verbose := truthify(os.Getenv("BINENV_VERBOSE"))
+		global := truthify(os.Getenv("BINENV_GLOBAL"))
+
+		a.SetGlobal(global)
+		a.SetVerbose(verbose)
+		
 		a.Execute(os.Args)
 	}
-
-	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Verbose operation")
 
 	rootCmd.AddCommand(
 		completionCmd(),
@@ -51,4 +59,10 @@ selected.`,
 	)
 
 	return rootCmd
+}
+
+func truthify(s string) bool {
+	s = strings.ToLower(s)
+	// trueness suggestions courtesy of Github co-pilot
+	return s == "true" || s == "1" || s == "yes" || s == "y" || s == "on" || s == "enable" || s == "enabled" || s == "active"
 }

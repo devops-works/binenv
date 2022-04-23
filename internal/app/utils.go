@@ -3,15 +3,14 @@ package app
 import (
 	"log"
 	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 
 	"github.com/mitchellh/go-homedir"
 )
 
-// GetDefaultBinDir returns the bin directory
-func GetDefaultBinDir() string {
+// getDefaultBinDir returns the bin directory in usermode
+func getDefaultBinDir() string {
 	d, err := homedir.Dir()
 	if err != nil {
 		d = "~"
@@ -21,43 +20,36 @@ func GetDefaultBinDir() string {
 	return d
 }
 
-func getConfigDir() (string, error) {
+// getDefaultConfigDir returns the config directory in usermode
+func getDefaultConfigDir() string {
 	var err error
 
 	dir := os.Getenv("XDG_CONFIG_HOME")
 	if dir == "" {
 		dir, err = homedir.Dir()
 		if err != nil {
-			return "", err
+			dir = "~"
 		}
 		dir += "/.config/binenv"
 	}
 
-	return dir, nil
+	return dir
 }
 
-func getCacheDir() (string, error) {
+// getDefaultConfigDir returns the cache directory in usermode
+func getDefaultCacheDir() string {
 	var err error
 
 	dir := os.Getenv("XDG_CACHE_HOME")
 	if dir == "" {
 		dir, err = homedir.Dir()
 		if err != nil {
-			return "", err
+			dir = "~"
 		}
 		dir += "/.cache/binenv"
 	}
 
-	return dir, nil
-}
-
-func getDistributionsFilePath() (string, error) {
-	conf, err := getConfigDir()
-	if err != nil {
-		return "", err
-	}
-
-	return filepath.Join(conf, "/distributions.yaml"), nil
+	return dir
 }
 
 func stringInSlice(st string, sl []string) bool {
