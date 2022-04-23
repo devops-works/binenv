@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export PATH=~/.binenv:$PATH
+export BINENV_GLOBAL=false
 
 set -u
 

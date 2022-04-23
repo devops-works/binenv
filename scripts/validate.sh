@@ -13,6 +13,7 @@ MODE=${1:-code}
 # Set files to use
 DISTRIBUTION=~/.config/binenv/distributions.yaml
 CACHE=~/.cache/binenv/cache.json
+export BINENV_GLOBAL=false
 
 if [ ${MODE} == "code" ]; then
     DISTRIBUTION=distributions/distributions.yaml
