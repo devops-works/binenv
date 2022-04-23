@@ -421,7 +421,7 @@ func (a *App) install(dist, version string) (string, error) {
 
 	// Install new shim version if needed
 	if dist == "binenv" {
-		a.logger.Info().Msg("executing self install")
+		a.logger.Info().Msgf("executing self install using bindir %s", a.bindir)
 		err = a.selfInstall(version)
 		if err != nil {
 			a.logger.Error().Err(err).Msg("unable to set-up myself")
@@ -830,6 +830,7 @@ func (a *App) Execute(args []string) {
 		Str("cachedir", a.cachedir).
 		Str("configdir", a.configdir).
 		Msg("directory settings")
+
 	// Check if args[0] is managed by us. If not write an error and exit. This
 	// should not happen since, if we are here, we must have used a symlink to
 	// the shim.
@@ -867,6 +868,8 @@ func (a *App) selfInstall(version string) error {
 	if a.global {
 		mode = 0755
 	}
+
+	a.logger.Debug().Msgf("creating bindir %s", a.bindir)
 	err := os.MkdirAll(a.bindir, mode)
 	if err != nil {
 		return err
@@ -883,6 +886,8 @@ func (a *App) selfInstall(version string) error {
 
 	shim := filepath.Join(a.bindir, "/shim")
 	shimnew := shim + ".new"
+
+	a.logger.Debug().Msgf("installing shim in %s", shim)
 
 	if _, err := os.Stat(shim); os.IsExist(err) {
 		shimold := shim + ".old"
@@ -1281,11 +1286,15 @@ func WithBinDir(dir string) func(*App) error {
 
 // SetBinDir sets bin directory to use
 func (a *App) SetBinDir(d string) error {
+	if d == "" {
+		return nil
+	}
+
+	a.bindir = d
+
 	a.logger.Debug().
 		Str("bindir", a.bindir).
 		Msg("setting configuration")
-
-	a.bindir = d
 
 	return nil
 }
