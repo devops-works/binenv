@@ -21,13 +21,8 @@ func RootCmd() *cobra.Command {
 	var (
 		bindir, linkdir, cachedir, confdir string
 		global, verbose                    bool
+		a                                  *app.App
 	)
-
-	a, err := app.New()
-	if err != nil {
-		fmt.Printf("got error %v\n", err)
-		panic(err)
-	}
 
 	rootCmd := &cobra.Command{
 		Use:   "binenv",
@@ -65,8 +60,12 @@ selected.`,
 				a.SetCacheDir(cachedir)
 			}
 
-			a.DumpConfig()
+			a.Init()
 
+			if err != nil {
+				fmt.Printf("got error %v\n", err)
+				panic(err)
+			}
 			return err
 		},
 		Run: func(cmd *cobra.Command, args []string) {
@@ -75,6 +74,8 @@ selected.`,
 			}
 		},
 	}
+
+	a = &app.App{}
 
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose operation [BINENV_VERBOSE]")
 	rootCmd.PersistentFlags().BoolVarP(&global, "global", "g", false, "global mode [BINENV_GLOBAL]")
