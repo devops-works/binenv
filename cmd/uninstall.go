@@ -15,14 +15,6 @@ In this case, all versions for the specified distribution will be removed (a con
 
 Multiple distribution / version pairs can be specified.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			global, _ := cmd.Flags().GetBool("global")
-			bindir, _ := cmd.Flags().GetString("bindir")
-
-			a.SetVerbose(verbose)
-			a.SetBinDir(bindir)
-			a.SetGlobal(global)
-
 			a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
