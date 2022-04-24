@@ -21,8 +21,12 @@ func RootCmd() *cobra.Command {
 	var (
 		bindir, linkdir, cachedir, confdir string
 		global, verbose                    bool
-		a                                  *app.App
 	)
+
+	a, err := app.New()
+	if err != nil {
+		panic(err)
+	}
 
 	rootCmd := &cobra.Command{
 		Use:   "binenv",
@@ -36,10 +40,19 @@ selected.`,
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			err := initializeConfig(cmd.Root())
 
+			fmt.Println("PersistentPreRunE")
 			a.SetVerbose(verbose)
+
+			// Set defaults or explicitely set directories
+			a.SetBinDir(bindir)
+			a.SetLinkDir(linkdir)
+			a.SetConfigDir(confdir)
+			a.SetCacheDir(cachedir)
+
+			// Apply dir changes for global mode
 			a.SetGlobal(global)
 
-			// if options has been changed by flag or env, we apply it
+			// If some directories have been set explicitely, overwrite them
 			// otherwise we keep preceding setting
 			if cmd.Root().PersistentFlags().Lookup("bindir").Changed {
 				a.SetBinDir(bindir)
@@ -74,8 +87,6 @@ selected.`,
 			}
 		},
 	}
-
-	a = &app.App{}
 
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose operation [BINENV_VERBOSE]")
 	rootCmd.PersistentFlags().BoolVarP(&global, "global", "g", false, "global mode [BINENV_GLOBAL]")
