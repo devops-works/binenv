@@ -9,8 +9,8 @@ import (
 	"github.com/mitchellh/go-homedir"
 )
 
-// getDefaultBinDir returns the bin directory in usermode
-func getDefaultBinDir() string {
+// GetDefaultBinDir returns the bin directory in usermode
+func GetDefaultBinDir() string {
 	d, err := homedir.Dir()
 	if err != nil {
 		d = "~"
@@ -20,8 +20,13 @@ func getDefaultBinDir() string {
 	return d
 }
 
-// getDefaultConfigDir returns the config directory in usermode
-func getDefaultConfigDir() string {
+// GetDefaultLinkDir returns the bin directory in usermode
+func GetDefaultLinkDir() string {
+	return GetDefaultBinDir()
+}
+
+// GetDefaultConfDir returns the config directory in usermode
+func GetDefaultConfDir() string {
 	var err error
 
 	dir := os.Getenv("XDG_CONFIG_HOME")
@@ -36,8 +41,8 @@ func getDefaultConfigDir() string {
 	return dir
 }
 
-// getDefaultConfigDir returns the cache directory in usermode
-func getDefaultCacheDir() string {
+// GetDefaultCacheDir returns the cache directory in usermode
+func GetDefaultCacheDir() string {
 	var err error
 
 	dir := os.Getenv("XDG_CACHE_HOME")
