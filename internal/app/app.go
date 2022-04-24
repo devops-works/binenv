@@ -78,27 +78,17 @@ var (
 	ErrAlreadyInstalled = errors.New("version already installed")
 )
 
-// New create a new app instance
-func New(o ...func(*App) error) (*App, error) {
-	bindir := GetDefaultBinDir()
-	cachedir := GetDefaultCacheDir()
-	configdir := GetDefaultConfDir()
-
-	a := &App{
-		mappers:    make(map[string]mapping.Remapper),
-		installers: make(map[string]install.Installer),
-		listers:    make(map[string]list.Lister),
-		fetchers:   make(map[string]fetch.Fetcher),
-		cache:      make(map[string][]string),
-		bindir:     bindir,
-		linkdir:    bindir,
-		cachedir:   cachedir,
-		configdir:  configdir,
-		logger: zerolog.New(zerolog.ConsoleWriter{
-			Out:        os.Stderr,
-			TimeFormat: time.RFC3339,
-		}).With().Timestamp().Logger(),
-	}
+// Init prepares App for use
+func (a *App) Init(o ...func(*App) error) (*App, error) {
+	a.mappers = make(map[string]mapping.Remapper)
+	a.installers = make(map[string]install.Installer)
+	a.listers = make(map[string]list.Lister)
+	a.fetchers = make(map[string]fetch.Fetcher)
+	a.cache = make(map[string][]string)
+	a.logger = zerolog.New(zerolog.ConsoleWriter{
+		Out:        os.Stderr,
+		TimeFormat: time.RFC3339,
+	}).With().Timestamp().Logger()
 
 	// Default to warn log level
 	a.logger = a.logger.Level(zerolog.InfoLevel)
@@ -109,6 +99,8 @@ func New(o ...func(*App) error) (*App, error) {
 			return nil, err
 		}
 	}
+
+	a.DumpConfig()
 
 	err := a.readDistributions()
 	if err != nil {
