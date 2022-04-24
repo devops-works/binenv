@@ -510,7 +510,7 @@ func (a *App) uninstall(dist, version string) error {
 		}
 	}
 
-	lnk := filepath.Join(a.bindir, dist)
+	lnk := filepath.Join(a.linkdir, dist)
 	if err = os.Remove(lnk); err != nil {
 		return err
 	}
@@ -826,12 +826,6 @@ func (a *App) CreateShimFor(dist string) error {
 // Execute runs the shim function that executes real distributions
 func (a *App) Execute(args []string) {
 	dist := filepath.Base(args[0])
-
-	a.logger.Debug().
-		Str("bindir", a.bindir).
-		Str("cachedir", a.cachedir).
-		Str("configdir", a.configdir).
-		Msg("directory settings")
 
 	// Check if args[0] is managed by us. If not write an error and exit. This
 	// should not happen since, if we are here, we must have used a symlink to
