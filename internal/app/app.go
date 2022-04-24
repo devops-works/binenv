@@ -106,7 +106,6 @@ func (a *App) Init(o ...func(*App) error) error {
 		}
 	}
 
-	fmt.Println("init")
 	a.DumpConfig()
 
 	err := a.readDistributions()
@@ -759,7 +758,7 @@ func (a *App) versions(dist string) error {
 		}
 		fmt.Printf("%s ", modifier)
 	}
-	fmt.Println()
+
 	return nil
 }
 
