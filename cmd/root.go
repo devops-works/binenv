@@ -37,7 +37,9 @@ func RootCmd() *cobra.Command {
 If your directory has a '.binenv.lock', proper versions will always be
 selected.`,
 		SilenceUsage: true,
-		Args:         cobra.ArbitraryArgs,
+		// this is required since in shim mode, we have to accept any number of
+		// arguments
+		Args: cobra.ArbitraryArgs,
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			err := initializeConfig(cmd.Root())
 
