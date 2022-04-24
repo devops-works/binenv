@@ -28,6 +28,9 @@ To run in global mode, you can either install from [scratch](#installation), or
 Note that operations that mutate state (i.e. `install`, `uninstall`, `update`,
 `upgrade`) will have to be executed as `root`.
 
+Note that it is recommended to set `BINENV_GLOBAL=true` if you intend to
+use mostly system-wide mode (see [Caveat](#caveat)).
+
 ## Installation
 
 Note: instructions for BSD systems have not been tested.
@@ -122,6 +125,16 @@ binenv -g install binenv
 ```
 
 - adjust path in your rcfiles according to your preferences
+
+## Caveat
+
+To use system-wide installed binaries, you have to set the `BINENV_GLOBAL=true`
+environment variable.
+
+This is required since binenv shim will look in default, user-related paths if
+this is not set.
+
+## FAQ
 
 ### Why do I have to use `-g` ? Can't binenv autodetect global mode ?
 
