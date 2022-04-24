@@ -43,7 +43,7 @@ wget -q https://github.com/devops-works/binenv/releases/latest/download/checksum
 sha256sum  --check --ignore-missing checksums.txt
 chmod +x ./binenv_linux_amd64
 sudo ./binenv_linux_amd64 -g update
-sudo ./binenv_linux_amd64 -g install binenv 0.19.0-rc6
+sudo ./binenv_linux_amd64 -g install binenv 0.19.0-rc8
 rm ./binenv_linux_amd64 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
