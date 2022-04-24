@@ -758,7 +758,7 @@ func (a *App) versions(dist string) error {
 		}
 		fmt.Printf("%s ", modifier)
 	}
-
+	fmt.Println()
 	return nil
 }
 
