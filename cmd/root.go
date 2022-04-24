@@ -40,7 +40,6 @@ selected.`,
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			err := initializeConfig(cmd.Root())
 
-			fmt.Println("PersistentPreRunE")
 			a.SetVerbose(verbose)
 
 			// Set defaults or explicitely set directories
