@@ -26,15 +26,16 @@ The last binary you'll ever install.
       - [Freezing versions](#freezing-versions)
     - [Uninstalling versions](#uninstalling-versions)
       - [Examples](#examples-3)
-    - [Upgrading all installed distributions](#upgrading-all-installed-distributions)
     - [Completion](#completion)
     - [Expanding binary absolute path](#expanding-binary-absolute-path)
+      - [Example](#example)
+    - [Upgrading all installed distributions](#upgrading-all-installed-distributions)
   - [Selecting versions](#selecting-versions)
     - [Version selection process](#version-selection-process)
     - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
-      - [Example](#example)
+      - [Example](#example-1)
   - [Selecting versions using environment variables](#selecting-versions-using-environment-variables)
-    - [Example](#example-1)
+    - [Example](#example-2)
   - [Removing binenv stuff](#removing-binenv-stuff)
   - [Status](#status)
   - [FAQ](#faq)
@@ -65,8 +66,8 @@ typing `binenv install something`.
 ### Linux (bash/zsh)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_linux_amd64
-wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+wget -q https://github.com/devops-works/binenv/releases/download/v0.18.0/binenv_linux_amd64
+wget -q https://github.com/devops-works/binenv/releases/download/v0.18.0/checksums.txt
 sha256sum  --check --ignore-missing checksums.txt
 mv binenv_linux_amd64 binenv
 chmod +x binenv
@@ -84,8 +85,8 @@ exec $SHELL
 ### MacOS (with bash)
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64
-wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+wget -q https://github.com/devops-works/binenv/releases/download/v0.18.0/binenv_darwin_amd64
+wget -q https://github.com/devops-works/binenv/releases/download/v0.18.0/checksums.txt
 sha256sum  --check --ignore-missing checksums.txt
 mv binenv_darwin_amd64 binenv
 chmod +x binenv
@@ -104,8 +105,8 @@ binenv does not support windows.
 ### FreeBSD (bash/zsh)
 
 ```
-fetch https://github.com/devops-works/binenv/releases/latest/download/binenv_freebsd_amd64
-fetch https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+fetch https://github.com/devops-works/binenv/releases/download/v0.18.0/binenv_freebsd_amd64
+fetch https://github.com/devops-works/binenv/releases/download/v0.18.0/checksums.txt
 shasum --ignore-missing -a 512 -c checksums.txt
 mv binenv_freebsd_amd64 binenv
 chmod +x binenv
@@ -127,8 +128,8 @@ To be able to verify checksums, you have to install the `p5-Digest-SHA` package.
 ### OpenBSD (bash/zsh)
 
 ```
-ftp https://github.com/devops-works/binenv/releases/latest/download/binenv_openbsd_amd64
-ftp https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
+ftp https://github.com/devops-works/binenv/releases/download/v0.18.0/binenv_openbsd_amd64
+ftp https://github.com/devops-works/binenv/releases/download/v0.18.0/checksums.txt
 cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
 mv binenv_openbsd_amd64 binenv
 chmod +x binenv
@@ -151,7 +152,7 @@ If you are using a different shell, skip adding completion to your `.${SHELL}rc`
 http://github.com/devops-works/binenv/releases.
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv-<OS>-<ARCH>
+wget -q https://github.com/devops-works/binenv/releases/download/v0.18.0/binenv-<OS>-<ARCH>
 ```
 
 - rename it
