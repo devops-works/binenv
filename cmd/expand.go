@@ -12,9 +12,6 @@ func expandCmd(a *app.App) *cobra.Command {
 		Long:  `Return full installed distribution binary path.`,
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			a.SetVerbose(verbose)
-
 			a.SetFlag("justExpand", true)
 			a.Execute(args)
 			return nil

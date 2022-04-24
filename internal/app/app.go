@@ -55,6 +55,7 @@ type App struct {
 	concurrency int
 
 	bindir    string
+	linkdir   string
 	cachedir  string
 	configdir string
 
@@ -79,9 +80,9 @@ var (
 
 // New create a new app instance
 func New(o ...func(*App) error) (*App, error) {
-	bindir := getDefaultBinDir()
-	cachedir := getDefaultCacheDir()
-	configdir := getDefaultConfigDir()
+	bindir := GetDefaultBinDir()
+	cachedir := GetDefaultCacheDir()
+	configdir := GetDefaultConfDir()
 
 	a := &App{
 		mappers:    make(map[string]mapping.Remapper),
@@ -90,6 +91,7 @@ func New(o ...func(*App) error) (*App, error) {
 		fetchers:   make(map[string]fetch.Fetcher),
 		cache:      make(map[string][]string),
 		bindir:     bindir,
+		linkdir:    bindir,
 		cachedir:   cachedir,
 		configdir:  configdir,
 		logger: zerolog.New(zerolog.ConsoleWriter{
@@ -811,7 +813,7 @@ func (a *App) CreateShimFor(dist string) error {
 		return fmt.Errorf("unable to find shim file: %w", err)
 	}
 
-	lnk := filepath.Join(a.bindir, dist)
+	lnk := filepath.Join(a.linkdir, dist)
 	if _, err := os.Stat(lnk); os.IsNotExist(err) {
 		err := os.Symlink(shim, lnk)
 		if err != nil {
@@ -979,6 +981,7 @@ func (a *App) fetchDistributions(conf string) error {
 }
 
 func (a *App) getBinDirFor(dist string) string {
+	a.logger.Debug().Msgf("finding binaries for %s in %s", dist, filepath.Join(a.bindir, "binaries/", dist))
 	return filepath.Join(a.bindir, "binaries/", dist)
 }
 
@@ -1277,33 +1280,65 @@ func (a *App) setLogOutput(w io.Writer) error {
 	return nil
 }
 
-// WithBinDir sets the binaries directory
-func WithBinDir(dir string) func(*App) error {
-	return func(a *App) error {
-		return a.SetBinDir(dir)
-	}
-}
-
-// SetBinDir sets bin directory to use
+// SetBinDir sets bin directory to use the first non-empty argument
 func (a *App) SetBinDir(d string) error {
-	if d == "" {
+	if d != "" {
+		a.bindir = d
+		a.logger.Debug().
+			Str("bindir", a.bindir).
+			Msg("setting configuration")
 		return nil
 	}
 
-	a.bindir = d
-
-	a.logger.Debug().
-		Str("bindir", a.bindir).
-		Msg("setting configuration")
-
-	return nil
+	err := fmt.Errorf("internal error: no bindir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
 }
 
-// WithLogLevel sets the binaries directory
-func WithLogLevel(l string) func(*App) error {
-	return func(a *App) error {
-		return a.SetLogLevel(l)
+// SetLinkDir sets link directory to use
+func (a *App) SetLinkDir(d string) error {
+	if d != "" {
+		a.linkdir = d
+		a.logger.Debug().
+			Str("linkdir", a.linkdir).
+			Msg("setting configuration")
+		return nil
 	}
+
+	err := fmt.Errorf("internal error: no linkdir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
+}
+
+// SetCacheDir sets cache directory to use
+func (a *App) SetCacheDir(d string) error {
+	if d != "" {
+		a.cachedir = d
+		a.logger.Debug().
+			Str("cachedir", a.cachedir).
+			Msg("setting configuration")
+		return nil
+
+	}
+
+	err := fmt.Errorf("internal error: no cachedir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
+}
+
+// SetConfigDir sets config directory to use
+func (a *App) SetConfigDir(d string) error {
+	if d != "" {
+		a.configdir = d
+		a.logger.Debug().
+			Str("configdir", a.configdir).
+			Msg("setting configuration")
+		return nil
+	}
+
+	err := fmt.Errorf("internal error: no configdir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
 }
 
 // SetLogLevel sets the log level to use
@@ -1341,18 +1376,23 @@ func (a *App) SetGlobal(g bool) {
 	if !g {
 		return
 	}
-	a.bindir = "/opt/binenv"
-	a.cachedir = "/opt/binenv/cache"
-	a.configdir = "/opt/binenv/config"
+	a.bindir = "/var/lib/binenv"
+	a.cachedir = "/var/cache/binenv"
+	a.configdir = "/var/lib/binenv/config"
+	a.linkdir = "/usr/local/bin"
 	a.global = true
 
+	a.loadCache()
+}
+
+// DumpConfig dumps the configuration to stdout
+func (a *App) DumpConfig() {
 	a.logger.Debug().
 		Str("bindir", a.bindir).
+		Str("linkdir", a.bindir).
 		Str("cachedir", a.cachedir).
 		Str("configdir", a.configdir).
-		Msg("setting global mode configuration")
-
-	a.loadCache()
+		Msg("final configuration")
 }
 
 // initializeFlags sets flags holder
