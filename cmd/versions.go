@@ -22,14 +22,6 @@ The --freeze (-f) argument will output a list of currently selected distribution
 
 Use 'binenv update' to update the list of available versions.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			global, _ := cmd.Flags().GetBool("global")
-			bindir, _ := cmd.Flags().GetString("bindir")
-
-			a.SetVerbose(verbose)
-			a.SetBinDir(bindir)
-			a.SetGlobal(global)
-
 			freeze, _ := cmd.Flags().GetBool("freeze")
 			a.Versions(freeze, args...)
 		},
