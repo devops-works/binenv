@@ -78,28 +78,35 @@ var (
 	ErrAlreadyInstalled = errors.New("version already installed")
 )
 
-// Init prepares App for use
-func (a *App) Init(o ...func(*App) error) (*App, error) {
-	a.mappers = make(map[string]mapping.Remapper)
-	a.installers = make(map[string]install.Installer)
-	a.listers = make(map[string]list.Lister)
-	a.fetchers = make(map[string]fetch.Fetcher)
-	a.cache = make(map[string][]string)
-	a.logger = zerolog.New(zerolog.ConsoleWriter{
-		Out:        os.Stderr,
-		TimeFormat: time.RFC3339,
-	}).With().Timestamp().Logger()
+// New creates a new App
+func New() (*App, error) {
+	a := &App{
+		mappers:    make(map[string]mapping.Remapper),
+		installers: make(map[string]install.Installer),
+		listers:    make(map[string]list.Lister),
+		fetchers:   make(map[string]fetch.Fetcher),
+		cache:      make(map[string][]string),
+		logger: zerolog.New(zerolog.ConsoleWriter{
+			Out:        os.Stderr,
+			TimeFormat: time.RFC3339,
+		}).With().Timestamp().Logger(),
+	}
 
 	// Default to warn log level
 	a.logger = a.logger.Level(zerolog.InfoLevel)
+	return a, nil
+}
 
+// Init prepares App for use
+func (a *App) Init(o ...func(*App) error) error {
 	// Apply functional options
 	for _, f := range o {
 		if err := f(a); err != nil {
-			return nil, err
+			return err
 		}
 	}
 
+	fmt.Println("init")
 	a.DumpConfig()
 
 	err := a.readDistributions()
@@ -116,7 +123,7 @@ func (a *App) Init(o ...func(*App) error) (*App, error) {
 	a.createInstallers()
 
 	a.initializeFlags()
-	return a, nil
+	return nil
 }
 
 // Search show a list returns a list of packages contains string
