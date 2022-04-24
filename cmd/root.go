@@ -100,19 +100,6 @@ selected.`,
 	return rootCmd
 }
 
-func truthify(s string) bool {
-	s = strings.ToLower(s)
-	// trueness suggestions courtesy of Github co-pilot
-	return s == "true" || s == "1" || s == "yes" || s == "y" || s == "on" || s == "enable" || s == "enabled" || s == "active"
-}
-
-// func envOrDefault(k, def string) string {
-// 	if v := os.Getenv(k); v != "" {
-// 		return v
-// 	}
-// 	return def
-// }
-
 func initializeConfig(cmd *cobra.Command) error {
 	v := viper.New()
 
