@@ -14,14 +14,6 @@ func upgradeCmd(a *app.App) *cobra.Command {
 		Short: "Upgrade all installed distributions",
 		Long:  `Upgrade all installed distributions to the last version available on cache.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			global, _ := cmd.Flags().GetBool("global")
-			bindir, _ := cmd.Flags().GetString("bindir")
-
-			a.SetVerbose(verbose)
-			a.SetBinDir(bindir)
-			a.SetGlobal(global)
-
 			a.Upgrade(ignoreInstallErrors)
 		},
 	}
