@@ -36,10 +36,8 @@ func RootCmd() *cobra.Command {
 		
 If your directory has a '.binenv.lock', proper versions will always be
 selected.`,
-		SilenceUsage: true,
 		// this is required since in shim mode, we have to accept any number of
 		// arguments
-		Args: cobra.ArbitraryArgs,
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			err := initializeConfig(cmd.Root())
 
@@ -119,6 +117,14 @@ selected.`,
 	rootCmd.PersistentFlags().StringVarP(&linkdir, "linkdir", "L", dlink, "link directory [BINENV_LINKDIR]")
 	rootCmd.PersistentFlags().StringVarP(&cachedir, "cachedir", "K", dcache, "cache directory [BINENV_CACHEDIR]")
 	rootCmd.PersistentFlags().StringVarP(&confdir, "confdir", "C", dconf, "distributions configuration directory [BINENV_CONFDIR]")
+
+	// disable flag parsing if we're called as a shim
+	if !strings.HasSuffix(os.Args[0], "binenv") {
+		rootCmd.DisableFlagParsing = true
+		rootCmd.Args = cobra.ArbitraryArgs
+		rootCmd.SilenceUsage = true
+
+	}
 
 	rootCmd.AddCommand(
 		completionCmd(),
