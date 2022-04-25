@@ -90,13 +90,35 @@ selected.`,
 		},
 	}
 
+	// If we can not guess those directories, we have to bailout
+	dbin, err := app.GetDefaultBinDir()
+	if err != nil {
+		err = fmt.Errorf("unable to guess binaries directory: %v", err)
+		panic(err)
+	}
+	dlink, err := app.GetDefaultLinkDir()
+	if err != nil {
+		err = fmt.Errorf("unable to guess link directory: %v", err)
+		panic(err)
+	}
+	dcache, err := app.GetDefaultCacheDir()
+	if err != nil {
+		err = fmt.Errorf("unable to guess cache directory: %v", err)
+		panic(err)
+	}
+	dconf, err := app.GetDefaultConfDir()
+	if err != nil {
+		err = fmt.Errorf("unable to guess conf directory: %v", err)
+		panic(err)
+	}
+
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "verbose operation [BINENV_VERBOSE]")
 	rootCmd.PersistentFlags().BoolVarP(&global, "global", "g", false, "global mode [BINENV_GLOBAL]")
 
-	rootCmd.PersistentFlags().StringVarP(&bindir, "bindir", "B", app.GetDefaultBinDir(), "binaries directory [BINENV_BINDIR]")
-	rootCmd.PersistentFlags().StringVarP(&linkdir, "linkdir", "L", app.GetDefaultLinkDir(), "link directory [BINENV_LINKDIR]")
-	rootCmd.PersistentFlags().StringVarP(&cachedir, "cachedir", "K", app.GetDefaultCacheDir(), "cache directory [BINENV_CACHEDIR]")
-	rootCmd.PersistentFlags().StringVarP(&confdir, "confdir", "C", app.GetDefaultConfDir(), "distributions configuration directory [BINENV_CONFDIR]")
+	rootCmd.PersistentFlags().StringVarP(&bindir, "bindir", "B", dbin, "binaries directory [BINENV_BINDIR]")
+	rootCmd.PersistentFlags().StringVarP(&linkdir, "linkdir", "L", dlink, "link directory [BINENV_LINKDIR]")
+	rootCmd.PersistentFlags().StringVarP(&cachedir, "cachedir", "K", dcache, "cache directory [BINENV_CACHEDIR]")
+	rootCmd.PersistentFlags().StringVarP(&confdir, "confdir", "C", dconf, "distributions configuration directory [BINENV_CONFDIR]")
 
 	rootCmd.AddCommand(
 		completionCmd(),
