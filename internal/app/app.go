@@ -37,8 +37,14 @@ import (
 // Cache is fetched from develop
 // Since master is always behind (or at) develop, it ensures we always have
 // cache for listed entries
-const distributionsURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
-const cacheURL string = "https://raw.githubusercontent.com/devops-works/binenv/develop/distributions/cache.json"
+const (
+	distributionsURL = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
+	cacheURL         = "https://raw.githubusercontent.com/devops-works/binenv/develop/distributions/cache.json"
+	globalBindir     = "/var/lib/binenv"
+	globalCachedir   = "/var/cache/binenv"
+	globalConfigdir  = "/var/lib/binenv/config"
+	globalLinkdir    = "/usr/local/bin"
+)
 
 // App implements the core logic
 type App struct {
@@ -1368,10 +1374,10 @@ func (a *App) SetGlobal(g bool) {
 	if !g {
 		return
 	}
-	a.bindir = "/var/lib/binenv"
-	a.cachedir = "/var/cache/binenv"
-	a.configdir = "/var/lib/binenv/config"
-	a.linkdir = "/usr/local/bin"
+	a.bindir = globalBindir
+	a.cachedir = globalCachedir
+	a.configdir = globalConfigdir
+	a.linkdir = globalLinkdir
 	a.global = true
 
 	a.loadCache()
