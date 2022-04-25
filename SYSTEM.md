@@ -43,7 +43,7 @@ wget -q https://github.com/devops-works/binenv/releases/latest/download/checksum
 sha256sum  --check --ignore-missing checksums.txt
 chmod +x ./binenv_linux_amd64
 sudo ./binenv_linux_amd64 -g update
-sudo ./binenv_linux_amd64 -g install binenv 0.19.0-rc8
+sudo ./binenv_linux_amd64 -g install binenv 0.19.0-rc9
 rm ./binenv_linux_amd64 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -60,7 +60,7 @@ wget -q https://github.com/devops-works/binenv/releases/latest/download/checksum
 sha256sum  --check --ignore-missing checksums.txt
 chmod +x binenv_darwin_amd64
 sudo ./binenv_darwin_amd64 -g update
-sudo ./binenv_darwin_amd64 -g install binenv 0.19.0-rc4
+sudo ./binenv_darwin_amd64 -g install binenv 0.19.0-rc9
 rm ./binenv_darwin_amd64 
 echo 'source <(binenv completion bash)' >> ~/.bashrc
 exec $SHELL
@@ -78,7 +78,7 @@ fetch https://github.com/devops-works/binenv/releases/latest/download/checksums.
 shasum --ignore-missing -a 512 -c checksums.txt
 chmod +x binenv_freebsd_amd64
 sudo ./binenv_freebsd_amd64 -g update
-sudo ./binenv_freebsd_amd64 -g install binenv 0.19.0-rc4
+sudo ./binenv_freebsd_amd64 -g install binenv 0.19.0-rc9
 rm ./binenv_freebsd_amd64 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -99,7 +99,7 @@ ftp https://github.com/devops-works/binenv/releases/latest/download/checksums.tx
 cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
 chmod +x binenv_openbsd_amd64
 sudo ./binenv_openbsd_amd64 -g update
-sudo ./binenv_openbsd_amd64 -g install binenv 0.19.0-rc4
+sudo ./binenv_openbsd_amd64 -g install binenv 0.19.0-rc9
 rm ./binenv_openbsd_amd64 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
