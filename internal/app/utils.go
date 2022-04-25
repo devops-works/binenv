@@ -10,51 +10,51 @@ import (
 )
 
 // GetDefaultBinDir returns the bin directory in usermode
-func GetDefaultBinDir() string {
+func GetDefaultBinDir() (string, error) {
 	d, err := homedir.Dir()
 	if err != nil {
-		d = "~"
+		return "", err
 	}
 	d += "/.binenv/"
 
-	return d
+	return d, nil
 }
 
 // GetDefaultLinkDir returns the bin directory in usermode
-func GetDefaultLinkDir() string {
+func GetDefaultLinkDir() (string, error) {
 	return GetDefaultBinDir()
 }
 
 // GetDefaultConfDir returns the config directory in usermode
-func GetDefaultConfDir() string {
+func GetDefaultConfDir() (string, error) {
 	var err error
 
-	dir := os.Getenv("XDG_CONFIG_HOME")
-	if dir == "" {
-		dir, err = homedir.Dir()
+	d := os.Getenv("XDG_CONFIG_HOME")
+	if d == "" {
+		d, err = homedir.Dir()
 		if err != nil {
-			dir = "~"
+			return "", err
 		}
-		dir += "/.config/binenv"
+		d += "/.config/binenv"
 	}
 
-	return dir
+	return d, nil
 }
 
 // GetDefaultCacheDir returns the cache directory in usermode
-func GetDefaultCacheDir() string {
+func GetDefaultCacheDir() (string, error) {
 	var err error
 
-	dir := os.Getenv("XDG_CACHE_HOME")
-	if dir == "" {
-		dir, err = homedir.Dir()
+	d := os.Getenv("XDG_CACHE_HOME")
+	if d == "" {
+		d, err = homedir.Dir()
 		if err != nil {
-			dir = "~"
+			return "", err
 		}
-		dir += "/.cache/binenv"
+		d += "/.cache/binenv"
 	}
 
-	return dir
+	return d, nil
 }
 
 func stringInSlice(st string, sl []string) bool {
