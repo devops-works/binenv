@@ -15,14 +15,6 @@ func installCmd(a *app.App) *cobra.Command {
 		Long: `This command will install one or several distributions with the specified versions. 
 If --lock is used, versions from the .binenv.lock file in the current directory will be installed.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			// verbose, _ := cmd.Flags().GetBool("verbose")
-			// global, _ := cmd.Flags().GetBool("global")
-			// bindir, _ := cmd.Flags().GetString("bindir")
-
-			// a.SetVerbose(verbose)
-			// a.SetBinDir(bindir)
-			// a.SetGlobal(global)
-
 			a.SetDryRun(dryrun)
 
 			if fromlock {
