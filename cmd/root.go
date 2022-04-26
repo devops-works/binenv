@@ -40,6 +40,9 @@ selected.`,
 		// arguments
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			err := initializeConfig(cmd.Root())
+			if err != nil {
+				return err
+			}
 
 			a.SetVerbose(verbose)
 
@@ -75,11 +78,16 @@ selected.`,
 
 			a.Init()
 
-			if err != nil {
-				fmt.Printf("got error %v\n", err)
-				panic(err)
+			// short circuit ShellCompNoDescRequestCmd handling
+			// for binaries completion completion handling
+			if cmd.CalledAs() == cobra.ShellCompNoDescRequestCmd {
+				// we do not want the internal (cobra-generated)
+				// __completeNoDesc to be called since this would prevent
+				// shimmed binary to return its own completions
+				a.Execute(os.Args)
 			}
-			return err
+
+			return nil
 		},
 		Run: func(cmd *cobra.Command, args []string) {
 			if !strings.HasSuffix(os.Args[0], "binenv") {
@@ -123,7 +131,10 @@ selected.`,
 		rootCmd.DisableFlagParsing = true
 		rootCmd.Args = cobra.ArbitraryArgs
 		rootCmd.SilenceUsage = true
+		rootCmd.CompletionOptions.DisableDefaultCmd = true
 
+		// no need to add commands
+		return rootCmd
 	}
 
 	rootCmd.AddCommand(
