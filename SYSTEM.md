@@ -41,10 +41,11 @@ Note: instructions for BSD systems have not been tested.
 wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_linux_amd64
 wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
 sha256sum  --check --ignore-missing checksums.txt
-chmod +x ./binenv_linux_amd64
-sudo ./binenv_linux_amd64 -g update
-sudo ./binenv_linux_amd64 -g install binenv 0.19.0-rc10
-rm ./binenv_linux_amd64 
+mv binenv_linux_amd64 binenv
+chmod +x ./binenv
+sudo ./binenv -g update
+sudo ./binenv -g install binenv 0.19.0-rc11
+rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
 echo $ZESHELL
@@ -58,10 +59,11 @@ exec $SHELL
 wget -q https://github.com/devops-works/binenv/releases/latest/download/binenv_darwin_amd64
 wget -q https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
 sha256sum  --check --ignore-missing checksums.txt
-chmod +x binenv_darwin_amd64
-sudo ./binenv_darwin_amd64 -g update
-sudo ./binenv_darwin_amd64 -g install binenv 0.19.0-rc10
-rm ./binenv_darwin_amd64 
+mv binenv_darwin_amd64 binenv
+chmod +x binenv
+sudo ./binenv -g update
+sudo ./binenv -g install binenv 0.19.0-rc11
+rm ./binenv 
 echo 'source <(binenv completion bash)' >> ~/.bashrc
 exec $SHELL
 ```
@@ -76,10 +78,11 @@ binenv does not support windows.
 fetch https://github.com/devops-works/binenv/releases/latest/download/binenv_freebsd_amd64
 fetch https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
 shasum --ignore-missing -a 512 -c checksums.txt
-chmod +x binenv_freebsd_amd64
-sudo ./binenv_freebsd_amd64 -g update
-sudo ./binenv_freebsd_amd64 -g install binenv 0.19.0-rc10
-rm ./binenv_freebsd_amd64 
+mv binenv_freebsd_amd64 binenv
+chmod +x binenv
+sudo ./binenv -g update
+sudo ./binenv -g install binenv 0.19.0-rc11
+rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
 echo $ZESHELL
@@ -97,10 +100,11 @@ To be able to verify checksums, you have to install the `p5-Digest-SHA` package.
 ftp https://github.com/devops-works/binenv/releases/latest/download/binenv_openbsd_amd64
 ftp https://github.com/devops-works/binenv/releases/latest/download/checksums.txt
 cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
-chmod +x binenv_openbsd_amd64
-sudo ./binenv_openbsd_amd64 -g update
-sudo ./binenv_openbsd_amd64 -g install binenv 0.19.0-rc10
-rm ./binenv_openbsd_amd64 
+mv binenv_openbsd_amd64 binenv
+chmod +x binenv
+sudo ./binenv -g update
+sudo ./binenv -g install binenv 0.19.0-rc11
+rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
 echo $ZESHELL
