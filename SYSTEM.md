@@ -28,8 +28,8 @@ To run in global mode, you can either install from [scratch](#installation), or
 Note that operations that mutate state (i.e. `install`, `uninstall`, `update`,
 `upgrade`) will have to be executed as `root`.
 
-Note that it is recommended to set `BINENV_GLOBAL=true` if you intend to
-use mostly system-wide mode (see [Caveat](#caveat)).
+**Note that it is mandatory to set `BINENV_GLOBAL=true` to use binaries
+installed in system-wide mode (see [Caveat](#caveat)).**
 
 ## Installation
 
@@ -44,7 +44,7 @@ sha256sum  --check --ignore-missing checksums.txt
 mv binenv_linux_amd64 binenv
 chmod +x ./binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0-rc11
+sudo ./binenv -g install binenv 0.19.0
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -62,7 +62,7 @@ sha256sum  --check --ignore-missing checksums.txt
 mv binenv_darwin_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0-rc11
+sudo ./binenv -g install binenv 0.19.0
 rm ./binenv 
 echo 'source <(binenv completion bash)' >> ~/.bashrc
 exec $SHELL
@@ -81,7 +81,7 @@ shasum --ignore-missing -a 512 -c checksums.txt
 mv binenv_freebsd_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0-rc11
+sudo ./binenv -g install binenv 0.19.0
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -103,7 +103,7 @@ cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
 mv binenv_openbsd_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0-rc11
+sudo ./binenv -g install binenv 0.19.0
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -135,8 +135,8 @@ binenv -g install binenv 0.19.0-rc4
 To use system-wide installed binaries, you have to set the `BINENV_GLOBAL=true`
 environment variable.
 
-This is required since binenv shim will look in default, user-related paths if
-this is not set.
+This is required since binenv shim will look in user paths by default if this
+is not set.
 
 ## FAQ
 
