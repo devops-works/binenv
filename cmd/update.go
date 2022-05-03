@@ -18,8 +18,6 @@ func updateCmd(a *app.App) *cobra.Command {
 		Long: `Available versions listed distribution will be updated.
 If not distribution is specified, versions for all distributions will be updated.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			a.SetVerbose(verbose)
 			a.SetConcurrency(concurrency)
 
 			if len(args) >= 1 {

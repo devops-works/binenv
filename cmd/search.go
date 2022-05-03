@@ -18,9 +18,6 @@ func searchCmd(a *app.App) *cobra.Command {
 		Short: "Search term in software distributions",
 		Long:  `Search a term in distribution names or descriptions.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			a.SetVerbose(verbose)
-
 			switch {
 			case len(args) > 1:
 				return fmt.Errorf("command requires a single argument")

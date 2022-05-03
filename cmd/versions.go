@@ -7,7 +7,6 @@ import (
 
 // versionsCmd lists installable versions as seen from cache
 func versionsCmd(a *app.App) *cobra.Command {
-	var bindir string
 	var freeze bool
 
 	cmd := &cobra.Command{
@@ -23,11 +22,7 @@ The --freeze (-f) argument will output a list of currently selected distribution
 
 Use 'binenv update' to update the list of available versions.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			verbose, _ := cmd.Flags().GetBool("verbose")
 			freeze, _ := cmd.Flags().GetBool("freeze")
-
-			a.SetVerbose(verbose)
-			a.SetBinDir(bindir)
 			a.Versions(freeze, args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
@@ -35,7 +30,6 @@ Use 'binenv update' to update the list of available versions.`,
 		},
 	}
 
-	cmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
 	cmd.Flags().BoolVarP(&freeze, "freeze", "f", false, "Write a .binenv.lock file to stdout containing currently selected versions")
 
 	return cmd

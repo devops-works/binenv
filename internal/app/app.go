@@ -37,8 +37,14 @@ import (
 // Cache is fetched from develop
 // Since master is always behind (or at) develop, it ensures we always have
 // cache for listed entries
-const distributionsURL string = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
-const cacheURL string = "https://raw.githubusercontent.com/devops-works/binenv/develop/distributions/cache.json"
+const (
+	distributionsURL = "https://raw.githubusercontent.com/devops-works/binenv/master/distributions/distributions.yaml"
+	cacheURL         = "https://raw.githubusercontent.com/devops-works/binenv/develop/distributions/cache.json"
+	globalBindir     = "/var/lib/binenv"
+	globalCachedir   = "/var/cache/binenv"
+	globalConfigdir  = "/var/lib/binenv/config"
+	globalLinkdir    = "/usr/local/bin"
+)
 
 // App implements the core logic
 type App struct {
@@ -51,9 +57,14 @@ type App struct {
 	flags      flags
 
 	dryrun      bool
+	global      bool
 	concurrency int
 
-	bindir string
+	bindir    string
+	linkdir   string
+	cachedir  string
+	configdir string
+
 	logger zerolog.Logger
 }
 
@@ -73,21 +84,14 @@ var (
 	ErrAlreadyInstalled = errors.New("version already installed")
 )
 
-// New create a new app instance
-func New(o ...func(*App) error) (*App, error) {
-	d, err := homedir.Dir()
-	if err != nil {
-		d = "~"
-	}
-	d = filepath.Join(d, "/.binenv/")
-
+// New creates a new App
+func New() (*App, error) {
 	a := &App{
 		mappers:    make(map[string]mapping.Remapper),
 		installers: make(map[string]install.Installer),
 		listers:    make(map[string]list.Lister),
 		fetchers:   make(map[string]fetch.Fetcher),
 		cache:      make(map[string][]string),
-		bindir:     d,
 		logger: zerolog.New(zerolog.ConsoleWriter{
 			Out:        os.Stderr,
 			TimeFormat: time.RFC3339,
@@ -96,15 +100,21 @@ func New(o ...func(*App) error) (*App, error) {
 
 	// Default to warn log level
 	a.logger = a.logger.Level(zerolog.InfoLevel)
+	return a, nil
+}
 
+// Init prepares App for use
+func (a *App) Init(o ...func(*App) error) error {
 	// Apply functional options
 	for _, f := range o {
 		if err := f(a); err != nil {
-			return nil, err
+			return err
 		}
 	}
 
-	err = a.readDistributions()
+	a.DumpConfig()
+
+	err := a.readDistributions()
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read distributions")
 		os.Exit(1)
@@ -118,7 +128,7 @@ func New(o ...func(*App) error) (*App, error) {
 	a.createInstallers()
 
 	a.initializeFlags()
-	return a, nil
+	return nil
 }
 
 // Search show a list returns a list of packages contains string
@@ -384,7 +394,11 @@ func (a *App) install(dist, version string) (string, error) {
 
 	// Create destination directory
 	if _, err := os.Stat(a.getBinDirFor(dist)); os.IsNotExist(err) {
-		err := os.MkdirAll(a.getBinDirFor(dist), 0750)
+		var mode os.FileMode = 0750
+		if a.global {
+			mode = 0755
+		}
+		err := os.MkdirAll(a.getBinDirFor(dist), mode)
 		if err != nil {
 			return version, err
 		}
@@ -413,7 +427,7 @@ func (a *App) install(dist, version string) (string, error) {
 
 	// Install new shim version if needed
 	if dist == "binenv" {
-		a.logger.Info().Msg("executing self install")
+		a.logger.Info().Msgf("executing self install using bindir %s", a.bindir)
 		err = a.selfInstall(version)
 		if err != nil {
 			a.logger.Error().Err(err).Msg("unable to set-up myself")
@@ -500,7 +514,7 @@ func (a *App) uninstall(dist, version string) error {
 		}
 	}
 
-	lnk := filepath.Join(a.bindir, dist)
+	lnk := filepath.Join(a.linkdir, dist)
 	if err = os.Remove(lnk); err != nil {
 		return err
 	}
@@ -521,12 +535,8 @@ func (a *App) Local(distribution, version string) error {
 // Update fetches catalog of applications and updates available versions
 func (a *App) Update(definitions, all bool, nocache bool, which ...string) error {
 	if definitions || all {
-		conf, err := getDistributionsFilePath()
-		if err != nil {
-			a.logger.Error().Err(err).Msg("unable to find distributions")
-			os.Exit(1)
-		}
-		err = a.fetchDistributions(conf)
+		conf := filepath.Join(a.configdir, "/distributions.yaml")
+		err := a.fetchDistributions(conf)
 		if err != nil {
 			a.logger.Error().Err(err).Msgf("unable to fetch distributions: %v", err)
 			os.Exit(1)
@@ -807,7 +817,7 @@ func (a *App) CreateShimFor(dist string) error {
 		return fmt.Errorf("unable to find shim file: %w", err)
 	}
 
-	lnk := filepath.Join(a.bindir, dist)
+	lnk := filepath.Join(a.linkdir, dist)
 	if _, err := os.Stat(lnk); os.IsNotExist(err) {
 		err := os.Symlink(shim, lnk)
 		if err != nil {
@@ -826,7 +836,7 @@ func (a *App) Execute(args []string) {
 	// the shim.
 	versions := a.GetInstalledVersionsFor(dist)
 	if len(versions) == 0 {
-		a.logger.Error().Msgf("no versions found for distribution %q. Something is really odd.", os.Args[0])
+		a.logger.Error().Msgf("no versions found for distribution %q (from %s). Something is really odd.", dist, os.Args[0])
 	}
 
 	// Check version to use, going up to home directory if needeed and
@@ -854,7 +864,13 @@ func (a *App) Execute(args []string) {
 }
 
 func (a *App) selfInstall(version string) error {
-	err := os.MkdirAll(a.bindir, 0750)
+	var mode os.FileMode = 0750
+	if a.global {
+		mode = 0755
+	}
+
+	a.logger.Debug().Msgf("creating bindir %s", a.bindir)
+	err := os.MkdirAll(a.bindir, mode)
 	if err != nil {
 		return err
 	}
@@ -871,6 +887,8 @@ func (a *App) selfInstall(version string) error {
 	shim := filepath.Join(a.bindir, "/shim")
 	shimnew := shim + ".new"
 
+	a.logger.Debug().Msgf("installing shim in %s", shim)
+
 	if _, err := os.Stat(shim); os.IsExist(err) {
 		shimold := shim + ".old"
 		rerr := os.Rename(shim, shimold)
@@ -879,7 +897,7 @@ func (a *App) selfInstall(version string) error {
 		}
 	}
 
-	to, err := os.OpenFile(shimnew, os.O_RDWR|os.O_CREATE, 0750)
+	to, err := os.OpenFile(shimnew, os.O_RDWR|os.O_CREATE, mode)
 	if err != nil {
 		return err
 	}
@@ -898,10 +916,7 @@ func (a *App) selfInstall(version string) error {
 }
 
 func (a *App) readDistributions() error {
-	conf, err := getDistributionsFilePath()
-	if err != nil {
-		return err
-	}
+	conf := filepath.Join(a.configdir, "/distributions.yaml")
 
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		err := a.fetchDistributions(conf)
@@ -938,14 +953,13 @@ func (a *App) fetchDistributions(conf string) error {
 		return err
 	}
 
-	d, err := getConfigDir()
-	if err != nil {
-		return fmt.Errorf("unable to guess configuration directory: %w", err)
+	var mode os.FileMode = 0750
+	if a.global {
+		mode = 0755
 	}
-
-	err = os.MkdirAll(d, 0750)
+	err = os.MkdirAll(a.configdir, mode)
 	if err != nil {
-		return fmt.Errorf("unable to create configuration directory '%s': %w", d, err)
+		return fmt.Errorf("unable to create configuration directory '%s': %w", a.configdir, err)
 	}
 
 	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, 0640)
@@ -965,6 +979,7 @@ func (a *App) fetchDistributions(conf string) error {
 }
 
 func (a *App) getBinDirFor(dist string) string {
+	a.logger.Debug().Msgf("finding binaries for %s in %s", dist, filepath.Join(a.bindir, "binaries/", dist))
 	return filepath.Join(a.bindir, "binaries/", dist)
 }
 
@@ -1155,12 +1170,7 @@ func (a *App) getDistributionsFromLock() ([]string, []string) {
 }
 
 func (a *App) loadCache() {
-	conf, err := getCacheDir()
-	if err != nil {
-		return
-	}
-
-	conf = filepath.Join(conf, "/cache.json")
+	conf := filepath.Join(a.cachedir, "/cache.json")
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		return
 	}
@@ -1180,12 +1190,13 @@ func (a *App) loadCache() {
 }
 
 func (a *App) saveCache() error {
-	cache, err := getCacheDir()
-	if err != nil {
-		return nil
-	}
+	cache := a.cachedir
 
-	err = os.MkdirAll(cache, 0750)
+	var mode os.FileMode = 0750
+	if a.global {
+		mode = 0755
+	}
+	err := os.MkdirAll(cache, mode)
 	if err != nil {
 		return fmt.Errorf("unable to create cache directory '%s': %w", cache, err)
 	}
@@ -1267,25 +1278,65 @@ func (a *App) setLogOutput(w io.Writer) error {
 	return nil
 }
 
-// WithBinDir sets the binaries directory
-func WithBinDir(dir string) func(*App) error {
-	return func(a *App) error {
-		return a.SetBinDir(dir)
-	}
-}
-
-// SetBinDir sets bin directory to use
+// SetBinDir sets bin directory to use the first non-empty argument
 func (a *App) SetBinDir(d string) error {
-	a.bindir = d
+	if d != "" {
+		a.bindir = d
+		a.logger.Debug().
+			Str("bindir", a.bindir).
+			Msg("setting configuration")
+		return nil
+	}
 
-	return nil
+	err := fmt.Errorf("internal error: no bindir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
 }
 
-// WithLogLevel sets the binaries directory
-func WithLogLevel(l string) func(*App) error {
-	return func(a *App) error {
-		return a.SetLogLevel(l)
+// SetLinkDir sets link directory to use
+func (a *App) SetLinkDir(d string) error {
+	if d != "" {
+		a.linkdir = d
+		a.logger.Debug().
+			Str("linkdir", a.linkdir).
+			Msg("setting configuration")
+		return nil
 	}
+
+	err := fmt.Errorf("internal error: no linkdir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
+}
+
+// SetCacheDir sets cache directory to use
+func (a *App) SetCacheDir(d string) error {
+	if d != "" {
+		a.cachedir = d
+		a.logger.Debug().
+			Str("cachedir", a.cachedir).
+			Msg("setting configuration")
+		return nil
+
+	}
+
+	err := fmt.Errorf("internal error: no cachedir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
+}
+
+// SetConfigDir sets config directory to use
+func (a *App) SetConfigDir(d string) error {
+	if d != "" {
+		a.configdir = d
+		a.logger.Debug().
+			Str("configdir", a.configdir).
+			Msg("setting configuration")
+		return nil
+	}
+
+	err := fmt.Errorf("internal error: no configdir has been provided")
+	a.logger.Error().Err(err).Msg("setting configuration")
+	return err
 }
 
 // SetLogLevel sets the log level to use
@@ -1316,6 +1367,30 @@ func (a *App) SetDryRun(v bool) {
 // SetConcurrency sets the number of goroutines for cache update
 func (a *App) SetConcurrency(c int) {
 	a.concurrency = c
+}
+
+// SetGlobal configures binenv to run in system-wide mode
+func (a *App) SetGlobal(g bool) {
+	if !g {
+		return
+	}
+	a.bindir = globalBindir
+	a.cachedir = globalCachedir
+	a.configdir = globalConfigdir
+	a.linkdir = globalLinkdir
+	a.global = true
+
+	a.loadCache()
+}
+
+// DumpConfig dumps the configuration to stdout
+func (a *App) DumpConfig() {
+	a.logger.Debug().
+		Str("bindir", a.bindir).
+		Str("linkdir", a.bindir).
+		Str("cachedir", a.cachedir).
+		Str("configdir", a.configdir).
+		Msg("final configuration")
 }
 
 // initializeFlags sets flags holder

@@ -7,8 +7,6 @@ import (
 
 // localCmd represents the local command
 func uninstallCmd(a *app.App) *cobra.Command {
-	var bindir string
-
 	cmd := &cobra.Command{
 		Use:   "uninstall <distribution> [<version> [<distribution> <version>]]",
 		Short: "Uninstall a distribution or a specific version for the distribution",
@@ -17,9 +15,6 @@ In this case, all versions for the specified distribution will be removed (a con
 
 Multiple distribution / version pairs can be specified.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			a.SetBinDir(bindir)
-			verbose, _ := cmd.Flags().GetBool("verbose")
-			a.SetVerbose(verbose)
 			a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
@@ -37,8 +32,5 @@ Multiple distribution / version pairs can be specified.`,
 		},
 	}
 
-	cmd.Flags().StringVarP(&bindir, "bindir", "b", app.GetDefaultBinDir(), "Binaries directory")
-
-	// cmd.Flags().IntVarP(&a.Params.MinLength, "min-length", "m", 16, "Specify minimum password length, must not be less than 8")
 	return cmd
 }
