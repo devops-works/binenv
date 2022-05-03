@@ -80,7 +80,8 @@ selected.`,
 
 			// short circuit ShellCompNoDescRequestCmd handling
 			// for binaries completion completion handling
-			if cmd.CalledAs() == cobra.ShellCompNoDescRequestCmd {
+			// (bit not for binenv)
+			if cmd.CalledAs() == cobra.ShellCompNoDescRequestCmd && !isItMe() {
 				// we do not want the internal (cobra-generated)
 				// __completeNoDesc to be called since this would prevent
 				// shimmed binary to return its own completions
@@ -127,7 +128,7 @@ selected.`,
 	rootCmd.PersistentFlags().StringVarP(&confdir, "confdir", "C", dconf, "distributions configuration directory [BINENV_CONFDIR]")
 
 	// disable flag parsing if we're called as a shim
-	if !strings.HasSuffix(os.Args[0], "binenv") {
+	if !isItMe() {
 		rootCmd.DisableFlagParsing = true
 		rootCmd.Args = cobra.ArbitraryArgs
 		rootCmd.SilenceUsage = true
@@ -189,4 +190,9 @@ func bindFlags(cmd *cobra.Command, v *viper.Viper) {
 			cmd.PersistentFlags().Set(f.Name, fmt.Sprintf("%v", val))
 		}
 	})
+}
+
+func isItMe() bool {
+	return strings.HasSuffix(os.Args[0], "binenv") || // this is us
+		strings.HasSuffix(os.Args[0], "__debug_bin") // for debugging in vscode
 }
