@@ -3611,6 +3611,19 @@ sources:
       binaries:
         - trivy
 
+  trufflehog:
+    description: Find credentials all over the place https://trufflesecurity.com
+    url: https://github.com/trufflesecurity/trufflehog
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/trufflesecurity/trufflehog/releases
+    fetch:
+      url: https://github.com/trufflesecurity/trufflehog/releases/download/v{{ .Version }}/trufflehog_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - trufflehog
+
   underpass:
     description: Self-hosted ngrok alternative
     url: https://github.com/cjdenio/underpass/

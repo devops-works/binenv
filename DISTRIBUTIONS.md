@@ -233,6 +233,7 @@
 - [toji](https://github.com/leucos/toji/): Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog
 - [traefik](https://github.com/traefik/traefik/): The Cloud Native Application Proxy
 - [trivy](https://github.com/aquasecurity/trivy/): A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
+- [trufflehog](https://github.com/trufflesecurity/trufflehog): Find credentials all over the place https://trufflesecurity.com
 - [underpass](https://github.com/cjdenio/underpass/): Self-hosted ngrok alternative
 - [updatecli](https://www.updatecli.io): Updatecli is an automation engine
 - [upx](https://github.com/upx/upx/): UPX - the Ultimate Packer for eXecutables
