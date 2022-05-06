@@ -1,7 +1,5 @@
 # System-wide installation
 
-**This feature is currently in alpha state.**
-
 `binenv` can be installed system-wide, so binaries are managed for the entire
 system.
 
@@ -35,6 +33,11 @@ installed in system-wide mode (see [Caveat](#caveat)).**
 
 Note: instructions for BSD systems have not been tested.
 
+### Ansible
+
+If you want to use ansible to deploy binenv in global mode on servers, we have
+you [covered](https://github.com/devops-works/ansible-binenv).
+
 ### Linux (bash/zsh)
 
 ```
@@ -44,7 +47,7 @@ sha256sum  --check --ignore-missing checksums.txt
 mv binenv_linux_amd64 binenv
 chmod +x ./binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0
+sudo ./binenv -g install binenv
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -62,7 +65,7 @@ sha256sum  --check --ignore-missing checksums.txt
 mv binenv_darwin_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0
+sudo ./binenv -g install binenv
 rm ./binenv 
 echo 'source <(binenv completion bash)' >> ~/.bashrc
 exec $SHELL
@@ -81,7 +84,7 @@ shasum --ignore-missing -a 512 -c checksums.txt
 mv binenv_freebsd_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0
+sudo ./binenv -g install binenv
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -103,7 +106,7 @@ cksum -a sha256 -C checksums.txt binenv_openbsd_amd64
 mv binenv_openbsd_amd64 binenv
 chmod +x binenv
 sudo ./binenv -g update
-sudo ./binenv -g install binenv 0.19.0
+sudo ./binenv -g install binenv
 rm ./binenv 
 if [[ -n $BASH ]]; then ZESHELL=bash; fi
 if [[ -n $ZSH_NAME ]]; then ZESHELL=zsh; fi
@@ -116,7 +119,7 @@ If you are using a different shell, skip adding completion to your `.${SHELL}rc`
 
 ## Add system-wide installation
 
-- Ensure you are using at least `binenv` version v0.19.0.
+- Ensure you are using at least `binenv` version v0.19.2.
 
 ```bash
 binenv version
@@ -125,7 +128,7 @@ binenv version
 - install `binenv` system-wide
 
 ```bash
-binenv -g install binenv 0.19.0-rc4
+binenv -g install binenv
 ```
 
 - adjust path in your rcfiles according to your preferences
