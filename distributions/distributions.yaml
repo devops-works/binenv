@@ -568,7 +568,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/bcicen/ctop/releases
     fetch:
-      url: https://github.com/bcicen/ctop/releases/download/{{ .Version }}/ctop-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/bcicen/ctop/releases/download/v{{ .Version }}/ctop-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
@@ -2781,7 +2781,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/dalance/procs/releases
     fetch:
-      url: https://github.com/dalance/procs/releases/download/v{{ .Version }}/procs-v{{ .Version }}-x86_64-lnx.zip
+      url: https://github.com/dalance/procs/releases/download/v{{ .Version }}/procs-v{{ .Version }}-x86_64-linux.zip
     install:
       type: zip
       binaries:
