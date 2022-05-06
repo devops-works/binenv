@@ -962,7 +962,12 @@ func (a *App) fetchDistributions(conf string) error {
 		return fmt.Errorf("unable to create configuration directory '%s': %w", a.configdir, err)
 	}
 
-	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, 0640)
+	mode = 0640
+	if a.global {
+		mode = 0644
+	}
+
+	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
@@ -1209,7 +1214,11 @@ func (a *App) saveCache() error {
 		return nil
 	}
 
-	fd, err := os.OpenFile(cache, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0640)
+	mode = 0640
+	if a.global {
+		mode = 0644
+	}
+	fd, err := os.OpenFile(cache, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, mode)
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to write cache %s: please check file permissions", cache)
 		return nil
