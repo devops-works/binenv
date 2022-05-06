@@ -858,7 +858,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/weaveworks/eksctl/releases
     fetch:
-      url: https://github.com/weaveworks/eksctl/releases/download/{{ .Version }}/eksctl_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/weaveworks/eksctl/releases/download/v{{ .Version }}/eksctl_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1666,11 +1666,15 @@ sources:
   k8stail:
     description: tail -f experience for Kubernetes Pods
     url: https://github.com/dtan4/k8stail/
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: Darwin
     list:
       type: github-releases
       url: https://api.github.com/repos/dtan4/k8stail/releases
     fetch:
-      url: https://github.com/dtan4/k8stail/releases/download/v{{ .Version }}/k8stail-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/dtan4/k8stail/releases/download/v{{ .Version }}/k8stail_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2387,7 +2391,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/johnkerl/miller/releases
     fetch:
-      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/miller_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/johnkerl/miller/releases/download/v{{ .Version }}/miller-{{.Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -3847,11 +3851,13 @@ sources:
   yj:
     description: Convert between YAML, TOML, JSON, and HCL.
     url: https://github.com/sclevine/yj/
+    map:
+      darwin: macos
     list:
       type: github-releases
       url: https://api.github.com/repos/sclevine/yj/releases
     fetch:
-      url: https://github.com/sclevine/yj/releases/download/v{{ .Version }}/yj-{{ .OS }}
+      url: https://github.com/sclevine/yj/releases/download/v{{ .Version }}/yj-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:

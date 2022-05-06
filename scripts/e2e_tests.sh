@@ -24,7 +24,7 @@ check_links() {
     printf "%-70s %s" "[$name] $url"
     # printf "%s %-50s %s" $name $url
     ((count=count+1))
-    curl -sfLIm5 $url -o /dev/null
+    curl -sfLIm30 --retry 3 --retry-delay 2 --retry-max-time 80 --retry-all-errors $url -o /dev/null
     if [ $? -gt 0 ]; then
       echo -e "${RED}fail${NC}"
       ((errors=errors+1))
