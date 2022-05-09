@@ -905,6 +905,23 @@ sources:
       binaries:
         - fd
 
+  ffsend:
+    description: Easily and securely share files from the command line. A fully featured Firefox Send client.
+    url: https://github.com/timvisee/ffsend/
+    map:
+      amd64: x64
+      darwin: macos
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/timvisee/ffsend/releases
+    fetch:
+      url: https://github.com/timvisee/ffsend/releases/download/v{{ .Version }}/ffsend-v{{ .Version }}-{{ .OS }}-{{ .Arch }}
+          #  https://github.com/timvisee/ffsend/releases/download/v0.2.74/ffsend-v0.2.74-linux-x64
+    install:
+      type: direct
+      binaries:
+        - ffsend
+
   fselect:
     description: Find files with SQL-like queries
     url: https://github.com/jhspetersson/fselect/
