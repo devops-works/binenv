@@ -699,6 +699,34 @@ sources:
       binaries:
         - dive
 
+  docker-slim:
+    description: |
+      DockerSlim (docker-slim): Don't change anything in your Docker
+      container image and minify it by up to 30x (and for compiled languages even
+      more) making it secure too! (free and open source)
+    url: https://github.com/docker-slim/docker-slim/
+    map:
+      amd64: ""
+      arm: "-arm"
+      arm64: "-arm64"
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: arm
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/docker-slim/docker-slim/releases
+    fetch:
+      url: https://downloads.dockerslim.com/releases/{{ .Version }}/dist_{{ .OS }}{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - docker-slim
+        # - docker-slim-sensor
+
   dockle:
     description: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
     url: https://github.com/goodwithtech/dockle/

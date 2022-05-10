@@ -44,6 +44,7 @@
 - [devdash](https://github.com/Phantas0s/devdash/): Highly Configurable Terminal Dashboard for Developers and Creators
 - [devspace](https://github.com/devspace-cloud/): DevSpace - The Fastest Developer Tool for Kubernetes ￼ Automate your deployment workflow with DevSpace and develop software directly inside Kubernetes.
 - [dive](https://github.com/wagoodman/dive/): A tool for exploring each layer in a docker image
+- [docker-slim](https://github.com/docker-slim/docker-slim/): DockerSlim (docker-slim): Don't change anything in your Docker\ncontainer image and minify it by up to 30x (and for compiled languages even\nmore) making it secure too! (free and open source)
 - [dockle](https://github.com/goodwithtech/dockle/): Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
 - [doctl](https://github.com/digitalocean/doctl/): The official digital ocean command line interface
 - [driftctl](https://github.com/cloudskiff/driftctl/): Detect, track and alert on infrastructure drift

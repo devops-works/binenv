@@ -409,7 +409,7 @@ func (a *App) install(dist, version string) (string, error) {
 	}
 
 	if a.dryrun {
-		a.logger.Warn().Msgf("dry-run mode: skipping install fir %q (%s)", dist, version)
+		a.logger.Warn().Msgf("dry-run mode: skipping install for %q (%s)", dist, version)
 		return version, nil
 	}
 	err = a.installers[dist].Install(
