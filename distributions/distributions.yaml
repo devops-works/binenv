@@ -2466,11 +2466,10 @@ sources:
       url: https://api.github.com/repos/up9inc/mizu/releases
     fetch:
       url: https://github.com/up9inc/mizu/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/mizu_{{ .OS }}_{{ .Arch }}
-          #  https://github.com/up9inc/mizu/releases/download/33.0-dev27/mizu_darwin_amd64
     install:
       type: direct
     post_install_message: >
-      "Warning: mizu does not use smever. Versions are
+      "Warning: mizu does not use semver. Versions are
       considered to be 'Major.Patch' for this distribution (e.g. use 'binenv
       install mizu 33.0.0-dev9' to install '33.0-dev9').
 
