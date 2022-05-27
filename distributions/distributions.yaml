@@ -315,6 +315,26 @@ sources:
       binaries:
         - btop
 
+  bud:
+    description: The Full-Stack Web Framework for Go
+    url: https://github.com/livebud/bud/
+    supported_platforms:
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm
+      - os: linux
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/livebud/bud/releases
+    fetch:
+      url: https://github.com/livebud/bud/releases/download/v{{ .Version }}/bud_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - bud
+
   buildx:
     description: Docker CLI plugin for extended build capabilities with BuildKit
     url: https://github.com/docker/buildx/
@@ -2469,7 +2489,7 @@ sources:
     install:
       type: direct
     post_install_message: >
-      "Warning: mizu does not use semver. Versions are
+      Warning: mizu does not use semver. Versions are
       considered to be 'Major.Patch' for this distribution (e.g. use 'binenv
       install mizu 33.0.0-dev9' to install '33.0-dev9').
 
@@ -2784,6 +2804,30 @@ sources:
       binaries:
         - pint-linux-amd64
 
+  plow:
+    description: > 
+      A high-performance HTTP benchmarking tool with real-time web
+      UI and terminal displaying
+    url: https://github.com/six-ddc/plow/
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/six-ddc/plow/releases
+    fetch:
+      url: https://github.com/six-ddc/plow/releases/download/v{{ .Version }}/plow_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - plow
+
   pluto:
     description: A cli tool to help discover deprecated apiVersions in Kubernetes
     url: https://github.com/FairwindsOps/pluto/
@@ -3056,7 +3100,7 @@ sources:
         - shell2http
 
   shipyard:
-    description: Modern cloud native development environmentss
+    description: Modern cloud native development environments
     url: https://shipyard.run/
     map:
       amd64: x86_64

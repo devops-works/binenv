@@ -18,6 +18,7 @@
 - [bottom](https://github.com/ClementTsang/bottom/): Yet another cross-platform graphical process/system monitor.
 - [broot](https://github.com/Canop/broot/): A new way to see and navigate directory trees
 - [btop](https://github.com/aristocratos/btop/): A monitor of resources
+- [bud](https://github.com/livebud/bud/): The Full-Stack Web Framework for Go
 - [buildx](https://github.com/docker/buildx/): Docker CLI plugin for extended build capabilities with BuildKit
 - [changie](https://github.com/miniscruff/changie/): Automated changelog tool for preparing releases with lots of customization options
 - [chart-testing](https://github.com/helm/chart-testing): CLI tool for linting and testing Helm charts
@@ -159,7 +160,7 @@
 - [migrate](https://github.com/golang-migrate/migrate/): CLI database migrations tool.
 - [miller](https://github.com/johnkerl/miller/): Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV
 - [minikube](https://github.com/kubernetes/minikube/): Run Kubernetes locally
-- [mizu](https://github.com/up9inc/mizu/): Run Kubernetes locally
+- [mizu](https://github.com/up9inc/mizu/): API traffic viewer for Kubernetes enabling you to view all API communication between microservices. Think TCPDump and Wireshark re-invented for Kubernetes
 - [mygopherhose](https://github.com/devops-works/mygopherhose/): Faster import for mysqldumps
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load/): MySQL random data loader
 - [naabu](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests
@@ -179,6 +180,7 @@
 - [pgmetrics](https://pgmetrics.io/): Collect and display information and stats from a running PostgreSQL server
 - [phpsecscan](https://github.com/devops-works/): PHP vulnerability scanner (standalone or as a webserver) using FoP advisories
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
+- [plow](https://github.com/six-ddc/plow/): A high-performance HTTP benchmarking tool with real-time web UI and terminal displaying
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes
 - [pomerium](https://github.com/pomerium/pomerium/): Pomerium is an identity-aware access proxy.
 - [pomerium-cli](https://github.com/pomerium/cli/): Pomerium is an identity-aware access proxy (cli).
@@ -198,7 +200,7 @@
 - [shaloc](https://github.com/eze-kiel/shaloc/): LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
 - [shdotenv](https://github.com/ko1nksm/shdotenv/): dotenv support for shell and POSIX-compliant .env syntax specification.
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
-- [shipyard](https://shipyard.run/): Modern cloud native development environmentss
+- [shipyard](https://shipyard.run/): Modern cloud native development environments
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
