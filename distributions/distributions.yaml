@@ -953,6 +953,19 @@ sources:
       binaries:
         - fd
 
+  flux:
+    description: Declarative continuous deployment for Kubernetes.
+    url: https://fluxcd.io
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fluxcd/flux2/releases
+    fetch:
+      url: https://github.com/fluxcd/flux2/releases/download/v{{ .Version }}/flux_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - flux
+
   ffsend:
     description: Easily and securely share files from the command line. A fully featured Firefox Send client.
     url: https://github.com/timvisee/ffsend/
