@@ -202,6 +202,7 @@
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
 - [shipyard](https://shipyard.run/): Modern cloud native development environments
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
+- [slides](https://maaslalani.com/slides/): Terminal based presentation tool
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
 - [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
