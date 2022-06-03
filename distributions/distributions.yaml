@@ -3125,6 +3125,32 @@ sources:
     install:
       type: direct
 
+  slides:
+    description: Terminal based presentation tool
+    url: https://maaslalani.com/slides/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/maaslalani/slides/releases
+    fetch:
+      url: https://github.com/maaslalani/slides/releases/download/v{{ .Version }}/slides_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    map:
+      i386: "386"
+    install:
+      type: tgz
+      binaries:
+        - slides
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
   sloop:
     description: Kubernetes History Visualization
     url: https://github.com/salesforce/sloop/
