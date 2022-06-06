@@ -61,6 +61,7 @@
 - [exo](https://github.com/exoscale/cli/): Command-line tool for everything at Exoscale: compute, storage, dns.
 - [fd](https://github.com/sharkdp/fd/): A simple, fast and user-friendly alternative to 'find'
 - [ffsend](https://github.com/timvisee/ffsend/): Easily and securely share files from the command line. A fully featured Firefox Send client.
+- [flux](https://fluxcd.io): Declarative continuous deployment for Kubernetes.
 - [fselect](https://github.com/jhspetersson/fselect/): Find files with SQL-like queries
 - [fzf](https://github.com/junegunn/fzf/): fzf is a general-purpose command-line fuzzy finder.
 - [gbt](https://github.com/jtyr/gbt/): Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
