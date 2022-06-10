@@ -3872,6 +3872,32 @@ sources:
       binaries:
         - vault
 
+  velero:
+    description: A tool for backup a kubernetes cluster.
+    url: https://github.com/vmware-tanzu/velero
+    list:
+      type: github-releases
+      url: https://github.com/vmware-tanzu/velero/releases
+    fetch:
+      url: https://github.com/vmware-tanzu/velero/releases/download/v{{ .Version }}/velero-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - velero
+    supported_platforms:
+      - os: windows
+        arch: amd64
+      - os: linux
+        arch: arm
+      - os: linux
+        arch: ppc64le
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+
   vmctl:
     description: Victoria Metrics command line tool
     url: https://github.com/VictoriaMetrics/vmctl/
