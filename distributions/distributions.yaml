@@ -3877,7 +3877,7 @@ sources:
     url: https://github.com/vmware-tanzu/velero
     list:
       type: github-releases
-      url: https://github.com/vmware-tanzu/velero/releases
+      url: https://api.github.com/repos/vmware-tanzu/velero/releases
     fetch:
       url: https://github.com/vmware-tanzu/velero/releases/download/v{{ .Version }}/velero-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:

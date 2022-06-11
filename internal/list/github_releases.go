@@ -68,6 +68,8 @@ func (g GithubRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 	next := 0
 	client := &http.Client{}
 
+	logger.Debug().Msgf("fetching versions from %s", g.url)
+
 	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s?page=%d", g.url, page), nil)
 	if err != nil {
 		return nil, 0, err

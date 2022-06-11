@@ -246,6 +246,7 @@
 - [upx](https://github.com/upx/upx/): UPX - the Ultimate Packer for eXecutables
 - [vagrant](https://www.vagrantup.com/): A toolfor building and distributing development environments.
 - [vault](https://www.vaultproject.io/): A tool for secrets management, encryption as a service, and privileged access management
+- [velero](https://github.com/vmware-tanzu/velero): A tool for backup a kubernetes cluster.
 - [vmctl](https://github.com/VictoriaMetrics/vmctl/): Victoria Metrics command line tool
 - [websocat](https://github.com/vi/websocat/): About Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions
 - [wtf](https://github.com/wtfutil/wtf/): The personal information dashboard for your terminal
