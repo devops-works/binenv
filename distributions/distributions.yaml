@@ -1988,7 +1988,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/Shopify/kubeaudit/releases
     fetch:
-      url: https://github.com/Shopify/kubeaudit/releases/download/{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/Shopify/kubeaudit/releases/download/v{{ .Version }}/kubeaudit_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -3920,14 +3920,16 @@ sources:
       like netcat (or curl) for ws:// with advanced socat-like functions
     url: https://github.com/vi/websocat/
     map:
-      darwin: mac
-      linux: linux64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      freebsd: unknown-freebsd
       windows: win64
+      amd64: x86_64
     list:
       type: github-releases
       url: https://api.github.com/repos/vi/websocat/releases
     fetch:
-      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat_{{ .OS }}
+      url: https://github.com/vi/websocat/releases/download/v{{ .Version }}/websocat.{{ .Arch }}-{{ .OS }}
     install:
       type: direct
 
