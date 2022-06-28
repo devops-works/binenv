@@ -508,9 +508,9 @@ sources:
     url: https://cert-manager.io/docs/usage/cmctl/
     list:
       type: github-releases
-      url: https://github.com/cert-manager/cert-manager/releases
+      url: https://api.github.com/repos/cert-manager/cert-manager/releases
     fetch:
-      url: https://github.com/cert-manager/cert-manager/releases/download/{{ .Version }}/cmctl-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/cert-manager/cert-manager/releases/download/v{{ .Version }}/cmctl-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
