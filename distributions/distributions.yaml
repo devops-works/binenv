@@ -503,6 +503,19 @@ sources:
       binaries:
         - cloudman
 
+  cmctl:
+    description: CLI tool that can help you to manage cert-manager resources inside your cluster.
+    url: https://cert-manager.io/docs/usage/cmctl/
+    list:
+      type: github-releases
+      url: https://github.com/cert-manager/cert-manager/releases
+    fetch:
+      url: https://github.com/cert-manager/cert-manager/releases/download/{{ .Version }}/cmctl-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - cmctl
+
   comet:
     description: Command line tool to help you use conventional commit messages
     url: https://github.com/liamg/comet/
