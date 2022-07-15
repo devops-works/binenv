@@ -3333,6 +3333,37 @@ sources:
       binaries:
         - ssllabs-scan
 
+  ssosync:
+    description: Populate AWS SSO directly with your G Suite users and groups using either a CLI or AWS Lambda 
+    url: https://github.com/awslabs/ssosync/
+    map:
+      amd64: x86_64
+      arm: armv6
+      darwin: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/awslabs/ssosync/releases
+    fetch:
+      url: https://github.com/awslabs/ssosync/releases/download/v{{ .Version }}/ssosync_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ssosync
+    supported_platforms:
+      - os: darwin
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: arm
+      - os: linux
+        arch: i386
+      - os: linux
+        arch: amd64
+
   starship:
     description: The minimal, blazing-fast, and infinitely customizable prompt for any shell!
     url: https://github.com/starship/starship/
