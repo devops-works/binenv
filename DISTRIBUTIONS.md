@@ -98,7 +98,7 @@
 - [helm](https://github.com/helm/helm/): The Kubernetes Package Manager
 - [helm-docs](https://github.com/norwoodj/helm-docs/): a tool for controlling hetzner cloud resources
 - [helm-operator](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
-- [helmfile](https://github.com/roboll/helmfile/): Deploy Kubernetes Helm Charts
+- [helmfile](https://github.com/helmfile/helmfile/): Deploy Kubernetes Helm Charts
 - [helmwave](https://github.com/helmwave/helmwave/): 🌊 Composer for @helm Charts
 - [hetty](https://hetty.xyz/): Hetty is an HTTP toolkit for security research.
 - [himalaya](https://github.com/soywod/himalaya/): 📫 CLI email client

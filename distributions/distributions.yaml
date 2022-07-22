@@ -1502,14 +1502,16 @@ sources:
 
   helmfile:
     description: Deploy Kubernetes Helm Charts
-    url: https://github.com/roboll/helmfile/
+    url: https://github.com/helmfile/helmfile/
     list:
       type: github-releases
-      url: https://api.github.com/repos/roboll/helmfile/releases
+      url: https://api.github.com/repos/helmfile/helmfile/releases
     fetch:
-      url: https://github.com/roboll/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .OS }}_{{ .Arch }}
+      url: https://github.com/helmfile/helmfile/releases/download/v{{ .Version }}/helmfile_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
-      type: direct
+      type: tgz
+      binaries:
+        - helmfile
 
   helmwave:
     description: 🌊 Composer for @helm Charts
