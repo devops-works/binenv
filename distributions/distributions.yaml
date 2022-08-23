@@ -2267,6 +2267,20 @@ sources:
   #     binaries:
   #       - lazygit
 
+  linkerd:
+    description: Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd adds critical security, observability, and reliability features to your Kubernetes stack with no code change required.
+    url: https://github.com//linkerd/linkerd2/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/linkerd/linkerd2/releases/
+    fetch:
+      filters: filters
+      url: https://github.com/linkerd/linkerd2/releases/download/{{ .Version }}{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+      binaries:
+        - linkerd
+
   local-php-security-checker:
     description: PHP security vulnerabilities checker
     url: https://github.com/fabpot/local-php-security-checker/
