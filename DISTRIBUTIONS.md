@@ -151,6 +151,7 @@
 - [kubetail](https://github.com/jbvmio/kubetail/): Repository for kubetail - The pod log tailer
 - [kubeval](https://github.com/instrumenta/kubeval/): Validate your Kubernetes configuration files, supports multiple Kubernetes versions
 - [kustomize](https://github.com/kubernetes-sigs/): Customization of kubernetes YAML configurations
+- [linkerd](https://github.com//linkerd/linkerd2/): Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd adds critical security, observability, and reliability features to your Kubernetes stack with no code change required.
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker/): PHP security vulnerabilities checker
 - [logcli](https://github.com/grafana/loki/): Like Prometheus, but for logs (cli).
 - [loki](https://github.com/grafana/loki/): Like Prometheus, but for logs.
