@@ -2077,11 +2077,11 @@ sources:
       url: https://api.github.com/repos/kubesphere/kubeeye/releases
       exclude: "0.4.0"
     fetch:
-      url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
-        - kubeeye
+        - ke
 
   kubefwd:
     description: Forward multiple ports in Kubernetes
