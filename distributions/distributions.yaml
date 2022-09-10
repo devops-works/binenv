@@ -3508,6 +3508,19 @@ sources:
       - os: darwin
         arch: amd64
 
+  sx:
+    description: Fast, modern, easy-to-use network scanner
+    url: https://github.com/v-byte-cpu/sx/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/v-byte-cpu/sx/releases
+    fetch:
+      url: https://github.com/v-byte-cpu/sx/releases/download/v{{ .Version }}/sx_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - sx
+
   sysz:
     description: An fzf terminal UI for systemctl
     url: https://github.com/joehillen/sysz/
