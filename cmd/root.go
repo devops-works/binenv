@@ -91,6 +91,10 @@ selected.`,
 			return nil
 		},
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				cmd.Help()
+				os.Exit(0)
+			}
 			if !strings.HasSuffix(os.Args[0], "binenv") {
 				a.Execute(os.Args)
 			}

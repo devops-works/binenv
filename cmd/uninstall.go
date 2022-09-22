@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/devops-works/binenv/internal/app"
 	"github.com/spf13/cobra"
 )
@@ -15,6 +17,10 @@ In this case, all versions for the specified distribution will be removed (a con
 
 Multiple distribution / version pairs can be specified.`,
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				cmd.Help()
+				os.Exit(0)
+			}
 			a.Uninstall(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {

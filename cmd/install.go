@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/devops-works/binenv/internal/app"
 	"github.com/spf13/cobra"
 )
@@ -15,6 +17,10 @@ func installCmd(a *app.App) *cobra.Command {
 		Long: `This command will install one or several distributions with the specified versions. 
 If --lock is used, versions from the .binenv.lock file in the current directory will be installed.`,
 		Run: func(cmd *cobra.Command, args []string) {
+			if len(args) == 0 {
+				cmd.Help()
+				os.Exit(0)
+			}
 			a.SetDryRun(dryrun)
 
 			if fromlock {
