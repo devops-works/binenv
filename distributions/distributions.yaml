@@ -2888,6 +2888,34 @@ sources:
       binaries:
         - pluto
 
+  pnpm:
+    description: Fast, disk space efficient package manager for nodejs
+    url: https://github.com/pnpm/pnpm
+    map:
+      amd64: x64
+      darwin: macos
+      windows: win
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/pnpm/pnpm/releases
+    fetch:
+      url: https://github.com/pnpm/pnpm/releases/download/v{{ .Version }}/pnpm-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+      binaries:
+        - pnpm
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: windows
+        arch: amd64
+
   pomerium:
     description: Pomerium is an identity-aware access proxy.
     url: https://github.com/pomerium/pomerium/
