@@ -186,6 +186,7 @@
 - [pint](https://github.com/cloudflare/pint/): Prometheus rule linter
 - [plow](https://github.com/six-ddc/plow/): A high-performance HTTP benchmarking tool with real-time web UI and terminal displaying
 - [pluto](https://github.com/FairwindsOps/pluto/): A cli tool to help discover deprecated apiVersions in Kubernetes
+- [pnpm](https://github.com/pnpm/pnpm): Fast, disk space efficient package manager for nodejs
 - [pomerium](https://github.com/pomerium/pomerium/): Pomerium is an identity-aware access proxy.
 - [pomerium-cli](https://github.com/pomerium/cli/): Pomerium is an identity-aware access proxy (cli).
 - [popeye](https://github.com/derailed/popeye/): A Kubernetes cluster resource sanitizer
