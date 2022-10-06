@@ -3044,6 +3044,19 @@ sources:
       binaries:
         - "rancher-v{{ .Version }}/rancher"
 
+  regctl:
+    description: Client interface for the registry API. This includes regctl for a command line interface to manage registries.
+    url: https://github.com/regclient/regclient
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/regclient/regclient/releases
+    fetch:
+      url: https://github.com/regclient/regclient/releases/download/v{{ .Version }}/regctl-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+      binaries:
+        - regctl
+
   rga:
     description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
     url: https://github.com/phiresky/ripgrep-all/
