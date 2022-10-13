@@ -35,7 +35,9 @@ func RootCmd() *cobra.Command {
 (e.g. terraform, kubectl, ...) easily and switch between any version.
 		
 If your directory has a '.binenv.lock', proper versions will always be
-selected.`,
+selected.
+
+This is version ` + Version + ` built on ` + BuildDate + `.`,
 		// this is required since in shim mode, we have to accept any number of
 		// arguments
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
