@@ -94,10 +94,10 @@ selected.`,
 			if !isItMe() {
 				a.Execute(os.Args)
 			}
-			// if len(args) == 0 {
-			// 	cmd.Help()
-			// 	os.Exit(0)
-			// }
+			if len(args) == 0 {
+				cmd.Help()
+				os.Exit(0)
+			}
 		},
 	}
 
