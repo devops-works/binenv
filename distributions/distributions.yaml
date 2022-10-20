@@ -3444,6 +3444,24 @@ sources:
       binaries:
         - starship
 
+  steampipe:
+    description: Use SQL to instantly query your cloud services (AWS, Azure, GCP and more). Open source CLI. No DB required.
+    url: https://github.com/turbot/steampipe
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/turbot/steampipe/releases
+    fetch:
+      url: https://github.com/turbot/steampipe/releases/download/v{{ .Version }}/steampipe_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - steampipe
+    supported_platforms:
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: amd64
+
   stern:
     description: >
       ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of
