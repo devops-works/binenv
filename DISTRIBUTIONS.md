@@ -220,6 +220,7 @@
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan/): A command-line reference-implementation client for SSL Labs APIs, designed for automated and/or bulk testing.
 - [ssosync](https://github.com/awslabs/ssosync/): Populate AWS SSO directly with your G Suite users and groups using either a CLI or AWS Lambda
 - [starship](https://github.com/starship/starship/): The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+- [steampipe](https://github.com/turbot/steampipe): Use SQL to instantly query your cloud services (AWS, Azure, GCP and more). Open source CLI. No DB required.
 - [stern](https://github.com/stern/stern/): ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of https://github.com/wercker/stern
 - [stoppropaganda](https://github.com/erkexzcx/stoppropaganda/): DOS application to stop pro-Russian aggression websites. Support Ukraine!
 - [subfinder](https://github.com/projectdiscovery/subfinder/): Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing.
