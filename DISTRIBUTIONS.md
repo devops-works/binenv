@@ -13,7 +13,7 @@
 - [awstaghelper](https://github.com/mpostument/awstaghelper/): AWS bulk tagging tool
 - [bat](https://github.com/sharkdp/bat/): A cat(1) clone with wings.
 - [batect](https://batect.dev/): Build And Testing Environments as Code Tool
-- [binenv](https://github.com/devops-works/): One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
+- [binenv](https://github.com/devops-works/binenv/): One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
 - [bomberman](https://github.com/c1982/bomberman/): SMTP Performance and Load Test Tool
 - [bottom](https://github.com/ClementTsang/bottom/): Yet another cross-platform graphical process/system monitor.
 - [broot](https://github.com/Canop/broot/): A new way to see and navigate directory trees
@@ -232,6 +232,7 @@
 - [tanka](https://github.com/grafana/tanka/): Flexible, reusable and concise configuration for Kubernetes
 - [task](https://github.com/go-task/task/): A task runner / simpler Make alternative written in Go
 - [taskctl](https://github.com/taskctl/taskctl/): simple modern alternative to GNU Make.
+- [telegraf-tailcount](https://github.com/devops-works/telegraf-tailcount/): Counts new lines in growing file and return InfluxDB metrics on STDOUT.
 - [telepresence](https://www.telepresence.io/): Fast, local development for Kubernetes and OpenShift microservices.
 - [teler](https://github.com/kitabisa/teler/): Real-time HTTP Intrusion Detection
 - [termshark](https://github.com/gcla/termshark/): A terminal UI for tshark, inspired by Wireshark

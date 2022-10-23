@@ -226,7 +226,7 @@ sources:
 
   binenv:
     description: One binary to rule them all. Manage all those pesky binaries (kubectl, helm, terraform, ...) easily.
-    url: https://github.com/devops-works/
+    url: https://github.com/devops-works/binenv/
     list:
       type: github-releases
       url: https://api.github.com/repos/devops-works/binenv/releases
@@ -3627,6 +3627,32 @@ sources:
       type: tgz
       binaries:
         - taskctl
+
+  telegraf-tailcount:
+    description: Counts new lines in growing file and return InfluxDB metrics on STDOUT.
+    url: https://github.com/devops-works/telegraf-tailcount/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/devops-works/telegraf-tailcount/releases
+    fetch:
+      url: https://github.com/devops-works/telegraf-tailcount/releases/download/v{{ .Version }}/telegraf-tailcount_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: openbsd
+        arch: i386
+      - os: openbsd
+        arch: amd64
+      - os: openbsd
+        arch: arm64
+      - os: freebsd
+        arch: i386
+      - os: freebsd
+        arch: amd64
 
   telepresence:
     description: Fast, local development for Kubernetes and OpenShift microservices.
