@@ -2276,6 +2276,23 @@ sources:
       binaries:
         - kustomize
 
+  lazydocker:
+    description: The lazier way to manage everything docker
+    url: https://github.com/jesseduffield/lazydocker/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/jesseduffield/lazydocker/releases
+    fetch:
+      url: https://github.com/jesseduffield/lazydocker/releases/download/v{{ .Version }}/lazydocker_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - lazydocker
+
   # Note that https://github.com/jesseduffield/lazygit/issues/1791 can break
   # future deployments
   lazygit:
