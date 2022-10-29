@@ -227,7 +227,7 @@ For the whole list of supported binaries (a.k.a. distributions), see
 The always up-to-date list is
 [here](https://github.com/devops-works/binenv/blob/master/distributions/distributions.yaml).
 
-The list can be generated as markdown using `make descriptions`.
+The list can be generated as markdown using `make distributions`.
 
 Open an issue (or send a PR) if you need one that is not in the list.
 
