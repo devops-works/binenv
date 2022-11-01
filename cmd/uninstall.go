@@ -19,7 +19,7 @@ Multiple distribution / version pairs can be specified.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				cmd.Help()
-				os.Exit(0)
+				os.Exit(1)
 			}
 			a.Uninstall(args...)
 		},

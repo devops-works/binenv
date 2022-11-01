@@ -17,19 +17,18 @@ func installCmd(a *app.App) *cobra.Command {
 		Long: `This command will install one or several distributions with the specified versions. 
 If --lock is used, versions from the .binenv.lock file in the current directory will be installed.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			if len(args) == 0 {
+			if len(args) == 0 && !fromlock {
 				cmd.Help()
-				os.Exit(0)
+				os.Exit(1)
 			}
 			a.SetDryRun(dryrun)
 
 			if fromlock {
 				a.InstallFromLock()
+				return
 			}
 
-			if len(args) > 0 {
-				a.Install(args...)
-			}
+			a.Install(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) % 2 {
