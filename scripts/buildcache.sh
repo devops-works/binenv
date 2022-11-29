@@ -23,8 +23,8 @@ make
 echo "Copying distribution to your config directory"
 cp distributions/distributions.yaml ~/.config/binenv/
 
-echo "Updating the cache (8 threads)"
-./bin/binenv update -f -c8
+echo "Updating the cache (3 threads)"
+./bin/binenv update -f -c3
 
 echo "Importing resulting cache into code"
 cat ~/.cache/binenv/cache.json | jq '.' > distributions/cache.json
