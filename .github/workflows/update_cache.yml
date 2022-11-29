@@ -3,10 +3,9 @@ name: Update cache
 on:
   push:
     branches:
-      - foo
-      # - develop
-  # schedule:
-  #   - cron: '15 0 * * *'
+      - develop
+  schedule:
+    - cron: '15 0 * * *'
 
 jobs:
   resources:
@@ -48,5 +47,5 @@ jobs:
         if: ${{ env.DIFF != 0 }}
         with:
           file-path: distributions/cache.json
-          commit-msg: Update cache
+          commit-msg: automatic cache update
           github-token: ${{ secrets.GITHUB_TOKEN }}
