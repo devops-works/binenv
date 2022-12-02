@@ -18,6 +18,7 @@ require (
 )
 
 require (
+	github.com/lithammer/fuzzysearch v1.1.5
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.7.0
 )
@@ -35,6 +36,6 @@ require (
 	github.com/spf13/cast v1.3.0 // indirect
 	github.com/spf13/jwalterweatherman v1.0.0 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
-	golang.org/x/text v0.3.2 // indirect
+	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/ini.v1 v1.51.0 // indirect
 )

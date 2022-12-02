@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -18,6 +17,7 @@ import (
 	"time"
 
 	gov "github.com/hashicorp/go-version"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/mitchellh/go-homedir"
 	"github.com/rs/zerolog"
 	"github.com/schollz/progressbar/v3"
@@ -27,9 +27,8 @@ import (
 	"github.com/devops-works/binenv/internal/install"
 	"github.com/devops-works/binenv/internal/list"
 
-	"github.com/logrusorgru/aurora"
-
 	"github.com/devops-works/binenv/internal/mapping"
+	"github.com/logrusorgru/aurora"
 )
 
 // Where to fetch distribution list and cached version
@@ -271,7 +270,7 @@ func (a *App) InstallFromLock() error {
 		installed := a.GetInstalledVersionsFor(d)
 
 		if required == "" {
-			a.logger.Warn().Msgf(`no available versions found for %q. Please run "binenv update %s".`, d, d)
+			a.logger.Warn().Msgf(`version %s not available or not found for %q. Please run "binenv update -f %s".`, lines[i], d, d)
 			continue
 		}
 		if !stringInSlice(required, installed) {
@@ -345,6 +344,7 @@ func (a *App) install(dist, version string) (string, error) {
 	if a.fetchers[dist] == nil {
 		return "", fmt.Errorf("no fetcher found for %q", dist)
 	}
+
 	if _, ok := a.fetchers[dist]; !ok {
 		a.logger.Error().Msgf("no such distribution %q", dist)
 		return "", nil
@@ -583,7 +583,7 @@ func (a *App) updateGithub() error {
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
@@ -926,7 +926,7 @@ func (a *App) readDistributions() error {
 		return nil
 	}
 
-	yml, err := ioutil.ReadFile(conf)
+	yml, err := os.ReadFile(conf)
 	if err != nil {
 		return fmt.Errorf("unable to read file '%s': %w", conf, err)
 	}
@@ -948,7 +948,7 @@ func (a *App) fetchDistributions(conf string) error {
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
@@ -1174,13 +1174,34 @@ func (a *App) getDistributionsFromLock() ([]string, []string) {
 	return distributions, lines
 }
 
+func (a *App) validateDistribution(dist string) error {
+	if dist == "" {
+		return fmt.Errorf("distribution name is empty")
+	}
+
+	if _, ok := a.listers[dist]; !ok {
+		distributions := []string{}
+		for k := range a.listers {
+			distributions = append(distributions, k)
+		}
+
+		candidates := fuzzy.Find(dist, distributions)
+		return fmt.Errorf("no fetcher found for %q (may be you meant one of %s)",
+			dist,
+			strings.Join(candidates, ", "),
+		)
+	}
+
+	return nil
+}
+
 func (a *App) loadCache() {
 	conf := filepath.Join(a.cachedir, "/cache.json")
 	if _, err := os.Stat(conf); os.IsNotExist(err) {
 		return
 	}
 
-	js, err := ioutil.ReadFile(conf)
+	js, err := os.ReadFile(conf)
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read cache %s: please check file permissions", conf)
 		return
@@ -1277,7 +1298,7 @@ func (a *App) createFetchers() {
 // WithDiscard sets the log output to /dev/null
 func WithDiscard() func(*App) error {
 	return func(a *App) error {
-		return a.setLogOutput(ioutil.Discard)
+		return a.setLogOutput(io.Discard)
 	}
 }
 
