@@ -1,5 +1,6 @@
-- [age](https://github.com/FiloSottile/age): A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
 - [act](https://github.com/nektos/act/): Run your GitHub Actions locally
+- [age](https://github.com/FiloSottile/age): A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
+- [age-keygen](https://github.com/FiloSottile/age): A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
 - [ali](https://github.com/nakabonne/ali/): Generate HTTP load and plot the results in real-time
 - [ansible-operator](https://github.com/operator-framework/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [argocd](https://github.com/argoproj/argo-cd/): Declarative continuous deployment for Kubernetes.
