@@ -4043,7 +4043,7 @@ sources:
       url: https://api.github.com/repos/upx/upx/tags
     fetch:
       filters: filters
-      url: https://github.com/upx/upx/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/upx-{{ .VersionMajor }}.{{ .VersionMinor }}-{{ .Arch }}_{{ .OS }}.tar.xz
+      url: https://github.com/upx/upx/releases/download/v{{ .Version }}/upx-{{ .Version }}-{{ .Arch }}_{{ .OS }}.tar.xz
     install:
       type: tarxz
       binaries:
