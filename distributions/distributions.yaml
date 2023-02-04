@@ -1808,7 +1808,6 @@ sources:
     description: Kubernetes CLI To Manage Your Clusters In Style!
     url: https://github.com/derailed/k9s/
     map:
-      amd64: x86_64
       linux: Linux
       darwin: Darwin
     list:
