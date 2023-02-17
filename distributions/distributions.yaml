@@ -2677,6 +2677,26 @@ sources:
       binaries:
         - nomad
 
+  noti:
+    description: Monitor a process and trigger a notification
+    url: https://github.com/variadico/noti
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/variadico/noti/releases
+    fetch:
+      url: https://github.com/variadico/noti/releases/download/{{ .Version }}/noti{{ .Version }}.{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - noti
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: windows
+        arch: amd64
+
   nuclei:
     description: >
       Fast and customizable vulnerability scanner based on simple YAML based DSL.
