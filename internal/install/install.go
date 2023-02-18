@@ -61,7 +61,7 @@ func installFile(src, dst string) error {
 		return err
 	}
 
-	err = os.Chmod(dst, 0700)
+	err = os.Chmod(dst, 0755)
 	return err
 
 }

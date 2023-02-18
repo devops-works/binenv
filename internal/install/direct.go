@@ -4,7 +4,6 @@ import "github.com/devops-works/binenv/internal/mapping"
 
 // Direct installs directly downloaded binaries
 type Direct struct {
-	filter string
 }
 
 // Install will move the binary from src to dst

@@ -35,7 +35,7 @@ func (z Zip) Install(src, dst, version string, mapper mapping.Mapper) error {
 			continue
 		}
 
-		out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
+		out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 		if err != nil {
 			return err
 		}

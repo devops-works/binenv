@@ -4,7 +4,6 @@ import (
 	"archive/tar"
 	"bytes"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -23,7 +22,7 @@ type TarXZ struct {
 func (x TarXZ) Install(src, dst, version string, mapper mapping.Mapper) error {
 	noMatches := ErrNoMatch
 
-	data, err := ioutil.ReadFile(src)
+	data, err := os.ReadFile(src)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -36,7 +35,7 @@ func (x TarXZ) Install(src, dst, version string, mapper mapping.Mapper) error {
 	tarReader := tar.NewReader(r)
 	args := tpl.New(version, mapper)
 
-	for true {
+	for {
 		header, err := tarReader.Next()
 		if err == io.EOF {
 			break
@@ -56,7 +55,7 @@ func (x TarXZ) Install(src, dst, version string, mapper mapping.Mapper) error {
 				continue
 			}
 
-			out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
+			out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 			if err != nil {
 				return err
 			}
@@ -69,5 +68,4 @@ func (x TarXZ) Install(src, dst, version string, mapper mapping.Mapper) error {
 	}
 
 	return noMatches
-
 }

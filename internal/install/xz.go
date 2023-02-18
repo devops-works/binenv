@@ -3,7 +3,6 @@ package install
 import (
 	"bytes"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -18,7 +17,7 @@ type XZ struct {
 
 // Install file from xz file
 func (x XZ) Install(src, dst, version string, mapper mapping.Mapper) error {
-	data, err := ioutil.ReadFile(src)
+	data, err := os.ReadFile(src)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,7 +27,7 @@ func (x XZ) Install(src, dst, version string, mapper mapping.Mapper) error {
 		return err
 	}
 
-	out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0750)
+	out, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	if err != nil {
 		return err
 	}
