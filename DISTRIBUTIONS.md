@@ -153,7 +153,7 @@
 - [kubetail](https://github.com/jbvmio/kubetail/): Repository for kubetail - The pod log tailer
 - [kubeval](https://github.com/instrumenta/kubeval/): Validate your Kubernetes configuration files, supports multiple Kubernetes versions
 - [kustomize](https://github.com/kubernetes-sigs/): Customization of kubernetes YAML configurations
-- [kyverno](https://github.com/kyverno/kyverno/): Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes
+- [kyverno](https://github.com/kyverno/kyverno/): Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes.
 - [lazydocker](https://github.com/jesseduffield/lazydocker/): The lazier way to manage everything docker
 - [lazygit](https://github.com/jesseduffield/lazygit/): A simple terminal UI for git commands.
 - [linkerd](https://github.com/linkerd/linkerd2/): Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd adds critical security, observability, and reliability features to your Kubernetes stack with no code change required.
