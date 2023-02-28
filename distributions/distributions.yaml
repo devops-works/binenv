@@ -2308,6 +2308,8 @@ sources:
   kyverno:
     description: Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes.
     url: https://github.com/kyverno/kyverno/
+    map:
+      amd64: x86_64
     list:
       type: github-releases
       url: https://api.github.com/repos/kyverno/kyverno/releases
