@@ -2383,22 +2383,25 @@ sources:
       binaries:
         - lazygit
 
-  linkerd:
-    description: >
-      Linkerd is an ultralight, security-first service mesh for Kubernetes.
-      Linkerd adds critical security, observability, and reliability features
-      to your Kubernetes stack with no code change required.
-    url: https://github.com/linkerd/linkerd2/
-    list:
-      type: github-releases
-      exclude: "edge"
-      url: https://api.github.com/repos/linkerd/linkerd2/releases
-    fetch:
-      url: https://github.com/linkerd/linkerd2/releases/download/stable-{{ .Version }}/linkerd2-cli-stable-{{ .Version }}-{{ .OS }}-{{ .Arch }}
-    install:
-      type: direct
-      binaries:
-        - linkerd
+  # Not supported: version does not comply to semver
+  # linkerd:
+  #   description: >
+  #     Linkerd is an ultralight, security-first service mesh for Kubernetes.
+  #     Linkerd adds critical security, observability, and reliability features
+  #     to your Kubernetes stack with no code change required.
+  #   url: https://github.com/linkerd/linkerd2/
+  #   list:
+  #     type: github-releases
+  #     exclude: "edge"
+  #     url: https://api.github.com/repos/linkerd/linkerd2/releases
+  #   fetch:
+  #     url: https://github.com/linkerd/linkerd2/releases/download/stable-{{ .Version }}/linkerd2-cli-stable-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+  #          https://github.com/linkerd/linkerd2/releases/download/stable-18.9.1/linkerd2-cli-stable-18.9.1-linux-amd64:
+  #          https://github.com/linkerd/linkerd2/releases/download/stable-2.12.3/linkerd2-cli-stable-2.12.3-linux-amd64
+  #   install:
+  #     type: direct
+  #     binaries:
+  #       - linkerd
 
   local-php-security-checker:
     description: PHP security vulnerabilities checker
