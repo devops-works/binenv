@@ -2171,7 +2171,10 @@ sources:
         - kubepug
 
   kuberlogic:
-    description: Kuberlogic is an open-source product that deploys and manages software on top of the Kubernetes cluster and turns infrastructure into a managed PaaS.
+    description: >
+      Kuberlogic is an open-source product that deploys and manages software on
+      top of the Kubernetes cluster and turns infrastructure into a managed
+      PaaS.
     url: https://github.com/kuberlogic/kuberlogic/
     list:
       type: github-releases
@@ -2182,7 +2185,9 @@ sources:
       type: direct
 
   kubescape:
-    description: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
+    description: >
+      kubescape is the first tool for testing if Kubernetes is deployed
+      securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
     url: https://github.com/armosec/kubescape/
     map:
       darwin: macos
@@ -2209,7 +2214,9 @@ sources:
         - kubeseal
 
   kubesec:
-    description: Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
+    description: >
+      Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and
+      AWS KMS backends)
     url: https://github.com/shyiko/kubesec/
     list:
       type: github-releases
@@ -2220,7 +2227,8 @@ sources:
       type: direct
 
   kubestr:
-    description: A tool to discover, validate and evaluate Kubernetes storage options
+    description: >
+      A tool to discover, validate and evaluate Kubernetes storage options
     url: https://github.com/kastenhq/kubestr/
     map:
       darwin: MacOS
@@ -2237,7 +2245,9 @@ sources:
         - kubestr
 
   kubesurvival:
-    description: Significantly reduce Kubernetes costs by finding the cheapest machine types that can run your workloads
+    description: >
+      Significantly reduce Kubernetes costs by finding the cheapest machine
+      types that can run your workloads
     url: https://github.com/aporia-ai/
     map:
       amd64: x86_64
@@ -2279,7 +2289,9 @@ sources:
         - kubetail
 
   kubeval:
-    description: Validate your Kubernetes configuration files, supports multiple Kubernetes versions
+    description: >
+      Validate your Kubernetes configuration files, supports multiple
+      Kubernetes versions
     url: https://github.com/instrumenta/kubeval/
     list:
       type: github-releases
@@ -2306,7 +2318,9 @@ sources:
         - kustomize
 
   kyverno:
-    description: Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes.
+    description: >
+      Kyverno (Greek for “govern”) is a policy engine designed specifically for
+      Kubernetes.
     url: https://github.com/kyverno/kyverno/
     map:
       amd64: x86_64
