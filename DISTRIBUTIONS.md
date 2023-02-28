@@ -156,7 +156,6 @@
 - [kyverno](https://github.com/kyverno/kyverno/): Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes.
 - [lazydocker](https://github.com/jesseduffield/lazydocker/): The lazier way to manage everything docker
 - [lazygit](https://github.com/jesseduffield/lazygit/): A simple terminal UI for git commands.
-- [linkerd](https://github.com/linkerd/linkerd2/): Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd adds critical security, observability, and reliability features to your Kubernetes stack with no code change required.
 - [local-php-security-checker](https://github.com/fabpot/local-php-security-checker/): PHP security vulnerabilities checker
 - [logcli](https://github.com/grafana/loki/): Like Prometheus, but for logs (cli).
 - [loki](https://github.com/grafana/loki/): Like Prometheus, but for logs.
