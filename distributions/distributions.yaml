@@ -2391,10 +2391,10 @@ sources:
     url: https://github.com/linkerd/linkerd2/
     list:
       type: github-releases
+      exclude: "edge"
       url: https://api.github.com/repos/linkerd/linkerd2/releases
     fetch:
-      filters: filters
-      url: https://github.com/linkerd/linkerd2/releases/download/{{ .Version }}/linkerd2-cli-{{ .Version }}-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/linkerd/linkerd2/releases/download/stable-{{ .Version }}/linkerd2-cli-stable-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:
