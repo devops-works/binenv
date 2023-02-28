@@ -2319,6 +2319,17 @@ sources:
       type: tgz
       binaries:
         - kyverno
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: s390x
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
 
   lazydocker:
     description: The lazier way to manage everything docker
