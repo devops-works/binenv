@@ -2305,6 +2305,19 @@ sources:
       binaries:
         - kustomize
 
+  kyverno:
+    description: Kyverno (Greek for “govern”) is a policy engine designed specifically for Kubernetes.
+    url: https://github.com/kyverno/kyverno/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kyverno/kyverno/releases
+    fetch:
+      url: https://github.com/kyverno/kyverno/releases/download/v{{ .Version }}/kyverno-cli_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kyverno
+
   lazydocker:
     description: The lazier way to manage everything docker
     url: https://github.com/jesseduffield/lazydocker/
