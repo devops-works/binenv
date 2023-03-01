@@ -446,35 +446,6 @@ sources:
       binaries:
         - checkip
 
-  cli53:
-    description: Command line tool for Amazon Route 53
-    url: https://github.com/barnybug/cli53/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/barnybug/cli53/releases
-    fetch:
-      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}
-    install:
-      type: direct
-
-  clog-cli:
-    description: Generate beautiful changelogs from your Git commit history
-    url: https://github.com/clog-tool/
-    map:
-      amd64: x86_64
-      i386: i686
-      darwin: apple-darwin
-      linux: unknown-linux-gnu
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/clog-tool/clog-cli/releases
-    fetch:
-      url: https://github.com/clog-tool/clog-cli/releases/download/v{{ .Version }}/clog-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - clog
-
   chezmoi:
     description: Dotfile management tool
     url: https://github.com/twpayne/chezmoi/
@@ -514,6 +485,35 @@ sources:
       url: https://github.com/theryangeary/choose/releases/download/v{{ .Version }}/choose-{{ .Arch }}-{{.OS }}
     install:
       type: direct
+
+  cli53:
+    description: Command line tool for Amazon Route 53
+    url: https://github.com/barnybug/cli53/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/barnybug/cli53/releases
+    fetch:
+      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
+  clog-cli:
+    description: Generate beautiful changelogs from your Git commit history
+    url: https://github.com/clog-tool/
+    map:
+      amd64: x86_64
+      i386: i686
+      darwin: apple-darwin
+      linux: unknown-linux-gnu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/clog-tool/clog-cli/releases
+    fetch:
+      url: https://github.com/clog-tool/clog-cli/releases/download/v{{ .Version }}/clog-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - clog
 
   cloudman:
     description: Textual user interface to manage ec2 instances.
