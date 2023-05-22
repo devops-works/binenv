@@ -265,6 +265,7 @@
 - [wtf](https://github.com/wtfutil/wtf/): The personal information dashboard for your terminal
 - [wuzz](https://github.com/asciimoo/wuzz/): Interactive cli tool for HTTP inspection
 - [xh](https://github.com/ducaale/xh/): Friendly and fast tool for sending HTTP requests
+- [yamlfmt](https://github.com/google/yamlfmt): An extensible command line tool or library to format yaml files
 - [yeshttp](https://gitlab.com/devopsworks/tools/yeshttp/): A HTTP server that always says yes
 - [yh](https://github.com/andreazorzetto/yh/): YAML syntax highlighter to bring colours to kubectl output
 - [yj](https://github.com/sclevine/yj/): Convert between YAML, TOML, JSON, and HCL.

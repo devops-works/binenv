@@ -4257,6 +4257,24 @@ sources:
       binaries:
         - xh
 
+  yamlfmt:
+    description: An extensible command line tool or library to format yaml files
+    url: https://github.com/google/yamlfmt
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/google/yamlfmt/releases
+    fetch:
+      url: https://github.com/google/yamlfmt/releases/download/v{{ .Version }}/yamlfmt_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - yamlfmt
+
   yeshttp:
     description: A HTTP server that always says yes
     url: https://gitlab.com/devopsworks/tools/yeshttp/
