@@ -159,7 +159,7 @@ If you are using a different shell, skip adding completion to your `.${SHELL}rc`
 http://github.com/devops-works/binenv/releases.
 
 ```
-wget -q https://github.com/devops-works/binenv/releases/download/v0.19.0/binenv-<OS>-<ARCH>
+wget -q https://github.com/devops-works/binenv/releases/download/v0.19.0/binenv_<OS>_<ARCH>
 ```
 
 - rename it
