@@ -749,6 +749,40 @@ sources:
     install:
       type: direct
 
+  direnv:
+    description: >
+      An extension for your shell. It augments existing shells with a new feature
+      that can load and unload environment variables depending on the current directory.
+    url: https://direnv.net
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/direnv/direnv/releases
+    fetch:
+      url: https://github.com/direnv/direnv/releases/download/v{{ .Version }}/direnv.{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: freebsd
+        arch: 386
+      - os: freebsd
+        arch: amd64
+      - os: freebsd
+        arch: arm
+      - os: linux
+        arch: 386
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: mips
+
   dive:
     description: A tool for exploring each layer in a docker image
     url: https://github.com/wagoodman/dive/

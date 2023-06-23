@@ -47,6 +47,7 @@
 - [derefexo](https://github.com/deref/exo/): A process manager & log viewer for dev
 - [devdash](https://github.com/Phantas0s/devdash/): Highly Configurable Terminal Dashboard for Developers and Creators
 - [devspace](https://github.com/devspace-cloud/): DevSpace - The Fastest Developer Tool for Kubernetes ￼ Automate your deployment workflow with DevSpace and develop software directly inside Kubernetes.
+- [direnv](https://direnv.net): An extension for your shell. It augments existing shells with a new feature that can load and unload environment variables depending on the current directory.
 - [dive](https://github.com/wagoodman/dive/): A tool for exploring each layer in a docker image
 - [docker-slim](https://github.com/docker-slim/docker-slim/): DockerSlim (docker-slim): Don't change anything in your Docker\ncontainer image and minify it by up to 30x (and for compiled languages even\nmore) making it secure too! (free and open source)
 - [dockle](https://github.com/goodwithtech/dockle/): Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
