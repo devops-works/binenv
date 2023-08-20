@@ -607,10 +607,9 @@ sudo ~/.binenv/binaries/termshark/2.2.0
 Sorry to hear that. Don't hesitate opening an issue or sending a PR is
 something does not fit your use case
 
-Some nice alternatives exist:
+A nice alternative exists:
 
-- https://gofi.sh/
-- https://asdf-vm.com/#/
+- https://asdf-vm.com/
 
 ## Distributions file format
 
