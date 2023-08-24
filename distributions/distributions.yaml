@@ -1,6 +1,5 @@
 ---
 sources:
-
   age:
     description: >
       A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
@@ -1040,8 +1039,9 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/timvisee/ffsend/releases
     fetch:
-      url: https://github.com/timvisee/ffsend/releases/download/v{{ .Version }}/ffsend-v{{ .Version }}-{{ .OS }}-{{ .Arch }}
-          #  https://github.com/timvisee/ffsend/releases/download/v0.2.74/ffsend-v0.2.74-linux-x64
+      url:
+        https://github.com/timvisee/ffsend/releases/download/v{{ .Version }}/ffsend-v{{ .Version }}-{{ .OS }}-{{ .Arch }}
+        #  https://github.com/timvisee/ffsend/releases/download/v0.2.74/ffsend-v0.2.74-linux-x64
     install:
       type: direct
       binaries:
@@ -1059,7 +1059,6 @@ sources:
       type: tgz
       binaries:
         - flux
-
 
   fselect:
     description: Find files with SQL-like queries
@@ -1531,7 +1530,6 @@ sources:
       type: tgz
       binaries:
         - "{{ .OS }}-{{ .Arch }}/helm"
-
 
   helm-docs:
     description: a tool for controlling hetzner cloud resources
@@ -2566,7 +2564,7 @@ sources:
       type: tgz
       binaries:
         - mage
-    
+
   mcfly:
     description: Fly through your shell history. Great Scott!
     url: https://github.com/cantino/mcfly/
@@ -2589,11 +2587,11 @@ sources:
     url: https://github.com/zyedidia/micro/
     # Mapping doesn't work for Darvin - there's no .Arch present in the package name
     map:
-      amd64: '64'
-      i386: '32'
-      arm: '-arm'
-      arm64: '-arm64'
-      windows: 'win'
+      amd64: "64"
+      i386: "32"
+      arm: "-arm"
+      arm64: "-arm64"
+      windows: "win"
     list:
       type: github-releases
       url: https://api.github.com/repos/zyedidia/micro/releases
@@ -2995,7 +2993,7 @@ sources:
         - pint-linux-amd64
 
   plow:
-    description: > 
+    description: >
       A high-performance HTTP benchmarking tool with real-time web
       UI and terminal displaying
     url: https://github.com/six-ddc/plow/
@@ -3396,7 +3394,7 @@ sources:
         - sloop
 
   slowql-digest:
-    description: > 
+    description: >
       A package to parse slow query logs in Go, with associated tooling 
       (digester, replayer...), and compatible with multiple databases (MySQL,
       MariaDB, PerconaDB...).
@@ -3423,7 +3421,7 @@ sources:
         arch: arm64
 
   slowql-replayer:
-    description: > 
+    description: >
       A package to parse slow query logs in Go, with associated tooling 
       (digester, replayer...), and compatible with multiple databases (MySQL,
       MariaDB, PerconaDB...).
@@ -3538,7 +3536,7 @@ sources:
         - ssllabs-scan
 
   ssosync:
-    description: Populate AWS SSO directly with your G Suite users and groups using either a CLI or AWS Lambda 
+    description: Populate AWS SSO directly with your G Suite users and groups using either a CLI or AWS Lambda
     url: https://github.com/awslabs/ssosync/
     map:
       amd64: x86_64
@@ -3633,7 +3631,7 @@ sources:
       url: https://github.com/erkexzcx/stoppropaganda/releases/download/v{{ .Version }}/stoppropaganda_v{{ .Version }}_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
-  
+
   subfinder:
     description: >
       Subfinder is a subdomain discovery tool that discovers valid subdomains for websites.
@@ -4402,3 +4400,31 @@ sources:
       url: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v{{ .Version }}/ytt-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  ksd:
+    description: Kubernetes secret decoder
+    url: https://github.com/mfuentesg/ksd/
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mfuentesg/ksd/releases
+    fetch:
+      url: https://github.com/mfuentesg/ksd/releases/download/v{{ .Version }}/ksd_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ksd
