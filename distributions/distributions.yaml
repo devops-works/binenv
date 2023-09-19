@@ -1077,6 +1077,25 @@ sources:
       binaries:
         - fselect
 
+  fx:
+    description: A static analysis tool for securing Go code
+    url: https://github.com/antonmedv/fx/
+    map:
+      amd64: x86_64
+      darwin: macOS
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/antonmedv/fx/releases
+    fetch:
+      url: https://github.com/antonmedv/fx/releases/download/{{ .Version }}/fx_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+
   fzf:
     description: fzf is a general-purpose command-line fuzzy finder.
     url: https://github.com/junegunn/fzf/

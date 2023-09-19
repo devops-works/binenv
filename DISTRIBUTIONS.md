@@ -67,6 +67,7 @@
 - [ffsend](https://github.com/timvisee/ffsend/): Easily and securely share files from the command line. A fully featured Firefox Send client.
 - [flux](https://fluxcd.io): Declarative continuous deployment for Kubernetes.
 - [fselect](https://github.com/jhspetersson/fselect/): Find files with SQL-like queries
+- [fx](https://github.com/antonmedv/fx/): A static analysis tool for securing Go code
 - [fzf](https://github.com/junegunn/fzf/): fzf is a general-purpose command-line fuzzy finder.
 - [gbt](https://github.com/jtyr/gbt/): Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
 - [gdu](https://github.com/dundee/gdu/): Pretty fast disk usage analyzer written in Go.
@@ -130,7 +131,7 @@
 - [kompose](https://github.com/kubernetes/kompose/): Go from Docker Compose to Kubernetes
 - [kopia](https://github.com/kopia/kopia/): Cross-platform backup tool for Windows, macOS & Linux with fast, incremental backups, client-side end-to-end encryption, compression and data deduplication. CLI and GUI included.
 - [kops](https://github.com/kubernetes/kops/): Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
-- [ksd](https://github.com/mfuentesg/ksd): Kubernetes secret decoder
+- [ksd](https://github.com/mfuentesg/ksd/): Kubernetes secret decoder
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon/): Open Source runtime scanner for k8s cluster and perform security audit checks based on CIS Kubernetes Benchmark specification
 - [kube-bench](https://github.com/aquasecurity/kube-bench/): Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 - [kube-dump](https://github.com/WoozyMasta/kube-dump/): Backup a Kubernetes cluster as a yaml manifest
