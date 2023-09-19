@@ -1080,9 +1080,6 @@ sources:
   fx:
     description: A static analysis tool for securing Go code
     url: https://github.com/antonmedv/fx/
-    map:
-      amd64: x86_64
-      darwin: macOS
     list:
       type: github-releases
       url: https://api.github.com/repos/antonmedv/fx/releases
