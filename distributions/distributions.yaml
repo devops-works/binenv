@@ -1078,7 +1078,7 @@ sources:
         - fselect
 
   fx:
-    description: A static analysis tool for securing Go code
+    description: Terminal JSON viewer & processor
     url: https://github.com/antonmedv/fx/
     list:
       type: github-releases
