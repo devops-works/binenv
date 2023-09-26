@@ -67,7 +67,7 @@
 - [ffsend](https://github.com/timvisee/ffsend/): Easily and securely share files from the command line. A fully featured Firefox Send client.
 - [flux](https://fluxcd.io): Declarative continuous deployment for Kubernetes.
 - [fselect](https://github.com/jhspetersson/fselect/): Find files with SQL-like queries
-- [fx](https://github.com/antonmedv/fx/): A static analysis tool for securing Go code
+- [fx](https://github.com/antonmedv/fx/): Terminal JSON viewer & processor
 - [fzf](https://github.com/junegunn/fzf/): fzf is a general-purpose command-line fuzzy finder.
 - [gbt](https://github.com/jtyr/gbt/): Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.
 - [gdu](https://github.com/dundee/gdu/): Pretty fast disk usage analyzer written in Go.
@@ -221,7 +221,7 @@
 - [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
 - [sonobuoy](https://github.com/vmware-tanzu/sonobuoy): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
-- [sops](https://github.com/mozilla/sops/): Simple and flexible tool for managing secrets
+- [sops](https://github.com/getsops/sops/): Simple and flexible tool for managing secrets
 - [spt](https://github.com/Rigellute/spotify-tui/): A Spotify client for the terminal written in Rust.
 - [sshproxy](https://github.com/cea-hpc/sshproxy/): Proxy SSH connections on a gateway
 - [ssllabs-scan](https://github.com/ssllabs/ssllabs-scan/): A command-line reference-implementation client for SSL Labs APIs, designed for automated and/or bulk testing.
