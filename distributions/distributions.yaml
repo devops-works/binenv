@@ -3494,12 +3494,12 @@ sources:
 
   sops:
     description: Simple and flexible tool for managing secrets
-    url: https://github.com/mozilla/sops/
+    url: https://github.com/getsops/sops/
     list:
       type: github-releases
-      url: https://api.github.com/repos/mozilla/sops/releases
+      url: https://api.github.com/repos/getsops/sops/releases
     fetch:
-      url: https://github.com/mozilla/sops/releases/download/v{{ .Version }}/sops-v{{ .Version }}.{{ .OS }}
+      url: https://github.com/getsops/sops/releases/download/v{{ .Version }}/sops-v{{ .Version }}.{{ .OS }}.{{ .Arch }}
     install:
       type: direct
 
