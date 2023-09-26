@@ -696,8 +696,19 @@ sources:
 `binaries_config`:
 
 ```yaml
-# Array of binaries names that will be downloaded
- - <string>
+# Array of binaries names that will be installed.
+# The string provided is treated as a regexp.
+# This regexp is compared to the filenames found in packages.
+# Note that filenames contains their path in the package with the top level
+# directory removed, e.g.:
+# software-13.0.0-x86_64-unknown-linux-musl/foo/bar/zebinary
+# becomes
+# foo/bar/zebinary
+# Also note that, since all binaries will be installed as the distribution
+# entry name, only one (the latest match) will survive for now.
+# The list is just here to allow alternate names, not real multiple binaries
+# installation.
+ - <regexp>
 ```
 
 `supported_platforms`:

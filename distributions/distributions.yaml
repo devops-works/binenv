@@ -3248,7 +3248,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - rg
+        - "^rg$" # ripgrep binary is named rg
 
   ruflood:
     description: Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.

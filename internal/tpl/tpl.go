@@ -2,6 +2,7 @@ package tpl
 
 import (
 	"bytes"
+	"regexp"
 	"runtime"
 	"strings"
 	"sync"
@@ -62,12 +63,20 @@ func (a Args) Interpolate(m map[string]string) {
 }
 
 // MatchFilters matches a file against a list of template filters
+//
+// We use a template to allow interpolation in binaries list (e.g. {{.OS}}-{{.Arch}}-{{.Version}})
+// Also, the top level directory, if present, is removed to allow an easier search
+// For instance :
+// ripgrep-13.0.0-x86_64-unknown-linux-musl/rg
+// becomes
+// ^rg$
 func (a Args) MatchFilters(file string, filters []string) (bool, error) {
-	var once sync.Once
+	var (
+		once    sync.Once
+		onceErr error
+	)
 
 	tpls := []*template.Template{}
-
-	var onceErr error
 
 	onceBody := func() {
 		for _, v := range filters {
@@ -85,6 +94,11 @@ func (a Args) MatchFilters(file string, filters []string) (bool, error) {
 		return false, onceErr
 	}
 
+	// Remove first directory if present
+	if strings.Contains(file, "/") {
+		file = strings.Join(strings.Split(file, "/")[1:], "/")
+	}
+
 	for _, t := range tpls {
 		buf := bytes.Buffer{}
 		err := t.Execute(&buf, a)
@@ -93,7 +107,12 @@ func (a Args) MatchFilters(file string, filters []string) (bool, error) {
 		}
 		// fmt.Printf("trying to match %s against %s\n", file, buf.String())
 
-		if strings.HasSuffix(file, buf.String()) {
+		patt, err := regexp.Compile(buf.String())
+		if err != nil {
+			return false, err
+		}
+
+		if patt.MatchString(file) {
 			// fmt.Printf("file %s matches filters\n", file)
 			return true, nil
 		}

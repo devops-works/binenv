@@ -8,7 +8,7 @@ import (
 	"github.com/devops-works/binenv/internal/platform"
 )
 
-// Distributions holds the liste of available software sources
+// Distributions holds the list of available software sources
 type Distributions struct {
 	Sources map[string]Sources `yaml:"sources"`
 }
