@@ -555,13 +555,16 @@ Two other environment variables exist:
 
 ## Removing binenv stuff
 
-`binenv` stores downloaded binaries in `~/.binenv/binaries`, and a cache in
-`~/.config/binenv/` (or whatever your `XDG_CONFIG` variable points to).
+`binenv` stores 
+
+- downloaded binaries by default in `~/.binenv/binaries`
+- the versions cache in `~/.cache/binenv/` (or wherever your `XDG_CACHE_HOME` variable points to)
+- the list of known distributions in `~/.config/binenv/` (or wherever your `XDG_CONFIG_HOME` variable points to).
 
 To wipe everything clean:
 
 ```bash
-rm -rfi ~/.binenv ~/.config/binenv/
+rm -rfi ~/.binenv ~/.config/binenv ~/.cache/binenv
 ```
 
 Don't forget to remove the `PATH` and the completion you might have changed in
