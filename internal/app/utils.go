@@ -35,10 +35,10 @@ func GetDefaultConfDir() (string, error) {
 		if err != nil {
 			return "", err
 		}
-		d += "/.config/binenv"
+		d += "/.config"
 	}
 
-	return d, nil
+	return d + "/binenv", nil
 }
 
 // GetDefaultCacheDir returns the cache directory in usermode
@@ -51,10 +51,10 @@ func GetDefaultCacheDir() (string, error) {
 		if err != nil {
 			return "", err
 		}
-		d += "/.cache/binenv"
+		d += "/.cache"
 	}
 
-	return d, nil
+	return d + "/binenv", nil
 }
 
 func stringInSlice(st string, sl []string) bool {
