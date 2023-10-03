@@ -150,6 +150,7 @@
 - [kubescape](https://github.com/armosec/kubescape/): kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA
 - [kubeseal](https://github.com/bitnami-labs/sealed-secrets/): A Kubernetes controller and tool for one-way encrypted Secrets
 - [kubesec](https://github.com/shyiko/kubesec/): Secure Secret management for Kubernetes (with gpg, Google Cloud KMS and AWS KMS backends)
+- [kubeshark](https://github.com/kubeshark/kubeshark/): The API traffic analyzer for Kubernetes providing real-time K8s protocol-level visibility, capturing and monitoring all traffic and payloads going in, out and across containers, pods, nodes and clusters. Inspired by Wireshark, purposely built for Kubernetes
 - [kubestr](https://github.com/kastenhq/kubestr/): A tool to discover, validate and evaluate Kubernetes storage options
 - [kubesurvival](https://github.com/aporia-ai/): Significantly reduce Kubernetes costs by finding the cheapest machine types that can run your workloads
 - [kubeswitch](https://github.com/danielfoehrKn/kubeswitch/): The kubectx for operators
@@ -170,7 +171,7 @@
 - [migrate](https://github.com/golang-migrate/migrate/): CLI database migrations tool.
 - [miller](https://github.com/johnkerl/miller/): Miller is like awk, sed, cut, join, and sort for name-indexed data such as CSV, TSV
 - [minikube](https://github.com/kubernetes/minikube/): Run Kubernetes locally
-- [mizu](https://github.com/up9inc/mizu/): API traffic viewer for Kubernetes enabling you to view all API communication between microservices. Think TCPDump and Wireshark re-invented for Kubernetes
+- [mizu](https://github.com/up9inc/mizu/): Replaced by kubeshark
 - [mygopherhose](https://github.com/devops-works/mygopherhose/): Faster import for mysqldumps
 - [mysql_random_data_load](https://github.com/Percona-Lab/mysql_random_data_load/): MySQL random data loader
 - [naabu](https://github.com/projectdiscovery/naabu/): A fast port scanner written in go with focus on reliability and simplicity. Designed to be used in combination with other tools for attack surface discovery in bug bounties and pentests
@@ -213,7 +214,6 @@
 - [shaloc](https://github.com/eze-kiel/shaloc/): LAN-scoped command line sharing tool with cool features (zip archives, AES-256, download limits...).
 - [shdotenv](https://github.com/ko1nksm/shdotenv/): dotenv support for shell and POSIX-compliant .env syntax specification.
 - [shell2http](https://github.com/msoap/shell2http/): Executing shell commands via HTTP server
-- [shipyard](https://shipyard.run/): Modern cloud native development environments
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [slides](https://maaslalani.com/slides/): Terminal based presentation tool
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization

@@ -207,7 +207,7 @@ sources:
     description: AWS bulk tagging tool
     url: https://github.com/mpostument/awstaghelper/
     map:
-      amd64: x86_64
+      amd64: 64bit
       darwin: Darwin
       linux: Linux
       windows: Windows
@@ -820,7 +820,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - docker-slim
+        - "^slim$"
         # - docker-slim-sensor
 
   dockle:
@@ -1222,7 +1222,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - ./gitui
+        - gitui
 
   glab:
     description: An open-source GitLab command line tool
@@ -1247,11 +1247,12 @@ sources:
     map:
       amd64: x86_64
       darwin: Darwin
+      linux: Linux
     list:
       type: github-releases
       url: https://api.github.com/repos/charmbracelet/glow/releases
     fetch:
-      url: https://github.com/charmbracelet/glow/releases/download/v{{ .Version }}/glow_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/charmbracelet/glow/releases/download/v{{ .Version }}/glow_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1545,7 +1546,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - "{{ .OS }}-{{ .Arch }}/helm"
+        - "^helm$"
 
   helm-docs:
     description: a tool for controlling hetzner cloud resources
@@ -1559,7 +1560,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/norwoodj/helm-docs/releases
     fetch:
-      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_Linux_x86_64.tar.gz
+      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1629,7 +1630,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/soywod/himalaya/releases
     fetch:
-      url: https://github.com/soywod/himalaya/releases/download/v{{ .Version }}/himalaya-{{ .OS }}.tar.gz
+      url: https://github.com/soywod/himalaya/releases/download/v{{ .Version }}/himalaya-{{ .OS }}.tgz
     install:
       type: tgz
       binaries:
@@ -1833,7 +1834,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - k6-v{{ .Version }}-{{ .OS }}-{{ .Arch }}/k6
+        - "^k6$"
 
   k8stail:
     description: tail -f experience for Kubernetes Pods
@@ -1890,7 +1891,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/boz/kail/releases
     fetch:
-      url: https://github.com/boz/kail/releases/download/v{{ .Version }}/kail_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/boz/kail/releases/download/v{{ .Version }}/kail_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2067,11 +2068,14 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/stackrox/kube-linter/releases
     fetch:
-      url: https://github.com/stackrox/kube-linter/releases/download/{{ .Version }}/kube-linter-{{ .OS }}.tar.gz
+      url: https://github.com/stackrox/kube-linter/releases/download/v{{ .Version }}/kube-linter-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
         - kube-linter
+    supported_platforms:
+      - os: linux
+        arch: amd64
 
   kubeaudit:
     description: kubeaudit helps you audit your Kubernetes clusters against common security controls
@@ -2224,11 +2228,21 @@ sources:
       top of the Kubernetes cluster and turns infrastructure into a managed
       PaaS.
     url: https://github.com/kuberlogic/kuberlogic/
+    # Seems that binaries are not produced anymore :/
+    # list:
+    #   type: github-releases
+    #   url: https://api.github.com/repos/kuberlogic/kuberlogic/releases
+    map:
+      amd64: x86_64
     list:
-      type: github-releases
-      url: https://api.github.com/repos/kuberlogic/kuberlogic/releases
+      type: static
+      versions:
+        - 0.0.15
+        - 0.0.14
+        - 0.0.13
+        - 0.0.12
     fetch:
-      url: https://github.com/kuberlogic/kuberlogic/releases/download/v{{ .Version }}/kuberlogic-installer-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/kuberlogic/kuberlogic/releases/download/{{ .Version }}/kuberlogic_{{ .Arch }}_{{ .OS }}
     install:
       type: direct
 
@@ -2273,6 +2287,23 @@ sources:
       url: https://github.com/shyiko/kubesec/releases/download/{{ .Version }}/kubesec-{{ .Version }}-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  kubeshark:
+    description: >
+      The API traffic analyzer for Kubernetes providing real-time K8s
+      protocol-level visibility, capturing and monitoring all traffic and
+      payloads going in, out and across containers, pods, nodes and clusters.
+      Inspired by Wireshark, purposely built for Kubernetes
+    url: https://github.com/kubeshark/kubeshark/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubeshark/kubeshark/releases
+    fetch:
+      url: https://github.com/kubeshark/kubeshark/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+    post_install_message: >
+      Warning: replaces Mizu
 
   kubestr:
     description: >
@@ -2425,7 +2456,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/jesseduffield/lazygit/releases
     fetch:
-      url: https://github.com/jesseduffield/lazygit/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/lazygit_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/jesseduffield/lazygit/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}/lazygit_{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2500,7 +2531,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/Peltoche/lsd/releases
     fetch:
-      url: https://github.com/Peltoche/lsd/releases/download/{{ .Version }}/lsd-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+      url: https://github.com/Peltoche/lsd/releases/download/v{{ .Version }}/lsd-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2510,16 +2541,15 @@ sources:
     description: Fast, simple and clean video downloader
     url: https://github.com/iawia002/lux/
     map:
-      amd64: 64-bit
-      "386": 32-bit
+      amd64: x86_64
+      "386": i386
       arm: ARM
-      arm64: ARM64
-      darwin: macOS
+      darwin: Darwin
       linux: Linux
       windows: Windows
-      openbsd: OpenBSD
-      freebsd: FreeBSD
-      netbsd: NetBSD
+      openbsd: Openbsd
+      freebsd: Freebsd
+      netbsd: Netbsd
     supported_platforms:
       - os: linux
         arch: i386
@@ -2657,13 +2687,10 @@ sources:
     install:
       type: tgz
       binaries:
-        - out/minikube-{{ .OS }}-{{ .Arch }}
+        - minikube-{{ .OS }}-{{ .Arch }}
 
   mizu:
-    description: >
-      API traffic viewer for Kubernetes enabling you to view all API
-      communication between microservices. Think TCPDump and Wireshark
-      re-invented for Kubernetes
+    description: Replaced by kubeshark
     url: https://github.com/up9inc/mizu/
     list:
       type: github-releases
@@ -2673,9 +2700,7 @@ sources:
     install:
       type: direct
     post_install_message: >
-      Warning: mizu does not use semver. Versions are
-      considered to be 'Major.Patch' for this distribution (e.g. use 'binenv
-      install mizu 33.0.0-dev9' to install '33.0-dev9').
+      Warning: mizu is replaced by kubeshark.
 
   mygopherhose:
     description: Faster import for mysqldumps
@@ -2813,7 +2838,7 @@ sources:
       exclude: otohttp
       url: https://api.github.com/repos/o2sh/onefetch/releases
     fetch:
-      url: https://github.com/o2sh/onefetch/releases/download/v{{ .Version }}/onefetch-{{ .OS }}.tar.gz
+      url: https://github.com/o2sh/onefetch/releases/download/{{ .Version }}/onefetch-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -2993,11 +3018,6 @@ sources:
   pint:
     description: Prometheus rule linter
     url: https://github.com/cloudflare/pint/
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
     list:
       type: github-releases
       url: https://api.github.com/repos/cloudflare/pint/releases
@@ -3344,20 +3364,23 @@ sources:
       binaries:
         - shell2http
 
-  shipyard:
-    description: Modern cloud native development environments
-    url: https://shipyard.run/
-    map:
-      amd64: x86_64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/shipyard-run/shipyard/releases
-    fetch:
-      url: https://github.com/shipyard-run/shipyard/releases/download/v{{ .Version }}/shipyard_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - shipyard
+  # Removed because status is unclear:
+  # repo is redirected to https://github.com/jumppad-labs/jumppad
+  # 
+  # shipyard:
+  #   description: Modern cloud native development environments
+  #   url: https://shipyard.run/
+  #   map:
+  #     amd64: x86_64
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/shipyard-run/shipyard/releases
+  #   fetch:
+  #     url: https://github.com/shipyard-run/shipyard/releases/download/v{{ .Version }}/shipyard_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+  #   install:
+  #     type: tgz
+  #     binaries:
+  #       - shipyard
 
   skaffold:
     description: Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
@@ -3400,14 +3423,21 @@ sources:
     description: Kubernetes History Visualization
     url: https://github.com/salesforce/sloop/
     list:
-      type: github-releases
-      url: https://api.github.com/repos/salesforce/sloop/releases
+      # type: github-releases
+      # url: https://api.github.com/repos/salesforce/sloop/releases
+      type: static
+      versions:
+        - 1.1
     fetch:
       url: https://github.com/salesforce/sloop/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/sloop_{{ .VersionMajor }}.{{ .VersionMinor }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
         - sloop
+    post_install_message: >
+      Warning: salesforce does not seem to produce binaries anymore; there are
+      more recent versions at the github repo. See
+      https://github.com/salesforce/sloop/releases
 
   slowql-digest:
     description: >
