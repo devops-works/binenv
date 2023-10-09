@@ -4061,6 +4061,21 @@ sources:
       - os: openbsd
         arch: amd64
 
+
+  tofu:
+    description: OpenTofu lets you declaratively manage your cloud infrastructure.
+    url: https://github.com/opentofu/opentofu
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/opentofu/opentofu/releases
+    fetch:
+      url: https://github.com/opentofu/opentofu/releases/download/v{{ .Version }}/tofu_{{ .Version }}_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - tofu
+
+
   toji:
     description: >
       Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into
