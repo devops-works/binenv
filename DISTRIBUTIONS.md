@@ -253,6 +253,7 @@
 - [tfsec](https://github.com/tfsec/tfsec/): TFsec uses static analysis of your terraform templates to spot potential security issues.
 - [tlder](https://github.com/dwisiswant0/tlder/): TLDs finder — check domain name availability across all valid top-level domains.
 - [tlsexp](https://gitlab.com/devopsworks/tools/tlsexp/): TLS certificate expiration checker.
+- [tofu](https://github.com/opentofu/opentofu): OpenTofu lets you declaratively manage your cloud infrastructure.
 - [toji](https://github.com/leucos/toji/): Toji is a Toggle ➡ Jira bridge: sync your Toggl entries directly into Jira issues worklog
 - [traefik](https://github.com/traefik/traefik/): The Cloud Native Application Proxy
 - [trivy](https://github.com/aquasecurity/trivy/): A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
