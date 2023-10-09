@@ -16,7 +16,7 @@ COPY bin/binenv /home/test/binenv
 USER test
 WORKDIR /home/test
 
-RUN ./binenv update && ./binenv install binenv && rm binenv
+RUN ./binenv update && ./binenv update -f binenv && ./binenv install binenv && rm binenv
 RUN echo -e '\nexport PATH=~/.binenv:$PATH' >> ~/.bashrc
 RUN echo 'source <(binenv completion bash)' >> ~/.bashrc
 
