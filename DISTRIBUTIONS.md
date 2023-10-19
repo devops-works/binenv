@@ -125,6 +125,7 @@
 - [kapp](https://github.com/vmware-tanzu/carvel-kapp/): A simple deployment tool focused on the concept of \Kubernetes application\
 - [kbld](https://github.com/vmware-tanzu/carvel-kbld/): Seamlessly incorporates image building and image pushing into your development and deployment workflows
 - [kcli](https://github.com/cswank/kcli/): Kcli is a kafka read only command line browser.
+- [kconnect](https://github.com/fidelity/kconnect/): A CLI for managing Kubernetes cluster connections
 - [kdigger](https://github.com/quarkslab/kdigger/): kdigger is a context discovery tool for Kubernetes penetration testing.
 - [ketall](https://github.com/corneliusweig/ketall/): Like `kubectl get all`, but get really all resources
 - [kind](https://github.com/kubernetes-sigs/kind/): Kubernetes IN Docker - local clusters for testing Kubernetes

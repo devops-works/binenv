@@ -1938,6 +1938,19 @@ sources:
       binaries:
         - kcli
 
+  kconnect:
+    description: A CLI for managing Kubernetes cluster connections
+    url: https://github.com/fidelity/kconnect
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fidelity/kconnect/releases
+    fetch:
+      url: https://github.com/fidelity/kconnect/releases/download/{{ .Version }}/kconnect_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kconnect
+
   kdigger:
     description: kdigger is a context discovery tool for Kubernetes penetration testing.
     url: https://github.com/quarkslab/kdigger/
@@ -2061,7 +2074,7 @@ sources:
 
   kube-linter:
     description: >
-      KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure 
+      KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure
       the applications represented in them adhere to best practices.
     url: https://github.com/stackrox/kube-linter
     list:
@@ -3366,7 +3379,7 @@ sources:
 
   # Removed because status is unclear:
   # repo is redirected to https://github.com/jumppad-labs/jumppad
-  # 
+  #
   # shipyard:
   #   description: Modern cloud native development environments
   #   url: https://shipyard.run/
@@ -3441,7 +3454,7 @@ sources:
 
   slowql-digest:
     description: >
-      A package to parse slow query logs in Go, with associated tooling 
+      A package to parse slow query logs in Go, with associated tooling
       (digester, replayer...), and compatible with multiple databases (MySQL,
       MariaDB, PerconaDB...).
     url: https://github.com/devops-works/slowql/
@@ -3468,7 +3481,7 @@ sources:
 
   slowql-replayer:
     description: >
-      A package to parse slow query logs in Go, with associated tooling 
+      A package to parse slow query logs in Go, with associated tooling
       (digester, replayer...), and compatible with multiple databases (MySQL,
       MariaDB, PerconaDB...).
     url: https://github.com/devops-works/slowql/
