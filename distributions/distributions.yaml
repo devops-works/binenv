@@ -1258,6 +1258,28 @@ sources:
       binaries:
         - glow
 
+  go-mod-outdated:
+    description: >
+      Find outdated dependencies of your Go projects.
+      go-mod-outdated provides a table view of the go list -u -m -json all
+      command which lists all dependencies of a Go project and their available
+      minor and patch updates. It also provides a way to filter indirect
+      dependencies and dependencies without updates.
+    url: https://github.com/psampaz/go-mod-outdated
+    map:
+      amd64: x86_64
+      macos: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/psampaz/go-mod-outdated/releases
+    fetch:
+      url: https://github.com/psampaz/go-mod-outdated/releases/download/v{{ .Version }}/go-mod-outdated_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - go-mod-outdated
+
   gocloc:
     description: A little fast cloc(Count Lines Of Code)
     url: https://github.com/hhatto/gocloc/
