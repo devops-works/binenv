@@ -80,6 +80,7 @@
 - [gitui](https://github.com/extrawurst/gitui/): Blazing fast terminal client for git written in Rust
 - [glab](https://github.com/profclems/glab/): An open-source GitLab command line tool
 - [glow](https://github.com/charmbracelet/glow/): Render markdown on the CLI, with pizzazz! 💅🏻
+- [go-mod-outdated](https://github.com/psampaz/go-mod-outdated): Find outdated dependencies of your Go projects. go-mod-outdated provides a table view of the go list -u -m -json all command which lists all dependencies of a Go project and their available minor and patch updates. It also provides a way to filter indirect dependencies and dependencies without updates.
 - [gocloc](https://github.com/hhatto/gocloc/): A little fast cloc(Count Lines Of Code)
 - [gokart](https://github.com/praetorian-inc/gokart/): A static analysis tool for securing Go code
 - [golangci-lint](https://github.com/golangci/golangci-lint/): Fast linters Runner for Go
@@ -114,18 +115,20 @@
 - [imgpkg](https://github.com/vmware-tanzu/carvel-imgpkg/): Allows you to store and distribute sets of files (e.g. application configuration) as images in Docker (OCI) registries
 - [influxevent](https://gitlab.com/devopsworks/tools/influxevent/): Influxevent wraps commands and sends command result, timing & performance samples to an influxDB server.
 - [infracost](https://github.com/infracost/infracost/): Cloud cost estimates for Terraform
+- [jira-cli](https://github.com/ankitpokhrel/jira-cli): 🔥 Feature-rich interactive Jira command line.
 - [jless](https://github.com/PaulJuliusMartinez/jless): A command-line pager for JSON data.
 - [juicefs](https://github.com/juicedata/juicefs/): JuiceFS is a distributed POSIX file system built on top of Redis and S3.
 - [k3d](https://github.com/rancher/k3d/): Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
 - [k6](https://github.com/grafana/k6/): A modern load testing tool, using Go and JavaScript - https://k6.io
 - [k8stail](https://github.com/dtan4/k8stail/): tail -f experience for Kubernetes Pods
 - [k9s](https://github.com/derailed/k9s/): Kubernetes CLI To Manage Your Clusters In Style!
+- [kaf](https://github.com/birdayz/kaf): Modern CLI for Apache Kafka, written in Go.
 - [kafkactl](https://github.com/deviceinsight/kafkactl/): Command Line Tool for managing Apache Kafka
 - [kail](https://github.com/boz/kail/): kubernetes log viewer
 - [kapp](https://github.com/vmware-tanzu/carvel-kapp/): A simple deployment tool focused on the concept of \Kubernetes application\
 - [kbld](https://github.com/vmware-tanzu/carvel-kbld/): Seamlessly incorporates image building and image pushing into your development and deployment workflows
 - [kcli](https://github.com/cswank/kcli/): Kcli is a kafka read only command line browser.
-- [kconnect](https://github.com/fidelity/kconnect/): A CLI for managing Kubernetes cluster connections
+- [kconnect](https://github.com/fidelity/kconnect): A CLI for managing Kubernetes cluster connections
 - [kdigger](https://github.com/quarkslab/kdigger/): kdigger is a context discovery tool for Kubernetes penetration testing.
 - [ketall](https://github.com/corneliusweig/ketall/): Like `kubectl get all`, but get really all resources
 - [kind](https://github.com/kubernetes-sigs/kind/): Kubernetes IN Docker - local clusters for testing Kubernetes
@@ -136,7 +139,7 @@
 - [kube-beacon](https://github.com/chen-keinan/kube-beacon/): Open Source runtime scanner for k8s cluster and perform security audit checks based on CIS Kubernetes Benchmark specification
 - [kube-bench](https://github.com/aquasecurity/kube-bench/): Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
 - [kube-dump](https://github.com/WoozyMasta/kube-dump/): Backup a Kubernetes cluster as a yaml manifest
-- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure  the applications represented in them adhere to best practices.
+- [kube-linter](https://github.com/stackrox/kube-linter): KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.
 - [kubeaudit](https://github.com/Shopify/kubeaudit/): kubeaudit helps you audit your Kubernetes clusters against common security controls
 - [kubecolor](https://github.com/dty1er/kubecolor/): colorizes kubectl output
 - [kubectl](https://github.com/kubernetes/kubernetes/): Production-Grade Container Scheduling and Management (cli)
@@ -218,8 +221,8 @@
 - [skaffold](https://skaffold.dev/): Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most writing code.
 - [slides](https://maaslalani.com/slides/): Terminal based presentation tool
 - [sloop](https://github.com/salesforce/sloop/): Kubernetes History Visualization
-- [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
-- [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling  (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
+- [slowql-digest](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
+- [slowql-replayer](https://github.com/devops-works/slowql/): A package to parse slow query logs in Go, with associated tooling (digester, replayer...), and compatible with multiple databases (MySQL, MariaDB, PerconaDB...).
 - [snowcat](https://github.com/praetorian-inc/snowcat): a tool to audit the istio service mesh
 - [sonobuoy](https://github.com/vmware-tanzu/sonobuoy): Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.
 - [sops](https://github.com/getsops/sops/): Simple and flexible tool for managing secrets

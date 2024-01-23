@@ -1788,6 +1788,24 @@ sources:
       binaries:
         - "infracost-{{ .OS }}-{{ .Arch }}"
 
+  jira-cli:
+    description: 🔥 Feature-rich interactive Jira command line.
+    url: https://github.com/ankitpokhrel/jira-cli
+    map:
+      darwin: macOS
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/ankitpokhrel/jira-cli/releases
+    fetch:
+      url: https://github.com/ankitpokhrel/jira-cli/releases/download/v{{ .Version }}/jira_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - jira
+    post_install_message: >
+      The binary for jira-cli is called jira-cli (and not jira like the one on github).
+
   jless:
     description: A command-line pager for JSON data.
     url: https://github.com/PaulJuliusMartinez/jless
@@ -1892,6 +1910,23 @@ sources:
       type: tgz
       binaries:
         - k9s
+
+  kaf:
+    description: Modern CLI for Apache Kafka, written in Go.
+    url: https://github.com/birdayz/kaf
+    map:
+      linux: Linux
+      darwin: Darwin
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/birdayz/kaf/releases
+    fetch:
+      url: https://github.com/birdayz/kaf/releases/download/v{{ .Version }}/kaf_{{.Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kaf
 
   kafkactl:
     description: Command Line Tool for managing Apache Kafka
