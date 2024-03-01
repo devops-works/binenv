@@ -4559,3 +4559,30 @@ sources:
       type: tgz
       binaries:
         - ksd
+
+  zellij:
+    description: A terminal workspace with batteries included
+    url: https://github.com/zellij-org/zellij/
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      arm64: aarch64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/zellij-org/zellij/releases
+    fetch:
+      url: https://github.com/zellij-org/zellij/releases/download/v{{ .Version }}/zellij-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - zellij
