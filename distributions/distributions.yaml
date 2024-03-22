@@ -3193,7 +3193,6 @@ sources:
     description: A Kubernetes cluster resource sanitizer
     url: https://github.com/derailed/popeye/
     map:
-      amd64: x86_64
       darwin: Darwin
       linux: Linux
       windows: Windows
