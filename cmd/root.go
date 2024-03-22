@@ -83,7 +83,7 @@ This is version ` + Version + ` built on ` + BuildDate + `.`,
 			// short circuit ShellCompNoDescRequestCmd handling
 			// for binaries completion completion handling
 			// (bit not for binenv)
-			if cmd.CalledAs() == cobra.ShellCompNoDescRequestCmd && !isItMe() {
+			if (cmd.CalledAs() == cobra.ShellCompNoDescRequestCmd || cmd.CalledAs() == cobra.ShellCompRequestCmd) && !isItMe() {
 				// we do not want the internal (cobra-generated)
 				// __completeNoDesc to be called since this would prevent
 				// shimmed binary to return its own completions
