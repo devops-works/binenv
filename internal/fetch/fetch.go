@@ -14,8 +14,9 @@ type Fetcher interface {
 
 // Fetch contains fetch configuration
 type Fetch struct {
-	Type string `yaml:"type"`
-	URL  string `yaml:"url"`
+	Type string   `yaml:"type"`
+	URL  string   `yaml:"url"`
+	URLs []string `yaml:"urls"`
 }
 
 // Factory returns instances that comply to Fecther interface
@@ -23,11 +24,15 @@ func (r Fetch) Factory() Fetcher {
 	switch r.Type {
 	case "download":
 		return Download{
-			url: r.URL,
+			urls: []string{r.URL},
+		}
+	case "download_list":
+		return Download{
+			urls: r.URLs,
 		}
 	default:
 		return Download{
-			url: r.URL,
+			urls: []string{r.URL},
 		}
 	}
 }
