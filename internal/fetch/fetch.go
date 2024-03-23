@@ -16,9 +16,10 @@ type Fetcher interface {
 
 // Fetch contains fetch configuration
 type Fetch struct {
-	Type     string `yaml:"type"`
-	URL      string `yaml:"url"`
-	TokenEnv string `yaml:"token_env"`
+	Type     string   `yaml:"type"`
+	URL      string   `yaml:"url"`
+	URLs     []string `yaml:"urls"`
+	TokenEnv string   `yaml:"token_env"`
 }
 
 // Factory returns instances that comply to Fetcher interface
@@ -37,10 +38,13 @@ func (r Fetch) Factory() (Fetcher, error) {
 			}
 			headers["PRIVATE-TOKEN"] = token
 		}
-
 		return Download{
-			url:     r.URL,
+			urls:    []string{r.URL},
 			headers: headers,
+		}, nil
+	case "download_list":
+		return Download{
+			urls: r.URLs,
 		}, nil
 	}
 }
