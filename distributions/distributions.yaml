@@ -2369,7 +2369,10 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/kubeshark/kubeshark/releases
     fetch:
-      url: https://github.com/kubeshark/kubeshark/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
+      type: download_list
+      urls:
+        - https://github.com/kubeshark/kubeshark/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
+        - https://github.com/kubeshark/kubeshark/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
     post_install_message: >
