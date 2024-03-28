@@ -280,3 +280,4 @@
 - [yor](https://github.com/bridgecrewio/yor/): Extensible auto-tagger for your IaC files. The ultimate way to link entities in the cloud back to the codified resource which created it.
 - [yq](https://github.com/mikefarah/yq/): a lightweight and portable command-line YAML processor
 - [ytt](https://github.com/vmware-tanzu/carvel-ytt/): YAML templating tool that works on YAML structure instead of text
+- [zellij](https://github.com/zellij-org/zellij/): A terminal workspace with batteries included
