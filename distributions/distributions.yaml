@@ -46,6 +46,17 @@ sources:
       binaries:
         - act
 
+  air:
+    description: ☁️ Live reload for Go apps
+    url: https://github.com/cosmtrek/air/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/cosmtrek/air/releases
+    fetch:
+      url: https://github.com/cosmtrek/air/releases/download/v{{ .Version }}/air_{{ .Version }}_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
   ali:
     description: Generate HTTP load and plot the results in real-time
     url: https://github.com/nakabonne/ali/
@@ -3848,6 +3859,20 @@ sources:
     install:
       type: direct
 
+  tailwindcss:
+    description: A utility-first CSS framework for rapid UI development.
+    url: https://github.com/tailwindlabs/tailwindcss/
+    map:
+      darwin: macos
+      amd64: x64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/tailwindlabs/tailwindcss/releases
+    fetch:
+      url: https://github.com/tailwindlabs/tailwindcss/releases/download/v{{ .Version }}/tailwindcss-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   tanka:
     description: Flexible, reusable and concise configuration for Kubernetes
     url: https://github.com/grafana/tanka/
@@ -3938,6 +3963,23 @@ sources:
       type: tgz
       binaries:
         - teler
+
+  templ:
+    description: A language for writing HTML user interfaces in Go.
+    url: https://github.com/a-h/templ/
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/a-h/templ/releases
+    fetch:
+      url: https://github.com/a-h/templ/releases/download/v{{ .Version }}/templ_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - templ
 
   termshark:
     description: A terminal UI for tshark, inspired by Wireshark
