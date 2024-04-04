@@ -1,6 +1,7 @@
 - [act](https://github.com/nektos/act/): Run your GitHub Actions locally
 - [age](https://github.com/FiloSottile/age): A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
 - [age-keygen](https://github.com/FiloSottile/age): A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
+- [air](https://github.com/cosmtrek/air/): ☁️ Live reload for Go apps
 - [ali](https://github.com/nakabonne/ali/): Generate HTTP load and plot the results in real-time
 - [ansible-operator](https://github.com/operator-framework/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
 - [argocd](https://github.com/argoproj/argo-cd/): Declarative continuous deployment for Kubernetes.
@@ -240,12 +241,14 @@
 - [swagger](https://github.com/go-swagger/go-swagger/): Swagger 2.0 implementation for go
 - [sx](https://github.com/v-byte-cpu/sx/): Fast, modern, easy-to-use network scanner
 - [sysz](https://github.com/joehillen/sysz/): An fzf terminal UI for systemctl
+- [tailwindcss](https://github.com/tailwindlabs/tailwindcss/): A utility-first CSS framework for rapid UI development.
 - [tanka](https://github.com/grafana/tanka/): Flexible, reusable and concise configuration for Kubernetes
 - [task](https://github.com/go-task/task/): A task runner / simpler Make alternative written in Go
 - [taskctl](https://github.com/taskctl/taskctl/): simple modern alternative to GNU Make.
 - [telegraf-tailcount](https://github.com/devops-works/telegraf-tailcount/): Counts new lines in growing file and return InfluxDB metrics on STDOUT.
 - [telepresence](https://www.telepresence.io/): Fast, local development for Kubernetes and OpenShift microservices.
 - [teler](https://github.com/kitabisa/teler/): Real-time HTTP Intrusion Detection
+- [templ](https://github.com/a-h/templ/): A language for writing HTML user interfaces in Go.
 - [termshark](https://github.com/gcla/termshark/): A terminal UI for tshark, inspired by Wireshark
 - [terraform](https://www.terraform.io/): Terraform enables you to safely and predictably create, change, and improve infrastructure. It is an open source tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed
 - [terraform-docs](https://github.com/terraform-docs/terraform-docs/): Generate documentation from Terraform modules in various output formats
