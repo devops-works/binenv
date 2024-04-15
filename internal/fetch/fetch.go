@@ -18,7 +18,7 @@ type Fetch struct {
 	URL  string `yaml:"url"`
 }
 
-// Factory returns instances that comply to Fecther interface
+// Factory returns instances that comply to Fetcher interface
 func (r Fetch) Factory() Fetcher {
 	switch r.Type {
 	case "download":
