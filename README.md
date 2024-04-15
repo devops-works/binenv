@@ -775,19 +775,31 @@ https://github.com/devops-works/binenv/tree/master/internal/install).
 
 Thanks to all contributors:
 
+- @alenzen
+- @alex-bes
 - @angrox
+- @AXGKl
 - @cleming
+- @Dazix
 - @deknos
+- @DnR-iData
 - @dundee
+- @eagafonov
+- @earzur
 - @eze-kiel
 - @gwenall
+- @iainelder
 - @jakubvokoun
+- @kenni-shin
 - @mpepping
 - @patsevanton
 - @pichouk
 - @pklejch
 - @semoac
 - @shr-project
+- @Sierra1011
+- @tm-drtina
+- @xx4h
 
 ## Licence
 
