@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -583,7 +582,7 @@ func (a *App) updateGithub() error {
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
@@ -600,6 +599,7 @@ func (a *App) updateGithub() error {
 }
 
 func (a *App) fetcher(id int, jobs <-chan string, res chan<- jobResult, timeout time.Duration) {
+	a.logger.Debug().Msgf("fetcher %d starting", id)
 	for d := range jobs {
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
 
@@ -926,7 +926,7 @@ func (a *App) readDistributions() error {
 		return nil
 	}
 
-	yml, err := ioutil.ReadFile(conf)
+	yml, err := os.ReadFile(conf)
 	if err != nil {
 		return fmt.Errorf("unable to read file '%s': %w", conf, err)
 	}
@@ -948,7 +948,7 @@ func (a *App) fetchDistributions(conf string) error {
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
@@ -967,7 +967,7 @@ func (a *App) fetchDistributions(conf string) error {
 		mode = 0644
 	}
 
-	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile(conf, os.O_CREATE|os.O_WRONLY, mode)
 	if err != nil {
 		return err
 	}
@@ -1180,7 +1180,7 @@ func (a *App) loadCache() {
 		return
 	}
 
-	js, err := ioutil.ReadFile(conf)
+	js, err := os.ReadFile(conf)
 	if err != nil {
 		a.logger.Error().Err(err).Msgf("unable to read cache %s: please check file permissions", conf)
 		return
@@ -1277,11 +1277,11 @@ func (a *App) createFetchers() {
 // WithDiscard sets the log output to /dev/null
 func WithDiscard() func(*App) error {
 	return func(a *App) error {
-		return a.setLogOutput(ioutil.Discard)
+		return a.setLogOutput(io.Discard)
 	}
 }
 
-func (a *App) setLogOutput(w io.Writer) error {
+func (a *App) setLogOutput(_ io.Writer) error {
 	a.logger = zerolog.Nop()
 
 	return nil

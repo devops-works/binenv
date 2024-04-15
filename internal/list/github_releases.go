@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"regexp"
@@ -46,8 +46,8 @@ func (g GithubRelease) Get(ctx context.Context) ([]string, error) {
 
 	var (
 		next     = 1
-		versions = []string{}
-		v        = []string{}
+		versions []string
+		v        []string
 		err      error
 	)
 
@@ -85,7 +85,7 @@ func (g GithubRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, 0, err
 	}

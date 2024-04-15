@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"runtime"
 
 	"github.com/rs/zerolog"
@@ -48,7 +48,7 @@ func (d Download) Fetch(ctx context.Context, dist, v string, mapper mapping.Mapp
 		return "", fmt.Errorf("unable to download binary at %s: %s", url, resp.Status)
 	}
 
-	tmpfile, err := ioutil.TempFile("", v)
+	tmpfile, err := os.CreateTemp("", v)
 	if err != nil {
 		logger.Fatal().Err(err)
 	}

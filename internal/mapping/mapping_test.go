@@ -28,9 +28,6 @@ func TestRemapper_MustInterpolate(t *testing.T) {
 }
 
 func TestRemapper_IsZero(t *testing.T) {
-	type fields struct {
-		Entries map[string]string
-	}
 	tests := []struct {
 		name    string
 		entries map[string]string
