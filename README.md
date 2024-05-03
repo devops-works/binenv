@@ -788,6 +788,7 @@ Thanks to all contributors:
 - @earzur
 - @eze-kiel
 - @gwenall
+- @harleypig
 - @iainelder
 - @jakubvokoun
 - @kenni-shin
