@@ -74,6 +74,7 @@
 - [gdu](https://github.com/dundee/gdu/): Pretty fast disk usage analyzer written in Go.
 - [geesefs](https://github.com/yandex-cloud/): Finally, a good FUSE FS implementation over S3
 - [gh](https://github.com/cli/cli/): GitHub’s official command line tool
+- [git-bug](https://github.com/MichaelMure/git-bug/): Distributed, offline-first bug tracker embedded in git, with bridges
 - [github-release-notes](https://github.com/buchanae/github-release-notes/): Generate release notes content from GitHub Pull Request history.
 - [gitjacker](https://github.com/liamg/gitjacker/): Leak git repositories from misconfigured websites
 - [gitlab-terraform-manager](https://github.com/CRASH-Tech/gitlab-terraform-manager/): The tool for manage gitlab terraform backend
