@@ -1171,6 +1171,7 @@ sources:
 
   git-bug:
     description: Distributed, offline-first bug tracker embedded in git, with bridges
+    url: https://github.com/MichaelMure/git-bug/
     map:
       amd64: x86_64
       darwin: Darwin
