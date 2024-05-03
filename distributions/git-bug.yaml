@@ -1,0 +1,24 @@
+sources:
+  git-bug:
+    description: Distributed, offline-first bug tracker embedded in git, with bridges
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/MichaelMure/git-bug/releases
+    fetch:
+      url: https://github.com/MichaelMure/git-bug/releases/download/{{ .Version }}/git-bug_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - git-bug
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: windows
+        arch: amd64
+      - os: darwin
+        arch: amd64
