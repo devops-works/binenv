@@ -253,7 +253,7 @@ will only update installable versions for `kubectl`.
 
 When updating the cache, you can control fetch concurrency using the `-c` flag.
 It defaults to 8 which is already pretty high. Do go crazy. This setting is
-mainly used to set a lower concurrency and be nice to GitHub. 
+mainly used to set a lower concurrency and be nice to GitHub.
 
 Note that Github enforces rate limits (e.g. 60 unauthenticated API requests per
 hours). So you should update all distributions (e.g. `binenv update -f`) with
@@ -434,7 +434,7 @@ like `sudo`.
 ```bash
 $ binenv install yq
 2022-02-16T14:24:56-03:00 WRN version for "yq" not specified; using "4.18.1"
-fetching yq version 4.18.1 100% |████████████████████████████| (9.1/9.1 MB, 4.858 MB/s)        
+fetching yq version 4.18.1 100% |████████████████████████████| (9.1/9.1 MB, 4.858 MB/s)
 2022-02-16T14:24:59-03:00 INF "yq" (4.18.1) installed
 $ binenv expand yq
 /Users/local-user/.binenv/binaries/yq/4.18.1
@@ -555,7 +555,7 @@ Two other environment variables exist:
 
 ## Removing binenv stuff
 
-`binenv` stores 
+`binenv` stores
 
 - downloaded binaries by default in `~/.binenv/binaries`
 - the versions cache in `~/.cache/binenv/` (or wherever your `XDG_CACHE_HOME` variable points to)
@@ -631,6 +631,9 @@ sources:
     # Description provided by the binary author(s).
     description: <string>
 
+    # URL for binary (usually homepage or repository).
+    url: <url>
+
     # Post install message shown after successful installation
     # Use `post_install_message: |` for multi-line messages
     post_install_message: <string>
@@ -664,7 +667,7 @@ sources:
     install:
 
       # Type of installation. Can be :
-      # "direct" if after download the binary is executable as is; 
+      # "direct" if after download the binary is executable as is;
       # "tgz" if it needs to be uncompressed using tar and gzip;
       # "zip" if it needs to be unzipped;
       # "tarx" if it needs to be uncompressed with tar;
@@ -729,6 +732,7 @@ sources:
 sources:
   popeye:
     description: A Kubernetes cluster resource sanitizer
+    url: https://github.com/derailed/popeye
     map:
       amd64: x86_64
       darwin: Darwin
