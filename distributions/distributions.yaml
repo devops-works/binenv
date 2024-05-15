@@ -1429,6 +1429,21 @@ sources:
       binaries:
         - gotty
 
+  gowrap:
+    description: GoWrap is a command line tool for generating decorators for Go interfaces
+    url: https://github.com/hexdigest/gowrap/
+    map:
+      i386: 386
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hexdigest/gowrap/releases
+    fetch:
+      url: https://github.com/hexdigest/gowrap/releases/download/v{{ .Version }}/gowrap_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gowrap
+
   gping:
     description: Ping, but with a graph
     url: https://github.com/orf/gping/

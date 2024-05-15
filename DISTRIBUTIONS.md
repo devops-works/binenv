@@ -91,6 +91,7 @@
 - [gosec](https://github.com/securego/gosec/): Golang security checker
 - [gotop](https://github.com/xxxserxxx/gotop/): Just another terminal based graphical activity monitor
 - [gotty](https://github.com/yudai/gotty/): Share your terminal as a web application
+- [gowrap](https://github.com/hexdigest/gowrap/): GoWrap is a command line tool for generating decorators for Go interfaces
 - [gping](https://github.com/orf/gping/): Ping, but with a graph
 - [grafana-kiosk](https://github.com/grafana/grafana-kiosk/): Kiosk utility for Grafana
 - [grafana_cli](https://github.com/kckecheng/grafana_cli/): A CLI based utility to operate Grafana dashboards, folders, annotations, etc.
