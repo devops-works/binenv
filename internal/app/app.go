@@ -916,24 +916,45 @@ func (a *App) selfInstall(version string) error {
 }
 
 func (a *App) readDistributions() error {
-	conf := filepath.Join(a.configdir, "/distributions.yaml")
+	wildcard := filepath.Join(a.configdir, "/*.yaml")
 
-	if _, err := os.Stat(conf); os.IsNotExist(err) {
-		err := a.fetchDistributions(conf)
-		if err != nil {
-			return fmt.Errorf("unable to fetch distributions: %w", err)
+	files, err := filepath.Glob(wildcard)
+	if err != nil {
+		return fmt.Errorf("unable to find any distributions file in %s: %w", a.configdir, err)
+	}
+
+	// Nothing found,just fetch distributions from GH repo
+	if len(files) == 0 {
+		conf := filepath.Join(a.configdir, "/distributions.yaml")
+		if _, err := os.Stat(conf); os.IsNotExist(err) {
+			err := a.fetchDistributions(conf)
+			if err != nil {
+				return fmt.Errorf("unable to fetch distributions: %w", err)
+			}
+			return nil
 		}
-		return nil
+
+		files = append(files, conf)
 	}
 
-	yml, err := os.ReadFile(conf)
-	if err != nil {
-		return fmt.Errorf("unable to read file '%s': %w", conf, err)
-	}
+	a.def = &Distributions{}
+	a.def.Sources = make(map[string]Sources)
 
-	err = yaml.Unmarshal([]byte(yml), &a.def)
-	if err != nil {
-		return err
+	for _, f := range files {
+		yml, err := os.ReadFile(f)
+		if err != nil {
+			return fmt.Errorf("unable to read file '%s': %w", f, err)
+		}
+
+		dsts := &Distributions{}
+		err = yaml.Unmarshal([]byte(yml), dsts)
+		if err != nil {
+			return err
+		}
+
+		for k, v := range dsts.Sources {
+			a.def.Sources[k] = v
+		}
 	}
 
 	return nil

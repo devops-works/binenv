@@ -299,6 +299,16 @@ To update distributions **and** their versions:
 binenv update --all # or -a
 ```
 
+##### Using custom distributions file
+
+If you want to use a custom distributions file, you can add a `.yaml` file in
+the `$XDG_CONFIG` directory (often `~/.config/binenv/`).
+
+This file will be merged with the default distributions file.
+
+Note that files are evaluated in lexicographical order, so if you want to
+override a default, you should name your file accordingly.
+
 #### Examples
 
 - `binenv update`: update available versions for all distributions from github
