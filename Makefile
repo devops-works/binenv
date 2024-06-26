@@ -72,10 +72,10 @@ release: windows darwin linux freebsd ; $(info $(M) stripping release executable
 	$Q $(BIN)/$(PACKAGE) version
 
 goreleaser-test: fmt lint clean ; $(info $(M) goreleaser dry-run…) @ ## Build program binary
-	goreleaser --snapshot --skip-publish --rm-dist
+	goreleaser release --snapshot --skip=publish --clean
 
 goreleaser: fmt lint clean test; $(info $(M) create a release with goreleaser…) @ ## Build program binary
-	goreleaser --rm-dist
+	goreleaser releaser --clean
 
 prepush: outdated ; $(info $(M) execute CI linters…) @ ## execute linting tests so we should not fail liting in CI
 	$Q $(GO) vet ./...
