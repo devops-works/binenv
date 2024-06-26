@@ -12,7 +12,7 @@
 
 set -eu
 
-export BINENV_GLOBAL=false 
+export BINENV_GLOBAL=false
 
 if [ "$GITHUB_TOKEN" == "" ]; then
     echo "ERROR: a GITHUB_TOKEN is required but can not be found; exiting"

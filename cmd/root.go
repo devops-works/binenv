@@ -135,6 +135,7 @@ This is version ` + Version + ` built on ` + BuildDate + `.`,
 
 	// disable flag parsing if we're called as a shim
 	if !isItMe() {
+		debugCompletion("binenv called in shim mode for %q\n", strings.Join(os.Args, " "))
 		rootCmd.DisableFlagParsing = true
 		rootCmd.Args = cobra.ArbitraryArgs
 		rootCmd.SilenceUsage = true
@@ -143,6 +144,8 @@ This is version ` + Version + ` built on ` + BuildDate + `.`,
 		// no need to add commands
 		return rootCmd
 	}
+
+	debugCompletion("binenv called in binenv mode for %q\n", strings.Join(os.Args, " "))
 
 	rootCmd.AddCommand(
 		completionCmd(),
@@ -201,4 +204,25 @@ func bindFlags(cmd *cobra.Command, v *viper.Viper) {
 func isItMe() bool {
 	return strings.HasSuffix(os.Args[0], "binenv") || // this is us
 		strings.HasSuffix(os.Args[0], "__debug_bin") // for debugging in vscode
+}
+
+func isCompletionDebug() bool {
+	return os.Getenv("BASH_COMP_DEBUG_FILE") != ""
+}
+
+func debugCompletion(msg string, args ...interface{}) {
+	if !isCompletionDebug() {
+		return
+	}
+
+	f, err := os.OpenFile(os.Getenv("BASH_COMP_DEBUG_FILE"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "unable to open bash completion debug file %s: %v", os.Getenv("BASH_COMP_DEBUG_FILE"), err)
+		return
+	}
+
+	defer f.Close()
+
+	fmt.Fprintf(f, msg, args...)
+	// fmt.Fprintf(os.Stderr, "[DBG] called in completion mode for %s", os.Args[0])
 }

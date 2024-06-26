@@ -1,6 +1,6 @@
 module github.com/devops-works/binenv
 
-go 1.19
+go 1.22
 
 require (
 	github.com/hashicorp/go-version v1.2.1
@@ -35,6 +35,8 @@ require (
 	github.com/spf13/cast v1.3.0 // indirect
 	github.com/spf13/jwalterweatherman v1.0.0 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
+	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
 	golang.org/x/text v0.3.2 // indirect
+	golang.org/x/tools v0.0.0-20200130002326-2f3ba24bd6e7 // indirect
 	gopkg.in/ini.v1 v1.51.0 // indirect
 )

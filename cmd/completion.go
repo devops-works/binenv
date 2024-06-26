@@ -59,6 +59,5 @@ $ binenv completion fish > ~/.config/fish/completions/binenv.fish
 			}
 		},
 	}
-	// cmd.Flags().IntVarP(&a.Params.MinLength, "min-length", "m", 16, "Specify minimum password length, must not be less than 8")
 	return cmd
 }

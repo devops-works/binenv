@@ -95,33 +95,17 @@ e2e: bin ;  $(info $(M) runs end2end integration tests (very long)…) @ ## inst
 	$Q echo starting docker
 	$Q docker run -ti --name binenv-e2e -e GITHUB_TOKEN --rm -v $(pwd)/distributions/distributions.yaml:/home/binenv/.config/binenv/distributions.yaml binenv-e2e
 
-# Tools
-
 $(BIN):
 	@mkdir -p $@
-$(BIN)/%: | $(BIN) ; $(info $(M) building $(REPOSITORY)…)
-	$Q tmp=$$(mktemp -d); \
-	   env GO111MODULE=off GOPATH=$$tmp GOBIN=$(BIN) $(GO) get $(REPOSITORY) \
-		|| ret=$$?; \
-	   rm -rf $$tmp ; exit $$ret
 
-GOLINT = $(BIN)/golint
-$(BIN)/golint: REPOSITORY=golang.org/x/lint/golint
+# Tools
 
-GOCOVMERGE = $(BIN)/gocovmerge
-$(BIN)/gocovmerge: REPOSITORY=github.com/wadey/gocovmerge
-
-GOCOV = $(BIN)/gocov
-$(BIN)/gocov: REPOSITORY=github.com/axw/gocov/...
-
-GOCOVXML = $(BIN)/gocov-xml
-$(BIN)/gocov-xml: REPOSITORY=github.com/AlekSi/gocov-xml
-
-GO2XUNIT = $(BIN)/go2xunit
-$(BIN)/go2xunit: REPOSITORY=github.com/tebeka/go2xunit
-
-GOMODOUTDATED = $(BIN)/go-mod-outdated
-$(BIN)/go-mod-outdated: REPOSITORY=github.com/psampaz/go-mod-outdated
+GOLINT = $(GO) run golang.org/x/lint/golint@latest
+GOCOVMERGE = $(GO) run github.com/wadey/gocovmerge@latest
+GOCOV = $(GO) run github.com/axw/gocov/gocov@latest
+GOCOVXML = $(GO) run github.com/AlekSi/gocov-xml@latest
+GO2XUNIT = $(GO) run github.com/tebeka/go2xunit@latest
+GOMODOUTDATED = $(GO) run github.com/psampaz/go-mod-outdated@latest
 
 # Tests
 
@@ -145,10 +129,9 @@ COVERAGE_MODE = atomic
 COVERAGE_PROFILE = $(COVERAGE_DIR)/profile.out
 COVERAGE_XML = $(COVERAGE_DIR)/coverage.xml
 COVERAGE_HTML = $(COVERAGE_DIR)/index.html
-.PHONY: test-coverage test-coverage-tools
-test-coverage-tools: | $(GOCOVMERGE) $(GOCOV) $(GOCOVXML)
+.PHONY: test-coverage
 test-coverage: COVERAGE_DIR := $(CURDIR)/test/coverage.$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-test-coverage: fmt lint test-coverage-tools ; $(info $(M) running coverage tests…) @ ## Run coverage tests
+test-coverage: fmt lint ; $(info $(M) running coverage tests…) @ ## Run coverage tests
 	$Q mkdir -p $(COVERAGE_DIR)/coverage
 	$Q for pkg in $(TESTPKGS); do \
 		$(GO) test \
@@ -163,11 +146,11 @@ test-coverage: fmt lint test-coverage-tools ; $(info $(M) running coverage tests
 	$Q $(GOCOV) convert $(COVERAGE_PROFILE) | $(GOCOVXML) > $(COVERAGE_XML)
 
 .PHONY: lint
-lint: | $(GOLINT) ; $(info $(M) running golint…) @ ## Run golint
+lint: ; $(info $(M) running golint…) @ ## Run golint
 	$Q $(GOLINT) -set_exit_status $(PKGS)
 
 .PHONY: outdated
-outdated: | $(GOMODOUTDATED) ; $(info $(M) running go-mod-outdated…) @ ## Run go-mod-outdated
+outdated: ; $(info $(M) running go-mod-outdated…) @ ## Run go-mod-outdated
 	$Q $(GO) list -u -m -json all 2>/dev/null | $(GOMODOUTDATED) -update
 	$Q $(GO) list -u -m -json all 2>/dev/null | $(GOMODOUTDATED) -update -direct
 
