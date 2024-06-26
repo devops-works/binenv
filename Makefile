@@ -17,7 +17,6 @@ export GO111MODULE=on
 
 .PHONY: all
 
-
 all: fmt lint $(BIN) ; $(info $(M) building executable…) @ ## Build program binary
 	$Q $(GO) build \
 		-tags release \
