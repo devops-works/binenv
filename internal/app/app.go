@@ -210,7 +210,7 @@ func (a *App) GetInstalledVersionsFor(dist string) []string {
 		return nil
 	})
 	if err != nil {
-		a.logger.Error().Err(err).Msgf("unable to fetch installed versions for %q", dist)
+		a.logger.Error().Err(err).Msgf("unable to find installed versions for %q", dist)
 		return []string{}
 	}
 
