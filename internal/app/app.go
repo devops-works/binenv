@@ -194,7 +194,7 @@ func (a *App) GetMostRecent(dist string) string {
 	return ""
 }
 
-// GetInstalledVersionsFor returns a sorted list of versionsfor distribution
+// GetInstalledVersionsFor returns a sorted list of versions for distribution
 func (a *App) GetInstalledVersionsFor(dist string) []string {
 	if _, err := os.Stat(a.getBinDirFor(dist)); os.IsNotExist(err) {
 		return []string{}
@@ -493,7 +493,7 @@ func (a *App) uninstall(dist, version string) error {
 		return nil
 	}
 
-	fmt.Printf("WARNING: this will remove *ALL* versions for %q. Type %q to confirm [oh now I changed my mind]: ", dist, dist)
+	fmt.Printf("WARNING: this will remove *ALL* versions for %q. Type %q to confirm [oh no I changed my mind]: ", dist, dist)
 	var response string
 	_, err := fmt.Scanln(&response)
 	if err != nil {
@@ -523,11 +523,75 @@ func (a *App) uninstall(dist, version string) error {
 
 // Local sets the locally used version for application
 func (a *App) Local(distribution, version string) error {
-	// TODO: Check if distribution is managed by us
-	// TODO: Check if version is available
-	// TODO: Open local .binenv.lock if exists or create
-	// TODO: Replace or create entry for distribution
-	a.logger.Fatal().Msg("not implemented yet")
+	var (
+		mode     os.FileMode = 0640
+		matched              = false
+		lines    []string
+		newlines []string
+	)
+
+	if a.global {
+		mode = 0644
+	}
+
+	versions := a.GetInstalledVersionsFor(distribution)
+
+	// Check if distribution is managed by us
+	if versions == nil {
+		a.logger.Error().Msgf("no versions found for %q; is it installed ?", distribution)
+		os.Exit(1)
+	}
+
+	// Check if version is available
+	if !stringInSlice(version, versions) {
+		a.logger.Error().Msgf("version %q for %q is not installed. Please run `binenv install %s %s`.", version, distribution, distribution, version)
+		os.Exit(1)
+	}
+
+	// Open local .binenv.lock if exists or create
+	input, err := os.ReadFile(".binenv.lock")
+	if err != nil {
+		if !errors.Is(err, syscall.ENOENT) {
+			a.logger.Error().Msgf("unable to read .binenv.lock: %v", err)
+			os.Exit(1)
+		}
+
+		a.logger.Info().Msgf("creating .binenv.lock")
+		// Since ReadFile failed, we can not rely on input
+		// So to be on the safe side:
+		input = []byte{}
+	}
+
+	// Replace or create entry for distribution
+	lines = strings.Split(string(input), "\n")
+
+	for _, line := range lines {
+		switch {
+		case line == "":
+			continue
+		case strings.HasPrefix(line, distribution+"="):
+			matched = true
+			newlines = append(newlines, fmt.Sprintf("%s=%s", distribution, version))
+		default:
+			newlines = append(newlines, line)
+		}
+	}
+
+	if !matched {
+		newlines = append(newlines, fmt.Sprintf("%s=%s", distribution, version))
+	}
+
+	// Sort lines
+	sort.Strings(newlines)
+
+	output := strings.Join(newlines, "\n") + "\n"
+	err = os.WriteFile(".binenv.lock", []byte(output), mode)
+	if err != nil {
+		a.logger.Error().Msgf("error writing .binenv.lock: %v", err)
+		os.Exit(1)
+	}
+
+	// a.logger.Fatal().Msg("not implemented yet")
 	return nil
 }
 

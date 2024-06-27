@@ -17,6 +17,19 @@ Any previously constraint used in this file for the distribution will be removed
 		Run: func(cmd *cobra.Command, args []string) {
 			a.Local(args[0], args[1])
 		},
+		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
+			switch len(args) % 2 {
+			case 0:
+				// complete application name
+				return a.GetPackagesListWithPrefix(toComplete), cobra.ShellCompDirectiveNoFileComp
+			case 1:
+				// complete application version
+				return a.GetInstalledVersionsFor(args[len(args)-1]), cobra.ShellCompDirectiveNoFileComp
+			default:
+				// huh ?
+				return nil, cobra.ShellCompDirectiveNoFileComp
+			}
+		},
 	}
 
 	return cmd
