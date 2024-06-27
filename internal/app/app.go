@@ -522,30 +522,22 @@ func (a *App) uninstall(dist, version string) error {
 }
 
 // Local sets the locally used version for application
-func (a *App) Local(distribution, version string) error {
+func (a *App) Local(specs ...string) error {
 	var (
 		mode     os.FileMode = 0640
 		matched              = false
+		errored              = false
 		lines    []string
 		newlines []string
 	)
 
+	if len(specs)%2 != 0 && len(specs) != 1 {
+		a.logger.Error().Msg("invalid number of arguments (must have distribution and version pairs")
+		os.Exit(1)
+	}
+
 	if a.global {
 		mode = 0644
-	}
-
-	versions := a.GetInstalledVersionsFor(distribution)
-
-	// Check if distribution is managed by us
-	if versions == nil {
-		a.logger.Error().Msgf("no versions found for %q; is it installed ?", distribution)
-		os.Exit(1)
-	}
-
-	// Check if version is available
-	if !stringInSlice(version, versions) {
-		a.logger.Error().Msgf("version %q for %q is not installed. Please run `binenv install %s %s`.", version, distribution, distribution, version)
-		os.Exit(1)
 	}
 
 	// Open local .binenv.lock if exists or create
@@ -565,20 +557,53 @@ func (a *App) Local(distribution, version string) error {
 	// Replace or create entry for distribution
 	lines = strings.Split(string(input), "\n")
 
-	for _, line := range lines {
-		switch {
-		case line == "":
-			continue
-		case strings.HasPrefix(line, distribution+"="):
-			matched = true
-			newlines = append(newlines, fmt.Sprintf("%s=%s", distribution, version))
-		default:
-			newlines = append(newlines, line)
+	for i := 0; i < len(specs); i += 2 {
+		distribution := specs[i]
+		version := specs[i+1]
+
+		versions := a.GetInstalledVersionsFor(distribution)
+
+		// Check if distribution is managed by us
+		if versions == nil {
+			a.logger.Error().Msgf("no versions found for %q; is it installed ?", distribution)
+			errored = true
+		}
+
+		// Check if version is available
+		if !stringInSlice(version, versions) {
+			a.logger.Error().Msgf("version %q for %q is not installed. Please run `binenv install %s %s`.", version, distribution, distribution, version)
+			errored = true
+		}
+
+		for i, line := range lines {
+			switch {
+			// Keep empty lines for now
+			case line == "":
+				continue
+			// Keep comments (howevere they will be Sort-packed at the top of the file)
+			case strings.HasPrefix(line, "#"):
+				continue
+			case strings.HasPrefix(line, distribution+"="):
+				matched = true
+				lines[i] = fmt.Sprintf("%s=%s", distribution, version)
+			}
+		}
+
+		if !matched {
+			lines = append(lines, fmt.Sprintf("%s=%s", distribution, version))
 		}
 	}
 
-	if !matched {
-		newlines = append(newlines, fmt.Sprintf("%s=%s", distribution, version))
+	if errored {
+		os.Exit(1)
+	}
+
+	// Remove empty lines
+	for _, line := range lines {
+		if line == "" {
+			continue
+		}
+		newlines = append(newlines, line)
 	}
 
 	// Sort lines
@@ -591,7 +616,6 @@ func (a *App) Local(distribution, version string) error {
 		os.Exit(1)
 	}
 
-	// a.logger.Fatal().Msg("not implemented yet")
 	return nil
 }
 

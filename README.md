@@ -35,8 +35,7 @@ The last binary you'll ever install.
     - [Version selection process](#version-selection-process)
     - [Install versions form .binenv.lock](#install-versions-form-binenvlock)
       - [Example](#example-1)
-  - [Selecting versions using environment variables](#selecting-versions-using-environment-variables)
-    - [Example](#example-2)
+    - [Adding versions to `.binenv.lock`](#adding-versions-to-binenvlock)
   - [Environment variables](#environment-variables)
   - [Removing binenv stuff](#removing-binenv-stuff)
   - [Status](#status)
@@ -503,7 +502,7 @@ For this, it will check for a `.binenv.lock` file in the current directory.
 
 If none is found, it will check in the parent folder. No lock file ? Check in
 parent folder again. this process continues until `binenv` reaches your home
-directory.
+directory (or `/` if run in global mode).
 
 If no version requirements are found at this point, `binenv` will use the last
 non-prerelease version installed.
@@ -530,7 +529,32 @@ fetching hadolint version 1.16.3 100% |█████████████�
 $
 ```
 
-## Selecting versions using environment variables
+### Adding versions to `.binenv.lock`
+
+To populate the `.binenv.lock` file in the current directory, you can use the
+`local` command with the distributions and versions you want to add.
+
+For instance:
+
+```bash
+binenv local kubectl 1.30.0 helmfile 0.126.0
+```
+
+Note that this will update the `.binenv.lock` file and not replace it, so the
+command above is equivalent to:
+
+```bash
+binenv local kubectl 1.30.0
+binenv local helmfile 0.126.0
+```
+
+and produce the following `.binenv.lock` file:
+
+```bash
+kubectl=1.30.0
+
+
+### Selecting versions using environment variables
 
 _Introduced in v0.17.0_
 
@@ -542,7 +566,7 @@ When an environment variable with this name exists, binenv will use the `=`
 operator to look for an exact match for that constraint and will ignore the
 contents of the `.binenv.lock` file if it exists.
 
-### Example
+#### Example
 
 ```bash
 $ cat .binenv.lock
@@ -557,11 +581,13 @@ version.BuildInfo{Version:"v3.6.3", GitCommit:"d506314abfb5d21419df8c7e7e6801237
 
 ## Environment variables
 
-Two other environment variables exist:
+Other environment variables exists to control `binenv` behavior:
 
 - `BINENV_GLOBAL`: forces `binenv` to run un global mode (same as `-g`); see
   [SYSTEM.md](./SYSTEM.md) for more information on this mode.
 - `BINENV_VERBOSE`: same as `-v`
+- `BASH_COMP_DEBUG_FILE`: if set, will write debug information for bash
+  completion to this file
 
 ## Removing binenv stuff
 

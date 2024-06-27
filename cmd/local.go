@@ -13,9 +13,8 @@ func localCmd(a *app.App) *cobra.Command {
 		Short: "Sets local required versions for distributions.",
 		Long: `This will write the specified version in ".binenv.lock" file in the current directory.
 Any previously constraint used in this file for the distribution will be removed, and an exact match ('=') will be used.`,
-		Args: cobra.ExactArgs(2),
 		Run: func(cmd *cobra.Command, args []string) {
-			a.Local(args[0], args[1])
+			a.Local(args...)
 		},
 		ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 			switch len(args) % 2 {
