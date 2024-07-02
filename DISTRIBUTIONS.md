@@ -53,6 +53,7 @@
 - [docker-slim](https://github.com/docker-slim/docker-slim/): DockerSlim (docker-slim): Don't change anything in your Docker\ncontainer image and minify it by up to 30x (and for compiled languages even\nmore) making it secure too! (free and open source)
 - [dockle](https://github.com/goodwithtech/dockle/): Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start
 - [doctl](https://github.com/digitalocean/doctl/): The official digital ocean command line interface
+- [doggo](https://github.com/mr-karan/doggo): 🐶 Command-line DNS Client for Humans. Written in Golang.
 - [driftctl](https://github.com/cloudskiff/driftctl/): Detect, track and alert on infrastructure drift
 - [driftwood](https://github.com/trufflesecurity/driftwood): Private key usage verification
 - [dstask](https://github.com/naggie/dstask/): Single binary terminal-based todo manager with git-based sync + markdown notes per task

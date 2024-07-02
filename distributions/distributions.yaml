@@ -866,6 +866,63 @@ sources:
       binaries:
         - doctl
 
+  doggo:
+    description: 🐶 Command-line DNS Client for Humans. Written in Golang.
+    url: https://github.com/mr-karan/doggo
+    map:
+      amd64: x86_64
+      linux: Linux
+      darwin: Darwin
+      netbsd: Netbas
+      freebasd: Freebsd
+      openbsd: Openbsd
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mr-karan/doggo/releases
+    fetch:
+      url: https://github.com/mr-karan/doggo/releases/download/v{{ .Version }}/doggo_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - doggo
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: linux
+        arch: arm
+      - os: netbsd
+        arch: amd64
+      - os: netbsd
+        arch: arm64
+      - os: netbsd
+        arch: i386
+      - os: netbsd
+        arch: arm
+      - os: freebsd
+        arch: amd64
+      - os: freebsd
+        arch: arm64
+      - os: freebsd
+        arch: i386
+      - os: freebsd
+        arch: arm
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: openbsd
+        arch: amd64
+      - os: openbsd
+        arch: arm64
+      - os: openbsd
+        arch: i386
+      - os: openbsd
+        arch: arm
+
   driftctl:
     description: Detect, track and alert on infrastructure drift
     url: https://github.com/cloudskiff/driftctl/
