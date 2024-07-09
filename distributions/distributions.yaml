@@ -4426,7 +4426,7 @@ sources:
     install:
       type: tarxz
       binaries:
-        - upx
+        - "^upx$"
 
   vagrant:
     description: A toolfor building and distributing development environments.
