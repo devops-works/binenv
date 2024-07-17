@@ -2660,6 +2660,70 @@ sources:
   #     binaries:
   #       - linkerd
 
+  lego:
+    description: Let's Encrypt/ACME client and library written in Go
+    url: https://github.com/go-acme/lego/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/go-acme/lego/releases
+    fetch:
+      url: https://github.com/go-acme/lego/releases/download/v{{ .Version }}/lego_v{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    supported_platforms:
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      - os: freebsd
+        arch: 386
+      - os: freebsd
+        arch: amd64
+      - os: freebsd
+        arch: arm64
+      - os: freebsd
+        arch: armv5
+      - os: freebsd
+        arch: armv6
+      - os: freebsd
+        arch: armv7
+      - os: linux
+        arch: 386
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: armv5
+      - os: linux
+        arch: armv6
+      - os: linux
+        arch: armv7
+      - os: linux
+        arch: mips64_hardfloat
+      - os: linux
+        arch: mips64_softfloat
+      - os: linux
+        arch: mips64le_hardfloat
+      - os: linux
+        arch: mips64le_softfloat
+      - os: linux
+        arch: mips_hardfloat
+      - os: linux
+        arch: mips_softfloat
+      - os: linux
+        arch: mipsle_hardfloat
+      - os: linux
+        arch: mipsle_softfloat
+      - os: openbsd
+        arch: 386
+      - os: openbsd
+        arch: amd64
+      - os: openbsd
+        arch: arm64
+    install:
+      type: tgz
+      binaries:
+        - lego
+
   local-php-security-checker:
     description: PHP security vulnerabilities checker
     url: https://github.com/fabpot/local-php-security-checker/
