@@ -2,6 +2,7 @@ package fetch
 
 import (
 	"context"
+	"os"
 
 	"github.com/devops-works/binenv/internal/mapping"
 )
@@ -21,13 +22,19 @@ type Fetch struct {
 // Factory returns instances that comply to Fetcher interface
 func (r Fetch) Factory() Fetcher {
 	switch r.Type {
-	case "download":
-		return Download{
-			url: r.URL,
-		}
+	// case "download":
+	// 	return Download{
+	// 		url: r.URL,
+	// 	}
 	default:
+		headers := map[string]string{}
+		if token := os.Getenv("GITLAB_TOKEN"); token != "" {
+			headers["Authorization"] = "token " + token
+			headers["PRIVATE-TOKEN"] = token
+		}
 		return Download{
-			url: r.URL,
+			url:     r.URL,
+			headers: headers,
 		}
 	}
 }

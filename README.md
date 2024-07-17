@@ -298,7 +298,7 @@ To update distributions **and** their versions:
 binenv update --all # or -a
 ```
 
-##### Using custom distributions file
+##### Using custom distributions file (and private GitLab repos)
 
 If you want to use a custom distributions file, you can add a `.yaml` file in
 the `$XDG_CONFIG` directory (often `~/.config/binenv/`).
@@ -307,6 +307,12 @@ This file will be merged with the default distributions file.
 
 Note that files are evaluated in lexicographical order, so if you want to
 override a default, you should name your file accordingly.
+
+You use this mechanism to install binaries from private GitLab repositories
+(GitHub not supported right now) by setting `GITHUB_TOKEN` environment variable.
+
+When it is set, `binenv` will use in `PRIVATE-TOKEN` header in the request to
+fetch the releases.
 
 #### Examples
 
