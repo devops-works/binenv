@@ -16,7 +16,7 @@ builds:
      - -s -w -X github.com/devops-works/binenv/cmd.Version={{.Version}} -X github.com/devops-works/binenv/cmd.BuildDate={{.CommitDate}}
     ignore:
       - goos: darwin
-        goarch: 386
+        goarch: "386"
 
 archives:
   - format: binary
