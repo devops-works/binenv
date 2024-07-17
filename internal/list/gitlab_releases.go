@@ -38,6 +38,7 @@ type GitlabRelease struct {
 	prefix      string
 	exclude     string
 	versionFrom string
+	tokenEnv    string
 }
 
 // Get returns a list of available versions
@@ -75,6 +76,14 @@ func (g GitlabRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 
 	if token := os.Getenv("GITLAB_TOKEN"); token != "" {
 		req.Header.Set("Authorization", "token "+token)
+	}
+
+	if g.tokenEnv != "" {
+		fmt.Println("tokenEnv set to", g.tokenEnv)
+		token := os.Getenv(g.tokenEnv)
+		if token == "" {
+			return nil, 0, fmt.Errorf("token env var %s is not defined; did you export it ?", g.tokenEnv)
+		}
 		req.Header.Set("PRIVATE-TOKEN", token)
 	}
 

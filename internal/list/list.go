@@ -16,6 +16,7 @@ type List struct {
 	Exclude     string `yaml:"exclude"` // exclude versions containing this regex
 	VersionFrom string `yaml:"version_from"`
 	URL         string `yaml:"url"`
+	TokenEnv    string `yaml:"token_env"`
 	Versions    []string
 }
 
@@ -35,6 +36,7 @@ func (l List) Factory() Lister {
 			prefix:      l.Prefix,
 			versionFrom: l.VersionFrom,
 			exclude:     l.Exclude,
+			tokenEnv:    l.TokenEnv,
 		}
 	case "static":
 		return Static{

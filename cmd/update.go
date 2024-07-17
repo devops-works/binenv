@@ -13,7 +13,7 @@ func updateCmd(a *app.App) *cobra.Command {
 	)
 
 	cmd := &cobra.Command{
-		Use:   "update [--all|--distributions] [--cache]",
+		Use:   "update",
 		Short: "Update available software distributions",
 		Long: `Available versions listed distribution will be updated.
 If not distribution is specified, versions for all distributions will be updated.`,

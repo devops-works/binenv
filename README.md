@@ -308,11 +308,36 @@ This file will be merged with the default distributions file.
 Note that files are evaluated in lexicographical order, so if you want to
 override a default, you should name your file accordingly.
 
-You use this mechanism to install binaries from private GitLab repositories
-(GitHub not supported right now) by setting `GITHUB_TOKEN` environment variable.
+You can use this mechanism to install binaries from private GitLab repositories
+(GitHub not supported right now). If you need to pass a `PRIVATE-TOKEN` in the
+headers, you need to set the `token_env` key in the `list` and `fetch`
+sections. This key should contain the name of the environment variable that is
+set with the token.
 
-When it is set, `binenv` will use in `PRIVATE-TOKEN` header in the request to
-fetch the releases.
+Here is an example file:
+
+```yaml
+$ cat ~/.config/binenv/distributions-custom.yaml
+---
+sources:
+  foo:
+    description: This tool let's you foo database tables
+    url: https://gitlab.exemple.org/infrastructure/tools/foo
+    list:
+      type: gitlab-releases
+      url: https://gitlab.example.org/api/v4/projects/42/releases
+      token_env: FOO_PRIVATE_TOKEN
+    fetch:
+      url: https://gitlab.example.org/api/v4/projects/42/packages/generic/foo/{{ .Version }}/foo-{{.OS }}-{{ .Arch }}-{{ .Version }}.gz
+      token_env: FOO_PRIVATE_TOKEN
+    install:
+      type: gzip
+      binaries:
+        - "foo-{{.OS }}-{{ .Arch }}-{{ .Version }}.gz"
+```
+
+You will have to `export FOO_PRIVATE_TOKEN=your_token` before running `binenv`
+to make the token available.
 
 #### Examples
 
@@ -815,9 +840,6 @@ sudo env "PATH=$PATH" "HOME=$HOME" binary_installed_with_binenv ...
 ## Contributions
 
 Welcomed !
-
-We will need other installation mechanisms (see
-https://github.com/devops-works/binenv/tree/master/internal/install).
 
 Thanks to all contributors:
 
