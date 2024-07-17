@@ -22,7 +22,7 @@ type Download struct {
 
 // Fetch gets the package and returns location of downloaded file
 func (d Download) Fetch(ctx context.Context, dist, v string, mapper mapping.Mapper) (string, error) {
-	logger := zerolog.Ctx(ctx).With().Str("func", "GithubRelease.Get").Logger()
+	logger := zerolog.Ctx(ctx).With().Str("func", "Fetch").Logger()
 
 	args := tpl.New(v, mapper)
 

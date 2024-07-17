@@ -75,6 +75,7 @@ func (g GitlabRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 
 	if token := os.Getenv("GITLAB_TOKEN"); token != "" {
 		req.Header.Set("Authorization", "token "+token)
+		req.Header.Set("PRIVATE-TOKEN", token)
 	}
 
 	resp, err := client.Do(req)
@@ -84,6 +85,7 @@ func (g GitlabRelease) doGet(ctx context.Context, page int) ([]string, int, erro
 
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
+
 	if err != nil {
 		return nil, 0, err
 	}
