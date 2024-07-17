@@ -52,16 +52,6 @@ func New(v string, mapper mapping.Mapper) Args {
 	return a
 }
 
-// Interpolate changes some values by others
-func (a Args) Interpolate(m map[string]string) {
-	if v, ok := m[a.Arch]; ok {
-		a.Arch = v
-	}
-	if v, ok := m[a.OS]; ok {
-		a.OS = v
-	}
-}
-
 // MatchFilters matches a file against a list of template filters
 //
 // We use a template to allow interpolation in binaries list (e.g. {{.OS}}-{{.Arch}}-{{.Version}})

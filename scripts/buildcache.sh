@@ -3,12 +3,11 @@
 #
 # Usage: ./updatecache.sh
 #
-# This script will:
-# - copy the source code distribution locally
-# - rebuild the cache
-# - copy the cache to source code
+# This script will rebuild the cache for all distributions in the distributions
+# file.
 #
 # PLEASE MAKE SURE YOUR HAVE A GITHUB TOKEN !!!
+#
 
 set -eu
 
@@ -20,13 +19,11 @@ fi
 
 make
 
-echo "Copying distribution to your config directory"
-cp distributions/distributions.yaml ~/.config/binenv/
-
 echo "Updating the cache (5 threads)"
-./bin/binenv update -f -c5
+./bin/binenv update --cachedir ./distributions --confdir ./distributions -f -c5
 
-echo "Importing resulting cache into code"
-cat ~/.cache/binenv/cache.json | jq '.' > distributions/cache.json
+echo "Importing resulting cache"
+jq '.' < distributions/cache.json > distributions/cache.json.tmp
+mv distributions/cache.json.tmp distributions/cache.json
 
 echo "Please test the cache using './scripts/validate.sh code'"

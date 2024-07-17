@@ -78,7 +78,11 @@ This is version ` + Version + ` built on ` + BuildDate + `.`,
 				a.SetCacheDir(cachedir)
 			}
 
-			a.Init()
+			err = a.Init()
+			if err != nil {
+				os.Exit(0)
+				return err
+			}
 
 			// short circuit ShellCompNoDescRequestCmd handling
 			// for binaries completion completion handling

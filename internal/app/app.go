@@ -123,7 +123,12 @@ func (a *App) Init(o ...func(*App) error) error {
 
 	a.createMappers()
 	a.createListers()
-	a.createFetchers()
+	err = a.createFetchers()
+	if err != nil {
+		// No need to return; it would display binenv usage
+		a.logger.Error().Err(err).Msgf("unable to create fetchers")
+		os.Exit(1)
+	}
 	a.createInstallers()
 
 	a.initializeFlags()
@@ -1370,15 +1375,19 @@ func (a *App) createListers() {
 	}
 }
 
-func (a *App) createFetchers() {
+func (a *App) createFetchers() error {
 	for k, v := range a.def.Sources {
-		f := v.Fetch.Factory()
+		f, err := v.Fetch.Factory()
+		if err != nil {
+			return fmt.Errorf("unable to create fetcher for %s: %w", k, err)
+		}
 		if f == nil {
 			a.logger.Warn().Msgf("%q fetch method for %q is not implemented", v.Fetch.Type, k)
 			continue
 		}
 		a.fetchers[k] = f
 	}
+	return nil
 }
 
 // Functional options
