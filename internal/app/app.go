@@ -123,12 +123,12 @@ func (a *App) Init(o ...func(*App) error) error {
 
 	a.createMappers()
 	a.createListers()
-	err = a.createFetchers()
-	if err != nil {
-		// No need to return; it would display binenv usage
-		a.logger.Error().Err(err).Msgf("unable to create fetchers")
-		os.Exit(1)
-	}
+	_ = a.createFetchers()
+	// if err != nil {
+	// 	// No need to return; it would display binenv usage
+	// 	a.logger.Error().Err(err).Msgf("unable to create fetchers")
+	// 	os.Exit(1)
+	// }
 	a.createInstallers()
 
 	a.initializeFlags()
@@ -347,7 +347,7 @@ func (a *App) Install(specs ...string) error {
 func (a *App) install(dist, version string) (string, error) {
 	// Check if distribution is managed by us
 	if a.fetchers[dist] == nil {
-		return "", fmt.Errorf("no fetcher found for %q", dist)
+		return "", fmt.Errorf("no fetcher found or missing token for %q", dist)
 	}
 	if _, ok := a.fetchers[dist]; !ok {
 		a.logger.Error().Msgf("no such distribution %q", dist)
