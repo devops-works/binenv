@@ -923,6 +923,28 @@ sources:
       - os: openbsd
         arch: arm
 
+  dolt:
+    description: Dolt – Git for Data
+    url: https://github.com/dolthub/dolt
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/dolthub/dolt/releases
+    fetch:
+      url: https://github.com/dolthub/dolt/releases/download/v{{ .Version }}/dolt-{{ .OS }}-{{.Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dolt
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
   driftctl:
     description: Detect, track and alert on infrastructure drift
     url: https://github.com/cloudskiff/driftctl/
