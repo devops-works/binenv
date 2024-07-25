@@ -249,7 +249,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - bat
+        - "^bat$"
 
   batect:
     description: Build And Testing Environments as Code Tool
