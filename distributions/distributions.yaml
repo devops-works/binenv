@@ -4270,6 +4270,21 @@ sources:
       binaries:
         - terrascan
 
+  tetrigo:
+    description: Play Tetris in your terminal.
+    url: https://github.com/Broderick-Westrope/tetrigo/
+    # map:
+    #   amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Broderick-Westrope/tetrigo/releases
+    fetch:
+      url: https://github.com/Broderick-Westrope/tetrigo/releases/download/v{{ .Version }}/tetrigo_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - tetrigo
+
   tf2pulumi:
     description: A tool to convert Terraform projects to Pulumi TypeScript programs
     url: https://github.com/pulumi/tf2pulumi/
