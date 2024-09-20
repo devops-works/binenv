@@ -1,4 +1,5 @@
 ---
+# yamllint disable rule:line-length
 sources:
   age:
     description: >
@@ -2308,6 +2309,20 @@ sources:
       binaries:
         - kubecolor
 
+  kubeconform:
+    description: >
+      Kubeconform is a Kubernetes manifest validation tool. Incorporate it into your CI, or use it locally to validate your Kubernetes configuration!
+    url: https://github.com/yannh/kubeconform/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/yannh/kubeconform/releases
+    fetch:
+      url: https://github.com/yannh/kubeconform/releases/download/v{{ .Version }}/kubeconform-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kubeconform
+
   kubectl:
     description: Production-Grade Container Scheduling and Management (cli)
     url: https://github.com/kubernetes/kubernetes/
@@ -2936,7 +2951,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - migrate # v4.15 started naming files without OS / Arch
+        - migrate  # v4.15 started naming files without OS / Arch
 
   miller:
     description: >
@@ -3545,7 +3560,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - "^rg$" # ripgrep binary is named rg
+        - "^rg$"  # ripgrep binary is named rg
 
   ruflood:
     description: Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.

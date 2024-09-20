@@ -846,7 +846,7 @@ Thanks to all contributors:
 - @alenzen
 - @alex-bes
 - @angrox
-- @AXGKl
+- @axgkl
 - @cleming
 - @Dazix
 - @deknos
