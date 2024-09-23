@@ -2322,7 +2322,7 @@ sources:
       type: tgz
       binaries:
         - kubeconform
-        
+
   kubectl:
     description: Production-Grade Container Scheduling and Management (cli)
     url: https://github.com/kubernetes/kubernetes/
@@ -2330,7 +2330,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/kubernetes/kubernetes/releases
     fetch:
-      url: https://dl.k8s.io/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
+      url: https://storage.googleapis.com/kubernetes-release/release/v{{ .Version }}/bin/{{ .OS }}/{{ .Arch }}/kubectl
     install:
       type: direct
 
