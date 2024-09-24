@@ -624,6 +624,26 @@ sources:
       binaries:
         - consul
 
+  cosign:
+    description: Code signing and transparency for containers and binaries
+    url: https://github.com/sigstore/cosign/
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sigstore/cosign/releases
+    fetch:
+      url: https://github.com/sigstore/cosign/releases/download/v{{ .Version }}/cosign-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   crabz:
     description: Like pigz, but rust
     url: https://github.com/sstadick/crabz
