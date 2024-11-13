@@ -3127,6 +3127,33 @@ sources:
       binaries:
         - nomad
 
+  notes-cli:
+    description: >
+      Small markdown note taking CLI app playing nicely with your favorite editor and other CLI tools
+    url: https://github.com/rhysd/notes-cli
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/rhysd/notes-cli/releases
+    fetch:
+      url: https://github.com/rhysd/notes-cli/releases/download/v{{ .Version }}/notes_{{ .OS }}_{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - notes
+    supported_platforms:
+      - os: freebsd
+        arch: amd64
+      - os: netbsd
+        arch: amd64
+      - os: openbsd
+        arch: amd64
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: arm64
+      # - os: windows
+      #   arch: amd64
+
   noti:
     description: Monitor a process and trigger a notification
     url: https://github.com/variadico/noti
