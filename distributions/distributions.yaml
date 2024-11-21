@@ -4626,6 +4626,9 @@ sources:
       type: zip
       binaries:
         - vagrant
+    post_install_message: >
+        Warning: Vagrant might fail when running as a binary.
+        See https://github.com/hashicorp/vagrant/issues/13318#issuecomment-2200731628 for more information
 
   vault:
     description: >
