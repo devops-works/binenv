@@ -206,8 +206,16 @@ func bindFlags(cmd *cobra.Command, v *viper.Viper) {
 }
 
 func isItMe() bool {
-	return strings.HasSuffix(os.Args[0], "binenv") || // this is us
-		strings.HasSuffix(os.Args[0], "__debug_bin") // for debugging in vscode
+	// get filename part from args[0], remove path
+	filename := os.Args[0]
+	if strings.Contains(filename, "/") {
+		parts := strings.Split(filename, "/")
+		filename = parts[len(parts)-1]
+	}
+	// if the filename is "binenv" or starts with "__debug_bin" we are in binenv mode
+	// otherwise we are in shim mode
+	return filename == "binenv" || // this is us
+		strings.HasPrefix(filename, "__debug_bin") // for debugging in vscode
 }
 
 func isCompletionDebug() bool {
