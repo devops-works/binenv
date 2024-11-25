@@ -1388,7 +1388,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/charmbracelet/glow/releases
     fetch:
-      url: https://github.com/charmbracelet/glow/releases/download/v{{ .Version }}/glow_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/charmbracelet/glow/releases/download/v{{ .Version }}/glow_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
