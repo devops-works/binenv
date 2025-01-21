@@ -1138,7 +1138,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - fd
+        - ^fd$
 
   ffsend:
     description: Easily and securely share files from the command line. A fully featured Firefox Send client.
@@ -2981,7 +2981,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - micro
+        - ^micro$
 
   migrate:
     description: CLI database migrations tool.
