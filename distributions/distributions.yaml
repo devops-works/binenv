@@ -2014,6 +2014,33 @@ sources:
       type: tgz
       binaries:
         - juicefs
+        
+  just:
+    description: just is a handy way to save and run project-specific commands
+    url: https://github.com/casey/just
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      arm64: aarch64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/casey/just/releases
+    fetch:
+      url: https://github.com/casey/just/releases/download/{{ .Version }}/just-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ^just$
 
   k3d:
     description: Lightweight kubernetes distribution that creates containerized k3s clusters. This means, that you can spin up a multi-node k3s cluster on a single machine using docker.
@@ -4614,6 +4641,33 @@ sources:
       binaries:
         - "^upx$"
 
+  uv:
+    description: An extremely fast Python package and project manager, written in Rust.
+    url: https://github.com/astral-sh/uv
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      arm64: aarch64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/astral-sh/uv/releases
+    fetch:
+      url: https://github.com/astral-sh/uv/releases/download/{{ .Version }}/uv-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ^uv$
+        
   vagrant:
     description: A toolfor building and distributing development environments.
     url: https://www.vagrantup.com/
