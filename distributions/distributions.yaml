@@ -4370,20 +4370,22 @@ sources:
       binaries:
         - tetrigo
 
-  tf2pulumi:
-    description: A tool to convert Terraform projects to Pulumi TypeScript programs
-    url: https://github.com/pulumi/tf2pulumi/
-    map:
-      amd64: x64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/pulumi/tf2pulumi/releases
-    fetch:
-      url: https://github.com/pulumi/tf2pulumi/releases/download/v{{ .Version }}/tf2pulumi-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - tf2pulumi
+  # disappeared from GH
+  # superceded by https://github.com/pulumi/pulumi-converter-terraform ?
+  # tf2pulumi:
+  #   description: A tool to convert Terraform projects to Pulumi TypeScript programs
+  #   url: https://github.com/pulumi/tf2pulumi/
+  #   map:
+  #     amd64: x64
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/pulumi/tf2pulumi/releases
+  #   fetch:
+  #     url: https://github.com/pulumi/tf2pulumi/releases/download/v{{ .Version }}/tf2pulumi-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+  #   install:
+  #     type: tgz
+  #     binaries:
+  #       - tf2pulumi
 
   tflint:
     description: >

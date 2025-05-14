@@ -19,8 +19,8 @@ fi
 
 make
 
-echo "Updating the cache (2 threads)"
-./bin/binenv update --cachedir ./distributions --confdir ./distributions -f -c2
+echo "Updating the cache (4 threads)"
+./bin/binenv update --cachedir ./distributions --confdir ./distributions -f -c4
 
 echo "Importing resulting cache"
 jq '.' < distributions/cache.json > distributions/cache.json.tmp
