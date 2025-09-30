@@ -1,52 +1,44 @@
-name: Update cache
+name: Nightly cache refresh
 
 on:
-  push:
-    branches:
-      - foo
-      # - develop
-  # schedule:
-  #   - cron: '15 0 * * *'
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
 
 jobs:
-  resources:
-    name: Update cache
+  refresh-cache:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
-
-      - name: Set up NodeJS
-        uses: actions/setup-node@v1
-
-      - name: Set up Go 1.22
-        uses: actions/setup-go@v2
+      - name: Check out repository
+        uses: actions/checkout@v4
         with:
-          go-version: 1.22
-        id: go
+          fetch-depth: 0
 
-      - name: Build binary
-        run: make all
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
 
-      - name: Create cache
-        run: export GITHUB_TOKEN=${{ secrets.GO_RELEASER_GITHUB_TOKEN }} && ./bin/binenv update -f -v -c2
+      - name: Build cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scripts/buildcache.sh
 
-      - name: Format caches
-        run: jq '.' distributions/cache.json > dist.json && jq '.' ~/.cache/binenv/cache.json > new.json
-
-      - name: Compare caches
-        id: compare
+      - name: Commit cache artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "DIFF=$(diff dist.json new.json > /dev/null 2>&1; echo $?)" >> $GITHUB_ENV
+          if git diff --quiet -- distributions/cache.json; then
+            echo "Cache already up to date"
+            exit 0
+          fi
 
-      - name: Copy cache
-        run: cat ~/.cache/binenv/cache.json | jq . > distributions/cache.json
-        if: ${{ env.DIFF != 0 }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Update cache
-        uses: test-room-7/action-update-file@v1
-        if: ${{ env.DIFF != 0 }}
-        with:
-          file-path: distributions/cache.json
-          commit-msg: automatic cache update
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git add distributions/cache.json
+          git commit -m "chore: nightly cache refresh"
+          git push
