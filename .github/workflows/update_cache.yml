@@ -25,7 +25,9 @@ jobs:
       - name: Build cache
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: scripts/buildcache.sh
+        run: |
+          scripts/buildcache.sh
+          scripts/validate.sh code
 
       - name: Commit cache artifacts
         env:
