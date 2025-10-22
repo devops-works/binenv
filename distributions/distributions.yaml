@@ -134,6 +134,22 @@ sources:
       binaries:
         - asciigraph
 
+  asciinema:
+    description: Terminal session recorder
+    url: https://github.com/asciinema/asciinema/
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/asciinema/asciinema/releases
+    fetch:
+      url: https://github.com/asciinema/asciinema/releases/download/v{{ .Version }}/asciinema-{{ .Arch }}-{{ .OS }}
+    install:
+      type: direct
+
   asciinema-edit:
     description: asciinema casts post-production tools
     url: https://github.com/cirocosta/asciinema-edit/
