@@ -4813,8 +4813,9 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/fujiapple852/trippy/releases
+      version-filter: ^[0-9]+\.[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/fujiapple852/trippy/releases/download/{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}/trippy-{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}-{{ .Arch }}-{{ .OS }}.tar.gz
+      url: https://github.com/fujiapple852/trippy/releases/download/{{ .Version }}/trippy-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
