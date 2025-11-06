@@ -1,6 +1,24 @@
 ---
 # yamllint disable rule:line-length
 sources:
+  act:
+    description: Run your GitHub Actions locally
+    url: https://github.com/nektos/act/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/nektos/act/releases
+    fetch:
+      url: https://github.com/nektos/act/releases/download/v{{ .Version }}/act_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - act
+
   age:
     description: >
       A simple, modern and secure encryption tool (and Go library) with small explicit keys, no config options, and UNIX-style composability.
@@ -28,24 +46,6 @@ sources:
       type: tgz
       binaries:
         - age-keygen
-
-  act:
-    description: Run your GitHub Actions locally
-    url: https://github.com/nektos/act/
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/nektos/act/releases
-    fetch:
-      url: https://github.com/nektos/act/releases/download/v{{ .Version }}/act_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - act
 
   air:
     description: ☁️ Live reload for Go apps
@@ -457,19 +457,6 @@ sources:
     install:
       type: direct
 
-  chart-testing:
-    description: CLI tool for linting and testing Helm charts
-    url: https://github.com/helm/chart-testing
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/helm/chart-testing/releases
-    fetch:
-      url: https://github.com/helm/chart-testing/releases/download/v{{ .Version }}/chart-testing_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - ct
-
   changie:
     description: >
       Automated changelog tool for preparing releases with lots of
@@ -484,6 +471,19 @@ sources:
       type: tgz
       binaries:
         - changie
+
+  chart-testing:
+    description: CLI tool for linting and testing Helm charts
+    url: https://github.com/helm/chart-testing
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/helm/chart-testing/releases
+    fetch:
+      url: https://github.com/helm/chart-testing/releases/download/v{{ .Version }}/chart-testing_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ct
 
   cheat:
     description: cheat allows you to create and view interactive cheatsheets on the command-line.
@@ -1610,6 +1610,19 @@ sources:
       binaries:
         - gorss_{{ .OS }}
 
+  gosec:
+    description: Golang security checker
+    url: https://github.com/securego/gosec/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/securego/gosec/releases
+    fetch:
+      url: https://github.com/securego/gosec/releases/download/v{{ .Version }}/gosec_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gosec
+
   gotop:
     description: Just another terminal based graphical activity monitor
     url: https://github.com/xxxserxxx/gotop/
@@ -1651,24 +1664,6 @@ sources:
       binaries:
         - gowrap
 
-  gping:
-    description: Ping, but with a graph
-    url: https://github.com/orf/gping/
-    map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/orf/gping/releases
-    fetch:
-      url: https://github.com/orf/gping/releases/download/v{{ .Version }}/gping-{{ .OS }}-{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - gping
-
   gpg-tui:
     description: GnuPG terminal interface
     url: https://github.com/orhun/gpg-tui
@@ -1687,6 +1682,24 @@ sources:
       type: tgz
       binaries:
         - gpg-tui
+
+  gping:
+    description: Ping, but with a graph
+    url: https://github.com/orf/gping/
+    map:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/orf/gping/releases
+    fetch:
+      url: https://github.com/orf/gping/releases/download/v{{ .Version }}/gping-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gping
 
   grafana-kiosk:
     description: Kiosk utility for Grafana
@@ -1716,19 +1729,6 @@ sources:
       type: tgz
       binaries:
         - grex
-
-  gosec:
-    description: Golang security checker
-    url: https://github.com/securego/gosec/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/securego/gosec/releases
-    fetch:
-      url: https://github.com/securego/gosec/releases/download/v{{ .Version }}/gosec_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - gosec
 
   grafana_cli:
     description: A CLI based utility to operate Grafana dashboards, folders, annotations, etc.
@@ -2371,6 +2371,19 @@ sources:
     install:
       type: direct
 
+  kompose:
+    description: Go from Docker Compose to Kubernetes
+    url: https://github.com/kubernetes/kompose/
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kubernetes/kompose/releases
+    fetch:
+      url: https://github.com/kubernetes/kompose/releases/download/v{{ .Version }}/kompose-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - kompose-linux-amd64
+
   kopia:
     description: >
       Cross-platform backup tool for Windows, macOS & Linux with fast, incremental
@@ -2390,19 +2403,6 @@ sources:
       binaries:
         - kopia
 
-  kompose:
-    description: Go from Docker Compose to Kubernetes
-    url: https://github.com/kubernetes/kompose/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/kubernetes/kompose/releases
-    fetch:
-      url: https://github.com/kubernetes/kompose/releases/download/v{{ .Version }}/kompose-{{ .OS }}-{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - kompose-linux-amd64
-
   kops:
     description: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management
     url: https://github.com/kubernetes/kops/
@@ -2413,6 +2413,34 @@ sources:
       url: https://github.com/kubernetes/kops/releases/download/v{{ .Version }}/kops-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  ksd:
+    description: Kubernetes secret decoder
+    url: https://github.com/mfuentesg/ksd/
+    map:
+      darwin: Darwin
+      linux: Linux
+      amd64: x86_64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: linux
+        arch: i386
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mfuentesg/ksd/releases
+    fetch:
+      url: https://github.com/mfuentesg/ksd/releases/download/v{{ .Version }}/ksd_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ksd
 
   kube-beacon:
     description: >
@@ -3405,24 +3433,6 @@ sources:
     install:
       type: direct
 
-  oxker:
-    description: Docker container management interface
-    url: https://github.com/mrjackwills/oxker
-    map:
-      linux: linux
-      darwin: apple_darwin
-      amd64: x86_64
-      arm64: aarch64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/mrjackwills/oxker/releases
-    fetch:
-      url: https://github.com/mrjackwills/oxker/releases/download/v{{ .Version }}/oxker_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - oxker
-
   oto:
     description: Go driven rpc code generation tool for right now (cli).
     url: https://github.com/pacedotdev/oto/
@@ -3440,6 +3450,24 @@ sources:
       type: tgz
       binaries:
         - oto
+
+  oxker:
+    description: Docker container management interface
+    url: https://github.com/mrjackwills/oxker
+    map:
+      linux: linux
+      darwin: apple_darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mrjackwills/oxker/releases
+    fetch:
+      url: https://github.com/mrjackwills/oxker/releases/download/v{{ .Version }}/oxker_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - oxker
 
   packer:
     description: >
@@ -3818,24 +3846,6 @@ sources:
       binaries:
         - regctl
 
-  rga:
-    description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
-    url: https://github.com/phiresky/ripgrep-all/
-    map:
-      amd64: x86_64
-      darwin: apple-darwin
-      linux: unknown-linux-musl
-      windows: pc-windows-msvc
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/phiresky/ripgrep-all/releases
-    fetch:
-      url: https://github.com/phiresky/ripgrep-all/releases/download/v{{ .Version }}/ripgrep_all-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - rga
-
   rg:
     description: ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern
     url: https://github.com/BurntSushi/ripgrep/
@@ -3853,6 +3863,24 @@ sources:
       type: tgz
       binaries:
         - "^rg$"  # ripgrep binary is named rg
+
+  rga:
+    description: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+    url: https://github.com/phiresky/ripgrep-all/
+    map:
+      amd64: x86_64
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      windows: pc-windows-msvc
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/phiresky/ripgrep-all/releases
+    fetch:
+      url: https://github.com/phiresky/ripgrep-all/releases/download/v{{ .Version }}/ripgrep_all-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - rga
 
   ruflood:
     description: Helping Ukraine by flooding russian state-controlled media/bureau/bank websites.
@@ -4003,24 +4031,6 @@ sources:
       - os: darwin
         arch: arm64
 
-  slumber:
-    description: HTTP/REST client for terminal
-    url: https://github.com/LucasPickering/slumber
-    map:
-      linux: unknown-linux-gnu
-      darwin: apple-darwin
-      amd64: x86_64
-      arm64: aarch64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/LucasPickering/slumber/releases
-    fetch:
-      url: https://github.com/LucasPickering/slumber/releases/download/v{{ .Version }}/slumber-{{ .Arch }}-{{ .OS }}.tar.xz
-    install:
-      type: tarxz
-      binaries:
-        - slumber
-
   sloop:
     description: Kubernetes History Visualization
     url: https://github.com/salesforce/sloop/
@@ -4094,6 +4104,24 @@ sources:
         arch: amd64
       - os: darwin
         arch: arm64
+
+  slumber:
+    description: HTTP/REST client for terminal
+    url: https://github.com/LucasPickering/slumber
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/LucasPickering/slumber/releases
+    fetch:
+      url: https://github.com/LucasPickering/slumber/releases/download/v{{ .Version }}/slumber-{{ .Arch }}-{{ .OS }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - slumber
 
   snowcat:
     description: a tool to audit the istio service mesh
@@ -4733,7 +4761,6 @@ sources:
       - os: openbsd
         arch: amd64
 
-
   tofu:
     description: OpenTofu lets you declaratively manage your cloud infrastructure.
     url: https://github.com/opentofu/opentofu
@@ -4746,7 +4773,6 @@ sources:
       type: zip
       binaries:
         - tofu
-
 
   toji:
     description: >
@@ -4776,6 +4802,24 @@ sources:
       binaries:
         - traefik
 
+  trippy:
+    description: Network diagnostic tool (traceroute/ping hybrid)
+    url: https://github.com/fujiapple852/trippy
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fujiapple852/trippy/releases
+    fetch:
+      url: https://github.com/fujiapple852/trippy/releases/download/{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}/trippy-{{ .VersionMajor }}.{{ .VersionMinor }}.{{ .VersionPatch }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - trippy
+
   trivy:
     description: >
       A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable
@@ -4797,24 +4841,6 @@ sources:
       type: tgz
       binaries:
         - trivy
-
-  trippy:
-    description: Network diagnostic tool (traceroute/ping hybrid)
-    url: https://github.com/fujiapple852/trippy
-    map:
-      linux: unknown-linux-gnu
-      darwin: apple-darwin
-      amd64: x86_64
-      arm64: aarch64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/fujiapple852/trippy/releases
-    fetch:
-      url: https://github.com/fujiapple852/trippy/releases/download/{{ .Version }}/trippy-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - trippy
 
   trufflehog:
     description: Find credentials all over the place https://trufflesecurity.com
@@ -5127,6 +5153,24 @@ sources:
       binaries:
         - yamlfmt
 
+  yazi:
+    description: Async-based terminal file manager
+    url: https://github.com/sxyazi/yazi
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sxyazi/yazi/releases
+    fetch:
+      url: https://github.com/sxyazi/yazi/releases/download/v{{ .Version }}/yazi-{{ .Arch }}-{{ .OS }}.zip
+    install:
+      type: zip
+      binaries:
+        - yazi-{{ .Arch }}-{{ .OS }}/yazi
+
   yeshttp:
     description: A HTTP server that always says yes
     url: https://gitlab.com/devopsworks/tools/yeshttp/
@@ -5163,24 +5207,6 @@ sources:
       type: zip
       binaries:
         - yh
-
-  yazi:
-    description: Async-based terminal file manager
-    url: https://github.com/sxyazi/yazi
-    map:
-      linux: unknown-linux-gnu
-      darwin: apple-darwin
-      amd64: x86_64
-      arm64: aarch64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/sxyazi/yazi/releases
-    fetch:
-      url: https://github.com/sxyazi/yazi/releases/download/v{{ .Version }}/yazi-{{ .Arch }}-{{ .OS }}.zip
-    install:
-      type: zip
-      binaries:
-        - yazi-{{ .Arch }}-{{ .OS }}/yazi
 
   yj:
     description: Convert between YAML, TOML, JSON, and HCL.
@@ -5238,34 +5264,6 @@ sources:
       url: https://github.com/vmware-tanzu/carvel-ytt/releases/download/v{{ .Version }}/ytt-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
-
-  ksd:
-    description: Kubernetes secret decoder
-    url: https://github.com/mfuentesg/ksd/
-    map:
-      darwin: Darwin
-      linux: Linux
-      amd64: x86_64
-    supported_platforms:
-      - os: linux
-        arch: amd64
-      - os: linux
-        arch: arm64
-      - os: linux
-        arch: i386
-      - os: darwin
-        arch: amd64
-      - os: darwin
-        arch: arm64
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/mfuentesg/ksd/releases
-    fetch:
-      url: https://github.com/mfuentesg/ksd/releases/download/v{{ .Version }}/ksd_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - ksd
 
   zellij:
     description: A terminal workspace with batteries included
