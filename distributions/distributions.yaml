@@ -4819,7 +4819,7 @@ sources:
     install:
       type: tgz
       binaries:
-        - trippy
+        - trip
 
   trivy:
     description: >
