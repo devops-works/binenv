@@ -181,6 +181,24 @@ sources:
       binaries:
         - athens
 
+  atuin:
+    description: Shell history replacement with SQLite database
+    url: https://github.com/atuinsh/atuin
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/atuinsh/atuin/releases
+    fetch:
+      url: https://github.com/atuinsh/atuin/releases/download/v{{ .Version }}/atuin-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - atuin
+
   audit2rbac:
     description: Autogenerate RBAC policies based on Kubernetes audit logs
     url: https://github.com/liggitt/audit2rbac
@@ -249,6 +267,24 @@ sources:
       binaries:
         - awstaghelper
 
+  bandwhich:
+    description: Network utilization CLI by process and connection
+    url: https://github.com/imsnif/bandwhich
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/imsnif/bandwhich/releases
+    fetch:
+      url: https://github.com/imsnif/bandwhich/releases/download/v{{ .Version }}/bandwhich-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - bandwhich
+
   bat:
     description: A cat(1) clone with wings.
     url: https://github.com/sharkdp/bat/
@@ -312,6 +348,24 @@ sources:
         arch: amd64
       - os: freebsd
         arch: arm64
+
+  binsider:
+    description: Binary analysis tool for the terminal
+    url: https://github.com/orhun/binsider
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/orhun/binsider/releases
+    fetch:
+      url: https://github.com/orhun/binsider/releases/download/v{{ .Version }}/binsider-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - binsider
 
   bomberman:
     description: SMTP Performance and Load Test Tool
@@ -670,6 +724,24 @@ sources:
       url: https://github.com/sstadick/crabz/releases/download/v{{ .Version }}/crabz-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
+
+  csvlens:
+    description: CSV file viewer command-line tool
+    url: https://github.com/YS-L/csvlens
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/YS-L/csvlens/releases
+    fetch:
+      url: https://github.com/YS-L/csvlens/releases/download/v{{ .Version }}/csvlens-{{ .Arch }}-{{ .OS }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - csvlens
 
   ctop:
     description: Top-like interface for container metrics
@@ -1031,6 +1103,24 @@ sources:
       type: direct
       binaries:
         - dstask-import
+
+  dua:
+    description: Disk space analysis tool with parallel processing
+    url: https://github.com/Byron/dua-cli
+    map:
+      linux: unknown-linux-musl
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/Byron/dua-cli/releases
+    fetch:
+      url: https://github.com/Byron/dua-cli/releases/download/v{{ .Version }}/dua-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - dua
 
   duf:
     description: Disk Usage/Free Utility
@@ -1578,6 +1668,25 @@ sources:
       type: tgz
       binaries:
         - gping
+
+  gpg-tui:
+    description: GnuPG terminal interface
+    url: https://github.com/orhun/gpg-tui
+    map:
+      linux: unknown-linux-gnu
+      amd64: x86_64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/orhun/gpg-tui/releases
+    fetch:
+      url: https://github.com/orhun/gpg-tui/releases/download/v{{ .Version }}/gpg-tui-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - gpg-tui
 
   grafana-kiosk:
     description: Kiosk utility for Grafana
@@ -3232,6 +3341,22 @@ sources:
       binaries:
         - nuclei
 
+  oha:
+    description: Web application load testing tool
+    url: https://github.com/hatoo/oha
+    map:
+      linux: linux
+      darwin: macos
+      amd64: amd64
+      arm64: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/hatoo/oha/releases
+    fetch:
+      url: https://github.com/hatoo/oha/releases/download/v{{ .Version }}/oha-{{ .OS }}-{{ .Arch }}
+    install:
+      type: direct
+
   onefetch:
     description: Git repository summary on your terminal
     url: https://github.com/o2sh/onefetch/
@@ -3249,6 +3374,24 @@ sources:
       binaries:
         - onefetch
 
+  openapi-tui:
+    description: OpenAPI documentation viewer
+    url: https://github.com/zaghaghi/openapi-tui
+    map:
+      linux: linux
+      darwin: macos
+      amd64: x86_64
+      arm64: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/zaghaghi/openapi-tui/releases
+    fetch:
+      url: https://github.com/zaghaghi/openapi-tui/releases/download/{{ .Version }}/openapi-tui-{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - openapi-tui
+
   operator-sdk:
     description: >
       SDK for building Kubernetes applications. Provides high level APIs,
@@ -3261,6 +3404,24 @@ sources:
       url: https://github.com/operator-framework/operator-sdk/releases/download/v{{ .Version }}/operator-sdk_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
+
+  oxker:
+    description: Docker container management interface
+    url: https://github.com/mrjackwills/oxker
+    map:
+      linux: linux
+      darwin: apple_darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/mrjackwills/oxker/releases
+    fetch:
+      url: https://github.com/mrjackwills/oxker/releases/download/v{{ .Version }}/oxker_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - oxker
 
   oto:
     description: Go driven rpc code generation tool for right now (cli).
@@ -3610,6 +3771,24 @@ sources:
       binaries:
         - pwru
 
+  rainfrog:
+    description: Database interaction tool
+    url: https://github.com/achristmascarl/rainfrog
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/achristmascarl/rainfrog/releases
+    fetch:
+      url: https://github.com/achristmascarl/rainfrog/releases/download/v{{ .Version }}/rainfrog-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - rainfrog
+
   rancher:
     description: >
       Rancher is an open source software platform that enables organizations to
@@ -3823,6 +4002,24 @@ sources:
         arch: amd64
       - os: darwin
         arch: arm64
+
+  slumber:
+    description: HTTP/REST client for terminal
+    url: https://github.com/LucasPickering/slumber
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/LucasPickering/slumber/releases
+    fetch:
+      url: https://github.com/LucasPickering/slumber/releases/download/v{{ .Version }}/slumber-{{ .Arch }}-{{ .OS }}.tar.xz
+    install:
+      type: tarxz
+      binaries:
+        - slumber
 
   sloop:
     description: Kubernetes History Visualization
@@ -4234,6 +4431,28 @@ sources:
       binaries:
         - taskctl
 
+  taskwarrior-tui:
+    description: Task management terminal interface
+    url: https://github.com/kdheepak/taskwarrior-tui
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: darwin
+        arch: amd64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/kdheepak/taskwarrior-tui/releases
+    fetch:
+      url: https://github.com/kdheepak/taskwarrior-tui/releases/download/v{{ .Version }}/taskwarrior-tui-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - taskwarrior-tui
+
   telegraf-tailcount:
     description: Counts new lines in growing file and return InfluxDB metrics on STDOUT.
     url: https://github.com/devops-works/telegraf-tailcount/
@@ -4579,6 +4798,24 @@ sources:
       binaries:
         - trivy
 
+  trippy:
+    description: Network diagnostic tool (traceroute/ping hybrid)
+    url: https://github.com/fujiapple852/trippy
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fujiapple852/trippy/releases
+    fetch:
+      url: https://github.com/fujiapple852/trippy/releases/download/{{ .Version }}/trippy-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - trippy
+
   trufflehog:
     description: Find credentials all over the place https://trufflesecurity.com
     url: https://github.com/trufflesecurity/trufflehog
@@ -4591,6 +4828,24 @@ sources:
       type: tgz
       binaries:
         - trufflehog
+
+  tv:
+    description: Fuzzy finder TUI for multiple data sources
+    url: https://github.com/alexpasmantier/television
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/alexpasmantier/television/releases
+    fetch:
+      url: https://github.com/alexpasmantier/television/releases/download/v{{ .Version }}/tv-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - tv
 
   underpass:
     description: Self-hosted ngrok alternative
@@ -4835,6 +5090,25 @@ sources:
       binaries:
         - xh
 
+  xplr:
+    description: Minimal, hackable file explorer
+    url: https://github.com/sayanarijit/xplr
+    map:
+      linux: linux
+      darwin: macos
+      amd64: ""
+      arm64: aarch64
+      arm: arm
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sayanarijit/xplr/releases
+    fetch:
+      url: https://github.com/sayanarijit/xplr/releases/download/v{{ .Version }}/xplr-{{ .OS }}{{ if .Arch }}-{{ .Arch }}{{ end }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - xplr
+
   yamlfmt:
     description: An extensible command line tool or library to format yaml files
     url: https://github.com/google/yamlfmt
@@ -4889,6 +5163,24 @@ sources:
       type: zip
       binaries:
         - yh
+
+  yazi:
+    description: Async-based terminal file manager
+    url: https://github.com/sxyazi/yazi
+    map:
+      linux: unknown-linux-gnu
+      darwin: apple-darwin
+      amd64: x86_64
+      arm64: aarch64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/sxyazi/yazi/releases
+    fetch:
+      url: https://github.com/sxyazi/yazi/releases/download/v{{ .Version }}/yazi-{{ .Arch }}-{{ .OS }}.zip
+    install:
+      type: zip
+      binaries:
+        - yazi-{{ .Arch }}-{{ .OS }}/yazi
 
   yj:
     description: Convert between YAML, TOML, JSON, and HCL.
