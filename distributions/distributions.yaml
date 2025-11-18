@@ -32,6 +32,7 @@ sources:
       type: tgz
       binaries:
         - age
+        - age-keygen
 
   age-keygen:
     description: >
@@ -71,18 +72,18 @@ sources:
       binaries:
         - ali
 
-  ansible-operator:
-    description: >
-      SDK for building Kubernetes applications. Provides high level APIs,
-      useful abstractions, and project scaffolding.
-    url: https://github.com/operator-framework/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/operator-framework/operator-sdk/releases
-    fetch:
-      url: https://github.com/operator-framework/operator-sdk/releases/download/v{{ .Version }}/ansible-operator_{{ .OS }}_{{ .Arch }}
-    install:
-      type: direct
+  # ansible-operator:
+  #   description: >
+  #     DEPRECATED: ansible-operator is no longer released separately.
+  #     Use operator-sdk instead.
+  #   url: https://github.com/operator-framework/operator-sdk
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/operator-framework/operator-sdk/releases
+  #   fetch:
+  #     url: https://github.com/operator-framework/operator-sdk/releases/download/v{{ .Version }}/ansible-operator_{{ .OS }}_{{ .Arch }}
+  #   install:
+  #     type: direct
 
   argocd:
     description: Declarative continuous deployment for Kubernetes.
@@ -253,15 +254,16 @@ sources:
     description: AWS bulk tagging tool
     url: https://github.com/mpostument/awstaghelper/
     map:
-      amd64: 64bit
+      amd64: x86_64
       darwin: Darwin
       linux: Linux
       windows: Windows
     list:
       type: github-releases
       url: https://api.github.com/repos/mpostument/awstaghelper/releases
+      version-filter: ^[0-9]+\.[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/mpostument/awstaghelper/releases/download/{{ .Version }}/awstaghelper_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/mpostument/awstaghelper/releases/download/{{ .Version }}/awstaghelper_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -570,11 +572,13 @@ sources:
   cli53:
     description: Command line tool for Amazon Route 53
     url: https://github.com/barnybug/cli53/
+    map:
+      darwin: mac
     list:
       type: github-releases
       url: https://api.github.com/repos/barnybug/cli53/releases
     fetch:
-      url: https://github.com/barnybug/cli53/releases/download/{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/barnybug/cli53/releases/download/v{{ .Version }}/cli53-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
@@ -616,12 +620,12 @@ sources:
 
   cmctl:
     description: CLI tool that can help you to manage cert-manager resources inside your cluster.
-    url: https://cert-manager.io/docs/usage/cmctl/
+    url: https://github.com/cert-manager/cmctl
     list:
       type: github-releases
-      url: https://api.github.com/repos/cert-manager/cert-manager/releases
+      url: https://api.github.com/repos/cert-manager/cmctl/releases
     fetch:
-      url: https://github.com/cert-manager/cert-manager/releases/download/v{{ .Version }}/cmctl-{{ .OS }}-{{ .Arch }}.tar.gz
+      url: https://github.com/cert-manager/cmctl/releases/download/v{{ .Version }}/cmctl_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -920,27 +924,24 @@ sources:
       DockerSlim (docker-slim): Don't change anything in your Docker
       container image and minify it by up to 30x (and for compiled languages even
       more) making it secure too! (free and open source)
+      Note: Binenv support currently disabled. Please install from https://github.com/docker-slim/docker-slim/releases
     url: https://github.com/docker-slim/docker-slim/
     map:
+      linux: linux
       amd64: ""
-      arm: "-arm"
-      arm64: "-arm64"
-    supported_platforms:
-      - os: linux
-        arch: amd64
-      - os: linux
-        arch: arm64
-      - os: linux
-        arch: arm
+      arm: _arm
+      arm64: _arm64
+    supported_platforms: []
     list:
       type: github-releases
       url: https://api.github.com/repos/docker-slim/docker-slim/releases
+      version-filter: ^[0-9]+\.[0-9]+\.[0-9]+$
     fetch:
-      url: https://downloads.dockerslim.com/releases/{{ .Version }}/dist_{{ .OS }}{{ .Arch }}.tar.gz
+      url: https://github.com/docker-slim/docker-slim/releases/download/{{ .Version }}/dist_{{ .OS }}{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
-        - "^slim$"
+        - "slim"
         # - docker-slim-sensor
 
   dockle:
@@ -1081,11 +1082,14 @@ sources:
   dstask:
     description: Single binary terminal-based todo manager with git-based sync + markdown notes per task
     url: https://github.com/naggie/dstask/
+    map:
+      arm: arm5
     list:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
+      version-filter: ^[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/naggie/dstask/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/dstask-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/naggie/dstask/releases/download/{{ .Version }}/dstask-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:
@@ -1094,11 +1098,14 @@ sources:
   dstask-import:
     description: Single binary terminal-based todo manager with git-based sync + markdown notes per task (import tool)
     url: https://github.com/naggie/dstask/
+    map:
+      arm: arm5
     list:
       type: github-releases
       url: https://api.github.com/repos/naggie/dstask/releases
+      version-filter: ^[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/naggie/dstask/releases/download/v{{ .VersionMajor }}.{{ .VersionMinor }}/dstask-import-{{ .OS }}-{{ .Arch }}
+      url: https://github.com/naggie/dstask/releases/download/{{ .Version }}/dstask-import-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
       binaries:
@@ -1380,19 +1387,18 @@ sources:
     description: Distributed, offline-first bug tracker embedded in git, with bridges
     url: https://github.com/MichaelMure/git-bug/
     map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
+      amd64: amd64
+      arm64: arm64
+      darwin: darwin
+      linux: linux
+      windows: windows
     list:
       type: github-releases
       url: https://api.github.com/repos/MichaelMure/git-bug/releases
     fetch:
-      url: https://github.com/MichaelMure/git-bug/releases/download/{{ .Version }}/git-bug_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/MichaelMure/git-bug/releases/download/v{{ .Version }}/git-bug_{{ .OS }}_{{ .Arch }}
     install:
-      type: tgz
-      binaries:
-        - git-bug
+      type: direct
     supported_platforms:
       - os: linux
         arch: amd64
@@ -1400,6 +1406,8 @@ sources:
         arch: amd64
       - os: darwin
         arch: amd64
+      - os: darwin
+        arch: arm64
 
   github-release-notes:
     description: Generate release notes content from GitHub Pull Request history.
@@ -1456,12 +1464,14 @@ sources:
     url: https://github.com/extrawurst/gitui/
     map:
       darwin: mac
-      linux: linux-musl
+      linux: linux
+      amd64: x86_64
+      arm64: aarch64
     list:
       type: github-releases
       url: https://api.github.com/repos/extrawurst/gitui/releases
     fetch:
-      url: https://github.com/extrawurst/gitui/releases/download/v{{ .Version }}/gitui-{{ .OS }}.tar.gz
+      url: https://github.com/extrawurst/gitui/releases/download/v{{ .Version }}/gitui-{{ .OS }}-{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1848,18 +1858,18 @@ sources:
         - "^helm$"
 
   helm-docs:
-    description: a tool for controlling hetzner cloud resources
+    description: A tool for automatically generating markdown documentation for helm charts
     url: https://github.com/norwoodj/helm-docs/
     map:
       amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
+      darwin: darwin
+      linux: linux
+      windows: windows
     list:
       type: github-releases
       url: https://api.github.com/repos/norwoodj/helm-docs/releases
     fetch:
-      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/norwoodj/helm-docs/releases/download/v{{ .Version }}/helm-docs_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -1947,11 +1957,16 @@ sources:
   himalaya:
     description: 📫 CLI email client
     url: https://github.com/soywod/himalaya/
+    map:
+      darwin: darwin
+      linux: linux
+      amd64: x86_64
+      arm64: aarch64
     list:
       type: github-releases
       url: https://api.github.com/repos/soywod/himalaya/releases
     fetch:
-      url: https://github.com/soywod/himalaya/releases/download/v{{ .Version }}/himalaya-{{ .OS }}.tgz
+      url: https://github.com/soywod/himalaya/releases/download/v{{ .Version }}/himalaya.{{ .Arch }}-{{ .OS }}.tgz
     install:
       type: tgz
       binaries:
@@ -2585,22 +2600,21 @@ sources:
       binaries:
         - kubectx
 
-  kubeeye:
-    description: >
-      KubeEye aims to find various problems on Kubernetes,
-      such as application misconfiguration,
-      unhealthy cluster components and node problems.
-    url: https://github.com/kubesphere/kubeeye/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/kubesphere/kubeeye/releases
-      exclude: "0.4.0"
-    fetch:
-      url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
-    install:
-      type: tgz
-      binaries:
-        - ke
+  # kubeeye:
+  #   description: >
+  #     DEPRECATED: KubeEye releases only contain offline installation tarballs,
+  #     no standalone binaries are available.
+  #   url: https://github.com/kubesphere/kubeeye/
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/kubesphere/kubeeye/releases
+  #     exclude: "0.4.0"
+  #   fetch:
+  #     url: https://github.com/kubesphere/kubeeye/releases/download/v{{ .Version }}/kubeeye-v{{ .Version }}-{{ .OS }}-{{ .Arch }}.tar.gz
+  #   install:
+  #     type: tgz
+  #     binaries:
+  #       - ke
 
   kubefwd:
     description: Forward multiple ports in Kubernetes
@@ -2736,8 +2750,9 @@ sources:
     list:
       type: github-releases
       url: https://api.github.com/repos/kubeshark/kubeshark/releases
+      version-filter: ^[0-9]+\.[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/kubeshark/kubeshark/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
+      url: https://github.com/kubeshark/kubeshark/releases/download/v{{ .Version }}/kubeshark_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
     post_install_message: >
@@ -2991,7 +3006,7 @@ sources:
       type: github-releases
       url: https://api.github.com/repos/fabpot/local-php-security-checker/releases
     fetch:
-      url: https://github.com/fabpot/local-php-security-checker/releases/download/v{{ .Version }}/local-php-security-checker_{{ .Version }}_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
+      url: https://github.com/fabpot/local-php-security-checker/releases/download/v{{ .Version }}/local-php-security-checker_{{ .OS }}_{{ .Arch }}{{ .ExeExtension }}
     install:
       type: direct
 
@@ -3204,18 +3219,18 @@ sources:
       binaries:
         - minikube-{{ .OS }}-{{ .Arch }}
 
-  mizu:
-    description: Replaced by kubeshark
-    url: https://github.com/up9inc/mizu/
-    list:
-      type: github-releases
-      url: https://api.github.com/repos/up9inc/mizu/releases
-    fetch:
-      url: https://github.com/up9inc/mizu/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/mizu_{{ .OS }}_{{ .Arch }}
-    install:
-      type: direct
-    post_install_message: >
-      Warning: mizu is replaced by kubeshark.
+  # mizu:
+  #   description: DEPRECATED - Replaced by kubeshark (same project, renamed)
+  #   url: https://github.com/kubeshark/kubeshark/
+  #   list:
+  #     type: github-releases
+  #     url: https://api.github.com/repos/kubeshark/kubeshark/releases
+  #   fetch:
+  #     url: https://github.com/kubeshark/kubeshark/releases/download/{{ .VersionMajor }}.{{ .VersionPatch }}/kubeshark_{{ .OS }}_{{ .Arch }}
+  #   install:
+  #     type: direct
+  #   post_install_message: >
+  #     Warning: mizu is replaced by kubeshark.
 
   mygopherhose:
     description: Faster import for mysqldumps
@@ -3437,15 +3452,16 @@ sources:
     description: Go driven rpc code generation tool for right now (cli).
     url: https://github.com/pacedotdev/oto/
     map:
-      amd64: x86_64
-      linux: Linux
-      darwin: Darwin
+      amd64: amd64
+      arm64: arm64
+      linux: linux
+      darwin: darwin
     list:
       type: github-releases
       exclude: otohttp
       url: https://api.github.com/repos/pacedotdev/oto/releases
     fetch:
-      url: https://github.com/pacedotdev/oto/releases/download/v{{ .Version }}/oto_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/pacedotdev/oto/releases/download/v{{ .Version }}/oto_{{ .OS }}_{{ .Arch }}.tar.gz
     install:
       type: tgz
       binaries:
@@ -3717,10 +3733,11 @@ sources:
     description: A Kubernetes cluster resource sanitizer
     url: https://github.com/derailed/popeye/
     map:
-      amd64: x86_64
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
+      amd64: amd64
+      arm64: arm64
+      darwin: darwin
+      linux: linux
+      windows: windows
     list:
       type: github-releases
       url: https://api.github.com/repos/derailed/popeye/releases
@@ -3925,14 +3942,14 @@ sources:
     map:
       amd64: x86_64
       darwin: apple-darwin
-      linux: unknown-linux-gnu
+      linux: unknown-linux-musl
     list:
       type: github-releases
       url: https://api.github.com/repos/chmln/sd/releases
     fetch:
-      url: https://github.com/chmln/sd/releases/download/v{{ .Version }}/sd-v{{ .Version }}-{{ .Arch }}-{{ .OS }}
+      url: https://github.com/chmln/sd/releases/download/v{{ .Version }}/sd-v{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
-      type: direct
+      type: tgz
       binaries:
         - sd
 
@@ -4463,7 +4480,7 @@ sources:
     description: Task management terminal interface
     url: https://github.com/kdheepak/taskwarrior-tui
     map:
-      linux: unknown-linux-gnu
+      linux: unknown-linux-musl
       darwin: apple-darwin
       amd64: x86_64
     supported_platforms:
@@ -4512,10 +4529,9 @@ sources:
     url: https://www.telepresence.io/
     list:
       type: github-releases
-      url: https://api.github.com/repos/telepresenceio/telepresence/tags
-      version_from: name
+      url: https://api.github.com/repos/telepresenceio/telepresence/releases
     fetch:
-      url: https://app.getambassador.io/download/tel2/{{ .OS }}/{{ .Arch }}/{{ .Version }}/telepresence
+      url: https://github.com/telepresenceio/telepresence/releases/download/v{{ .Version }}/telepresence-{{ .OS }}-{{ .Arch }}
     install:
       type: direct
 
@@ -4711,16 +4727,15 @@ sources:
       domains.
     url: https://github.com/dwisiswant0/tlder/
     map:
-      darwin: macOS
+      amd64: x86_64
+      386: i386
     list:
       type: github-releases
       url: https://api.github.com/repos/dwisiswant0/tlder/releases
     fetch:
-      url: https://github.com/dwisiswant0/tlder/releases/download/v{{ .Version }}/tlder_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+      url: https://github.com/dwisiswant0/tlder/releases/download/v{{ .Version }}/tlder_v{{ .Version }}-{{ .OS }}_{{ .Arch }}
     install:
-      type: tgz
-      binaries:
-        - "tlder"
+      type: direct
     supported_platforms:
       - os: linux
         arch: 386
@@ -4857,22 +4872,24 @@ sources:
         - trufflehog
 
   tv:
-    description: Fuzzy finder TUI for multiple data sources
-    url: https://github.com/alexpasmantier/television
+    description: CSV pretty printer (tidy-viewer). Note - Only macOS binaries available. Linux/Windows users should use package managers (.deb/.rpm/.zip)
+    url: https://github.com/alexhallam/tv
     map:
-      linux: unknown-linux-gnu
       darwin: apple-darwin
       amd64: x86_64
-      arm64: aarch64
+    supported_platforms:
+      - os: darwin
+        arch: amd64
     list:
       type: github-releases
-      url: https://api.github.com/repos/alexpasmantier/television/releases
+      url: https://api.github.com/repos/alexhallam/tv/releases
+      version-filter: ^[0-9]+\.[0-9]+\.[0-9]+$
     fetch:
-      url: https://github.com/alexpasmantier/television/releases/download/v{{ .Version }}/tv-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
+      url: https://github.com/alexhallam/tv/releases/download/{{ .Version }}/tidy-viewer-{{ .Version }}-{{ .Arch }}-{{ .OS }}.tar.gz
     install:
       type: tgz
       binaries:
-        - tv
+        - tidy-viewer
 
   underpass:
     description: Self-hosted ngrok alternative
@@ -5170,7 +5187,7 @@ sources:
     install:
       type: zip
       binaries:
-        - yazi-{{ .Arch }}-{{ .OS }}/yazi
+        - "^yazi$"
 
   yeshttp:
     description: A HTTP server that always says yes
