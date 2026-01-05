@@ -569,6 +569,19 @@ sources:
     install:
       type: direct
 
+  circleci:
+    description: Use CircleCI from the command line
+    url: https://github.com/CircleCI-Public/circleci-cli
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/CircleCI-Public/circleci-cli/releases
+    fetch:
+      url: https://github.com/CircleCI-Public/circleci-cli/releases/download/v{{ .Version }}/circleci-cli_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - circleci
+
   cli53:
     description: Command line tool for Amazon Route 53
     url: https://github.com/barnybug/cli53/
