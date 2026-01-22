@@ -595,6 +595,17 @@ sources:
     install:
       type: direct
 
+  clip:
+    description: A tool to copy content to the clipboard from anywhere.
+    url: https://gitlab.com/devopsworks/tools/clip
+    list:
+      type: gitlab-releases
+      url: https://gitlab.com/api/v4/projects/77909212/releases
+    fetch:
+      url: https://gitlab.com/devopsworks/tools/clip/-/releases/{{ .Version }}/downloads/binaries/clip-{{ .OS }}-{{ .Arch }}{{ .ExeExtension }}
+    install:
+      type: direct
+
   clog-cli:
     description: Generate beautiful changelogs from your Git commit history
     url: https://github.com/clog-tool/
