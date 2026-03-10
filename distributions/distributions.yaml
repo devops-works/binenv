@@ -411,6 +411,22 @@ sources:
       binaries:
         - broot
 
+  bruno:
+    description: Open-source IDE for exploring and testing APIs
+    url: https://github.com/usebruno/bruno
+    map:
+      amd64: x86_64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/usebruno/bruno/releases
+    fetch:
+      url: https://github.com/usebruno/bruno/releases/download/v{{ .Version }}/bruno_{{ .Version }}_{{ .Arch }}_linux.AppImage
+    install:
+      type: direct
+    supported_platforms:
+      - os: linux
+        arch: amd64
+
   btop:
     description: A monitor of resources
     url: https://github.com/aristocratos/btop/
