@@ -658,6 +658,19 @@ sources:
       binaries:
         - cloudman
 
+  clx:
+    description: 🌿 It's Hacker News in your terminal (circumflex)
+    url: https://github.com/bensadeh/circumflex
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/bensadeh/circumflex/releases
+    fetch:
+      url: https://github.com/bensadeh/circumflex/releases/download/{{ .Version }}/circumflex_{{ .Version }}_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - clx
+
   cmctl:
     description: CLI tool that can help you to manage cert-manager resources inside your cluster.
     url: https://github.com/cert-manager/cmctl
