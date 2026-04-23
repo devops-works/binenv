@@ -59,6 +59,7 @@
 - [driftwood](https://github.com/trufflesecurity/driftwood): Private key usage verification
 - [dstask](https://github.com/naggie/dstask/): Single binary terminal-based todo manager with git-based sync + markdown notes per task
 - [dstask-import](https://github.com/naggie/dstask/): Single binary terminal-based todo manager with git-based sync + markdown notes per task (import tool)
+- [duckdb](https://github.com/duckdb/duckdb): DuckDB is an analytical in-process SQL database management system
 - [duf](https://github.com/muesli/duf/): Disk Usage/Free Utility
 - [dust](https://github.com/bootandy/dust/): A more intuitive version of du in rust
 - [dw-query-digest](https://github.com/devops-works/): MySQL slow log analyzer. Alternative to pt-query-digest.
@@ -192,6 +193,7 @@
 - [nuclei](https://github.com/projectdiscovery/nuclei/): Fast and customizable vulnerability scanner based on simple YAML based DSL.
 - [onefetch](https://github.com/o2sh/onefetch/): Git repository summary on your terminal
 - [operator-sdk](https://github.com/operator-framework/operator-sdk/): SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding.
+- [osv-scanner](https://github.com/google/osv-scanner): Vulnerability scanner written in Go which uses the data provided by https://osv.dev
 - [oto](https://github.com/pacedotdev/oto/): Go driven rpc code generation tool for right now (cli).
 - [packer](https://www.packer.io/): Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
 - [pandoc-plot](https://laurentrdc.github.io/pandoc-plot/): Render and include figures in Pandoc documents using your plotting toolkit of choice

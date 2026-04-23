@@ -1182,6 +1182,21 @@ sources:
       binaries:
         - dua
 
+  duckdb:
+    description: DuckDB is an analytical in-process SQL database management system
+    url: https://github.com/duckdb/duckdb
+    map:
+      darwin: osx
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/duckdb/duckdb/releases
+    fetch:
+      url: https://github.com/duckdb/duckdb/releases/download/v{{ .Version }}/duckdb_cli-{{ .OS }}-{{ .Arch }}.zip
+    install:
+      type: zip
+      binaries:
+        - duckdb
+
   duf:
     description: Disk Usage/Free Utility
     url: https://github.com/muesli/duf/
@@ -3498,6 +3513,17 @@ sources:
       url: https://api.github.com/repos/operator-framework/operator-sdk/releases
     fetch:
       url: https://github.com/operator-framework/operator-sdk/releases/download/v{{ .Version }}/operator-sdk_{{ .OS }}_{{ .Arch }}
+    install:
+      type: direct
+
+  osv-scanner:
+    description: Vulnerability scanner written in Go which uses the data provided by https://osv.dev
+    url: https://github.com/google/osv-scanner
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/google/osv-scanner/releases
+    fetch:
+      url: https://github.com/google/osv-scanner/releases/download/v{{ .Version }}/osv-scanner_{{ .OS }}_{{ .Arch }}
     install:
       type: direct
 
