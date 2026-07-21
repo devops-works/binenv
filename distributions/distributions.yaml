@@ -3226,6 +3226,26 @@ sources:
       binaries:
         - mcfly
 
+  mcp-grafana:
+    description: >
+      MCP server for Grafana, providing access to dashboards, datasources,
+      Prometheus/Loki queries, incidents and alerting from MCP clients.
+    url: https://github.com/grafana/mcp-grafana/
+    map:
+      amd64: x86_64
+      386: i386
+      darwin: Darwin
+      linux: Linux
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/grafana/mcp-grafana/releases
+    fetch:
+      url: https://github.com/grafana/mcp-grafana/releases/download/v{{ .Version }}/mcp-grafana_{{ .OS }}_{{ .Arch }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - mcp-grafana
+
   micro:
     description: A modern and intuitive terminal-based text editor
     url: https://github.com/zyedidia/micro/
