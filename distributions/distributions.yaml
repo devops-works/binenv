@@ -3568,7 +3568,7 @@ sources:
 
   outagedeck:
     description: Check live cloud and SaaS provider status from the terminal
-    url: https://outagedeck.com/developers/cli?utm_source=binenv&utm_medium=package_manager&utm_campaign=cli_distribution
+    url: https://outagedeck.com/developers/cli
     list:
       type: github-releases
       url: https://api.github.com/repos/outagedeck/cli/releases
