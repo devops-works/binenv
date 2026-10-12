@@ -4274,6 +4274,28 @@ sources:
       binaries:
         - snowcat
 
+  solidping:
+    description: Open-source uptime and synthetic monitoring server (HTTP, TCP, DNS, TLS, databases and more)
+    url: https://github.com/fclairamb/solidping
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/fclairamb/solidping/releases
+    fetch:
+      url: https://github.com/fclairamb/solidping/releases/download/v{{ .Version }}/solidping-{{ .OS }}-{{ .Arch }}.gz
+    install:
+      type: gzip
+      binaries:
+        - solidping
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+
   sonobuoy:
     description: >
       Sonobuoy is a diagnostic tool that makes it easier to understand the
