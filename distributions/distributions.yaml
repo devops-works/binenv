@@ -3381,6 +3381,31 @@ sources:
       binaries:
         - naabu
 
+  nika:
+    description: Workflow engine for AI - YAML DAGs statically checked before execution, tamper-evident traces after
+    url: https://github.com/supernovae-st/nika
+    map:
+      darwin: macos
+      amd64: x64
+    supported_platforms:
+      - os: linux
+        arch: amd64
+      - os: linux
+        arch: arm64
+      - os: darwin
+        arch: amd64
+      - os: darwin
+        arch: arm64
+    list:
+      type: github-releases
+      url: https://api.github.com/repos/supernovae-st/nika/releases
+    fetch:
+      url: https://github.com/supernovae-st/nika/releases/download/v{{ .Version }}/nika-{{ .OS }}-{{ .Arch }}-{{ .Version }}.tar.gz
+    install:
+      type: tgz
+      binaries:
+        - ^nika$
+
   node-problem-detector:
     description: This is a place for various problem detectors running on the Kubernetes nodes.
     url: https://github.com/kubernetes/node-problem-detector/
